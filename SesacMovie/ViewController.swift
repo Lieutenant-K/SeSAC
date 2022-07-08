@@ -14,25 +14,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var previewImage3: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var previewImagesHeight: NSLayoutConstraint!
     
     @IBOutlet var previewImages: [UIImageView]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let previewHeight = (view.frame.width - 60)/3
+        previewImagesHeight.constant = previewHeight
+        
         for preview in previewImages{
-            setPreviewImage(imageView: preview)
+            setPreviewImage(imageView: preview, height: previewHeight)
         }
         
         
-        // Do any additional setup after loading the view.
     }
     
-    func setPreviewImage(imageView: UIImageView) {
+    func setPreviewImage(imageView: UIImageView, height: CGFloat) {
         
         let colors: [UIColor] = [.red, .blue, .cyan, .purple, .yellow, .brown]
         
-        imageView.layer.cornerRadius = 60
+        imageView.layer.cornerRadius = height/2
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = colors.randomElement()?.cgColor
         
