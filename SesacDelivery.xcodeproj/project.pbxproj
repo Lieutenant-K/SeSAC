@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D89B6D62877B5F30071DB83 /* GitHubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B6D52877B5F30071DB83 /* GitHubViewController.swift */; };
 		0DD0942A2873443F002BF1C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD094292873443F002BF1C2 /* AppDelegate.swift */; };
 		0DD0942C2873443F002BF1C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0942B2873443F002BF1C2 /* SceneDelegate.swift */; };
 		0DD0942E2873443F002BF1C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0942D2873443F002BF1C2 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D89B6D52877B5F30071DB83 /* GitHubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubViewController.swift; sourceTree = "<group>"; };
 		0DD094262873443F002BF1C2 /* SesacDelivery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacDelivery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD094292873443F002BF1C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DD0942B2873443F002BF1C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				0DD0942F2873443F002BF1C2 /* Main.storyboard */,
 				0DD0943D2873DA42002BF1C2 /* FirstViewController.swift */,
 				0DD0943F2873DACC002BF1C2 /* SecondViewController.swift */,
+				0D89B6D52877B5F30071DB83 /* GitHubViewController.swift */,
 				0DD0943228734441002BF1C2 /* Assets.xcassets */,
 				0DD0943428734441002BF1C2 /* LaunchScreen.storyboard */,
 				0DD0943728734441002BF1C2 /* Info.plist */,
@@ -147,6 +150,7 @@
 				0DD0942E2873443F002BF1C2 /* ViewController.swift in Sources */,
 				0DD0942A2873443F002BF1C2 /* AppDelegate.swift in Sources */,
 				0DD0942C2873443F002BF1C2 /* SceneDelegate.swift in Sources */,
+				0D89B6D62877B5F30071DB83 /* GitHubViewController.swift in Sources */,
 				0DD094402873DACC002BF1C2 /* SecondViewController.swift in Sources */,
 				0DD0943E2873DA42002BF1C2 /* FirstViewController.swift in Sources */,
 			);
