@@ -28,6 +28,8 @@ class SecondViewController: UIViewController {
         label.textColor = .white
         label.font = .systemFont(ofSize: 30)
         
+        print("Github test")
+        
         // Do any additional setup after loading the view.
     }
 
