@@ -13,6 +13,7 @@
 		0DD094312873443F002BF1C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DD0942F2873443F002BF1C2 /* Main.storyboard */; };
 		0DD0943328734441002BF1C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD0943228734441002BF1C2 /* Assets.xcassets */; };
 		0DD0943628734441002BF1C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DD0943428734441002BF1C2 /* LaunchScreen.storyboard */; };
+		0DFF3A33287C4FB10035E442 /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFF3A32287C4FB10035E442 /* MembershipViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0DD0943228734441002BF1C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DD0943528734441002BF1C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DD0943728734441002BF1C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0DFF3A32287C4FB10035E442 /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				0DD094292873443F002BF1C2 /* AppDelegate.swift */,
 				0DD0942B2873443F002BF1C2 /* SceneDelegate.swift */,
 				0DD0942D2873443F002BF1C2 /* ViewController.swift */,
+				0DFF3A32287C4FB10035E442 /* MembershipViewController.swift */,
 				0DD0942F2873443F002BF1C2 /* Main.storyboard */,
 				0DD0943228734441002BF1C2 /* Assets.xcassets */,
 				0DD0943428734441002BF1C2 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DFF3A33287C4FB10035E442 /* MembershipViewController.swift in Sources */,
 				0DD0942E2873443F002BF1C2 /* ViewController.swift in Sources */,
 				0DD0942A2873443F002BF1C2 /* AppDelegate.swift in Sources */,
 				0DD0942C2873443F002BF1C2 /* SceneDelegate.swift in Sources */,
