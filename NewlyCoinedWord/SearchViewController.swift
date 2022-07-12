@@ -74,21 +74,20 @@ class SearchViewController: UIViewController {
         button.clipsToBounds = true
         button.setTitleColor(.label, for: .normal)
         button.setTitleColor(.gray, for: .highlighted)
-        findAndSetNewWord(button: button)
+        button.setTitle(findAndGetNewWord(), for: .normal)
         
         
     }
     
-    func findAndSetNewWord(button: UIButton) {
+    func findAndGetNewWord() -> String {
         
         while(true) {
             let word = newlyCoinedWords.keys.randomElement()
             if currentHashTag.contains(word!) {
                 continue
             }
-            button.setTitle(word, for: .normal)
             currentHashTag.append(word!)
-            return
+            return word!
         }
         
     }
@@ -98,7 +97,7 @@ class SearchViewController: UIViewController {
         guard let title = sender.title(for: .normal) else { return }
         searchTextField.text = title
         descriptionLabel.text = newlyCoinedWords[title]
-        findAndSetNewWord(button: sender)
+        sender.setTitle(findAndGetNewWord(), for: .normal)
         currentHashTag.remove(at: currentHashTag.firstIndex(of: title)!)
     }
     
@@ -109,7 +108,7 @@ class SearchViewController: UIViewController {
         }
         currentHashTag.removeAll()
         for button in hashtagButtons{
-            findAndSetNewWord(button: button)
+            button.setTitle(findAndGetNewWord(), for: .normal)
         }
         
         view.endEditing(true)
@@ -122,14 +121,5 @@ class SearchViewController: UIViewController {
         view.endEditing(true)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
