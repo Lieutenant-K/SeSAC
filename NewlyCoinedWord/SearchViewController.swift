@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum NewWords: String {
+    
+    case 삼귀다, 갓생, 알잘딱깔센, Whyrano, 저메추, 너뭐돼, 나제법젠틀해요, ㅈㅂㅈㅇ
+    
+}
+
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchTextField: UITextField!
@@ -16,15 +22,15 @@ class SearchViewController: UIViewController {
     
     @IBOutlet var hashtagButtons: [UIButton]!
     
-    var newlyCoinedWords: [String: String] = ["삼귀다":"사귀기 전의 썸타는 단계라는 뜻입니다.",
-                                              "갓생":"'갓'과 '인생'을 합친 말로 부지런하고 열심히 사는 사람에게 쓰는 말입니다.",
-                                              "알잘딱깔센":"알아서 잘 딱 깔끔하고 센스있게의 줄임말입니다.",
-                                              "Whyrano":"왜이러냐의 사투리 표현인 와이라노를 영어로 적은 말입니다.",
-                                              "저메추":"'저녁메뉴 추천좀'의 줄임말로 점메추도 있습니다.",
-                                              "너 뭐 돼?":"너가 혹시 뭐라도 돼? 라는 뜻으로 상대방의 행동이나 말이 마음에 들지 않을 때 사용할 수 있습니다.",
-                                              "나 제법 젠틀해요":"어떤 과격적인 행동을 하고 싶다는 말을 여과없이 서술한 뒤에 나 제법 젠틀해요를 넣어 역설적인 방법을 연출할 때 사용합니다.",
-                                              "ㅈㅂㅈㅇ":"'정보좀요'의 초성만 따서 제품에 대한 정보를 묻는 상황에서 많이 쓰입니다."]
-    var currentHashTag: [String] = []
+    var newlyCoinedWords: [NewWords: String] = [.삼귀다: "사귀기 전의 썸타는 단계라는 뜻입니다.",
+                                                .갓생: "'갓'과 '인생'을 합친 말로 부지런하고 열심히 사는 사람에게 쓰는 말입니다.",
+                                                .알잘딱깔센: "알아서 잘 딱 깔끔하고 센스있게의 줄임말입니다.",
+                                                .Whyrano: "왜이러냐의 사투리 표현인 와이라노를 영어로 적은 말입니다.",
+                                                .저메추: "'저녁메뉴 추천좀'의 줄임말로 점메추도 있습니다.",
+                                                .너뭐돼: "너가 혹시 뭐라도 돼? 라는 뜻으로 상대방의 행동이나 말이 마음에 들지 않을 때 사용할 수 있습니다.",
+                                                .나제법젠틀해요: "어떤 과격적인 행동을 하고 싶다는 말을 여과없이 서술한 뒤에 나 제법 젠틀해요를 넣어 역설적인 방법을 연출할 때 사용합니다.",
+                                                .ㅈㅂㅈㅇ: "'정보좀요'의 초성만 따서 제품에 대한 정보를 묻는 상황에서 많이 쓰입니다."]
+    var currentHashTag: [NewWords] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +41,7 @@ class SearchViewController: UIViewController {
         }
         setDescriptionLabel()
         backgroundImageView.image = UIImage(named: "background")
-
-        // Do any additional setup after loading the view.
+        
     }
     
     func setDescriptionLabel() {
@@ -87,28 +92,36 @@ class SearchViewController: UIViewController {
                 continue
             }
             currentHashTag.append(word!)
-            return word!
+            return word!.rawValue
         }
         
     }
     
     @IBAction func touchHashtagButton(_ sender: UIButton) {
         
-        guard let title = sender.title(for: .normal) else { return }
-        searchTextField.text = title
+        guard let title = NewWords(rawValue: sender.title(for: .normal)!) else { return }
+        searchTextField.text = title.rawValue
         descriptionLabel.text = newlyCoinedWords[title]
         sender.setTitle(findAndGetNewWord(), for: .normal)
         currentHashTag.remove(at: currentHashTag.firstIndex(of: title)!)
     }
     
     @IBAction func goSearch(_ sender: Any) {
-        print("검색 시작")
-        if let text = searchTextField.text, newlyCoinedWords.keys.contains(text) {
+        
+        guard let keyword = searchTextField.text else { return }
+        
+        if let text = NewWords(rawValue: keyword), newlyCoinedWords.keys.contains(text) {
             descriptionLabel.text = newlyCoinedWords[text]
+            
+            currentHashTag.removeAll()
+            
+            for button in hashtagButtons{
+                button.setTitle(findAndGetNewWord(), for: .normal)
+            }
+            
         }
-        currentHashTag.removeAll()
-        for button in hashtagButtons{
-            button.setTitle(findAndGetNewWord(), for: .normal)
+        else {
+            searchTextField.text = nil
         }
         
         view.endEditing(true)
@@ -118,6 +131,7 @@ class SearchViewController: UIViewController {
     
     
     @IBAction func keyboardDismiss(_ sender: UITapGestureRecognizer) {
+        
         view.endEditing(true)
     }
     
