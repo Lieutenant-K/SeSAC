@@ -7,47 +7,48 @@
 
 import UIKit
 
+enum Emotions: String {
+    case happy = "행복해"
+    case love = "사랑해"
+    case like = "좋아해"
+    case upset = "화나"
+    case hurt = "속상해"
+    case depress = "우울해"
+    case confuse = "당황해"
+    case boring = "지루해"
+    case sad = "슬퍼"
+}
+
 class DiaryViewController: UIViewController {
     
     @IBOutlet var images: [UIImageView]!
     @IBOutlet var buttons: [UIButton]!
-    var emotions: [String] = ["행복해", "사랑해", "좋아해", "당황해", "속상해", "우울해", "심심해", "지루해", "슬퍼해"]
+    var emotions: [Emotions] = [.happy, .love, .like, .upset, .hurt, .depress, .confuse, .boring, .sad]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         for i in 0...images.count-1 {
             images[i].image = UIImage(named: "sesac_slime\(i+1)")
-            buttons[i].setTitle(emotions[i], for: .normal)
+            buttons[i].setTitle(emotions[i].rawValue, for: .normal)
         }
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func touchButton(_ sender: UIButton){
         
-        guard let title = sender.title(for: .normal)?.split(separator: " ") else { return }
+        sender.setTitle(getString(currentTitle: sender.currentTitle!), for: .normal)
+        
+    }
     
-        if title.count >= 2 {
-            let number = Int(title[1]) ?? 0
-            sender.setTitle(String(title[0]) + " \(number + 1)", for: .normal)
-            
-        }
-        else {
-            
-            sender.setTitle(String(title[0]) + " \(1)", for: .normal)
-        }
+    func getString(currentTitle: String) -> String {
+        
+        let titleElements = currentTitle.split(separator: " ")
+        let newString = titleElements.count >= 2 ? String(titleElements[0]) + " \(Int(titleElements[1])! + 1)" : String(titleElements[0]) + " \(1)"
+    
+       return newString
         
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
