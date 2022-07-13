@@ -14,6 +14,9 @@
 		0DFF3A28287BA3E30035E442 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DFF3A27287BA3E30035E442 /* Assets.xcassets */; };
 		0DFF3A2B287BA3E30035E442 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DFF3A29287BA3E30035E442 /* LaunchScreen.storyboard */; };
 		0DFF3A35287C64AB0035E442 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFF3A34287C64AB0035E442 /* DiaryViewController.swift */; };
+		0DFF3A37287EBB8B0035E442 /* MemorialDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFF3A36287EBB8B0035E442 /* MemorialDayViewController.swift */; };
+		0DFF3A39287ED46C0035E442 /* MemorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFF3A38287ED46B0035E442 /* MemorialView.xib */; };
+		0DFF3A3B287ED4D60035E442 /* MemorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFF3A3A287ED4D60035E442 /* MemorialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		0DFF3A2A287BA3E30035E442 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DFF3A2C287BA3E30035E442 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DFF3A34287C64AB0035E442 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		0DFF3A36287EBB8B0035E442 /* MemorialDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialDayViewController.swift; sourceTree = "<group>"; };
+		0DFF3A38287ED46B0035E442 /* MemorialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemorialView.xib; sourceTree = "<group>"; };
+		0DFF3A3A287ED4D60035E442 /* MemorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				0DFF3A20287BA3E10035E442 /* SceneDelegate.swift */,
 				0DFF3A22287BA3E10035E442 /* ViewController.swift */,
 				0DFF3A24287BA3E10035E442 /* Main.storyboard */,
+				0DFF3A38287ED46B0035E442 /* MemorialView.xib */,
+				0DFF3A3A287ED4D60035E442 /* MemorialView.swift */,
+				0DFF3A36287EBB8B0035E442 /* MemorialDayViewController.swift */,
 				0DFF3A27287BA3E30035E442 /* Assets.xcassets */,
 				0DFF3A29287BA3E30035E442 /* LaunchScreen.storyboard */,
 				0DFF3A2C287BA3E30035E442 /* Info.plist */,
@@ -130,6 +139,7 @@
 			files = (
 				0DFF3A2B287BA3E30035E442 /* LaunchScreen.storyboard in Resources */,
 				0DFF3A28287BA3E30035E442 /* Assets.xcassets in Resources */,
+				0DFF3A39287ED46C0035E442 /* MemorialView.xib in Resources */,
 				0DFF3A26287BA3E10035E442 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,7 +151,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DFF3A37287EBB8B0035E442 /* MemorialDayViewController.swift in Sources */,
 				0DFF3A35287C64AB0035E442 /* DiaryViewController.swift in Sources */,
+				0DFF3A3B287ED4D60035E442 /* MemorialView.swift in Sources */,
 				0DFF3A23287BA3E10035E442 /* ViewController.swift in Sources */,
 				0DFF3A1F287BA3E10035E442 /* AppDelegate.swift in Sources */,
 				0DFF3A21287BA3E10035E442 /* SceneDelegate.swift in Sources */,
@@ -298,6 +310,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +320,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -325,6 +338,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,7 +348,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
