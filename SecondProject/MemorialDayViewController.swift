@@ -23,18 +23,19 @@ class MemorialDayViewController: UIViewController {
     
     func setMemorialView(view: MemorialView){
         
-        view.layer.cornerRadius = 10
-        view.layer.shadowOffset = CGSize(width: 0, height: 0)
-        view.layer.shadowOpacity = 0.3
-        view.layer.shadowRadius = 5
         view.backgroundColor = .clear
         
         view.backgroundView.layer.cornerRadius = 10
         view.backgroundView.backgroundColor = .black
         view.backgroundView.alpha = 0.1
+        view.backgroundView.layer.shadowOpacity = 1
+        view.backgroundView.layer.shadowRadius = 5
+        view.backgroundView.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         view.imageView.layer.cornerRadius = 10
         view.imageView.backgroundColor = .clear
+        view.imageView.image = UIImage(named: "cake")
+        view.imageView.contentMode = .scaleAspectFill
         
         view.progressDayLabel.font = .systemFont(ofSize: 20, weight: .heavy)
         view.progressDayLabel.textColor = .systemBackground
