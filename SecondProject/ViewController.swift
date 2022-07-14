@@ -22,12 +22,40 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var segment: UISegmentedControl!
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
+    @IBOutlet weak var defaultView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         touchSegment(segment)
+        
+//        imageView.backgroundColor = .clear
+        imageView.layer.shadowOpacity = 1.0
+        imageView.layer.shadowOffset = CGSize(width: 50, height: 50)
+        imageView.layer.cornerRadius = 100
+        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.layer.borderWidth = 3
+        print(imageView.frame)
+        print(imageView.layer.frame)
+        print(imageView.layer.backgroundColor)
+//        imageView.clipsToBounds = false
+        
+//        defaultView.backgroundColor = .red
+        defaultView.layer.shadowOffset = CGSize(width: 50, height: 50)
+        defaultView.layer.shadowOpacity = 1
+        defaultView.layer.backgroundColor = UIColor.clear.cgColor
+        
+        let format = DateFormatter()
+        format.dateFormat = "M월 d일, yy년"
+        
+        let result = format.string(from: Date())
+        print(result)
+        
+        let word = "3월 2일, 19년"
+        let dateResult = format.date(from: word)
+        print(dateResult)
         // Do any additional setup after loading the view.
     }
     

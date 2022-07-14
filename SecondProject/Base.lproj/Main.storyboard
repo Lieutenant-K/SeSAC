@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="98y-Ct-rnK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -611,23 +610,27 @@
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="r5D-pS-9ls">
                                 <rect key="frame" x="0.0" y="44" width="414" height="404"/>
+                                <locale key="locale" localeIdentifier="ko_KR"/>
+                                <connections>
+                                    <action selector="changePickerValue:" destination="98y-Ct-rnK" eventType="valueChanged" id="IdY-HM-0Tb"/>
+                                </connections>
                             </datePicker>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kT7-Cg-lD2">
                                 <rect key="frame" x="0.0" y="448" width="414" height="414"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhW-Oc-n2O" customClass="MemorialView" customModule="SecondProject" customModuleProvider="target">
+                                    <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhW-Oc-n2O" customClass="MemorialView" customModule="SecondProject" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="177" height="177"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxG-sp-Zup" customClass="MemorialView" customModule="SecondProject" customModuleProvider="target">
+                                    <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxG-sp-Zup" customClass="MemorialView" customModule="SecondProject" customModuleProvider="target">
                                         <rect key="frame" x="217" y="20" width="177" height="177"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WyV-xM-t45" customClass="MemorialView" customModule="SecondProject" customModuleProvider="target">
+                                    <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WyV-xM-t45" customClass="MemorialView" customModule="SecondProject" customModuleProvider="target">
                                         <rect key="frame" x="20" y="217" width="177" height="177"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyA-VY-ern" customClass="MemorialView" customModule="SecondProject" customModuleProvider="target">
+                                    <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyA-VY-ern" customClass="MemorialView" customModule="SecondProject" customModuleProvider="target">
                                         <rect key="frame" x="217" y="217" width="177" height="177"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
@@ -706,39 +709,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nKs-fg-pRh">
-                                <rect key="frame" x="107" y="348" width="200" height="200"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TmJ-R2-ab3">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="60"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZA-rq-2Ge">
-                                        <rect key="frame" x="0.0" y="70" width="200" height="60"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qX6-hh-56K">
-                                        <rect key="frame" x="0.0" y="140" width="200" height="60"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="LKN-ty-Jkb"/>
-                                    <constraint firstAttribute="width" secondItem="nKs-fg-pRh" secondAttribute="height" multiplier="1:1" id="g8A-PG-QiK"/>
-                                </constraints>
-                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cake" translatesAutoresizingMaskIntoConstraints="NO" id="SzY-fk-QCb">
+                                <rect key="frame" x="87" y="193" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Xy-EI-G9E">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oUJ-sy-Eqh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="nKs-fg-pRh" firstAttribute="centerY" secondItem="QF4-7Q-pR7" secondAttribute="centerY" id="FiS-Ob-JyD"/>
-                            <constraint firstItem="nKs-fg-pRh" firstAttribute="centerX" secondItem="QF4-7Q-pR7" secondAttribute="centerX" id="x5o-C9-jwg"/>
-                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="defaultView" destination="5Xy-EI-G9E" id="1F3-YO-Gff"/>
+                        <outlet property="imageView" destination="SzY-fk-QCb" id="1Ex-X2-AlC"/>
                         <outlet property="label" destination="nQP-1W-RIk" id="V7D-Y4-y6R"/>
                         <outlet property="segment" destination="lrF-Kg-jOK" id="rmg-ra-DYQ"/>
                     </connections>
@@ -891,6 +876,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cake" width="200" height="267"/>
         <image name="list.triangle" catalog="system" width="128" height="91"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <image name="sesac_slime1" width="278" height="258"/>
