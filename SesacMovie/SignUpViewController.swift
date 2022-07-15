@@ -85,26 +85,31 @@ class SignUpViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "확인", style: .cancel))
         
         
-        guard let text = idTextField.text, !text.isEmpty  else {
-            alertController.message = "이메일 입력이 안됐습니다."
+        guard let text = idTextField.text, text.range(of: #"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"#,
+                                                        options: .regularExpression) != nil
+        else {
+            alertController.title = "이메일 형식이 잘못됐습니다."
+            alertController.message = "올바른 이메일인지 확인해주세요"
             present(alertController, animated: true)
             return
             
         }
         
-        guard let text = passwordTextField.text, !text.isEmpty && text.count >= 6 else {
-            alertController.message = "비밀번호가 잘못 입력됐습니다."
+        guard let text = passwordTextField.text, text.range(of: #"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"#, options: .regularExpression) != nil
+        else {
+            alertController.title = "비밀번호 형식이 잘못됐습니다."
+            alertController.message = "영어 소문자, 대문자, 숫자 포함 8글자 이상"
             present(alertController, animated: true)
             return
         }
         
-        guard let code = codeTextField.text, Int(code) != nil else {
-            alertController.message = "코드를 숫자로 입력해주세요"
+        guard let code = codeTextField.text, Int(code) != nil && code.count == 5 else {
+            alertController.title = "코드 입력 오류"
+            alertController.message = "5자리 숫자로 코드를 입력해주세요"
             present(alertController, animated: true)
             return
         }
         
-        alertController.message = "가입 완료!"
         
         // 스토리보드에서 설정한 세그를 활용하는 방법
         performSegue(withIdentifier: "login", sender: self)
@@ -120,6 +125,12 @@ class SignUpViewController: UIViewController {
         
     }
     
+    @IBAction func touchSwitch(_ sender: UISwitch) {
+        
+        nickNameTextField.isHidden.toggle()
+        locationTextField.isHidden.toggle()
+        
+    }
     
     @IBAction func touchRecognizer(_ sender: UITapGestureRecognizer) {
         
@@ -127,14 +138,5 @@ class SignUpViewController: UIViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
