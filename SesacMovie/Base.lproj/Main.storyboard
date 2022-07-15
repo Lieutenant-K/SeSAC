@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hx7-vW-IlB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -27,19 +27,19 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="3f4-H5-g8t">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="696"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WLb-R9-LXC" userLabel="menuStackView">
-                                <rect key="frame" x="93" y="54" width="301" height="34"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WLb-R9-LXC" userLabel="menuStackView">
+                                <rect key="frame" x="114" y="54" width="280" height="34"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wg3-Uy-2Uq">
-                                        <rect key="frame" x="0.0" y="0.0" width="112" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wg3-Uy-2Uq">
+                                        <rect key="frame" x="0.0" y="0.0" width="91" height="34"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="TV 프로그램">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c64-E7-nDO">
-                                        <rect key="frame" x="132" y="0.0" width="32" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c64-E7-nDO">
+                                        <rect key="frame" x="111" y="0.0" width="32" height="34"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="영화">
@@ -49,8 +49,8 @@
                                             <segue destination="5Ul-Zi-IRk" kind="presentation" id="gol-qS-Ilo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLY-Ho-JQU">
-                                        <rect key="frame" x="184" y="0.0" width="117" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLY-Ho-JQU">
+                                        <rect key="frame" x="163" y="0.0" width="117" height="34"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="내가 찜한 콘텐츠">
@@ -128,7 +128,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cto-bn-2Ak">
-                                <rect key="frame" x="20" y="44" width="33" height="54"/>
+                                <rect key="frame" x="20" y="44" width="54" height="54"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -162,6 +162,7 @@
                             <constraint firstItem="3f4-H5-g8t" firstAttribute="leading" secondItem="TDz-on-wq9" secondAttribute="leading" id="zu1-e0-RWe"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="8iy-lm-jZJ"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="TDz-on-wq9" id="AB6-6b-sGa"/>
                         <outlet property="playButton" destination="NNq-BX-bdA" id="JW4-cg-0Fv"/>
@@ -297,6 +298,7 @@
                         <outlet property="signUpButton" destination="fAw-7C-ZFC" id="bVL-f1-8MK"/>
                         <outlet property="titleLabel" destination="5gM-nY-523" id="jqO-zQ-z1k"/>
                         <outlet property="toggle" destination="g4o-ei-Cw6" id="MU8-W1-Hmu"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="login" modalPresentationStyle="fullScreen" id="5uB-oV-Npp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocg-2D-MZT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

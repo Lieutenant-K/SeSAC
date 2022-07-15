@@ -29,7 +29,6 @@ class SignUpViewController: UIViewController {
         idTextField.keyboardType = .emailAddress
         passwordTextField.isSecureTextEntry = true
         passwordTextField.textContentType = .oneTimeCode
-        passwordTextField.clearButtonMode = .always
         codeTextField.keyboardType = .decimalPad
         
         setTextField(textfield: idTextField, placeholder: "이메일 주소 또는 전화번호")
@@ -82,23 +81,32 @@ class SignUpViewController: UIViewController {
     
     @IBAction func touchSignUpButton(_ sender: UIButton) {
         
+        let alertController = UIAlertController(title: "알림", message: "", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "확인", style: .cancel))
+        
+        
         guard let text = idTextField.text, !text.isEmpty  else {
-            print("이메일 입력이 안됐습니다")
+            alertController.message = "이메일 입력이 안됐습니다."
+            present(alertController, animated: true)
             return
             
         }
         
         guard let text = passwordTextField.text, !text.isEmpty && text.count >= 6 else {
-            print("비밀번호가 잘못 입력됐습니다.")
+            alertController.message = "비밀번호가 잘못 입력됐습니다."
+            present(alertController, animated: true)
             return
         }
         
         guard let code = codeTextField.text, Int(code) != nil else {
-            print("코드를 숫자로 입력해주세요")
+            alertController.message = "코드를 숫자로 입력해주세요"
+            present(alertController, animated: true)
             return
         }
         
-        print("가입 완료!")
+        alertController.message = "가입 완료!"
+        
+        performSegue(withIdentifier: "login", sender: self)
         
         view.endEditing(true)
         

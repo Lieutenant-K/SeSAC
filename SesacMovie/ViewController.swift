@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         }
         
         
+        
     }
     
     func setPreviewImage(imageView: UIImageView, height: CGFloat) {
