@@ -106,7 +106,15 @@ class SignUpViewController: UIViewController {
         
         alertController.message = "가입 완료!"
         
+        // 스토리보드에서 설정한 세그를 활용하는 방법
         performSegue(withIdentifier: "login", sender: self)
+        
+        /*
+        // 전환할 Scene을 인스턴스화해서 present
+        if let vc = self.storyboard?.instantiateViewController(identifier: "movie") as? ViewController {
+            present(vc, animated: true)
+        }
+        */
         
         view.endEditing(true)
         
