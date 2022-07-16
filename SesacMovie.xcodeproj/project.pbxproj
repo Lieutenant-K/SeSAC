@@ -10,10 +10,12 @@
 		0D89B6D42875D05B0071DB83 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B6D32875D05B0071DB83 /* SignUpViewController.swift */; };
 		0DD0940A2872767A002BF1C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD094092872767A002BF1C2 /* AppDelegate.swift */; };
 		0DD0940C2872767A002BF1C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0940B2872767A002BF1C2 /* SceneDelegate.swift */; };
-		0DD0940E2872767A002BF1C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0940D2872767A002BF1C2 /* ViewController.swift */; };
+		0DD0940E2872767A002BF1C2 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0940D2872767A002BF1C2 /* MovieViewController.swift */; };
 		0DD094112872767A002BF1C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DD0940F2872767A002BF1C2 /* Main.storyboard */; };
 		0DD094132872767D002BF1C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DD094122872767D002BF1C2 /* Assets.xcassets */; };
 		0DD094162872767D002BF1C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DD094142872767D002BF1C2 /* LaunchScreen.storyboard */; };
+		0DDBAD922882C0CE00E673DE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0DDBAD912882C0CE00E673DE /* Lottie */; };
+		0DDBAD942882C0F200E673DE /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBAD932882C0F200E673DE /* SplashViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +23,12 @@
 		0DD094062872767A002BF1C2 /* SesacMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD094092872767A002BF1C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DD0940B2872767A002BF1C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0DD0940D2872767A002BF1C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0DD0940D2872767A002BF1C2 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		0DD094102872767A002BF1C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0DD094122872767D002BF1C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SesacMovie/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		0DD094152872767D002BF1C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DD094172872767D002BF1C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0DDBAD932882C0F200E673DE /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DDBAD922882C0CE00E673DE /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,9 +64,10 @@
 			children = (
 				0DD094092872767A002BF1C2 /* AppDelegate.swift */,
 				0DD0940B2872767A002BF1C2 /* SceneDelegate.swift */,
-				0DD0940D2872767A002BF1C2 /* ViewController.swift */,
+				0DD0940D2872767A002BF1C2 /* MovieViewController.swift */,
 				0D89B6D32875D05B0071DB83 /* SignUpViewController.swift */,
 				0DD0940F2872767A002BF1C2 /* Main.storyboard */,
+				0DDBAD932882C0F200E673DE /* SplashViewController.swift */,
 				0DD094122872767D002BF1C2 /* Assets.xcassets */,
 				0DD094142872767D002BF1C2 /* LaunchScreen.storyboard */,
 				0DD094172872767D002BF1C2 /* Info.plist */,
@@ -86,6 +91,9 @@
 			dependencies = (
 			);
 			name = SesacMovie;
+			packageProductDependencies = (
+				0DDBAD912882C0CE00E673DE /* Lottie */,
+			);
 			productName = SesacMovie;
 			productReference = 0DD094062872767A002BF1C2 /* SesacMovie.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 0DD093FD2872767A002BF1C2;
+			packageReferences = (
+				0DDBAD902882C0CE00E673DE /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 0DD094072872767A002BF1C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,10 +152,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DD0940E2872767A002BF1C2 /* ViewController.swift in Sources */,
+				0DD0940E2872767A002BF1C2 /* MovieViewController.swift in Sources */,
 				0DD0940A2872767A002BF1C2 /* AppDelegate.swift in Sources */,
 				0D89B6D42875D05B0071DB83 /* SignUpViewController.swift in Sources */,
 				0DD0940C2872767A002BF1C2 /* SceneDelegate.swift in Sources */,
+				0DDBAD942882C0F200E673DE /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +378,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0DDBAD902882C0CE00E673DE /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0DDBAD912882C0CE00E673DE /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DDBAD902882C0CE00E673DE /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0DD093FE2872767A002BF1C2 /* Project object */;
 }

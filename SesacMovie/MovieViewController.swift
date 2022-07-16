@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MovieViewController: UIViewController {
     
     @IBOutlet weak var previewImage1: UIImageView!
     @IBOutlet weak var previewImage2: UIImageView!
