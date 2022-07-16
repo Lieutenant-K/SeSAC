@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     @IBAction func touchPlayButton(_ sender: UIButton) {
         
         for preview in previewImages {
-            preview.image = UIImage(named: "poster-\(Int.random(in: 1...20))")
+               preview.image = UIImage(named: "poster-\(Int.random(in: 1...20))")
         }
         backgroundImageView.image = UIImage(named: "poster-\(Int.random(in: 1...20))")
         
