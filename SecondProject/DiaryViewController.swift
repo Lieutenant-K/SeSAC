@@ -30,7 +30,8 @@ class DiaryViewController: UIViewController {
         
         for i in 0...images.count-1 {
             images[i].image = UIImage(named: "sesac_slime\(i+1)")
-            buttons[i].setTitle(emotions[i].rawValue, for: .normal)
+            let count = UserDefaults.standard.integer(forKey: emotions[i].rawValue)
+            buttons[i].setTitle(emotions[i].rawValue + (count > 0 ? " \(count)" : ""), for: .normal)
         }
 
     }
@@ -42,11 +43,14 @@ class DiaryViewController: UIViewController {
     }
     
     func getString(currentTitle: String) -> String {
+
+        let key = String(currentTitle.split(separator: " ")[0])
         
-        let titleElements = currentTitle.split(separator: " ")
-        let newString = titleElements.count >= 2 ? String(titleElements[0]) + " \(Int(titleElements[1])! + 1)" : String(titleElements[0]) + " \(1)"
-    
-       return newString
+        let count = UserDefaults.standard.integer(forKey: key)
+        
+        UserDefaults.standard.set(count+1, forKey: key)
+        
+        return key + " \(UserDefaults.standard.integer(forKey: key))"
         
         
     }

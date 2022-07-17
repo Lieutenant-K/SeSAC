@@ -290,6 +290,7 @@
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K51-tP-jdh">
                                                         <rect key="frame" x="0.0" y="0.0" width="117.5" height="117.5"/>
+                                                        <gestureRecognizers/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="행복해">
