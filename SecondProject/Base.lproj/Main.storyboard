@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="98y-Ct-rnK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y7m-Ig-rVF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -277,19 +277,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GOP-dm-A5H">
-                                <rect key="frame" x="52" y="293" width="310.5" height="310.5"/>
+                                <rect key="frame" x="31" y="272" width="352" height="352"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-vf-WfH">
-                                        <rect key="frame" x="0.0" y="0.0" width="310.5" height="103.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="352" height="117.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kq2-te-ISg">
-                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="117.5" height="117.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sesac_slime1" translatesAutoresizingMaskIntoConstraints="NO" id="3lo-y8-g8O">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="83.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="87.5"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K51-tP-jdh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="117.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="행복해">
@@ -302,21 +302,21 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="K51-tP-jdh" secondAttribute="trailing" id="In0-hx-WDY"/>
-                                                    <constraint firstItem="3lo-y8-g8O" firstAttribute="top" secondItem="kq2-te-ISg" secondAttribute="top" id="JK7-sg-yth"/>
-                                                    <constraint firstItem="K51-tP-jdh" firstAttribute="top" secondItem="kq2-te-ISg" secondAttribute="top" id="Pmf-hL-bXN"/>
-                                                    <constraint firstItem="K51-tP-jdh" firstAttribute="leading" secondItem="kq2-te-ISg" secondAttribute="leading" id="SGI-Nu-lQZ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="K51-tP-jdh" secondAttribute="bottom" id="nHX-tq-4Jj"/>
-                                                    <constraint firstAttribute="trailing" secondItem="3lo-y8-g8O" secondAttribute="trailing" id="rCs-xN-657"/>
-                                                    <constraint firstAttribute="bottom" secondItem="3lo-y8-g8O" secondAttribute="bottom" constant="20" id="rWZ-oq-FAd"/>
-                                                    <constraint firstItem="3lo-y8-g8O" firstAttribute="leading" secondItem="kq2-te-ISg" secondAttribute="leading" id="uxd-Li-e9w"/>
+                                                    <constraint firstItem="K51-tP-jdh" firstAttribute="leading" secondItem="kq2-te-ISg" secondAttribute="leading" id="6FV-yf-DkU"/>
+                                                    <constraint firstAttribute="trailing" secondItem="K51-tP-jdh" secondAttribute="trailing" id="7JS-VN-L2I"/>
+                                                    <constraint firstItem="3lo-y8-g8O" firstAttribute="top" secondItem="kq2-te-ISg" secondAttribute="top" id="VXq-pb-9EX"/>
+                                                    <constraint firstAttribute="trailing" secondItem="3lo-y8-g8O" secondAttribute="trailing" id="bx7-fb-Fkh"/>
+                                                    <constraint firstItem="3lo-y8-g8O" firstAttribute="leading" secondItem="kq2-te-ISg" secondAttribute="leading" id="hL8-gS-Zc4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="K51-tP-jdh" secondAttribute="bottom" id="nNN-RE-umX"/>
+                                                    <constraint firstItem="K51-tP-jdh" firstAttribute="top" secondItem="kq2-te-ISg" secondAttribute="top" id="oVw-O0-CAG"/>
+                                                    <constraint firstAttribute="bottom" secondItem="3lo-y8-g8O" secondAttribute="bottom" constant="30" id="xn3-sY-CoJ"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4tc-4l-6Wq">
-                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="103.5"/>
+                                                <rect key="frame" x="117.5" y="0.0" width="117" height="117.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdB-Q8-Hli">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="117.5"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="사랑해">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -326,7 +326,7 @@
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sesac_slime2" translatesAutoresizingMaskIntoConstraints="NO" id="3mJ-u4-ptm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="83.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="87.5"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -334,7 +334,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="VdB-Q8-Hli" secondAttribute="trailing" id="2o9-OO-NoC"/>
                                                     <constraint firstAttribute="trailing" secondItem="3mJ-u4-ptm" secondAttribute="trailing" id="Dc8-L7-MLT"/>
                                                     <constraint firstItem="VdB-Q8-Hli" firstAttribute="top" secondItem="4tc-4l-6Wq" secondAttribute="top" id="HrF-tR-4Tj"/>
-                                                    <constraint firstAttribute="bottom" secondItem="3mJ-u4-ptm" secondAttribute="bottom" constant="20" id="Vy4-bs-S8t"/>
+                                                    <constraint firstAttribute="bottom" secondItem="3mJ-u4-ptm" secondAttribute="bottom" constant="30" id="Vy4-bs-S8t"/>
                                                     <constraint firstItem="VdB-Q8-Hli" firstAttribute="leading" secondItem="4tc-4l-6Wq" secondAttribute="leading" id="czr-ww-wc1"/>
                                                     <constraint firstAttribute="bottom" secondItem="VdB-Q8-Hli" secondAttribute="bottom" id="fVQ-hw-ruO"/>
                                                     <constraint firstItem="3mJ-u4-ptm" firstAttribute="leading" secondItem="4tc-4l-6Wq" secondAttribute="leading" id="qfs-bL-Sgj"/>
@@ -342,10 +342,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAl-i2-rdZ">
-                                                <rect key="frame" x="207" y="0.0" width="103.5" height="103.5"/>
+                                                <rect key="frame" x="234.5" y="0.0" width="117.5" height="117.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pm-i3-GS9">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="117.5"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="좋아해">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -355,7 +355,7 @@
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sesac_slime3" translatesAutoresizingMaskIntoConstraints="NO" id="bun-lE-K57">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="83.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="87.5"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -366,20 +366,20 @@
                                                     <constraint firstAttribute="trailing" secondItem="9Pm-i3-GS9" secondAttribute="trailing" id="awI-hp-cMA"/>
                                                     <constraint firstItem="9Pm-i3-GS9" firstAttribute="leading" secondItem="nAl-i2-rdZ" secondAttribute="leading" id="qaq-lt-CPE"/>
                                                     <constraint firstAttribute="bottom" secondItem="9Pm-i3-GS9" secondAttribute="bottom" id="rxb-Yw-AxL"/>
-                                                    <constraint firstAttribute="bottom" secondItem="bun-lE-K57" secondAttribute="bottom" constant="20" id="vKB-eM-eQq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="bun-lE-K57" secondAttribute="bottom" constant="30" id="vKB-eM-eQq"/>
                                                     <constraint firstItem="9Pm-i3-GS9" firstAttribute="top" secondItem="nAl-i2-rdZ" secondAttribute="top" id="y0d-rd-1Ov"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tLs-AS-aPe">
-                                        <rect key="frame" x="0.0" y="103.5" width="310.5" height="103.5"/>
+                                        <rect key="frame" x="0.0" y="117.5" width="352" height="117"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lfb-7J-BrW">
-                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="117.5" height="117"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdI-co-UxP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="117"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="당황해">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -389,14 +389,14 @@
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sesac_slime4" translatesAutoresizingMaskIntoConstraints="NO" id="SWv-Cr-oGd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="83.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="87"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="MdI-co-UxP" secondAttribute="trailing" id="1r5-Su-YLD"/>
                                                     <constraint firstAttribute="trailing" secondItem="SWv-Cr-oGd" secondAttribute="trailing" id="3Y9-Cb-kbK"/>
-                                                    <constraint firstAttribute="bottom" secondItem="SWv-Cr-oGd" secondAttribute="bottom" constant="20" id="5A0-Y5-Va3"/>
+                                                    <constraint firstAttribute="bottom" secondItem="SWv-Cr-oGd" secondAttribute="bottom" constant="30" id="5A0-Y5-Va3"/>
                                                     <constraint firstItem="MdI-co-UxP" firstAttribute="leading" secondItem="Lfb-7J-BrW" secondAttribute="leading" id="6fd-rI-k1Z"/>
                                                     <constraint firstAttribute="bottom" secondItem="MdI-co-UxP" secondAttribute="bottom" id="CQz-hk-5T8"/>
                                                     <constraint firstItem="MdI-co-UxP" firstAttribute="top" secondItem="Lfb-7J-BrW" secondAttribute="top" id="ME3-8s-cAi"/>
@@ -405,13 +405,13 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3V-Ld-8u3">
-                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="103.5"/>
+                                                <rect key="frame" x="117.5" y="0.0" width="117" height="117"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sesac_slime1" translatesAutoresizingMaskIntoConstraints="NO" id="4ql-Vj-dBh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="83.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="87"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkV-2t-VXb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="117"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="속상해">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -429,15 +429,15 @@
                                                     <constraint firstItem="vkV-2t-VXb" firstAttribute="top" secondItem="B3V-Ld-8u3" secondAttribute="top" id="Wz5-ye-Gdy"/>
                                                     <constraint firstAttribute="bottom" secondItem="vkV-2t-VXb" secondAttribute="bottom" id="fOe-ky-JAX"/>
                                                     <constraint firstItem="4ql-Vj-dBh" firstAttribute="top" secondItem="B3V-Ld-8u3" secondAttribute="top" id="ok6-pg-PGt"/>
-                                                    <constraint firstAttribute="bottom" secondItem="4ql-Vj-dBh" secondAttribute="bottom" constant="20" id="pM4-W0-PhN"/>
+                                                    <constraint firstAttribute="bottom" secondItem="4ql-Vj-dBh" secondAttribute="bottom" constant="30" id="pM4-W0-PhN"/>
                                                     <constraint firstAttribute="trailing" secondItem="4ql-Vj-dBh" secondAttribute="trailing" id="pjQ-a5-rfl"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krL-D5-3MT">
-                                                <rect key="frame" x="207" y="0.0" width="103.5" height="103.5"/>
+                                                <rect key="frame" x="234.5" y="0.0" width="117.5" height="117"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ko2-Ah-SGa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="117"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="우울해">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -447,7 +447,7 @@
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sesac_slime1" translatesAutoresizingMaskIntoConstraints="NO" id="yBy-Iz-Z8x">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="83.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="87"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -458,20 +458,20 @@
                                                     <constraint firstAttribute="trailing" secondItem="ko2-Ah-SGa" secondAttribute="trailing" id="aVz-v0-IaL"/>
                                                     <constraint firstItem="ko2-Ah-SGa" firstAttribute="leading" secondItem="krL-D5-3MT" secondAttribute="leading" id="bX5-ez-PwR"/>
                                                     <constraint firstAttribute="trailing" secondItem="yBy-Iz-Z8x" secondAttribute="trailing" id="jb8-OX-cAc"/>
-                                                    <constraint firstAttribute="bottom" secondItem="yBy-Iz-Z8x" secondAttribute="bottom" constant="20" id="pUN-gK-PiX"/>
+                                                    <constraint firstAttribute="bottom" secondItem="yBy-Iz-Z8x" secondAttribute="bottom" constant="30" id="pUN-gK-PiX"/>
                                                     <constraint firstItem="yBy-Iz-Z8x" firstAttribute="top" secondItem="krL-D5-3MT" secondAttribute="top" id="vSc-qs-ZSh"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="guC-8S-fBY">
-                                        <rect key="frame" x="0.0" y="207" width="310.5" height="103.5"/>
+                                        <rect key="frame" x="0.0" y="234.5" width="352" height="117.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxv-fC-Xjb">
-                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="117.5" height="117.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsG-g6-G3l">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="117.5"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="심심해">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -481,7 +481,7 @@
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sesac_slime1" translatesAutoresizingMaskIntoConstraints="NO" id="Qvv-4M-vv2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="83.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="87.5"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -491,19 +491,19 @@
                                                     <constraint firstItem="zsG-g6-G3l" firstAttribute="top" secondItem="gxv-fC-Xjb" secondAttribute="top" id="8N8-Gj-Z7P"/>
                                                     <constraint firstAttribute="trailing" secondItem="Qvv-4M-vv2" secondAttribute="trailing" id="FSd-95-9kl"/>
                                                     <constraint firstAttribute="bottom" secondItem="zsG-g6-G3l" secondAttribute="bottom" id="MGK-A9-wEP"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Qvv-4M-vv2" secondAttribute="bottom" constant="20" id="cKs-vv-efu"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Qvv-4M-vv2" secondAttribute="bottom" constant="30" id="cKs-vv-efu"/>
                                                     <constraint firstItem="Qvv-4M-vv2" firstAttribute="leading" secondItem="gxv-fC-Xjb" secondAttribute="leading" id="j2u-Ll-2U1"/>
                                                     <constraint firstAttribute="trailing" secondItem="zsG-g6-G3l" secondAttribute="trailing" id="jDA-Ku-c8T"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vr2-Mh-c1j">
-                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="103.5"/>
+                                                <rect key="frame" x="117.5" y="0.0" width="117" height="117.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sesac_slime1" translatesAutoresizingMaskIntoConstraints="NO" id="dJv-A7-TZt">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="83.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="87.5"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pup-8F-BNU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="117.5"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="지루해">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -518,7 +518,7 @@
                                                     <constraint firstItem="dJv-A7-TZt" firstAttribute="leading" secondItem="Vr2-Mh-c1j" secondAttribute="leading" id="2ib-b3-qeq"/>
                                                     <constraint firstItem="dJv-A7-TZt" firstAttribute="top" secondItem="Vr2-Mh-c1j" secondAttribute="top" id="DFa-a7-ttj"/>
                                                     <constraint firstItem="pup-8F-BNU" firstAttribute="leading" secondItem="Vr2-Mh-c1j" secondAttribute="leading" id="SeY-vW-Q6D"/>
-                                                    <constraint firstAttribute="bottom" secondItem="dJv-A7-TZt" secondAttribute="bottom" constant="20" id="aBi-8d-YkS"/>
+                                                    <constraint firstAttribute="bottom" secondItem="dJv-A7-TZt" secondAttribute="bottom" constant="30" id="aBi-8d-YkS"/>
                                                     <constraint firstAttribute="trailing" secondItem="pup-8F-BNU" secondAttribute="trailing" id="awH-S8-p5L"/>
                                                     <constraint firstAttribute="trailing" secondItem="dJv-A7-TZt" secondAttribute="trailing" id="qiI-Vv-Ktq"/>
                                                     <constraint firstAttribute="bottom" secondItem="pup-8F-BNU" secondAttribute="bottom" id="uCd-gG-CB2"/>
@@ -526,10 +526,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gP5-uM-S1j">
-                                                <rect key="frame" x="207" y="0.0" width="103.5" height="103.5"/>
+                                                <rect key="frame" x="234.5" y="0.0" width="117.5" height="117.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80f-vg-6Pp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="117.5"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="슬퍼해">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -539,13 +539,13 @@
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sesac_slime1" translatesAutoresizingMaskIntoConstraints="NO" id="lpB-0m-ywY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="83.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="87.5"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="80f-vg-6Pp" secondAttribute="trailing" id="9E6-sV-IKv"/>
-                                                    <constraint firstAttribute="bottom" secondItem="lpB-0m-ywY" secondAttribute="bottom" constant="20" id="Dj6-9F-taQ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="lpB-0m-ywY" secondAttribute="bottom" constant="30" id="Dj6-9F-taQ"/>
                                                     <constraint firstItem="lpB-0m-ywY" firstAttribute="top" secondItem="gP5-uM-S1j" secondAttribute="top" id="EL7-Q6-1K8"/>
                                                     <constraint firstItem="80f-vg-6Pp" firstAttribute="top" secondItem="gP5-uM-S1j" secondAttribute="top" id="QLd-Hm-Edn"/>
                                                     <constraint firstItem="lpB-0m-ywY" firstAttribute="leading" secondItem="gP5-uM-S1j" secondAttribute="leading" id="TgO-1O-eGi"/>
@@ -566,7 +566,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="GOP-dm-A5H" firstAttribute="centerY" secondItem="c9f-iI-51X" secondAttribute="centerY" id="7Jw-Mq-vUa"/>
-                            <constraint firstItem="GOP-dm-A5H" firstAttribute="width" secondItem="c9f-iI-51X" secondAttribute="width" multiplier="0.75" id="AGE-uC-rWa"/>
+                            <constraint firstItem="GOP-dm-A5H" firstAttribute="width" secondItem="c9f-iI-51X" secondAttribute="width" multiplier="0.85" id="AGE-uC-rWa"/>
                             <constraint firstItem="GOP-dm-A5H" firstAttribute="centerX" secondItem="c9f-iI-51X" secondAttribute="centerX" id="RCn-vL-nxF"/>
                         </constraints>
                     </view>
