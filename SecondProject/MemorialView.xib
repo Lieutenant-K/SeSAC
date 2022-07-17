@@ -12,6 +12,7 @@
                 <outlet property="backgroundView" destination="xRh-WJ-0vg" id="V2l-Zw-Nlk"/>
                 <outlet property="dateLabel" destination="oY9-kg-lL5" id="aUL-oa-fUH"/>
                 <outlet property="imageView" destination="bvN-fh-xC3" id="Zwm-Sp-05u"/>
+                <outlet property="pressGestureRecognizer" destination="YOn-v2-tYd" id="xp3-BS-Ny8"/>
                 <outlet property="progressDayLabel" destination="HZa-Jx-doD" id="fQF-Ki-qkq"/>
             </connections>
         </placeholder>
@@ -22,10 +23,12 @@
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bvN-fh-xC3">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <gestureRecognizers/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRh-WJ-0vg">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <gestureRecognizers/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZa-Jx-doD">
                     <rect key="frame" x="10" y="10" width="42" height="21"/>
@@ -41,6 +44,7 @@
                 </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="bvN-fh-xC3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3kP-hf-G6q"/>
                 <constraint firstAttribute="bottom" secondItem="bvN-fh-xC3" secondAttribute="bottom" id="3tO-XL-H5h"/>
@@ -57,6 +61,7 @@
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="131.91964285714286"/>
         </view>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="YOn-v2-tYd"/>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">

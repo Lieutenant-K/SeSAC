@@ -14,6 +14,7 @@ class MemorialView: UIView {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet var pressGestureRecognizer: UILongPressGestureRecognizer!
     
     
     required init?(coder: NSCoder) {
@@ -22,6 +23,7 @@ class MemorialView: UIView {
                     view.frame = self.bounds
                     addSubview(view)
                 }
+        addGestureRecognizer(pressGestureRecognizer)
     }
 
 }
