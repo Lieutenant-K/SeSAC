@@ -28,6 +28,7 @@
 		0D70195A2886AD8E0005909F /* ShoppingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7019592886AD8E0005909F /* ShoppingListCell.swift */; };
 		0D70195C2886ADC00005909F /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70195B2886ADC00005909F /* ShoppingListViewController.swift */; };
 		0D70195E2886B1730005909F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70195D2886B1730005909F /* UIView+Extension.swift */; };
+		0D7019602886D8D10005909F /* SearchMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70195F2886D8D10005909F /* SearchMovieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		0D7019592886AD8E0005909F /* ShoppingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListCell.swift; sourceTree = "<group>"; };
 		0D70195B2886ADC00005909F /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		0D70195D2886B1730005909F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		0D70195F2886D8D10005909F /* SearchMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				0D7019332884DDC70005909F /* Main.storyboard */,
 				0D7019412884F1190005909F /* Home.storyboard */,
 				0D701945288640250005909F /* Search.storyboard */,
+				0D70195F2886D8D10005909F /* SearchMovieCell.swift */,
 				0D701947288640410005909F /* Trend.storyboard */,
 				0D70195528864E400005909F /* BucketListTableViewController.swift */,
 				0D7019572886ACDA0005909F /* Shopping.storyboard */,
@@ -192,6 +195,7 @@
 				0D70195E2886B1730005909F /* UIView+Extension.swift in Sources */,
 				0D70195628864E400005909F /* BucketListTableViewController.swift in Sources */,
 				0D70194E2886440B0005909F /* SearchViewController.swift in Sources */,
+				0D7019602886D8D10005909F /* SearchMovieCell.swift in Sources */,
 				0D7019442884FE420005909F /* SettingTableViewController.swift in Sources */,
 				0D70195A2886AD8E0005909F /* ShoppingListCell.swift in Sources */,
 				0D7019322884DDC70005909F /* ViewController.swift in Sources */,
