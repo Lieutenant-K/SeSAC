@@ -7,12 +7,37 @@
 
 import UIKit
 
+// CaseIterable: 프로토콜, 배열처럼 열거형을 사용할 수 있는 특징이 있음
+enum SettingOptions: Int, CaseIterable {
+    case total, personal, others
+    
+    var sectionTitle: String {
+        
+        switch self {
+        case .total:
+            return "전체 설정"
+        case .personal:
+            return "개인 설정"
+        case .others:
+            return "기타"
+        }
+        
+    }
+    
+    var rowTitle: [String] {
+        switch self {
+        case .total:
+            return ["공지사항", "실험실", "버전 정보"]
+        case .personal:
+            return ["개인/보안", "알림", "채팅", "멀티프로필"]
+        case .others:
+            return ["고객센터/도움말"]
+        }
+    }
+}
+
 class SettingTableViewController: UITableViewController {
 
-    var wholeSettingData = ["공지사항", "실험실", "버전 정보"]
-    var indivisualSettingData = ["개인/보안", "알림", "채팅", "멀티프로필"]
-    var otherData = ["고객센터/도움말"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,33 +45,20 @@ class SettingTableViewController: UITableViewController {
     
     // 1. 셀의 갯수(필수)
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return wholeSettingData.count
-        } else if section == 1 {
-            return indivisualSettingData.count
-        } else if section == 2 {
-            return otherData.count
-        } else {
-            return 0
-        }
+        
+        return SettingOptions.allCases[section].rowTitle.count
+        
+        
     }
     
     // 2. 셀의 디자인과 데이터(필수)
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingCell")!
         
-        var text = ""
-        
-        if indexPath.section == 0 {
-            text = wholeSettingData[indexPath.row]
-        } else if indexPath.section == 1 {
-            text = indivisualSettingData[indexPath.row]
-        } else if indexPath.section == 2 {
-            text = otherData[indexPath.row]
-        }
-        
-        cell.textLabel?.text = text
+        cell.textLabel?.text = SettingOptions.allCases[indexPath.section].rowTitle[indexPath.row]
+    
 //        cell.textLabel?.textColor = .systemMint
 //        cell.textLabel?.font = .systemFont(ofSize: 18)
         
@@ -54,20 +66,12 @@ class SettingTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return SettingOptions.allCases.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "전체 설정"
-        } else if section == 1 {
-            return "개인 설정"
-        } else if section == 2 {
-            return "기타"
-        } else {
-            return "세션"
-        }
+        
+        return SettingOptions.allCases[section].sectionTitle
     }
-    
 
 }
