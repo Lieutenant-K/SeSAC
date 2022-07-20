@@ -63,8 +63,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" verticalCompressionResistancePriority="749" text="아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ryl-cJ-bfE">
-                                                    <rect key="frame" x="0.0" y="42" width="304" height="57.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ryl-cJ-bfE">
+                                                    <rect key="frame" x="0.0" y="42" width="304" height="58"/>
+                                                    <string key="text">아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면?아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면? 아주아주 길어진다면?</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

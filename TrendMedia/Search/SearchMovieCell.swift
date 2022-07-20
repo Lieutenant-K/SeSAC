@@ -24,5 +24,13 @@ class SearchMovieCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configurationCell(data: Movie) {
+        
+        titleLabel.text = data.title
+        releaseDateLabel.text = data.releaseDate + "| \(data.runtime) | \(data.rate)"
+        synobsisLabel.text = data.overview
+        
+    }
 
 }
