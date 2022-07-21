@@ -25,6 +25,8 @@ class BookCollectionViewController: UICollectionViewController {
         
         collectionView.collectionViewLayout = layout
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: .init(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(touchSearchButton(_:)))
+        
        
     }
     
@@ -39,6 +41,31 @@ class BookCollectionViewController: UICollectionViewController {
         
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: BookDetailViewController.identifier) as! BookDetailViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+        
+    }
+    
+    @objc func touchSearchButton(_ sender: UIBarButtonItem) {
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        
+        let vc = sb.instantiateViewController(withIdentifier: SearchViewController.identifier) as! SearchViewController
+        
+        let navi = UINavigationController(rootViewController: vc)
+        
+        navi.modalPresentationStyle = .fullScreen
+        
+        present(navi, animated: true)
+        
+        
     }
 
 }
