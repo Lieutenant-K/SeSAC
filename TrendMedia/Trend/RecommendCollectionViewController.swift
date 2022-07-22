@@ -9,7 +9,6 @@ import UIKit
 import Toast
 import Kingfisher
 
-private let reuseIdentifier = "Cell"
 /*
  Table -> Collection
  Row -> Item
@@ -18,10 +17,16 @@ private let reuseIdentifier = "Cell"
 
 class RecommendCollectionViewController: UICollectionViewController {
     
+    // 1. 값 전달 - 데이터를 받을 프로퍼티를 생성
+    var movieData: Movie?
+    
     var image = "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+    static let identifier = "RecommendCollectionViewController"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = movieData?.title
         
         // 컬렉션뷰의 셀 크기, 샐 사이 간격 등
         let layout = UICollectionViewFlowLayout()
@@ -42,7 +47,9 @@ class RecommendCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as! RecommendCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as? RecommendCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         
         cell.posterImageView.backgroundColor = .orange
         
@@ -55,9 +62,11 @@ class RecommendCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        view.makeToast("\(indexPath)")
         view.makeToast("\(indexPath)", duration: 1, position: .center)
+        
+        self.navigationController?.popViewController(animated: true)
     
     }
-    
+
     
 
 

@@ -10,6 +10,10 @@ import UIKit
 class BucketListTableViewController: UITableViewController {
 
     var list = ["클레멘타인", "리얼", "이터널스"]
+    static let identifier = "BucketListTableViewController"
+    var placeholder = ""
+
+    
     @IBOutlet weak var userTextField: UITextField!
     
     
@@ -18,21 +22,37 @@ class BucketListTableViewController: UITableViewController {
         
         tableView.rowHeight = 80
         
-        if IndexPath(row: 1, section: 1) == [1, 1] {
-            print("ddd")
-        }
+        userTextField.placeholder = "\(placeholder)를 입력해주세요"
         
+        navigationItem.title = "버킷리스트"
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: .init(systemName: "xmark"), style: .plain, target: self, action: #selector(touchCloseButton(_:)))
+    }
+    
+    @objc func touchCloseButton(_ sender: UIBarButtonItem) {
+        
+        dismiss(animated: true)
     }
     
 
     @IBAction func returnTextField(_ sender: UITextField) {
         
-        list.append(sender.text!)
-        print(list)
+        if let text = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty, (2...6).contains(text.count) {
+            list.append(text)
+            tableView.reloadData()
+        } else {
+            return
+        }
         
+        /*
+        guard let text = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty, (2...6).contains(text.count) else {
+                return
+        }
+        
+        list.append(text)
         tableView.reloadData()
+        */
         
-        showAlert()
 //        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
 //        tableView.reloadSections(IndexSet(, with: <#T##UITableView.RowAnimation#>)
         
@@ -43,7 +63,7 @@ class BucketListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BucketListTableViewCell", for: indexPath) as! BucketListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: BucketListTableViewCell.identifier, for: indexPath) as! BucketListTableViewCell
         
         cell.bucketListLabel.text = list[indexPath.row]
         cell.bucketListLabel.font = .systemFont(ofSize: 20)

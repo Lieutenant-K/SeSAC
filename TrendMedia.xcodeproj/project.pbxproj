@@ -35,6 +35,7 @@
 		0D70196828879DFE0005909F /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70196728879DFE0005909F /* RecommendCollectionViewCell.swift */; };
 		0D7019702887AE4E0005909F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0D70196F2887AE4E0005909F /* Kingfisher */; };
 		0D7019732887AE640005909F /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7019722887AE640005909F /* Toast */; };
+		0D97AF3D28897E5A00891A35 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97AF3C28897E5A00891A35 /* TrendTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		0D701963288794C60005909F /* MovieInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
 		0D70196528879AAC0005909F /* RecommendCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewController.swift; sourceTree = "<group>"; };
 		0D70196728879DFE0005909F /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		0D97AF3C28897E5A00891A35 /* TrendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				0D701947288640410005909F /* Trend.storyboard */,
+				0D97AF3C28897E5A00891A35 /* TrendTableViewController.swift */,
 				0D70196728879DFE0005909F /* RecommendCollectionViewCell.swift */,
 				0D70196528879AAC0005909F /* RecommendCollectionViewController.swift */,
 				0D70195528864E400005909F /* BucketListTableViewController.swift */,
@@ -265,6 +268,7 @@
 				0D701964288794C60005909F /* MovieInfo.swift in Sources */,
 				0D70195A2886AD8E0005909F /* ShoppingListCell.swift in Sources */,
 				0D7019322884DDC70005909F /* ViewController.swift in Sources */,
+				0D97AF3D28897E5A00891A35 /* TrendTableViewController.swift in Sources */,
 				0D70194C288644020005909F /* TrendViewController.swift in Sources */,
 				0D7019502886452D0005909F /* UIViewController+Extension.swift in Sources */,
 				0D70195C2886ADC00005909F /* ShoppingListViewController.swift in Sources */,
