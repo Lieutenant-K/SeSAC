@@ -34,8 +34,11 @@ class SelectCollectionViewController: UICollectionViewController {
             return UICollectionViewCell()
         }
         
-        cell.configurateCell()
-//        cell.imageView.backgroundColor = .green
+        if indexPath.row < DamagochiType.allCases.count {
+            cell.configurateCell(type: DamagochiType.allCases[indexPath.row])
+        } else {
+            cell.configurateCell(type: .none)
+        }
         
         return cell
     }
