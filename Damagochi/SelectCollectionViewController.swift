@@ -13,14 +13,16 @@ class SelectCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .init(named: "Background")
+        
         let layout = UICollectionViewFlowLayout()
-        let spacing = 8.0
-        let width = (UIScreen.main.bounds.width - 4*spacing) / 3
+        let spacing = 15.0
+        let width = floor((UIScreen.main.bounds.width - 4*spacing) / 3)
         layout.scrollDirection = .vertical
         layout.sectionInset = .init(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
-        layout.itemSize = .init(width: width, height: width+50)
+        layout.itemSize = .init(width: width, height: width*1.2)
         
         collectionView.collectionViewLayout = layout
         
@@ -32,6 +34,7 @@ class SelectCollectionViewController: UICollectionViewController {
             return UICollectionViewCell()
         }
         
+        cell.configurateCell()
 //        cell.imageView.backgroundColor = .green
         
         return cell
