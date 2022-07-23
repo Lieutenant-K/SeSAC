@@ -47,6 +47,18 @@ class SelectCollectionViewController: UICollectionViewController {
         
         return 20
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailPopUpViewController.identifier) as! DetailPopUpViewController
+        
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        
+        vc.type = indexPath.row < DamagochiType.allCases.count ? DamagochiType.allCases[indexPath.row] : .none
+        
+        present(vc, animated: true)
+    }
 
 
 }
