@@ -27,15 +27,10 @@ class DetailPopUpViewController: UIViewController {
         super.viewDidLoad()
         
         setViewBackground()
-        
+        configurateActionButtons()
+        configurateDescriptionLabel()
         thumbnailImageView.image = type?.thumbnail
         nameButton.setDamagochiName(title: type?.name, font: .systemFont(ofSize: 15, weight: .semibold))
-        descriptionLabel.setDamagochioLabel(text: type?.desription, font: .systemFont(ofSize: 15))
-        cancelButton.setTitle("취소", for: .normal)
-        cancelButton.backgroundColor = TintColor.foreground.withAlphaComponent(0.1)
-//        cancelButton.
-        startButton.setTitle("시작하기", for: .normal)
-       
         
     }
     
@@ -54,9 +49,27 @@ class DetailPopUpViewController: UIViewController {
         
         lineView.backgroundColor = TintColor.foreground
         
+    
+    }
+    
+    func configurateActionButtons() {
+        
+        cancelButton.setTitle("취소", for: .normal)
+        cancelButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
+        cancelButton.backgroundColor = TintColor.foreground.withAlphaComponent(0.1)
+        startButton.setTitle("시작하기", for: .normal)
+        startButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
         
         
     }
+    
+    func configurateDescriptionLabel() {
+        
+        descriptionLabel.setDamagochioLabel(text: type?.desription, font: .systemFont(ofSize: 15))
+        descriptionLabel.numberOfLines = 0
+        
+    }
+    
     
     @IBAction func touchCancelButton(_ sender: UIButton) {
         
@@ -65,5 +78,25 @@ class DetailPopUpViewController: UIViewController {
     }
     
     @IBAction func touchStartButton(_ sender: UIButton) {
+        
+        let scene = UIApplication.shared.connectedScenes.first
+        let delegate = scene?.delegate as! SceneDelegate
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
+        
+        let navi = UINavigationController(rootViewController: vc)
+        
+        navi.navigationBar.tintColor = TintColor.foreground
+//        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.tintColor]
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor:UIColor.tintColor]
+        appearance.shadowColor = .tintColor
+        appearance.backgroundColor = TintColor.background
+        
+        navi.navigationBar.scrollEdgeAppearance = appearance
+        
+        delegate.window?.rootViewController = navi
+        delegate.window?.makeKeyAndVisible()
+        
     }
 }

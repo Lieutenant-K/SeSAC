@@ -43,6 +43,7 @@ enum DamagochiType: Int, CaseIterable {
             return "준비중이에요"
         }
     }
+    
 }
 
 struct TintColor {

@@ -13,7 +13,8 @@ class SelectCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .init(named: "Background")
+        self.title = "다마고치 선택하기"
+        view.backgroundColor = TintColor.background
         
         let layout = UICollectionViewFlowLayout()
         let spacing = 15.0
@@ -50,12 +51,17 @@ class SelectCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        // 열거형의 마지막 케이스가 유효하지 않다는 보장이 있어야함.
+        if indexPath.row >= DamagochiType.allCases.endIndex-1 {
+            return
+        }
+        
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailPopUpViewController.identifier) as! DetailPopUpViewController
         
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         
-        vc.type = indexPath.row < DamagochiType.allCases.count ? DamagochiType.allCases[indexPath.row] : .none
+        vc.type = DamagochiType.allCases[indexPath.row]
         
         present(vc, animated: true)
     }
