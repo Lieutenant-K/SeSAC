@@ -67,7 +67,7 @@ class DetailPopUpViewController: UIViewController {
     
     func configurateDescriptionLabel() {
         
-        descriptionLabel.setDamagochioLabel(text: type?.desription, font: .systemFont(ofSize: 15))
+        descriptionLabel.setDamagochioLabel(text: type?.desription, font: .systemFont(ofSize: 13))
         descriptionLabel.numberOfLines = 0
         
     }

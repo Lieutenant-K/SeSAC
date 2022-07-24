@@ -55,7 +55,7 @@ class SettingTableViewController: UITableViewController {
             
             alertController.addAction(.init(title: "그럴 순 없어", style: .cancel))
             
-            alertController.addAction(.init(title: "다시 키울래요", style: .destructive, handler: { _ in
+            alertController.addAction(.init(title: "새로 키울래요", style: .destructive, handler: { _ in
                 let myDamagochi =  MyDamagochi.shared
                 myDamagochi.type = .none
                 myDamagochi.water = 0
