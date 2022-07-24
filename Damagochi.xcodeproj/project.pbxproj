@@ -14,6 +14,8 @@
 		0D0B953E288C06A9007637FD /* DetailPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0B953D288C06A9007637FD /* DetailPopUpViewController.swift */; };
 		0D0C86E0288C21E700E28BBC /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C86DF288C21E700E28BBC /* Extension.swift */; };
 		0D0C86E2288C444F00E28BBC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C86E1288C444F00E28BBC /* MainViewController.swift */; };
+		0D29716B288D3D4F00DEAB50 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D29716A288D3D4F00DEAB50 /* SettingTableViewController.swift */; };
+		0D29716D288D468800DEAB50 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D29716C288D468800DEAB50 /* ChangeNameViewController.swift */; };
 		0D7B6BDB288A88B1003BC996 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7B6BDA288A88B1003BC996 /* AppDelegate.swift */; };
 		0D7B6BDD288A88B1003BC996 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7B6BDC288A88B1003BC996 /* SceneDelegate.swift */; };
 		0D7B6BDF288A88B1003BC996 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7B6BDE288A88B1003BC996 /* ViewController.swift */; };
@@ -29,6 +31,8 @@
 		0D0B953D288C06A9007637FD /* DetailPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPopUpViewController.swift; sourceTree = "<group>"; };
 		0D0C86DF288C21E700E28BBC /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0D0C86E1288C444F00E28BBC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0D29716A288D3D4F00DEAB50 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		0D29716C288D468800DEAB50 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 		0D7B6BD7288A88B1003BC996 /* Damagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Damagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D7B6BDA288A88B1003BC996 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D7B6BDC288A88B1003BC996 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 		0D7B6BD9288A88B1003BC996 /* Damagochi */ = {
 			isa = PBXGroup;
 			children = (
+				0D29716C288D468800DEAB50 /* ChangeNameViewController.swift */,
+				0D29716A288D3D4F00DEAB50 /* SettingTableViewController.swift */,
 				0D7B6BDA288A88B1003BC996 /* AppDelegate.swift */,
 				0D7B6BDC288A88B1003BC996 /* SceneDelegate.swift */,
 				0D7B6BDE288A88B1003BC996 /* ViewController.swift */,
@@ -168,7 +174,9 @@
 				0D0B953E288C06A9007637FD /* DetailPopUpViewController.swift in Sources */,
 				0D7B6BDB288A88B1003BC996 /* AppDelegate.swift in Sources */,
 				0D0B9538288BE808007637FD /* SelectCollectionViewController.swift in Sources */,
+				0D29716B288D3D4F00DEAB50 /* SettingTableViewController.swift in Sources */,
 				0D0B953C288C0173007637FD /* Model.swift in Sources */,
+				0D29716D288D468800DEAB50 /* ChangeNameViewController.swift in Sources */,
 				0D0C86E0288C21E700E28BBC /* Extension.swift in Sources */,
 				0D0C86E2288C444F00E28BBC /* MainViewController.swift in Sources */,
 				0D0B953A288BEA6B007637FD /* DamagochiCollectionCell.swift in Sources */,

@@ -36,6 +36,8 @@ class MainViewController: UIViewController {
        
         title = "아무개님의 다마고치"
         
+        navigationItem.backButtonTitle = " "
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .init(systemName: "gearshape"), style: .plain, target: self, action: #selector(touchSettingButton(_:)))
         
         
@@ -69,7 +71,9 @@ class MainViewController: UIViewController {
     
     @objc func touchSettingButton(_ sender: UIBarButtonItem) {
         
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SettingTableViewController.identifier) as! SettingTableViewController
         
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

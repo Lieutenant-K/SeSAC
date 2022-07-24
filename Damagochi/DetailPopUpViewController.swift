@@ -86,6 +86,8 @@ class DetailPopUpViewController: UIViewController {
         
         let navi = UINavigationController(rootViewController: vc)
         
+        // Setting NaviBar Appearance
+        
         navi.navigationBar.tintColor = TintColor.foreground
 //        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.tintColor]
         let appearance = UINavigationBarAppearance()
@@ -94,6 +96,7 @@ class DetailPopUpViewController: UIViewController {
         appearance.backgroundColor = TintColor.background
         
         navi.navigationBar.scrollEdgeAppearance = appearance
+        navi.navigationBar.standardAppearance = appearance
         
         delegate.window?.rootViewController = navi
         delegate.window?.makeKeyAndVisible()
