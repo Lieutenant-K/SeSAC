@@ -23,6 +23,7 @@
 		0D7B6BE4288A88B3003BC996 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D7B6BE3288A88B3003BC996 /* Assets.xcassets */; };
 		0D7B6BE7288A88B3003BC996 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D7B6BE5288A88B3003BC996 /* LaunchScreen.storyboard */; };
 		0DF37071288D814A00D65043 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0DF37070288D814A00D65043 /* Toast */; };
+		0DF37074288D832B00D65043 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0DF37073288D832B00D65043 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 			files = (
 				0DF37071288D814A00D65043 /* Toast in Frameworks */,
 				0D0B9536288A8FE2007637FD /* TextFieldEffects in Frameworks */,
+				0DF37074288D832B00D65043 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +116,7 @@
 			packageProductDependencies = (
 				0D0B9535288A8FE2007637FD /* TextFieldEffects */,
 				0DF37070288D814A00D65043 /* Toast */,
+				0DF37073288D832B00D65043 /* IQKeyboardManagerSwift */,
 			);
 			productName = Damagochi;
 			productReference = 0D7B6BD7288A88B1003BC996 /* Damagochi.app */;
@@ -146,6 +149,7 @@
 			packageReferences = (
 				0D0B9534288A8FE1007637FD /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 				0DF3706F288D814A00D65043 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				0DF37072288D832B00D65043 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 0D7B6BD8288A88B1003BC996 /* Products */;
 			projectDirPath = "";
@@ -422,6 +426,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		0DF37072288D832B00D65043 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -434,6 +446,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0DF3706F288D814A00D65043 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		0DF37073288D832B00D65043 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DF37072288D832B00D65043 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
