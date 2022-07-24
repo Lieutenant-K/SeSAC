@@ -63,7 +63,7 @@ class MyDamagochi {
             return 1
         }
         else if value < 100 {
-            return Int(value)
+            return Int(value / 10)
         }
         else {
             return 10

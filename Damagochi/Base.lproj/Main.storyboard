@@ -244,6 +244,9 @@
                                 <state key="normal" title="밥먹기" image="gear" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchFeedButton:" destination="hV7-qL-geh" eventType="touchUpInside" id="tdA-Af-Ejc"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="물주세용" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8gn-vJ-ddm" customClass="HoshiTextField" customModule="TextFieldEffects">
                                 <rect key="frame" x="82.666666666666686" y="594.66666666666663" width="175" height="60"/>
@@ -267,10 +270,14 @@
                                 <state key="normal" title="밥먹기" image="externaldrive.badge.xmark" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchDrinkButton:" destination="hV7-qL-geh" eventType="touchUpInside" id="oXV-xr-7dW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nnx-Oz-68l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="9w6-BH-o2d" firstAttribute="top" secondItem="kvW-8i-Cm6" secondAttribute="bottom" constant="15" id="0VR-Ig-Qgp"/>
                             <constraint firstItem="bkX-if-Vjy" firstAttribute="leading" secondItem="8gn-vJ-ddm" secondAttribute="trailing" constant="10" id="11u-Nb-Wrj"/>
@@ -294,6 +301,9 @@
                             <constraint firstItem="Dng-J0-Rau" firstAttribute="top" secondItem="9w6-BH-o2d" secondAttribute="bottom" constant="20" id="xje-Ou-Mu8"/>
                             <constraint firstItem="60G-Za-LhA" firstAttribute="centerY" secondItem="nnx-Oz-68l" secondAttribute="centerY" multiplier="0.9" id="zSu-2H-1KW"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="hPI-bL-9s1" appends="YES" id="Whg-oP-sp6"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="bubbleView" destination="4gB-Zs-a4A" id="xfk-EY-yrm"/>
@@ -308,6 +318,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DnX-RV-JJE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hPI-bL-9s1">
+                    <connections>
+                        <action selector="tapBackgroundView:" destination="hV7-qL-geh" id="cLP-O9-F7C"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2636.231884057971" y="70.108695652173921"/>
         </scene>
@@ -341,7 +356,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VTS-PC-E61">
                                                     <rect key="frame" x="344.66666666666663" y="22" width="32.666666666666664" height="14.333333333333334"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" systemColor="tintColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

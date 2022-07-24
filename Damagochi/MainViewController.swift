@@ -41,8 +41,11 @@ class MainViewController: UIViewController {
         
         setMyDamagochi()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-        
+        title = MyDamagochi.shared.userNickname + "님의 다마고치"
     }
     
     func configurateActionButtons() {
@@ -62,12 +65,13 @@ class MainViewController: UIViewController {
         feedTextField.borderInactiveColor = TintColor.foreground
         feedTextField.borderActiveColor = TintColor.foreground
         feedTextField.textColor = TintColor.foreground
+        feedTextField.keyboardType = .numberPad
         
         
         drinkTextField.borderInactiveColor = TintColor.foreground
         drinkTextField.borderActiveColor = TintColor.foreground
         drinkTextField.textColor = TintColor.foreground
-        
+        drinkTextField.keyboardType = .numberPad
         
     }
     
@@ -83,8 +87,6 @@ class MainViewController: UIViewController {
         
         damagochiImageView.image = .init(named: "\(myDamagochi.typeNumber)-\(myDamagochi.level)")
         
-        title = myDamagochi.userNickname + "님의 다마고치"
-        
     }
     
     @objc func touchSettingButton(_ sender: UIBarButtonItem) {
@@ -96,4 +98,66 @@ class MainViewController: UIViewController {
     }
     
 
+    @IBAction func touchFeedButton(_ sender: UIButton) {
+        
+        var food = 0
+        
+        if let text = feedTextField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
+            
+            guard let count = Int(text) else {
+                self.view.makeToast("숫자만 입력해주세요", position: .center)
+                return
+            }
+            food = count
+        }
+        else { food = 1 }
+        
+        if food >= 100 { self.view.makeToast("그러다 배가 터질 수도 있어요!", position: .center) }
+        else {
+            
+            MyDamagochi.shared.rice += Double(food)
+            
+            damagochiImageView.image = .init(named: "\(MyDamagochi.shared.typeNumber)-\(MyDamagochi.shared.level)")
+            
+            statusLabel.setDamagochioLabel(text: "LV\(MyDamagochi.shared.level) ∙ 밥알 \(Int(MyDamagochi.shared.rice))개 ∙ 물방울 \(Int(MyDamagochi.shared.water))개", font: .systemFont(ofSize: 14, weight: .bold))
+            
+            feedTextField.text = nil
+        }
+        
+    }
+    
+    @IBAction func touchDrinkButton(_ sender: UIButton) {
+        
+        var drink = 0
+        
+        if let text = drinkTextField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
+            
+            guard let count = Int(text) else {
+                self.view.makeToast("숫자만 입력해주세요", position: .center)
+                return
+            }
+            drink = count
+        }
+        else { drink = 1 }
+        
+        if drink >= 50 { self.view.makeToast("그러다 배가 터질 수도 있어요!", position: .center) }
+        else {
+            
+            MyDamagochi.shared.water += Double(drink)
+            
+            damagochiImageView.image = .init(named: "\(MyDamagochi.shared.typeNumber)-\(MyDamagochi.shared.level)")
+            
+            statusLabel.setDamagochioLabel(text: "LV\(MyDamagochi.shared.level) ∙ 밥알 \(Int(MyDamagochi.shared.rice))개 ∙ 물방울 \(Int(MyDamagochi.shared.water))개", font: .systemFont(ofSize: 14, weight: .bold))
+            
+            drinkTextField.text = nil
+            
+        }
+        
+    }
+    
+    @IBAction func tapBackgroundView(_ sender: UITapGestureRecognizer) {
+        
+        self.view.endEditing(true)
+        
+    }
 }

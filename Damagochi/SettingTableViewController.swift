@@ -20,7 +20,7 @@ class SettingTableViewController: UITableViewController {
         tableView.sectionHeaderTopPadding = 0
         view.backgroundColor = TintColor.background
         view.tintColor = TintColor.foreground
-        
+        nicknameLabel.font = .systemFont(ofSize: 13)
     }
     
     
