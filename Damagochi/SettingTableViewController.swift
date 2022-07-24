@@ -23,13 +23,18 @@ class SettingTableViewController: UITableViewController {
         
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         nicknameLabel.text = MyDamagochi.shared.userNickname
+        
+        tableView.deselectRow(at: tableView.indexPathForSelectedRow ?? [0,0], animated: true)
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
