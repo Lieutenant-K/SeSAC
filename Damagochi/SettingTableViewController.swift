@@ -37,7 +37,9 @@ class SettingTableViewController: UITableViewController {
             navigationController?.pushViewController(vc, animated: true)
             
         case 1:
-            print("다마고치 변경하기")
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SelectCollectionViewController.identifier) as! SelectCollectionViewController
+            
+            self.navigationController?.pushViewController(vc, animated: true)
             
         case 2:
             let alertController = UIAlertController(title: "데이터 초기화", message: "불쌍한 다마고치를 버리시겠어요?", preferredStyle: .alert)
@@ -49,7 +51,7 @@ class SettingTableViewController: UITableViewController {
                 myDamagochi.type = .none
                 myDamagochi.water = 0
                 myDamagochi.rice = 0
-                myDamagochi.userNickname = "대장님"
+                myDamagochi.userNickname = "대장"
                 
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SelectCollectionViewController.identifier) as! SelectCollectionViewController
                 
