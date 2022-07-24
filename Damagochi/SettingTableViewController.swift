@@ -12,6 +12,7 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet weak var nicknameLabel: UILabel!
     
     static let identifier = "SettingTableViewController"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "설정"
@@ -19,7 +20,10 @@ class SettingTableViewController: UITableViewController {
         tableView.sectionHeaderTopPadding = 0
         view.backgroundColor = TintColor.background
         view.tintColor = TintColor.foreground
-
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         nicknameLabel.text = MyDamagochi.shared.userNickname
     }
     

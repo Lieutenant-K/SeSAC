@@ -18,7 +18,9 @@ class ChangeNameViewController: UIViewController {
         super.viewDidLoad()
         view.tintColor = TintColor.foreground
         view.backgroundColor = TintColor.background
-        title = "아무개님 이름 정하기"
+        
+        title = MyDamagochi.shared.userNickname + "님 이름 정하기"
+        textfield.text = MyDamagochi.shared.userNickname
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(touchSaveButton(_:)))
         
     }
@@ -26,6 +28,10 @@ class ChangeNameViewController: UIViewController {
     @objc func touchSaveButton(_ sender: UIBarButtonItem) {
         
         // 닉네임 저장
+        
+        guard let text = textfield.text?.trimmingCharacters(in: .whitespaces), (2...6).contains(text.count) else { return }
+        
+        MyDamagochi.shared.userNickname = text
         
         navigationController?.popViewController(animated: true)
         
