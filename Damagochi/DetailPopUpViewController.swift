@@ -57,7 +57,9 @@ class DetailPopUpViewController: UIViewController {
         cancelButton.setTitle("취소", for: .normal)
         cancelButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
         cancelButton.backgroundColor = TintColor.foreground.withAlphaComponent(0.1)
-        startButton.setTitle("시작하기", for: .normal)
+        
+        let title = MyDamagochi.shared.type == .none ? "시작하기" : "변경하기"
+        startButton.setTitle(title, for: .normal)
         startButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
         
         
@@ -87,16 +89,11 @@ class DetailPopUpViewController: UIViewController {
         let navi = UINavigationController(rootViewController: vc)
         
         // Setting NaviBar Appearance
+        navi.setDamagochiBarAppearance()
         
-        navi.navigationBar.tintColor = TintColor.foreground
-//        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.tintColor]
-        let appearance = UINavigationBarAppearance()
-        appearance.titleTextAttributes = [.foregroundColor:UIColor.tintColor]
-        appearance.shadowColor = .tintColor
-        appearance.backgroundColor = TintColor.background
+        guard let type = type else { return }
         
-        navi.navigationBar.scrollEdgeAppearance = appearance
-        navi.navigationBar.standardAppearance = appearance
+        MyDamagochi.shared.type = type
         
         delegate.window?.rootViewController = navi
         delegate.window?.makeKeyAndVisible()

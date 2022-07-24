@@ -10,10 +10,12 @@ import UIKit
 
 class SelectCollectionViewController: UICollectionViewController {
 
+    static let identifier = "SelectCollectionViewController"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "다마고치 선택하기"
+        self.title = MyDamagochi.shared.type == .none ? "다마고치 선택하기" : "다마고치 변경하기"
         view.backgroundColor = TintColor.background
         
         let layout = UICollectionViewFlowLayout()
@@ -51,7 +53,7 @@ class SelectCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        // 열거형의 마지막 케이스가 유효하지 않다는 보장이 있어야함.
+        // 열거형의 마지막 케이스가 선택할 수 없는 케이스라는 보장이 있어야함.
         if indexPath.row >= DamagochiType.allCases.endIndex-1 {
             return
         }

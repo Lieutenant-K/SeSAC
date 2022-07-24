@@ -20,7 +20,7 @@ class SettingTableViewController: UITableViewController {
         view.backgroundColor = TintColor.background
         view.tintColor = TintColor.foreground
 
-        nicknameLabel.text = "나의 이름은 무엇?"
+        nicknameLabel.text = MyDamagochi.shared.userNickname
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -40,7 +40,29 @@ class SettingTableViewController: UITableViewController {
             print("다마고치 변경하기")
             
         case 2:
-            print("데이터 초기화")
+            let alertController = UIAlertController(title: "데이터 초기화", message: "불쌍한 다마고치를 버리시겠어요?", preferredStyle: .alert)
+            
+            alertController.addAction(.init(title: "그럴 순 없어", style: .cancel))
+            
+            alertController.addAction(.init(title: "다시 키울래요", style: .destructive, handler: { _ in
+                let myDamagochi =  MyDamagochi.shared
+                myDamagochi.type = .none
+                myDamagochi.water = 0
+                myDamagochi.rice = 0
+                myDamagochi.userNickname = "대장님"
+                
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SelectCollectionViewController.identifier) as! SelectCollectionViewController
+                
+                let navi = UINavigationController(rootViewController: vc)
+                
+                navi.modalPresentationStyle = .fullScreen
+                navi.modalTransitionStyle = .crossDissolve
+                
+                self.present(navi, animated: true)
+                
+            }))
+            
+            present(alertController, animated: true)
             
         default:
             return
@@ -48,5 +70,9 @@ class SettingTableViewController: UITableViewController {
         }
         
         
+    }
+    
+    deinit {
+        print("세팅 뷰 메모리 헤제")
     }
 }

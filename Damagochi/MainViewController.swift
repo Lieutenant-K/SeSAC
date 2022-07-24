@@ -24,21 +24,23 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.backButtonTitle = ""
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .init(systemName: "person.circle"), style: .plain, target: self, action: #selector(touchSettingButton(_:)))
+        
+        // Color Setting
         view.backgroundColor = TintColor.background
         view.tintColor = TintColor.foreground
         bubbleView.backgroundColor = TintColor.background
-        dialogueLabel.setDamagochioLabel(text: "안아줘요", font: .systemFont(ofSize: 15, weight: .medium))
-        nameButton.setDamagochiName(title: "다마고치 이름", font: .systemFont(ofSize: 15, weight: .medium))
-        statusLabel.setDamagochioLabel(text: "상태 바", font: .systemFont(ofSize: 14, weight: .bold))
+        
+        // View Setting
         configurateTextFields()
         configurateActionButtons()
         
-       
-        title = "아무개님의 다마고치"
         
-        navigationItem.backButtonTitle = " "
+        setMyDamagochi()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .init(systemName: "gearshape"), style: .plain, target: self, action: #selector(touchSettingButton(_:)))
         
         
     }
@@ -66,6 +68,22 @@ class MainViewController: UIViewController {
         drinkTextField.borderActiveColor = TintColor.foreground
         drinkTextField.textColor = TintColor.foreground
         
+        
+    }
+    
+    func setMyDamagochi() {
+        
+        let myDamagochi = MyDamagochi.shared
+        
+        dialogueLabel.setDamagochioLabel(text: "안아줘요", font: .systemFont(ofSize: 15, weight: .medium))
+        
+        nameButton.setDamagochiName(title: myDamagochi.type.name, font: .systemFont(ofSize: 15, weight: .medium))
+        
+        statusLabel.setDamagochioLabel(text: "LV\(myDamagochi.level) ∙ 밥알 \(Int(myDamagochi.rice))개 ∙ 물방울 \(Int(myDamagochi.water))개", font: .systemFont(ofSize: 14, weight: .bold))
+        
+        damagochiImageView.image = .init(named: "\(myDamagochi.typeNumber)-\(myDamagochi.level)")
+        
+        title = myDamagochi.userNickname + "님의 다마고치"
         
     }
     

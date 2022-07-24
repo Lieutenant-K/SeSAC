@@ -53,3 +53,59 @@ struct TintColor {
     static let foreground = UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
     
 }
+
+class MyDamagochi {
+    
+
+    var level: Int {
+        let value = (rice / 5.0) + (water / 2.0)
+        if value < 10 {
+            return 1
+        }
+        else if value < 100 {
+            return Int(value)
+        }
+        else {
+            return 10
+        }
+    }
+    
+    @UserDefault(key: "type", defaultValue: DamagochiType.none.rawValue)
+    var typeNumber: Int
+    
+    @UserDefault(key: "riceCount", defaultValue: 0)
+    var rice: Double
+    
+    @UserDefault(key: "waterCount", defaultValue: 0)
+    var water: Double
+    
+    @UserDefault(key: "userNickname", defaultValue: "대장")
+    var userNickname: String
+    
+    var type: DamagochiType {
+        get { DamagochiType(rawValue: typeNumber) ?? .none }
+        set { typeNumber = newValue.rawValue }
+    }
+    
+    
+    static let shared = MyDamagochi()
+    
+    private init(){}
+    
+}
+
+@propertyWrapper
+struct UserDefault<T> {
+    
+    var key: String
+    var defaultValue: T
+    
+    var wrappedValue: T {
+        get { UserDefaults.standard.object(forKey: key) as? T ?? defaultValue }
+        set { UserDefaults.standard.set(newValue, forKey: key) }
+        
+    }
+    
+}
+
+

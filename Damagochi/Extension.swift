@@ -36,3 +36,21 @@ extension UILabel {
     }
     
 }
+
+extension UINavigationController {
+    
+    func setDamagochiBarAppearance() {
+        
+        self.navigationBar.tintColor = TintColor.foreground
+//        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.tintColor]
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.tintColor]
+        appearance.shadowColor = .tintColor
+        appearance.backgroundColor = TintColor.background
+        
+        self.navigationBar.scrollEdgeAppearance = appearance
+        self.navigationBar.standardAppearance = appearance
+        
+    }
+    
+}

@@ -17,6 +17,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: scene)
+        
+        let vc: UIViewController
+        let navi: UINavigationController
+        
+        if MyDamagochi.shared.type == .none {
+            
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SelectCollectionViewController.identifier) as! SelectCollectionViewController
+            navi = UINavigationController(rootViewController: vc)
+            
+        } else {
+            
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: MainViewController.identifier) as! MainViewController
+            navi = UINavigationController(rootViewController: vc)
+            navi.setDamagochiBarAppearance()
+            
+            
+        }
+        
+        window?.rootViewController = navi
+        window?.makeKeyAndVisible()
+        
+            
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
