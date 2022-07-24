@@ -7,6 +7,7 @@
 
 import UIKit
 import TextFieldEffects
+import Toast
 
 class ChangeNameViewController: UIViewController {
 
@@ -29,7 +30,10 @@ class ChangeNameViewController: UIViewController {
         
         // 닉네임 저장
         
-        guard let text = textfield.text?.trimmingCharacters(in: .whitespaces), (2...6).contains(text.count) else { return }
+        guard let text = textfield.text?.trimmingCharacters(in: .whitespaces), (2...6).contains(text.count)
+        else {
+            self.view.makeToast("공백 제외 2~6 글자만 가능합니다.", position: .center)
+            return }
         
         MyDamagochi.shared.userNickname = text
         
