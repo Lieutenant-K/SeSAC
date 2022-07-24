@@ -46,6 +46,9 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         title = MyDamagochi.shared.userNickname + "님의 다마고치"
+        
+        dialogueLabel.text = MyDamagochi.dialogue.transitionDialogue()
+        
     }
     
     func configurateActionButtons() {
@@ -112,7 +115,10 @@ class MainViewController: UIViewController {
         }
         else { food = 1 }
         
-        if food >= 100 { self.view.makeToast("그러다 배가 터질 수도 있어요!", position: .center) }
+        if food >= 100 {
+            self.view.makeToast("그러다 배가 터질 수도 있어요!", position: .center)
+            dialogueLabel.text = MyDamagochi.dialogue.fullDialogue()
+        }
         else {
             
             MyDamagochi.shared.rice += Double(food)
@@ -122,6 +128,7 @@ class MainViewController: UIViewController {
             statusLabel.setDamagochioLabel(text: "LV\(MyDamagochi.shared.level) ∙ 밥알 \(Int(MyDamagochi.shared.rice))개 ∙ 물방울 \(Int(MyDamagochi.shared.water))개", font: .systemFont(ofSize: 14, weight: .bold))
             
             feedTextField.text = nil
+            dialogueLabel.text = MyDamagochi.dialogue.feedingDialogue()
         }
         
     }
@@ -140,7 +147,11 @@ class MainViewController: UIViewController {
         }
         else { drink = 1 }
         
-        if drink >= 50 { self.view.makeToast("그러다 배가 터질 수도 있어요!", position: .center) }
+        if drink >= 50 {
+            self.view.makeToast("그러다 배가 터질 수도 있어요!", position: .center)
+            dialogueLabel.text = MyDamagochi.dialogue.fullDialogue()
+            
+        }
         else {
             
             MyDamagochi.shared.water += Double(drink)
@@ -150,6 +161,7 @@ class MainViewController: UIViewController {
             statusLabel.setDamagochioLabel(text: "LV\(MyDamagochi.shared.level) ∙ 밥알 \(Int(MyDamagochi.shared.rice))개 ∙ 물방울 \(Int(MyDamagochi.shared.water))개", font: .systemFont(ofSize: 14, weight: .bold))
             
             drinkTextField.text = nil
+            dialogueLabel.text = MyDamagochi.dialogue.feedingDialogue()
             
         }
         

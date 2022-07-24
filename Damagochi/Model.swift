@@ -38,7 +38,7 @@ enum DamagochiType: Int, CaseIterable {
                     안녕하세요 저는 따끔따끔 다마고치에요.
                     가시가 많아서 다칠 수 있으니 조심히 만져주세요.
                     사막에 살기 때문에 물을 좋아하고 조금만 먹어도 오래 살 수 있습니다.
-                    겉모습은 다가가기 힘들어도 친해지면 누구보다 귀여운 다마고치에요.
+                    다가가기 힘들어도 누구보다 귀여운 다마고치에요.
                     """
         case .sun:
             return """
@@ -71,6 +71,7 @@ struct TintColor {
 
 class MyDamagochi {
     
+    static let dialogue = DamagochiDialouge()
 
     var level: Int {
         let value = (rice / 5.0) + (water / 2.0)
@@ -102,7 +103,6 @@ class MyDamagochi {
         set { typeNumber = newValue.rawValue }
     }
     
-    
     static let shared = MyDamagochi()
     
     private init(){}
@@ -123,4 +123,46 @@ struct UserDefault<T> {
     
 }
 
-
+struct DamagochiDialouge {
+    
+    private var name: String {
+        MyDamagochi.shared.userNickname
+    }
+    
+    private var transition: [String] {
+        [
+            "\(name)님, 어디갔다가 오시는거에요~!",
+            "\(name)님 오늘은 뭐하고 놀까요?",
+            "너무 보고싶었어요~ \(name)님~",
+            "기다리다가 지칠 뻔 했다구요~ \(name)님~",
+        ]
+    }
+    
+    private let feeding: [String] = [
+        "이제 좀 살 것 같아요~",
+        "금강산도 식후경!",
+        "더 주세요~!",
+        "너무 커버리면 어쩌죠?"
+    ]
+    
+    private let full: [String] = [
+        "배가 터져버릴 것 같아요...",
+        "으아 배불러~~~~~",
+        "그렇게 많이는 못먹어요 ㅜㅜ",
+        "토할 것 같아..."
+    ]
+    
+    func transitionDialogue() -> String? {
+        transition.randomElement()
+    }
+    
+    func feedingDialogue() -> String? {
+        feeding.randomElement()
+    }
+    
+    func fullDialogue() -> String? {
+        full.randomElement()
+    }
+    
+    
+}
