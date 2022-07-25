@@ -10,6 +10,8 @@ import TextFieldEffects
 
 class MainViewController: UIViewController {
     
+    // MARK: - Properties
+    
     @IBOutlet weak var bubbleView: UIView!
     @IBOutlet weak var damagochiImageView: UIImageView!
     @IBOutlet weak var dialogueLabel: UILabel!
@@ -22,6 +24,11 @@ class MainViewController: UIViewController {
     
     static let identifier = "MainViewController"
     
+    
+    // MARK: - Method
+    
+    
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,8 +42,10 @@ class MainViewController: UIViewController {
         bubbleView.backgroundColor = TintColor.background
         
         // View Setting
-        configurateTextFields()
-        configurateActionButtons()
+        configurateTextField(textfield: feedTextField)
+        configurateTextField(textfield: drinkTextField)
+        configurateActionButton(button: feedButton, title: "밥먹기", image: .init(systemName: "drop.circle"))
+        configurateActionButton(button: drinkButton, title: "물먹기", image: .init(systemName: "leaf.circle"))
         
         
         setMyDamagochi()
@@ -51,30 +60,21 @@ class MainViewController: UIViewController {
         
     }
     
-    func configurateActionButtons() {
+    // MARK: Configuration View Method
+    func configurateActionButton(button: UIButton, title: String, image: UIImage?) {
         
-        feedButton.setDamagochiName(title: "밥먹기", font: .systemFont(ofSize: 15, weight: .semibold))
-        feedButton.setImage(.init(systemName: "drop.circle"), for: .normal)
-        feedButton.contentEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)
-        
-        drinkButton.setDamagochiName(title: "물먹기", font: .systemFont(ofSize: 15, weight: .semibold))
-        drinkButton.setImage(.init(systemName: "leaf.circle"), for: .normal)
-        drinkButton.contentEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)
+        button.setDamagochiName(title: title, font: .systemFont(ofSize: 15, weight: .semibold))
+        button.setImage(image, for: .normal)
+        button.contentEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)
         
     }
     
-    func configurateTextFields() {
+    func configurateTextField(textfield: HoshiTextField) {
         
-        feedTextField.borderInactiveColor = TintColor.foreground
-        feedTextField.borderActiveColor = TintColor.foreground
-        feedTextField.textColor = TintColor.foreground
-        feedTextField.keyboardType = .numberPad
-        
-        
-        drinkTextField.borderInactiveColor = TintColor.foreground
-        drinkTextField.borderActiveColor = TintColor.foreground
-        drinkTextField.textColor = TintColor.foreground
-        drinkTextField.keyboardType = .numberPad
+        textfield.borderInactiveColor = TintColor.foreground
+        textfield.borderActiveColor = TintColor.foreground
+        textfield.textColor = TintColor.foreground
+        textfield.keyboardType = .numberPad
         
     }
     
@@ -82,16 +82,57 @@ class MainViewController: UIViewController {
         
         let myDamagochi = MyDamagochi.shared
         
-        dialogueLabel.setDamagochioLabel(text: "안아줘요", font: .systemFont(ofSize: 15, weight: .medium))
+        dialogueLabel.setDamagochiLabel(text: "", font: .systemFont(ofSize: 15, weight: .medium))
         
         nameButton.setDamagochiName(title: myDamagochi.type.name, font: .systemFont(ofSize: 15, weight: .medium))
         
-        statusLabel.setDamagochioLabel(text: "LV\(myDamagochi.level) ∙ 밥알 \(Int(myDamagochi.rice))개 ∙ 물방울 \(Int(myDamagochi.water))개", font: .systemFont(ofSize: 14, weight: .bold))
+        statusLabel.setDamagochiLabel(text: "LV\(myDamagochi.level) ∙ 밥알 \(Int(myDamagochi.rice))개 ∙ 물방울 \(Int(myDamagochi.water))개", font: .systemFont(ofSize: 14, weight: .bold))
         
         damagochiImageView.image = .init(named: "\(myDamagochi.typeNumber)-\(myDamagochi.level)")
         
     }
     
+    // MARK: Other Method
+    func feed(textfield: UITextField, maxLimit: Int) -> Int {
+        
+        var food = 0
+        
+        if let text = textfield.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
+            
+            guard let count = Int(text) else {
+                self.view.makeToast("숫자만 입력해주세요", position: .center)
+                return 0
+            }
+            
+            food = count
+        }
+        else { food = 1 }
+        
+        if food >= maxLimit {
+            self.view.makeToast("배가 터질 수도 있어요!", position: .center)
+            dialogueLabel.text = MyDamagochi.dialogue.fullDialogue()
+            return 0
+        }
+        else {
+            dialogueLabel.text = MyDamagochi.dialogue.feedingDialogue()
+            
+            textfield.text = nil
+            
+            return food
+        }
+        
+    }
+    
+    func updateDamagochiStatus() {
+        
+        damagochiImageView.image = .init(named: "\(MyDamagochi.shared.typeNumber)-\(MyDamagochi.shared.level)")
+        
+        statusLabel.setDamagochiLabel(text: "LV\(MyDamagochi.shared.level) ∙ 밥알 \(Int(MyDamagochi.shared.rice))개 ∙ 물방울 \(Int(MyDamagochi.shared.water))개", font: .systemFont(ofSize: 14, weight: .bold))
+        
+        
+    }
+    
+    // MARK: Action Method
     @objc func touchSettingButton(_ sender: UIBarButtonItem) {
         
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SettingTableViewController.identifier) as! SettingTableViewController
@@ -99,71 +140,20 @@ class MainViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
-    
 
     @IBAction func touchFeedButton(_ sender: UIButton) {
         
-        var food = 0
+        MyDamagochi.shared.rice += Double(feed(textfield: feedTextField, maxLimit:  MyDamagochi.shared.foodMaxLimit))
         
-        if let text = feedTextField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
-            
-            guard let count = Int(text) else {
-                self.view.makeToast("숫자만 입력해주세요", position: .center)
-                return
-            }
-            food = count
-        }
-        else { food = 1 }
-        
-        if food >= 100 {
-            self.view.makeToast("그러다 배가 터질 수도 있어요!", position: .center)
-            dialogueLabel.text = MyDamagochi.dialogue.fullDialogue()
-        }
-        else {
-            
-            MyDamagochi.shared.rice += Double(food)
-            
-            damagochiImageView.image = .init(named: "\(MyDamagochi.shared.typeNumber)-\(MyDamagochi.shared.level)")
-            
-            statusLabel.setDamagochioLabel(text: "LV\(MyDamagochi.shared.level) ∙ 밥알 \(Int(MyDamagochi.shared.rice))개 ∙ 물방울 \(Int(MyDamagochi.shared.water))개", font: .systemFont(ofSize: 14, weight: .bold))
-            
-            feedTextField.text = nil
-            dialogueLabel.text = MyDamagochi.dialogue.feedingDialogue()
-        }
+        updateDamagochiStatus()
         
     }
     
     @IBAction func touchDrinkButton(_ sender: UIButton) {
         
-        var drink = 0
+        MyDamagochi.shared.water += Double(feed(textfield: drinkTextField, maxLimit:  MyDamagochi.shared.waterMaxLimit))
         
-        if let text = drinkTextField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
-            
-            guard let count = Int(text) else {
-                self.view.makeToast("숫자만 입력해주세요", position: .center)
-                return
-            }
-            drink = count
-        }
-        else { drink = 1 }
-        
-        if drink >= 50 {
-            self.view.makeToast("그러다 배가 터질 수도 있어요!", position: .center)
-            dialogueLabel.text = MyDamagochi.dialogue.fullDialogue()
-            
-        }
-        else {
-            
-            MyDamagochi.shared.water += Double(drink)
-            
-            damagochiImageView.image = .init(named: "\(MyDamagochi.shared.typeNumber)-\(MyDamagochi.shared.level)")
-            
-            statusLabel.setDamagochioLabel(text: "LV\(MyDamagochi.shared.level) ∙ 밥알 \(Int(MyDamagochi.shared.rice))개 ∙ 물방울 \(Int(MyDamagochi.shared.water))개", font: .systemFont(ofSize: 14, weight: .bold))
-            
-            drinkTextField.text = nil
-            dialogueLabel.text = MyDamagochi.dialogue.feedingDialogue()
-            
-        }
+        updateDamagochiStatus()
         
     }
     

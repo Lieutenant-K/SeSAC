@@ -13,7 +13,13 @@ extension UIButton {
         
         self.layer.cornerRadius = 5
         self.layer.borderWidth = 1.5
+        
+        /*
+        왜 아래 코드는 적용이 안될까??
         self.layer.borderColor = UIColor.tintColor.cgColor
+         */
+        
+        self.layer.borderColor = TintColor.foreground.cgColor
         self.contentEdgeInsets = .init(top: 5, left: 5, bottom: 5, right: 5)
         self.setTitleColor(.tintColor, for: .normal)
         self.titleLabel?.font = font
@@ -25,9 +31,9 @@ extension UIButton {
 
 extension UILabel {
     
-    func setDamagochioLabel(text: String?, font: UIFont) {
+    func setDamagochiLabel(text: String?, font: UIFont) {
         
-        self.textColor = TintColor.foreground
+        self.textColor = .tintColor
         self.textAlignment = .center
         self.font = font
         self.text = text

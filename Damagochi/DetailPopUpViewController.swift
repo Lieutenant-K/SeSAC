@@ -8,7 +8,9 @@
 import UIKit
 
 class DetailPopUpViewController: UIViewController {
-
+    
+    // MARK: - Properties
+    
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var lineView: UIView!
@@ -23,6 +25,11 @@ class DetailPopUpViewController: UIViewController {
     
     var type: DamagochiType?
     
+    
+    // MARK: - Method
+    
+    
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,12 +41,14 @@ class DetailPopUpViewController: UIViewController {
         
     }
     
+    
+    // MARK: Configuration View Method
     func setViewBackground() {
         
         view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
         view.tintColor = TintColor.foreground
         
-        containerView.backgroundColor = TintColor.foreground
+        containerView.backgroundColor = .tintColor
         containerView.layer.cornerRadius = 10
         containerView.clipsToBounds = true
         
@@ -47,7 +56,7 @@ class DetailPopUpViewController: UIViewController {
         
         buttonStackView.backgroundColor = TintColor.background
         
-        lineView.backgroundColor = TintColor.foreground
+        lineView.backgroundColor = .tintColor
         
     
     }
@@ -67,12 +76,13 @@ class DetailPopUpViewController: UIViewController {
     
     func configurateDescriptionLabel() {
         
-        descriptionLabel.setDamagochioLabel(text: type?.desription, font: .systemFont(ofSize: 13))
+        descriptionLabel.setDamagochiLabel(text: type?.desription, font: .systemFont(ofSize: 13))
         descriptionLabel.numberOfLines = 0
         
     }
     
     
+    // MARK: Action Method
     @IBAction func touchCancelButton(_ sender: UIButton) {
         
         self.dismiss(animated: true)

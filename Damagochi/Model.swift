@@ -72,7 +72,11 @@ struct TintColor {
 class MyDamagochi {
     
     static let dialogue = DamagochiDialouge()
-
+    
+    let foodMaxLimit = 100
+    
+    let waterMaxLimit = 50
+    
     var level: Int {
         let value = (rice / 5.0) + (water / 2.0)
         if value < 10 {
