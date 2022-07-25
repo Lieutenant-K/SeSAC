@@ -103,7 +103,7 @@
                                             <constraint firstAttribute="trailing" secondItem="7hU-hD-4vn" secondAttribute="trailing" constant="25" id="hRp-YA-eyc"/>
                                             <constraint firstAttribute="trailing" secondItem="cD8-xP-Pkg" secondAttribute="trailing" constant="25" id="lfW-LY-PgZ"/>
                                             <constraint firstItem="7hU-hD-4vn" firstAttribute="centerX" secondItem="rwh-xb-PwQ" secondAttribute="centerX" id="muZ-Kf-1uk"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cD8-xP-Pkg" secondAttribute="bottom" constant="20" id="nxA-Sd-uxW"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cD8-xP-Pkg" secondAttribute="bottom" constant="10" id="nxA-Sd-uxW"/>
                                             <constraint firstItem="cD8-xP-Pkg" firstAttribute="leading" secondItem="rwh-xb-PwQ" secondAttribute="leading" constant="25" id="uUI-Mx-mef"/>
                                         </constraints>
                                     </view>
