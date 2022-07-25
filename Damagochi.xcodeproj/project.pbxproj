@@ -79,21 +79,21 @@
 		0D7B6BD9288A88B1003BC996 /* Damagochi */ = {
 			isa = PBXGroup;
 			children = (
-				0D29716C288D468800DEAB50 /* ChangeNameViewController.swift */,
-				0D29716A288D3D4F00DEAB50 /* SettingTableViewController.swift */,
+				0D7B6BE8288A88B3003BC996 /* Info.plist */,
 				0D7B6BDA288A88B1003BC996 /* AppDelegate.swift */,
-				0D7B6BDC288A88B1003BC996 /* SceneDelegate.swift */,
-				0D7B6BDE288A88B1003BC996 /* ViewController.swift */,
-				0D7B6BE0288A88B1003BC996 /* Main.storyboard */,
-				0D0C86E1288C444F00E28BBC /* MainViewController.swift */,
+				0D29716C288D468800DEAB50 /* ChangeNameViewController.swift */,
+				0D0B9539288BEA6A007637FD /* DamagochiCollectionCell.swift */,
 				0D0B953D288C06A9007637FD /* DetailPopUpViewController.swift */,
 				0D0C86DF288C21E700E28BBC /* Extension.swift */,
-				0D0B9537288BE808007637FD /* SelectCollectionViewController.swift */,
+				0D0C86E1288C444F00E28BBC /* MainViewController.swift */,
 				0D0B953B288C0173007637FD /* Model.swift */,
-				0D0B9539288BEA6A007637FD /* DamagochiCollectionCell.swift */,
+				0D7B6BDC288A88B1003BC996 /* SceneDelegate.swift */,
+				0D0B9537288BE808007637FD /* SelectCollectionViewController.swift */,
+				0D29716A288D3D4F00DEAB50 /* SettingTableViewController.swift */,
+				0D7B6BDE288A88B1003BC996 /* ViewController.swift */,
 				0D7B6BE3288A88B3003BC996 /* Assets.xcassets */,
 				0D7B6BE5288A88B3003BC996 /* LaunchScreen.storyboard */,
-				0D7B6BE8288A88B3003BC996 /* Info.plist */,
+				0D7B6BE0288A88B1003BC996 /* Main.storyboard */,
 			);
 			path = Damagochi;
 			sourceTree = "<group>";
@@ -336,6 +336,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Damagochi/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "김윤수";
@@ -366,6 +367,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Damagochi/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "김윤수";

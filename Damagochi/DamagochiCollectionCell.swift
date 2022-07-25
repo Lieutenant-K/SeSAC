@@ -10,10 +10,13 @@ import UIKit
 class DamagochiCollectionCell: UICollectionViewCell {
     
     static let identifier = "DamagochiCollectionCell"
+    var damagochiType: DamagochiType = .none
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameButton: UIButton!
     
     func configurateCell(type: DamagochiType) {
+        
+        damagochiType = type
         
         imageView.backgroundColor = .clear
         imageView.image = type.thumbnail

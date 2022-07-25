@@ -9,14 +9,23 @@ import UIKit
 
 
 class SelectCollectionViewController: UICollectionViewController {
-
+    
+    // MARK: - Properties
+    
     static let identifier = "SelectCollectionViewController"
+    
+    
+    // MARK: - Method
+    
+    
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = MyDamagochi.shared.type == .none ? "다마고치 선택하기" : "다마고치 변경하기"
         view.backgroundColor = TintColor.background
+        view.tintColor = TintColor.foreground
         
         let layout = UICollectionViewFlowLayout()
         let spacing = 15.0
@@ -31,32 +40,34 @@ class SelectCollectionViewController: UICollectionViewController {
         
     }
     
+    
+    // MARK: CollectionView Method
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DamagochiCollectionCell.identifier, for: indexPath) as? DamagochiCollectionCell else {
             return UICollectionViewCell()
         }
         
-        if indexPath.row < DamagochiType.allCases.count {
-            cell.configurateCell(type: DamagochiType.allCases[indexPath.row])
-        } else {
-            cell.configurateCell(type: .none)
-        }
+        let type: DamagochiType = indexPath.row < DamagochiType.allCases.count ? DamagochiType.allCases[indexPath.row] : .none
+        
+        cell.configurateCell(type: type)
         
         return cell
+        
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 20 }
+    
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         
-        return 20
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DamagochiCollectionCell, cell.damagochiType != .none else { return false }
+        
+        return true
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        // 열거형의 마지막 케이스가 선택할 수 없는 케이스라는 보장이 있어야함.
-        if indexPath.row >= DamagochiType.allCases.endIndex-1 {
-            return
-        }
         
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailPopUpViewController.identifier) as! DetailPopUpViewController
         
@@ -66,7 +77,7 @@ class SelectCollectionViewController: UICollectionViewController {
         vc.type = DamagochiType.allCases[indexPath.row]
         
         present(vc, animated: true)
+        
     }
-
 
 }
