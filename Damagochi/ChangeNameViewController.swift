@@ -11,9 +11,16 @@ import Toast
 
 class ChangeNameViewController: UIViewController {
 
+    
+    // MARK: - Properties
+    
     static let identifier = "ChangeNameViewController"
     
     @IBOutlet weak var textfield: HoshiTextField!
+    
+    // MARK: - Method
+    
+    // MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +32,8 @@ class ChangeNameViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(touchSaveButton(_:)))
         
     }
+    
+    // MARK: Action Method
     
     @objc func touchSaveButton(_ sender: UIBarButtonItem) {
         

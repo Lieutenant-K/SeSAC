@@ -8,11 +8,18 @@
 import UIKit
 
 class SettingTableViewController: UITableViewController {
-
+    
+    // MARK: - Properties
+    
     @IBOutlet weak var nicknameLabel: UILabel!
     
     static let identifier = "SettingTableViewController"
     
+    
+    // MARK: - Method
+    
+    
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "설정"
@@ -30,6 +37,9 @@ class SettingTableViewController: UITableViewController {
         tableView.deselectRow(at: tableView.indexPathForSelectedRow ?? [0,0], animated: true)
         
     }
+    
+    
+    // MARK: TableView Method
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0

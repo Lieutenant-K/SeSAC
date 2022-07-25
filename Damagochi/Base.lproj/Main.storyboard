@@ -144,26 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ur7-3n-8JE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="795.6521739130435" y="-644.02173913043487"/>
-        </scene>
-        <!--하이-->
-        <scene sceneID="8ZG-zN-tvN">
-            <objects>
-                <viewController id="dml-KC-P4s" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4hg-B1-vN0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="ggQ-x0-Gfk"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="하이" id="spl-mw-QAq">
-                        <barButtonItem key="backBarButtonItem" title="하이" id="Zk4-nq-xcJ"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="trash.slash" catalog="system" id="6kS-dj-qgJ"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fG1-3Q-8D7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3053.6231884057975" y="-659.51086956521749"/>
+            <point key="canvasLocation" x="1703" y="-611"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="uEH-9u-qOk">
@@ -539,32 +520,6 @@
             </objects>
             <point key="canvasLocation" x="1702.8985507246377" y="70.923913043478265"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CYy-o9-D1h">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uMN-Bw-Wlr" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AZX-4N-0P3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" systemColor="systemYellowColor"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" systemColor="tintColor"/>
-                        </textAttributes>
-                        <navigationBarAppearance key="scrollEdgeAppearance">
-                            <color key="shadowColor" systemColor="tintColor"/>
-                        </navigationBarAppearance>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="dml-KC-P4s" kind="relationship" relationship="rootViewController" id="zH7-Zr-pGz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ST0-NI-Kxf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2146.376811594203" y="-659.51086956521749"/>
-        </scene>
     </scenes>
     <designables>
         <designable name="8gn-vJ-ddm">
@@ -585,7 +540,6 @@
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="moon.fill" catalog="system" width="128" height="121"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
-        <image name="trash.slash" catalog="system" width="115" height="128"/>
         <namedColor name="Background">
             <color red="0.96078431372549022" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -597,9 +551,6 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
