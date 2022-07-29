@@ -19,6 +19,8 @@ class TranslateViewController: UIViewController {
         textView.text = "플레이스홀더"
         textView.textColor = .placeholderText
         
+        textView.font = UIFont(name: "NanumKarGugSu", size: 17)
+        
     }
 
 }

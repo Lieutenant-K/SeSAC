@@ -20,6 +20,8 @@
 		0D45BC5E2890E1FB008A21F4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D45BC5D2890E1FB008A21F4 /* SearchViewController.swift */; };
 		0D45BC612890E4D5008A21F4 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D45BC5F2890E4D5008A21F4 /* SearchTableViewCell.swift */; };
 		0D45BC622890E4D5008A21F4 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D45BC602890E4D5008A21F4 /* SearchTableViewCell.xib */; };
+		0DDD3C912893619500B2CE18 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDD3C902893619500B2CE18 /* LocationViewController.swift */; };
+		0DDD3C93289384F600B2CE18 /* 나눔손글씨 칼국수.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DDD3C92289384F600B2CE18 /* 나눔손글씨 칼국수.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		0D45BC5D2890E1FB008A21F4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0D45BC5F2890E4D5008A21F4 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		0D45BC602890E4D5008A21F4 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		0DDD3C902893619500B2CE18 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		0DDD3C92289384F600B2CE18 /* 나눔손글씨 칼국수.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 칼국수.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 		0D45BC482890DD8F008A21F4 /* NetworkBasic */ = {
 			isa = PBXGroup;
 			children = (
+				0DDD3C902893619500B2CE18 /* LocationViewController.swift */,
+				0DDD3C92289384F600B2CE18 /* 나눔손글씨 칼국수.ttf */,
 				0D45BC572890DD92008A21F4 /* Info.plist */,
 				0D45BC492890DD8F008A21F4 /* AppDelegate.swift */,
 				0D36D3D32892236B00BA6334 /* LottoViewController.swift */,
@@ -158,6 +164,7 @@
 				0D45BC622890E4D5008A21F4 /* SearchTableViewCell.xib in Resources */,
 				0D45BC532890DD92008A21F4 /* Assets.xcassets in Resources */,
 				0D45BC512890DD8F008A21F4 /* Main.storyboard in Resources */,
+				0DDD3C93289384F600B2CE18 /* 나눔손글씨 칼국수.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +180,7 @@
 				0D45BC4A2890DD8F008A21F4 /* AppDelegate.swift in Sources */,
 				0D45BC5E2890E1FB008A21F4 /* SearchViewController.swift in Sources */,
 				0D36D3D42892236B00BA6334 /* LottoViewController.swift in Sources */,
+				0DDD3C912893619500B2CE18 /* LocationViewController.swift in Sources */,
 				0D45BC4C2890DD8F008A21F4 /* SceneDelegate.swift in Sources */,
 				0D36D3D6289230C100BA6334 /* TranslateViewController.swift in Sources */,
 				0D36D3D228920D1800BA6334 /* ViewPresentableProtocol.swift in Sources */,
@@ -323,6 +331,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5QA7Y24MQ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NetworkBasic/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -350,6 +359,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5QA7Y24MQ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NetworkBasic/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
