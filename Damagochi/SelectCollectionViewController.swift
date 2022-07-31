@@ -49,7 +49,7 @@ class SelectCollectionViewController: UICollectionViewController {
             return UICollectionViewCell()
         }
         
-        let type: DamagochiType = indexPath.row < DamagochiType.allCases.count ? DamagochiType.allCases[indexPath.row] : .none
+        let type: DamagochiStyle = indexPath.row < DamagochiStyle.allCases.count ? DamagochiStyle.allCases[indexPath.row] : .none
         
         cell.configurateCell(type: type)
         
@@ -61,7 +61,14 @@ class SelectCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         
-        guard let cell = collectionView.cellForItem(at: indexPath) as? DamagochiCollectionCell, cell.damagochiType != .none else { return false }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DamagochiCollectionCell, cell.damagochiType != .none
+        else {
+            
+            self.view.makeToast("아직 선택할 수 없어요 ㅜㅜ", position: .bottom)
+            
+            return false
+            
+        }
         
         return true
         
@@ -69,12 +76,14 @@ class SelectCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailPopUpViewController.identifier) as! DetailPopUpViewController
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: DetailPopUpViewController.identifier) { coder in
+            
+            return DetailPopUpViewController(coder: coder, type: DamagochiStyle.allCases[indexPath.row])
+        }
         
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
-        
-        vc.type = DamagochiType.allCases[indexPath.row]
         
         present(vc, animated: true)
         

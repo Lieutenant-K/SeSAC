@@ -10,17 +10,18 @@ import UIKit
 class DamagochiCollectionCell: UICollectionViewCell {
     
     static let identifier = "DamagochiCollectionCell"
-    var damagochiType: DamagochiType = .none
+    var damagochiType: DamagochiStyle = .none
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameButton: UIButton!
     
-    func configurateCell(type: DamagochiType) {
+    func configurateCell(type: DamagochiStyle) {
         
         damagochiType = type
         
         imageView.backgroundColor = .clear
         imageView.image = type.thumbnail
         
+        self.tintColor = TintColor.foreground
         nameButton.setDamagochiName(title: type.name, font: .systemFont(ofSize: 13, weight: .semibold))
         
     }

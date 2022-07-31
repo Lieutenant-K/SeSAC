@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum DamagochiType: Int, CaseIterable {
+enum DamagochiStyle: Int, CaseIterable {
     
     case spike = 1
     case sun
@@ -90,7 +90,15 @@ class MyDamagochi {
         }
     }
     
-    @UserDefault(key: "type", defaultValue: DamagochiType.none.rawValue)
+    var statusString: String {
+        "LV\(level) ∙ 밥알 \(Int(rice))개 ∙ 물방울 \(Int(water))개"
+    }
+    
+    var image: UIImage? {
+        UIImage(named: "\(typeNumber)-\(level)")
+    }
+    
+    @UserDefault(key: "type", defaultValue: DamagochiStyle.none.rawValue)
     var typeNumber: Int
     
     @UserDefault(key: "riceCount", defaultValue: 0)
@@ -102,8 +110,8 @@ class MyDamagochi {
     @UserDefault(key: "userNickname", defaultValue: "대장")
     var userNickname: String
     
-    var type: DamagochiType {
-        get { DamagochiType(rawValue: typeNumber) ?? .none }
+    var type: DamagochiStyle {
+        get { DamagochiStyle(rawValue: typeNumber) ?? .none }
         set { typeNumber = newValue.rawValue }
     }
     
@@ -129,17 +137,15 @@ struct UserDefault<T> {
 
 struct DamagochiDialouge {
     
-    private var name: String {
-        MyDamagochi.shared.userNickname
-    }
-    
     private var transition: [String] {
-        [
+        let name = MyDamagochi.shared.userNickname
+        let dialogue = [
             "\(name)님, 어디갔다가 오시는거에요~!",
             "\(name)님 오늘은 뭐하고 놀까요?",
             "너무 보고싶었어요~ \(name)님~",
             "기다리다가 지칠 뻔 했다구요~ \(name)님~",
         ]
+        return dialogue
     }
     
     private let feeding: [String] = [
@@ -156,15 +162,16 @@ struct DamagochiDialouge {
         "토할 것 같아..."
     ]
     
-    func transitionDialogue() -> String? {
+    var transitionDialogue: String? {
         transition.randomElement()
     }
     
-    func feedingDialogue() -> String? {
+    
+    var feedingDialogue: String? {
         feeding.randomElement()
     }
     
-    func fullDialogue() -> String? {
+    var fullDialogue: String? {
         full.randomElement()
     }
     

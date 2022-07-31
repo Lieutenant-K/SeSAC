@@ -19,9 +19,10 @@ extension UIButton {
         self.layer.borderColor = UIColor.tintColor.cgColor
          */
         
-        self.layer.borderColor = TintColor.foreground.cgColor
+//        self.tintColor = TintColor.foreground
+        self.layer.borderColor = tintColor.cgColor
         self.contentEdgeInsets = .init(top: 5, left: 5, bottom: 5, right: 5)
-        self.setTitleColor(.tintColor, for: .normal)
+        self.setTitleColor(tintColor, for: .normal)
         self.titleLabel?.font = font
         self.setTitle(title, for: .normal)
         

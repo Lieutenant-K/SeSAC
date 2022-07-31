@@ -32,9 +32,11 @@ class SettingTableViewController: UITableViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         nicknameLabel.text = MyDamagochi.shared.userNickname
         
-        tableView.deselectRow(at: tableView.indexPathForSelectedRow ?? [0,0], animated: true)
+//        tableView.deselectRow(at: tableView.indexPathForSelectedRow ?? [0,0], animated: true)
         
     }
     
@@ -47,6 +49,8 @@ class SettingTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.row {
             

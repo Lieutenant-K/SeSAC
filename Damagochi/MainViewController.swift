@@ -53,12 +53,14 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         title = MyDamagochi.shared.userNickname + "님의 다마고치"
         
-        dialogueLabel.text = MyDamagochi.dialogue.transitionDialogue()
+        dialogueLabel.text = MyDamagochi.dialogue.transitionDialogue
         
     }
+    
     
     // MARK: Configuration View Method
     func configurateActionButton(button: UIButton, title: String, image: UIImage?) {
@@ -86,9 +88,9 @@ class MainViewController: UIViewController {
         
         nameButton.setDamagochiName(title: myDamagochi.type.name, font: .systemFont(ofSize: 15, weight: .medium))
         
-        statusLabel.setDamagochiLabel(text: "LV\(myDamagochi.level) ∙ 밥알 \(Int(myDamagochi.rice))개 ∙ 물방울 \(Int(myDamagochi.water))개", font: .systemFont(ofSize: 14, weight: .bold))
+        statusLabel.setDamagochiLabel(text: myDamagochi.statusString, font: .systemFont(ofSize: 14, weight: .bold))
         
-        damagochiImageView.image = .init(named: "\(myDamagochi.typeNumber)-\(myDamagochi.level)")
+        damagochiImageView.image = myDamagochi.image
         
     }
     
@@ -110,11 +112,11 @@ class MainViewController: UIViewController {
         
         if food >= maxLimit {
             self.view.makeToast("배가 터질 수도 있어요!", position: .center)
-            dialogueLabel.text = MyDamagochi.dialogue.fullDialogue()
+            dialogueLabel.text = MyDamagochi.dialogue.fullDialogue
             return 0
         }
         else {
-            dialogueLabel.text = MyDamagochi.dialogue.feedingDialogue()
+            dialogueLabel.text = MyDamagochi.dialogue.feedingDialogue
             
             textfield.text = nil
             
@@ -125,9 +127,9 @@ class MainViewController: UIViewController {
     
     func updateDamagochiStatus() {
         
-        damagochiImageView.image = .init(named: "\(MyDamagochi.shared.typeNumber)-\(MyDamagochi.shared.level)")
+        damagochiImageView.image = MyDamagochi.shared.image
         
-        statusLabel.setDamagochiLabel(text: "LV\(MyDamagochi.shared.level) ∙ 밥알 \(Int(MyDamagochi.shared.rice))개 ∙ 물방울 \(Int(MyDamagochi.shared.water))개", font: .systemFont(ofSize: 14, weight: .bold))
+        statusLabel.setDamagochiLabel(text: MyDamagochi.shared.statusString, font: .systemFont(ofSize: 14, weight: .bold))
         
         
     }

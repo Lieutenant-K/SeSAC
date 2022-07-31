@@ -23,7 +23,7 @@ class DetailPopUpViewController: UIViewController {
     
     static let identifier = "DetailPopUpViewController"
     
-    var type: DamagochiType?
+    var type: DamagochiStyle
     
     
     // MARK: - Method
@@ -36,8 +36,8 @@ class DetailPopUpViewController: UIViewController {
         setViewBackground()
         configurateActionButtons()
         configurateDescriptionLabel()
-        thumbnailImageView.image = type?.thumbnail
-        nameButton.setDamagochiName(title: type?.name, font: .systemFont(ofSize: 15, weight: .semibold))
+        thumbnailImageView.image = type.thumbnail
+        nameButton.setDamagochiName(title: type.name, font: .systemFont(ofSize: 15, weight: .semibold))
         
     }
     
@@ -76,8 +76,9 @@ class DetailPopUpViewController: UIViewController {
     
     func configurateDescriptionLabel() {
         
-        descriptionLabel.setDamagochiLabel(text: type?.desription, font: .systemFont(ofSize: 13))
+        descriptionLabel.setDamagochiLabel(text: type.desription, font: .systemFont(ofSize: 15))
         descriptionLabel.numberOfLines = 0
+        descriptionLabel.adjustsFontSizeToFitWidth = true
         
     }
     
@@ -101,7 +102,7 @@ class DetailPopUpViewController: UIViewController {
         // Setting NaviBar Appearance
         navi.setDamagochiBarAppearance()
         
-        guard let type = type else { return }
+//        guard let type = type else { return }
         
         MyDamagochi.shared.type = type
         
@@ -109,4 +110,14 @@ class DetailPopUpViewController: UIViewController {
         delegate.window?.makeKeyAndVisible()
         
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    init?(coder: NSCoder, type: DamagochiStyle){
+        self.type = type
+        super.init(coder: coder)
+    }
+    
 }
