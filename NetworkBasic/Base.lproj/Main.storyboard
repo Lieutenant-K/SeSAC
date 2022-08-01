@@ -308,9 +308,58 @@
                     <view key="view" contentMode="scaleToFill" id="q2n-iQ-GU1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K1W-Kt-MLZ">
+                                <rect key="frame" x="62" y="143" width="290" height="348"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="K1W-Kt-MLZ" secondAttribute="height" multiplier="1:1.2" id="8PZ-y7-OVq"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiE-c1-U9g">
+                                <rect key="frame" x="186.5" y="551.5" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjW-iQ-7Rg">
+                                <rect key="frame" x="169" y="87" width="76.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="랜덤 맥주"/>
+                                <connections>
+                                    <action selector="touchButton:" destination="GeX-9D-bij" eventType="touchUpInside" id="kgY-cx-Cfs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yva-V7-Xhe">
+                                <rect key="frame" x="186.5" y="511" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="soa-NC-Shc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K1W-Kt-MLZ" firstAttribute="centerX" secondItem="soa-NC-Shc" secondAttribute="centerX" id="2Jo-eG-6xY"/>
+                            <constraint firstItem="Yva-V7-Xhe" firstAttribute="top" secondItem="K1W-Kt-MLZ" secondAttribute="bottom" constant="20" id="5Ld-kH-pWu"/>
+                            <constraint firstItem="soa-NC-Shc" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DiE-c1-U9g" secondAttribute="bottom" constant="10" id="C5u-FP-he6"/>
+                            <constraint firstItem="soa-NC-Shc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DiE-c1-U9g" secondAttribute="trailing" constant="20" id="JTO-EH-BVc"/>
+                            <constraint firstItem="K1W-Kt-MLZ" firstAttribute="centerY" secondItem="soa-NC-Shc" secondAttribute="centerY" multiplier="0.7" id="Wdd-5i-48K"/>
+                            <constraint firstItem="DiE-c1-U9g" firstAttribute="top" secondItem="Yva-V7-Xhe" secondAttribute="bottom" constant="20" id="mM6-84-Cbw"/>
+                            <constraint firstItem="DiE-c1-U9g" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="soa-NC-Shc" secondAttribute="leading" constant="20" id="n58-2m-epV"/>
+                            <constraint firstItem="soa-NC-Shc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Yva-V7-Xhe" secondAttribute="trailing" constant="20" id="nHf-Ud-hhB"/>
+                            <constraint firstItem="zjW-iQ-7Rg" firstAttribute="centerX" secondItem="q2n-iQ-GU1" secondAttribute="centerX" id="sss-N5-l1I"/>
+                            <constraint firstItem="Yva-V7-Xhe" firstAttribute="centerX" secondItem="q2n-iQ-GU1" secondAttribute="centerX" id="tPW-Lr-14c"/>
+                            <constraint firstItem="DiE-c1-U9g" firstAttribute="centerX" secondItem="Yva-V7-Xhe" secondAttribute="centerX" id="tcs-R1-w8F"/>
+                            <constraint firstItem="K1W-Kt-MLZ" firstAttribute="width" secondItem="q2n-iQ-GU1" secondAttribute="width" multiplier="0.7" id="vlK-Pe-lxa"/>
+                            <constraint firstItem="K1W-Kt-MLZ" firstAttribute="top" secondItem="zjW-iQ-7Rg" secondAttribute="bottom" constant="25" id="waj-qw-Ltz"/>
+                            <constraint firstItem="Yva-V7-Xhe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="soa-NC-Shc" secondAttribute="leading" constant="20" id="zmq-3V-fuS"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="DiE-c1-U9g" id="ecA-7M-hMe"/>
+                        <outlet property="imageView" destination="K1W-Kt-MLZ" id="voU-wo-Obe"/>
+                        <outlet property="nameLabel" destination="Yva-V7-Xhe" id="zkn-hX-jcz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fwh-vJ-8Xb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
