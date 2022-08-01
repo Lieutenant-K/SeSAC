@@ -22,6 +22,11 @@
 		0D45BC622890E4D5008A21F4 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D45BC602890E4D5008A21F4 /* SearchTableViewCell.xib */; };
 		0DDD3C912893619500B2CE18 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDD3C902893619500B2CE18 /* LocationViewController.swift */; };
 		0DDD3C93289384F600B2CE18 /* 나눔손글씨 칼국수.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DDD3C92289384F600B2CE18 /* 나눔손글씨 칼국수.ttf */; };
+		0DEB1DDE28975727001D1D23 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB1DDD28975727001D1D23 /* Protocol.swift */; };
+		0DEB1DE0289757A6001D1D23 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB1DDF289757A6001D1D23 /* Constant.swift */; };
+		0DEB1DE228975FE0001D1D23 /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB1DE128975FE0001D1D23 /* UserDefaultHelper.swift */; };
+		0DEB1DE528977CE0001D1D23 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1DE428977CE0001D1D23 /* SwiftyJSON */; };
+		0DEB1DE828977CFE001D1D23 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1DE728977CFE001D1D23 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +47,9 @@
 		0D45BC602890E4D5008A21F4 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		0DDD3C902893619500B2CE18 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		0DDD3C92289384F600B2CE18 /* 나눔손글씨 칼국수.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 칼국수.ttf"; sourceTree = "<group>"; };
+		0DEB1DDD28975727001D1D23 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		0DEB1DDF289757A6001D1D23 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		0DEB1DE128975FE0001D1D23 /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEB1DE528977CE0001D1D23 /* SwiftyJSON in Frameworks */,
+				0DEB1DE828977CFE001D1D23 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				0D36D3D128920D1800BA6334 /* ViewPresentableProtocol.swift */,
+				0DEB1DDD28975727001D1D23 /* Protocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -82,17 +93,19 @@
 		0D45BC482890DD8F008A21F4 /* NetworkBasic */ = {
 			isa = PBXGroup;
 			children = (
-				0DDD3C902893619500B2CE18 /* LocationViewController.swift */,
-				0DDD3C92289384F600B2CE18 /* 나눔손글씨 칼국수.ttf */,
 				0D45BC572890DD92008A21F4 /* Info.plist */,
 				0D45BC492890DD8F008A21F4 /* AppDelegate.swift */,
+				0DEB1DDF289757A6001D1D23 /* Constant.swift */,
+				0DDD3C902893619500B2CE18 /* LocationViewController.swift */,
 				0D36D3D32892236B00BA6334 /* LottoViewController.swift */,
 				0D45BC4B2890DD8F008A21F4 /* SceneDelegate.swift */,
 				0D45BC5F2890E4D5008A21F4 /* SearchTableViewCell.swift */,
 				0D45BC5D2890E1FB008A21F4 /* SearchViewController.swift */,
 				0D36D3D5289230C100BA6334 /* TranslateViewController.swift */,
+				0DEB1DE128975FE0001D1D23 /* UserDefaultHelper.swift */,
 				0D45BC4D2890DD8F008A21F4 /* ViewController.swift */,
 				0D36D3D728923AA000BA6334 /* WebViewController.swift */,
+				0DDD3C92289384F600B2CE18 /* 나눔손글씨 칼국수.ttf */,
 				0D45BC522890DD92008A21F4 /* Assets.xcassets */,
 				0D45BC602890E4D5008A21F4 /* SearchTableViewCell.xib */,
 				0D45BC542890DD92008A21F4 /* LaunchScreen.storyboard */,
@@ -118,6 +131,10 @@
 			dependencies = (
 			);
 			name = NetworkBasic;
+			packageProductDependencies = (
+				0DEB1DE428977CE0001D1D23 /* SwiftyJSON */,
+				0DEB1DE728977CFE001D1D23 /* Alamofire */,
+			);
 			productName = NetworkBasic;
 			productReference = 0D45BC462890DD8F008A21F4 /* NetworkBasic.app */;
 			productType = "com.apple.product-type.application";
@@ -146,6 +163,10 @@
 				Base,
 			);
 			mainGroup = 0D45BC3D2890DD8F008A21F4;
+			packageReferences = (
+				0DEB1DE328977CE0001D1D23 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				0DEB1DE628977CFE001D1D23 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 0D45BC472890DD8F008A21F4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -181,10 +202,13 @@
 				0D45BC5E2890E1FB008A21F4 /* SearchViewController.swift in Sources */,
 				0D36D3D42892236B00BA6334 /* LottoViewController.swift in Sources */,
 				0DDD3C912893619500B2CE18 /* LocationViewController.swift in Sources */,
+				0DEB1DDE28975727001D1D23 /* Protocol.swift in Sources */,
 				0D45BC4C2890DD8F008A21F4 /* SceneDelegate.swift in Sources */,
 				0D36D3D6289230C100BA6334 /* TranslateViewController.swift in Sources */,
 				0D36D3D228920D1800BA6334 /* ViewPresentableProtocol.swift in Sources */,
 				0D45BC612890E4D5008A21F4 /* SearchTableViewCell.swift in Sources */,
+				0DEB1DE228975FE0001D1D23 /* UserDefaultHelper.swift in Sources */,
+				0DEB1DE0289757A6001D1D23 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +426,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0DEB1DE328977CE0001D1D23 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		0DEB1DE628977CFE001D1D23 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0DEB1DE428977CE0001D1D23 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DEB1DE328977CE0001D1D23 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		0DEB1DE728977CFE001D1D23 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DEB1DE628977CFE001D1D23 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0D45BC3E2890DD8F008A21F4 /* Project object */;
 }

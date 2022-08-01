@@ -16,11 +16,17 @@ class TranslateViewController: UIViewController {
         
         textView.delegate = self
         
-        textView.text = "플레이스홀더"
+        textView.text = "rodxxx@naver.com 01099624047 06945 2022년 9월 21일"
         textView.textColor = .placeholderText
         
         textView.font = UIFont(name: "NanumKarGugSu", size: 17)
+        textView.dataDetectorTypes = .all
+//        textView.isEditable = false
         
+        let attachment = NSTextAttachment(image: .init(systemName: "xmark")!)
+        let attributedStr = NSAttributedString(string: "안녕하세요", attributes: [.font: UIFont.systemFont(ofSize: 15), .foregroundColor: UIColor.blue])
+        
+        textView.attributedText = .init(attachment: attachment)
     }
 
 }
