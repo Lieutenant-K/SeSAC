@@ -19,10 +19,23 @@ class LottoViewController: UIViewController {
     
     var pickerView = UIPickerView()
     
-    let numberList: [Int] = Array(1...1026).reversed()
+    lazy var number: Int = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy-MM-dd"
+        let date = formatter.date(from: "2002-12-07")!
+        
+        let number = Date().timeIntervalSince(date) / (7*60*60*24) + 1
+        
+        return Int(number)
+    }()
+    
+    var numberList: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        numberList = Array(1...number).reversed()
         
         numberTextField.inputView = pickerView
         
@@ -31,7 +44,7 @@ class LottoViewController: UIViewController {
         
         configureLottoLabel()
         
-        requestLotto(number: 1026)
+        requestLotto(number: number)
     }
     
     func configureLottoLabel() {
@@ -85,7 +98,7 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 1026
+        return number
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
