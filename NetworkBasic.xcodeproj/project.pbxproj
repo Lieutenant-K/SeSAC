@@ -30,6 +30,8 @@
 		0DEB1DEA2898364D001D1D23 /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB1DE92898364D001D1D23 /* BeerViewController.swift */; };
 		0DEB1DED289836C1001D1D23 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1DEC289836C1001D1D23 /* Kingfisher */; };
 		0DEB1DEF2898BD31001D1D23 /* BoxOfficeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB1DEE2898BD31001D1D23 /* BoxOfficeModel.swift */; };
+		0DEB1DF228995E5C001D1D23 /* BeerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB1DF028995E5C001D1D23 /* BeerCollectionViewCell.swift */; };
+		0DEB1DF328995E5C001D1D23 /* BeerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DEB1DF128995E5C001D1D23 /* BeerCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		0DEB1DE128975FE0001D1D23 /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
 		0DEB1DE92898364D001D1D23 /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
 		0DEB1DEE2898BD31001D1D23 /* BoxOfficeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeModel.swift; sourceTree = "<group>"; };
+		0DEB1DF028995E5C001D1D23 /* BeerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCollectionViewCell.swift; sourceTree = "<group>"; };
+		0DEB1DF128995E5C001D1D23 /* BeerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				0D45BC572890DD92008A21F4 /* Info.plist */,
 				0D45BC492890DD8F008A21F4 /* AppDelegate.swift */,
 				0DEB1DE92898364D001D1D23 /* BeerViewController.swift */,
+				0DEB1DF028995E5C001D1D23 /* BeerCollectionViewCell.swift */,
+				0DEB1DF128995E5C001D1D23 /* BeerCollectionViewCell.xib */,
 				0DEB1DEE2898BD31001D1D23 /* BoxOfficeModel.swift */,
 				0DEB1DDF289757A6001D1D23 /* Constant.swift */,
 				0DDD3C902893619500B2CE18 /* LocationViewController.swift */,
@@ -195,6 +201,7 @@
 				0D45BC622890E4D5008A21F4 /* SearchTableViewCell.xib in Resources */,
 				0D45BC532890DD92008A21F4 /* Assets.xcassets in Resources */,
 				0D45BC512890DD8F008A21F4 /* Main.storyboard in Resources */,
+				0DEB1DF328995E5C001D1D23 /* BeerCollectionViewCell.xib in Resources */,
 				0DDD3C93289384F600B2CE18 /* 나눔손글씨 칼국수.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +225,7 @@
 				0D45BC4C2890DD8F008A21F4 /* SceneDelegate.swift in Sources */,
 				0D36D3D6289230C100BA6334 /* TranslateViewController.swift in Sources */,
 				0D36D3D228920D1800BA6334 /* ViewPresentableProtocol.swift in Sources */,
+				0DEB1DF228995E5C001D1D23 /* BeerCollectionViewCell.swift in Sources */,
 				0D45BC612890E4D5008A21F4 /* SearchTableViewCell.swift in Sources */,
 				0DEB1DE228975FE0001D1D23 /* UserDefaultHelper.swift in Sources */,
 				0DEB1DE0289757A6001D1D23 /* Constant.swift in Sources */,
