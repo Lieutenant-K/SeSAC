@@ -9,28 +9,46 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SearchTableViewCell" customModule="NetworkBasic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="SearchTableViewCell" customModule="NetworkBasic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxv-KI-neo">
-                        <rect key="frame" x="139" y="11.5" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영화 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxv-KI-neo">
+                        <rect key="frame" x="20" y="10" width="63.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개봉일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3K3-Eo-G8d">
+                        <rect key="frame" x="20" y="41" width="39" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="누적 관객 수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKt-kX-CTl">
+                        <rect key="frame" x="20" y="69" width="64" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="dxv-KI-neo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4gL-XQ-Pzc"/>
-                    <constraint firstItem="dxv-KI-neo" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Xyj-yO-goD"/>
+                    <constraint firstItem="dxv-KI-neo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Hy9-LQ-jXy"/>
+                    <constraint firstItem="dxv-KI-neo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="INm-WI-S7d"/>
+                    <constraint firstItem="vKt-kX-CTl" firstAttribute="top" secondItem="3K3-Eo-G8d" secondAttribute="bottom" constant="10" id="aQN-9V-qNR"/>
+                    <constraint firstItem="3K3-Eo-G8d" firstAttribute="top" secondItem="dxv-KI-neo" secondAttribute="bottom" constant="10" id="gaB-sZ-oyb"/>
+                    <constraint firstItem="vKt-kX-CTl" firstAttribute="leading" secondItem="3K3-Eo-G8d" secondAttribute="leading" id="vrh-8Q-vU0"/>
+                    <constraint firstItem="3K3-Eo-G8d" firstAttribute="leading" secondItem="dxv-KI-neo" secondAttribute="leading" id="yVM-BX-b7O"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="releaseDateLabel" destination="3K3-Eo-G8d" id="bPl-f6-Yn4"/>
                 <outlet property="titleLabel" destination="dxv-KI-neo" id="WXo-Hy-P0I"/>
+                <outlet property="totalAudienceLabel" destination="vKt-kX-CTl" id="5uP-fK-8QF"/>
             </connections>
             <point key="canvasLocation" x="132" y="132"/>
         </tableViewCell>

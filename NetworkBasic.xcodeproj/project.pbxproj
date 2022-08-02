@@ -29,6 +29,7 @@
 		0DEB1DE828977CFE001D1D23 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1DE728977CFE001D1D23 /* Alamofire */; };
 		0DEB1DEA2898364D001D1D23 /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB1DE92898364D001D1D23 /* BeerViewController.swift */; };
 		0DEB1DED289836C1001D1D23 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1DEC289836C1001D1D23 /* Kingfisher */; };
+		0DEB1DEF2898BD31001D1D23 /* BoxOfficeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB1DEE2898BD31001D1D23 /* BoxOfficeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		0DEB1DDF289757A6001D1D23 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		0DEB1DE128975FE0001D1D23 /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
 		0DEB1DE92898364D001D1D23 /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
+		0DEB1DEE2898BD31001D1D23 /* BoxOfficeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,8 @@
 			children = (
 				0D45BC572890DD92008A21F4 /* Info.plist */,
 				0D45BC492890DD8F008A21F4 /* AppDelegate.swift */,
+				0DEB1DE92898364D001D1D23 /* BeerViewController.swift */,
+				0DEB1DEE2898BD31001D1D23 /* BoxOfficeModel.swift */,
 				0DEB1DDF289757A6001D1D23 /* Constant.swift */,
 				0DDD3C902893619500B2CE18 /* LocationViewController.swift */,
 				0D36D3D32892236B00BA6334 /* LottoViewController.swift */,
@@ -114,7 +118,6 @@
 				0D45BC602890E4D5008A21F4 /* SearchTableViewCell.xib */,
 				0D45BC542890DD92008A21F4 /* LaunchScreen.storyboard */,
 				0D45BC4F2890DD8F008A21F4 /* Main.storyboard */,
-				0DEB1DE92898364D001D1D23 /* BeerViewController.swift */,
 				0D36D3D028920CA800BA6334 /* Protocol */,
 			);
 			path = NetworkBasic;
@@ -206,6 +209,7 @@
 				0D45BC4E2890DD8F008A21F4 /* ViewController.swift in Sources */,
 				0D36D3D828923AA000BA6334 /* WebViewController.swift in Sources */,
 				0DEB1DEA2898364D001D1D23 /* BeerViewController.swift in Sources */,
+				0DEB1DEF2898BD31001D1D23 /* BoxOfficeModel.swift in Sources */,
 				0D45BC4A2890DD8F008A21F4 /* AppDelegate.swift in Sources */,
 				0D45BC5E2890E1FB008A21F4 /* SearchViewController.swift in Sources */,
 				0D36D3D42892236B00BA6334 /* LottoViewController.swift in Sources */,
