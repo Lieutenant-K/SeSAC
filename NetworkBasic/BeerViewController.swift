@@ -48,7 +48,7 @@ class BeerViewController: UIViewController {
                 
             case .success(let value):
                 let json = JSON(value).arrayValue[0]
-//                print(json)
+                print(json)
                 cell.nameLabel.text = json["name"].stringValue
                 cell.descriptionLabel.text = json["description"].stringValue
                 

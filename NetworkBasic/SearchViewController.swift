@@ -40,9 +40,13 @@ class SearchViewController: UIViewController {
         formatter.dateFormat = "yyyyMMdd"
         formatter.locale = Locale(identifier: "ko_KR")
         
+        // Calander 사용하기
+        let yesterday = formatter.string(from: Calendar.current.date(byAdding: .day, value: -1, to: Date())!)
+        
+        // TimeInterval 사용하기
         let date = formatter.string(from: Date().addingTimeInterval(-24*60*60))
         
-        requestBoxOffice(text: date)
+        requestBoxOffice(text: yesterday)
     }
     
     /*
