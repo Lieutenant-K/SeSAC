@@ -29,12 +29,15 @@ enum ImageSizes {
     
     case backdrop(BackdropSizes)
     case poster(PosterSizes)
+    case profile(ProfileSizes)
     
     var size: String {
         switch self {
         case .backdrop(let size):
             return size.rawValue
         case .poster(let size):
+            return size.rawValue
+        case .profile(let size):
             return size.rawValue
         }
     }
@@ -47,6 +50,12 @@ enum BackdropSizes: String {
 
 enum PosterSizes: String {
     case w45, w92, w154, w185, w300, w500, original
+}
+
+enum ProfileSizes:String {
+    
+    case w45,w185,h632,original
+    
 }
 
 enum EndPoint {
@@ -71,12 +80,29 @@ enum EndPoint {
 
 struct MovieInfo {
     
+    let id: Int
     let title: String
     let postPath: String
     let backdropPath: String
     let releaseDate: String
     let overview: String
     let genre: [String]
+}
+
+struct CastInfo {
+    
+    let name: String
+    let department: String
+    let character: String
+    let profilePath: String
+}
+
+struct CrewInfo {
+    
+    let name: String
+    let department: String
+    let job: String
+    let profilePath: String
 }
 
 //struct Genre {

@@ -30,8 +30,6 @@ class MovieCell: UICollectionViewCell {
         }
     }
     
-    static let identifier = "MovieCell"
-    
     func configurateCell(movieInfo: MovieInfo) {
         
         releaseDateLabel.text = movieInfo.releaseDate

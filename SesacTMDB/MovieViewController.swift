@@ -75,7 +75,8 @@ class MovieViewController: UIViewController {
             for item in jsonData["results"].arrayValue {
                 
                 
-                let info = MovieInfo(title: item["title"].stringValue,
+                let info = MovieInfo(id:item["id"].intValue,
+                                     title: item["title"].stringValue,
                                      postPath: item["poster_path"].stringValue,
                                      backdropPath: item["backdrop_path"].stringValue,
                                      releaseDate: item["release_date"].stringValue,
@@ -98,7 +99,7 @@ class MovieViewController: UIViewController {
         // 쿼리 스트링으로 파라미터 전달
         let url = url + "?api_key=\(APIKey.movieKey)"
         
-        AF.request(url, method: .get).validate(statusCode: 200...500).responseJSON { response in
+        AF.request(url, method: .get).validate(statusCode: 200...500).responseData { response in
             switch response.result {
             case .success(let value):
                 
@@ -124,11 +125,19 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.identifier, for: indexPath) as! MovieCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reuseIdentifier, for: indexPath) as! MovieCell
         
         cell.configurateCell(movieInfo: movieList[indexPath.row])
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CreditViewController.reuseIdentifier) as! CreditViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
 }
 
