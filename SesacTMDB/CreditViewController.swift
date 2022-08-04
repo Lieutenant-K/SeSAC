@@ -28,6 +28,7 @@ class CreditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "출연 및 제작"
         
         tableView.rowHeight = 120
         tableView.tableHeaderView?.frame.size.height = UIScreen.main.bounds.width * backdropImageRatio

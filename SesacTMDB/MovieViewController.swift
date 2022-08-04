@@ -17,11 +17,14 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let progressHud = JGProgressHUD()
+    var currentPage = 1
+    var totalResult = 0
     var genreList = [Int: String]()
     var movieList: [MovieInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.backButtonTitle = ""
         configurateCollectionView()
         fetchGenreList()
         fetchMovieList()
@@ -38,13 +41,14 @@ class MovieViewController: UIViewController {
         layout.itemSize = CGSize(width: width , height: width)
         
         layout.minimumInteritemSpacing = spacing
-        layout.minimumLineSpacing = spacing+10
+        layout.minimumLineSpacing = spacing
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         
         collectionView.collectionViewLayout = layout
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.prefetchDataSource = self
         
     }
     
@@ -70,9 +74,11 @@ class MovieViewController: UIViewController {
     
     func fetchMovieList() {
         
-        let url = EndPoint.trending(.movie, .week).url
+        let url = EndPoint.trending(.movie, .day).url
         
-        requestData(url: url) { jsonData in
+        requestData(url: url, parameter: ["page": currentPage]) { jsonData in
+            
+            self.totalResult = jsonData["total_results"].intValue
             
             for item in jsonData["results"].arrayValue {
                 
@@ -96,14 +102,14 @@ class MovieViewController: UIViewController {
         
     }
     
-    func requestData(url: String, completionHandler: @escaping (_ jsonData : JSON) -> Void) {
+    func requestData(url: String, parameter: Parameters? = nil, completionHandler: @escaping (_ jsonData : JSON) -> Void) {
         
         // 쿼리 스트링으로 파라미터 전달
         let url = url + "?api_key=\(APIKey.movieKey)"
         
         progressHud.show(in: self.view, animated: true)
         
-        AF.request(url, method: .get).validate(statusCode: 200...500).responseData { response in
+        AF.request(url, method: .get, parameters: parameter).validate(statusCode: 200...500).responseData { response in
             switch response.result {
             case .success(let value):
                 
@@ -153,3 +159,26 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
 }
 
+
+extension MovieViewController: UICollectionViewDataSourcePrefetching {
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        
+        for index in indexPaths {
+            
+            if index.item == movieList.count-1 && movieList.count < totalResult {
+                
+                currentPage += 1
+                fetchMovieList()
+                
+                
+            }
+            
+        }
+    }
+    
+    
+    
+    
+    
+}
