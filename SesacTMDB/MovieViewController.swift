@@ -68,7 +68,7 @@ class MovieViewController: UIViewController {
     
     func fetchMovieList() {
         
-        let url = EndPoint.trending(MediaTypes.movie, TimeWindows.week).url
+        let url = EndPoint.trending(.movie, .week).url
         
         requestData(url: url) { jsonData in
             
@@ -134,7 +134,14 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CreditViewController.reuseIdentifier) as! CreditViewController
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: CreditViewController.reuseIdentifier, creator: { coder in
+            
+            let vc = CreditViewController(coder: coder, info: self.movieList[indexPath.row])
+            
+            return vc
+            
+        })
+                
         
         self.navigationController?.pushViewController(vc, animated: true)
         

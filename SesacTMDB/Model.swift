@@ -63,6 +63,7 @@ enum EndPoint {
     case trending(MediaTypes, TimeWindows)
     case image(ImageSizes, String)
     case genre(Genres)
+    case credit(Genres, Int)
     
     
     var url: String {
@@ -73,6 +74,8 @@ enum EndPoint {
             return "https://image.tmdb.org/t/p/\(size.size)\(path)"
         case .genre(let genre):
             return "https://api.themoviedb.org/3/genre/\(genre.rawValue)/list"
+        case .credit(let genre, let id):
+            return "https://api.themoviedb.org/3/\(genre.rawValue)/\(id)/credits"
         }
     }
     
@@ -95,6 +98,14 @@ struct CastInfo {
     let department: String
     let character: String
     let profilePath: String
+    
+    var titleText: String {
+        name
+    }
+    
+    var subText: String {
+        "\(character) / \(department)"
+    }
 }
 
 struct CrewInfo {
@@ -103,6 +114,14 @@ struct CrewInfo {
     let department: String
     let job: String
     let profilePath: String
+    
+    var titleText: String {
+        name
+    }
+    
+    var subText: String {
+        "\(job) / \(department)"
+    }
 }
 
 //struct Genre {

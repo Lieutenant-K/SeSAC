@@ -36,7 +36,7 @@ class MovieCell: UICollectionViewCell {
         
         titleLabel.text = movieInfo.title
         
-        imageView.kf.setImage(with: URL(string: EndPoint.image(ImageSizes.backdrop(BackdropSizes.original), movieInfo.backdropPath).url))
+        imageView.kf.setImage(with: URL(string: EndPoint.image(.backdrop(.w780), movieInfo.backdropPath).url))
         
         overviewLabel.text = movieInfo.overview
         
