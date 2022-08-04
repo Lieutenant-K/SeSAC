@@ -10,11 +10,13 @@ import UIKit
 import Alamofire
 import Kingfisher
 import SwiftyJSON
+import JGProgressHUD
 
 class MovieViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let progressHud = JGProgressHUD()
     var genreList = [Int: String]()
     var movieList: [MovieInfo] = []
     
@@ -99,6 +101,8 @@ class MovieViewController: UIViewController {
         // 쿼리 스트링으로 파라미터 전달
         let url = url + "?api_key=\(APIKey.movieKey)"
         
+        progressHud.show(in: self.view, animated: true)
+        
         AF.request(url, method: .get).validate(statusCode: 200...500).responseData { response in
             switch response.result {
             case .success(let value):
@@ -112,6 +116,7 @@ class MovieViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
+            self.progressHud.dismiss(animated: false)
         }
     }
     

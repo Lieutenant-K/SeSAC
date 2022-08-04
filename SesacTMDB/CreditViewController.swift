@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import JGProgressHUD
 
 class CreditViewController: UIViewController {
     
@@ -19,6 +20,7 @@ class CreditViewController: UIViewController {
     @IBOutlet weak var headerPosterImageView: UIImageView!
     
     let movieInfo: MovieInfo
+    let progressHud = JGProgressHUD()
     let backdropImageRatio = 497.0 / 885.0
     var castList: [CastInfo] = []
     var crewList: [CrewInfo] = []
@@ -89,6 +91,8 @@ class CreditViewController: UIViewController {
         // 쿼리 스트링으로 파라미터 전달
         let url = url + "?api_key=\(APIKey.movieKey)"
         
+        progressHud.show(in: self.view, animated: true)
+        
         AF.request(url, method: .get).validate(statusCode: 200...500).responseData { response in
             switch response.result {
             case .success(let value):
@@ -101,6 +105,7 @@ class CreditViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
+            self.progressHud.dismiss(animated: false)
         }
     }
     
