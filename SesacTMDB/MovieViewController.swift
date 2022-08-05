@@ -11,6 +11,7 @@ import Alamofire
 import Kingfisher
 import SwiftyJSON
 import JGProgressHUD
+import Toast
 
 class MovieViewController: UIViewController {
     
@@ -83,13 +84,22 @@ class MovieViewController: UIViewController {
     @objc func touchLinkButton(_ sender: UIButton) {
         
         APIManager.shared.fetchVideos(genre: .movie, id: movieList[sender.tag].id) { url in
-            
+        
             DispatchQueue.main.async {
+                
+                guard let url = url else {
+                    self.view.makeToast("No video has found", position: .center)
+                    return
+                }
+                
                 guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: WebViewController.reuseIdentifier) as? WebViewController else { return }
+                
                 vc.linkURL = url
+                
                 self.present(vc, animated: true)
             }
         }
+        
     }
 }
 

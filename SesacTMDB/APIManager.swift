@@ -78,7 +78,7 @@ class APIManager {
         
     }
     
-    func fetchVideos(genre: GenreMediaTypes, id: Int, completionHandler: @escaping (String) -> Void) {
+    func fetchVideos(genre: GenreMediaTypes, id: Int, completionHandler: @escaping (String?) -> Void) {
         
         let url = EndPoint.video(genre, id).url
         
@@ -86,9 +86,7 @@ class APIManager {
             
             let result = jsonData["results"].arrayValue
                 
-            if result.isEmpty { return }
-            
-            let videoURL = "https://www.youtube.com/watch?v=\(result[0]["key"].stringValue)"
+            let videoURL = result.isEmpty ? nil : "https://www.youtube.com/watch?v=\(result[0]["key"].stringValue)"
             
             completionHandler(videoURL)
         }
