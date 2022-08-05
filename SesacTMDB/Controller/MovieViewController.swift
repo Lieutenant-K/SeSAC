@@ -68,7 +68,7 @@ class MovieViewController: UIViewController {
     func fetchMovieList() {
         
         progressHud.show(in: self.view, animated: false)
-        APIManager.shared.fetchTrendingItems(timeWindow: .day, page: currentPage) { total, movieList in
+        APIManager.shared.fetchTrendingItems(media: .movie, timeWindow: .day, page: currentPage) { total, movieList in
             
             self.totalResult = total
             self.movieList.append(contentsOf: movieList)

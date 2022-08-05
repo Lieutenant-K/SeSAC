@@ -15,9 +15,9 @@ class APIManager {
     static let shared = APIManager()
     
     // available only movie media type
-    func fetchTrendingItems(timeWindow: TimeWindows, page: Int, completionHandler: @escaping (Int, [MovieInfo]) -> Void) {
+    func fetchTrendingItems(media: MediaTypes, timeWindow: TimeWindows, page: Int, completionHandler: @escaping (Int, [MovieInfo]) -> Void) {
         
-        let url = EndPoint.trending(.movie, timeWindow).url
+        let url = EndPoint.trending(media, timeWindow).url
         
         requestTMDBData(url: url, parameter: ["page": page]) { jsonData in
             

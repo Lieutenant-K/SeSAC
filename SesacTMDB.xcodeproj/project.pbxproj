@@ -67,6 +67,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D628EF0289DA0CB00337BCD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0DA472F2289BD3C60068E797 /* CreditCell.swift */,
+				0DD9C942289A7F6100488F0D /* MovieCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0D628EF1289DA39C00337BCD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0DEB1E042899FA9E001D1D23 /* MovieViewController.swift */,
+				0D628EEB289D979500337BCD /* WebViewController.swift */,
+				0DA472F0289BCAE10068E797 /* CreditViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0D628EF2289DA3AC00337BCD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0DEB1E182899FCB5001D1D23 /* Constant.swift */,
+				0DD9C940289A7BAD00488F0D /* Model.swift */,
+				0DA472EE289BC9EA0068E797 /* Extension.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0DEB1DF42899FA9E001D1D23 = {
 			isa = PBXGroup;
 			children = (
@@ -87,20 +116,14 @@
 		0DEB1DFF2899FA9E001D1D23 /* SesacTMDB */ = {
 			isa = PBXGroup;
 			children = (
+				0D628EF2289DA3AC00337BCD /* Model */,
+				0D628EF1289DA39C00337BCD /* Controller */,
+				0D628EF0289DA0CB00337BCD /* View */,
 				0DEB1E1A2899FCC4001D1D23 /* Key */,
 				0DEB1E002899FA9E001D1D23 /* AppDelegate.swift */,
 				0DEB1E022899FA9E001D1D23 /* SceneDelegate.swift */,
-				0DEB1E162899FCA5001D1D23 /* APIKey.swift */,
-				0DEB1E182899FCB5001D1D23 /* Constant.swift */,
-				0DD9C940289A7BAD00488F0D /* Model.swift */,
-				0DA472EE289BC9EA0068E797 /* Extension.swift */,
-				0DEB1E042899FA9E001D1D23 /* MovieViewController.swift */,
 				0D628EE9289D59E000337BCD /* APIManager.swift */,
-				0DD9C942289A7F6100488F0D /* MovieCell.swift */,
-				0DA472F2289BD3C60068E797 /* CreditCell.swift */,
 				0DEB1E062899FA9E001D1D23 /* Main.storyboard */,
-				0D628EEB289D979500337BCD /* WebViewController.swift */,
-				0DA472F0289BCAE10068E797 /* CreditViewController.swift */,
 				0DEB1E092899FAA1001D1D23 /* Assets.xcassets */,
 				0DEB1E0B2899FAA1001D1D23 /* LaunchScreen.storyboard */,
 				0DEB1E0E2899FAA1001D1D23 /* Info.plist */,
@@ -111,6 +134,7 @@
 		0DEB1E1A2899FCC4001D1D23 /* Key */ = {
 			isa = PBXGroup;
 			children = (
+				0DEB1E162899FCA5001D1D23 /* APIKey.swift */,
 			);
 			path = Key;
 			sourceTree = "<group>";
