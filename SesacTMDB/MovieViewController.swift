@@ -79,32 +79,18 @@ class MovieViewController: UIViewController {
         }
         
     }
-    /*
-    func requestData(url: String, parameter: Parameters? = nil, completionHandler: @escaping (_ jsonData : JSON) -> Void) {
+    
+    @objc func touchLinkButton(_ sender: UIButton) {
         
-        // 쿼리 스트링으로 파라미터 전달
-        let url = url + "?api_key=\(APIKey.movieKey)"
-        
-        progressHud.show(in: self.view, animated: true)
-        
-        AF.request(url, method: .get, parameters: parameter).validate(statusCode: 200...500).responseData { response in
-            switch response.result {
-            case .success(let value):
-                
-                let json = JSON(value)
-//                print(json)
-                
-                completionHandler(json)
-                
-                
-            case .failure(let error):
-                print(error)
+        APIManager.shared.fetchVideos(genre: .movie, id: movieList[sender.tag].id) { url in
+            
+            DispatchQueue.main.async {
+                guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: WebViewController.reuseIdentifier) as? WebViewController else { return }
+                vc.linkURL = url
+                self.present(vc, animated: true)
             }
-            self.progressHud.dismiss(animated: false)
         }
     }
-    */
-    
 }
 
 
@@ -118,6 +104,8 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reuseIdentifier, for: indexPath) as! MovieCell
         
         cell.configurateCell(movieInfo: movieList[indexPath.row], genreDict: genreDictionary)
+        cell.linkButton.addTarget(self, action: #selector(touchLinkButton(_:)), for: .touchUpInside)
+        cell.linkButton.tag = indexPath.row
         
         return cell
     }

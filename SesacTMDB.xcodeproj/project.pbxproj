@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D628EEA289D59E000337BCD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D628EE9289D59E000337BCD /* APIManager.swift */; };
+		0D628EEC289D979500337BCD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D628EEB289D979500337BCD /* WebViewController.swift */; };
 		0DA472EF289BC9EA0068E797 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472EE289BC9EA0068E797 /* Extension.swift */; };
 		0DA472F1289BCAE10068E797 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472F0289BCAE10068E797 /* CreditViewController.swift */; };
 		0DA472F3289BD3C60068E797 /* CreditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472F2289BD3C60068E797 /* CreditCell.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		0D628EE9289D59E000337BCD /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		0D628EEB289D979500337BCD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		0DA472EE289BC9EA0068E797 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0DA472F0289BCAE10068E797 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
 		0DA472F2289BD3C60068E797 /* CreditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCell.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				0DD9C942289A7F6100488F0D /* MovieCell.swift */,
 				0DA472F2289BD3C60068E797 /* CreditCell.swift */,
 				0DEB1E062899FA9E001D1D23 /* Main.storyboard */,
+				0D628EEB289D979500337BCD /* WebViewController.swift */,
 				0DA472F0289BCAE10068E797 /* CreditViewController.swift */,
 				0DEB1E092899FAA1001D1D23 /* Assets.xcassets */,
 				0DEB1E0B2899FAA1001D1D23 /* LaunchScreen.storyboard */,
@@ -201,6 +204,7 @@
 				0D628EEA289D59E000337BCD /* APIManager.swift in Sources */,
 				0DEB1E192899FCB5001D1D23 /* Constant.swift in Sources */,
 				0DD9C941289A7BAD00488F0D /* Model.swift in Sources */,
+				0D628EEC289D979500337BCD /* WebViewController.swift in Sources */,
 				0DA472F1289BCAE10068E797 /* CreditViewController.swift in Sources */,
 				0DEB1E172899FCA5001D1D23 /* APIKey.swift in Sources */,
 				0DEB1E032899FA9E001D1D23 /* SceneDelegate.swift in Sources */,
@@ -351,6 +355,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5QA7Y24MQ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SesacTMDB/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -378,6 +383,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5QA7Y24MQ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SesacTMDB/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

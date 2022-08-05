@@ -19,7 +19,7 @@ class APIManager {
         
         let url = EndPoint.trending(.movie, timeWindow).url
         
-        requestData(url: url, parameter: ["page": page]) { jsonData in
+        requestTMDBData(url: url, parameter: ["page": page]) { jsonData in
             
             let total = jsonData["total_results"].intValue
             
@@ -41,7 +41,7 @@ class APIManager {
         
         let url = EndPoint.genre(media).url
         
-        requestData(url: url) { data in
+        requestTMDBData(url: url) { data in
             
             let dict = Dictionary(uniqueKeysWithValues: data["genres"].arrayValue.map { ($0["id"].intValue, $0["name"].stringValue) })
             
@@ -54,7 +54,7 @@ class APIManager {
         
         let url = EndPoint.credit(genre, id).url
         
-        requestData(url: url) { jsonData in
+        requestTMDBData(url: url) { jsonData in
             
             let castList = jsonData["cast"].arrayValue.map { item in
                 
@@ -78,7 +78,25 @@ class APIManager {
         
     }
     
-    func requestData(url: String, parameter: Parameters? = nil, completionHandler: @escaping (_ jsonData : JSON) -> Void) {
+    func fetchVideos(genre: GenreMediaTypes, id: Int, completionHandler: @escaping (String) -> Void) {
+        
+        let url = EndPoint.video(genre, id).url
+        
+        requestTMDBData(url: url) { jsonData in
+            
+            let result = jsonData["results"].arrayValue
+                
+            if result.isEmpty { return }
+            
+            let videoURL = "https://www.youtube.com/watch?v=\(result[0]["key"].stringValue)"
+            
+            completionHandler(videoURL)
+        }
+        
+        
+    }
+    
+    func requestTMDBData(url: String, parameter: Parameters? = nil, completionHandler: @escaping (_ jsonData : JSON) -> Void) {
         
         // 쿼리 스트링으로 파라미터 전달
         let url = url + "?api_key=\(APIKey.movieKey)"
