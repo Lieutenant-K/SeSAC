@@ -10,6 +10,7 @@ import Kingfisher
 
 class MovieCell: UICollectionViewCell {
     
+    @IBOutlet weak var linkButton: UIButton!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView! {
@@ -30,7 +31,7 @@ class MovieCell: UICollectionViewCell {
         }
     }
     
-    func configurateCell(movieInfo: MovieInfo) {
+    func configurateCell(movieInfo: MovieInfo, genreDict: [Int: String]) {
         
         releaseDateLabel.text = movieInfo.releaseDate
         
@@ -40,7 +41,7 @@ class MovieCell: UICollectionViewCell {
         
         overviewLabel.text = movieInfo.overview
         
-        genresLabel.text = movieInfo.genre.joined(separator: " ")
+        genresLabel.text =  movieInfo.genre.map { "#" + (genreDict[$0] ?? "No Genre") }.joined(separator: " ")
     }
     
 }

@@ -19,7 +19,7 @@ class MovieViewController: UIViewController {
     let progressHud = JGProgressHUD()
     var currentPage = 1
     var totalResult = 0
-    var genreList = [Int: String]()
+    var genreDictionary = [Int: String]()
     var movieList: [MovieInfo] = []
     
     override func viewDidLoad() {
@@ -54,54 +54,32 @@ class MovieViewController: UIViewController {
     
     func fetchGenreList() {
         
-        var url = EndPoint.genre(Genres.tv).url
-        
-        requestData(url: url) { data in
-            for genre in data["genres"].arrayValue {
-                self.genreList[genre["id"].intValue] = genre["name"].stringValue
-            }
+        APIManager.shared.fetchGenreDictionary(media: .movie) { dict in
+            self.genreDictionary.merge(dict) { (current, _ ) in current }
         }
         
-        url = EndPoint.genre(Genres.movie).url
-        
-        requestData(url: url) { data in
-            for genre in data["genres"].arrayValue {
-                self.genreList[genre["id"].intValue] = genre["name"].stringValue
-            }
-        }
+//        APIManager.shared.fetchGenreDictionary(media: .tv) { dict in
+//            self.genreDictionary.merge(dict) { (current, _ ) in current }
+//        }
         
     }
     
     func fetchMovieList() {
         
-        let url = EndPoint.trending(.movie, .day).url
-        
-        requestData(url: url, parameter: ["page": currentPage]) { jsonData in
+        progressHud.show(in: self.view, animated: false)
+        APIManager.shared.fetchTrendingItems(timeWindow: .day, page: currentPage) { total, movieList in
             
-            self.totalResult = jsonData["total_results"].intValue
+            self.totalResult = total
+            self.movieList.append(contentsOf: movieList)
             
-            for item in jsonData["results"].arrayValue {
-                
-                
-                let info = MovieInfo(id:item["id"].intValue,
-                                     title: item["title"].stringValue,
-                                     postPath: item["poster_path"].stringValue,
-                                     backdropPath: item["backdrop_path"].stringValue,
-                                     releaseDate: item["release_date"].stringValue,
-                                     overview: item["overview"].stringValue,
-                                     genre: item["genre_ids"].arrayValue.map { element in
-                    "#"+(self.genreList[element.intValue] ?? "No Genre")
-                })
-                
-                self.movieList.append(info)
-                
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.progressHud.dismiss(animated: false)
             }
-            self.collectionView.reloadData()
         }
         
-        
     }
-    
+    /*
     func requestData(url: String, parameter: Parameters? = nil, completionHandler: @escaping (_ jsonData : JSON) -> Void) {
         
         // 쿼리 스트링으로 파라미터 전달
@@ -125,6 +103,7 @@ class MovieViewController: UIViewController {
             self.progressHud.dismiss(animated: false)
         }
     }
+    */
     
 }
 
@@ -138,7 +117,7 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reuseIdentifier, for: indexPath) as! MovieCell
         
-        cell.configurateCell(movieInfo: movieList[indexPath.row])
+        cell.configurateCell(movieInfo: movieList[indexPath.row], genreDict: genreDictionary)
         
         return cell
     }
@@ -173,12 +152,6 @@ extension MovieViewController: UICollectionViewDataSourcePrefetching {
                 
                 
             }
-            
         }
     }
-    
-    
-    
-    
-    
 }

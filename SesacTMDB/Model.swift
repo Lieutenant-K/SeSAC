@@ -19,7 +19,7 @@ enum TimeWindows: String {
     
 }
 
-enum Genres: String {
+enum GenreMediaTypes: String {
     
     case movie, tv
     
@@ -62,8 +62,9 @@ enum EndPoint {
     
     case trending(MediaTypes, TimeWindows)
     case image(ImageSizes, String)
-    case genre(Genres)
-    case credit(Genres, Int)
+    case genre(GenreMediaTypes)
+    case credit(GenreMediaTypes, Int)
+    case video(GenreMediaTypes, Int)
     
     
     var url: String {
@@ -76,6 +77,8 @@ enum EndPoint {
             return "https://api.themoviedb.org/3/genre/\(genre.rawValue)/list"
         case .credit(let genre, let id):
             return "https://api.themoviedb.org/3/\(genre.rawValue)/\(id)/credits"
+        case .video(let genre, let id):
+            return "https://api.themoviedb.org/3/\(genre)/\(id)/videos"
         }
     }
     
@@ -89,15 +92,15 @@ struct MovieInfo {
     let backdropPath: String
     let releaseDate: String
     let overview: String
-    let genre: [String]
+    let genre: [Int]
 }
 
-struct CastInfo {
+struct CastInfo: DisplayInCell {
     
     let name: String
     let department: String
     let character: String
-    let profilePath: String
+    let imagePath: String
     
     var titleText: String {
         name
@@ -108,12 +111,12 @@ struct CastInfo {
     }
 }
 
-struct CrewInfo {
+struct CrewInfo: DisplayInCell {
     
     let name: String
     let department: String
     let job: String
-    let profilePath: String
+    let imagePath: String
     
     var titleText: String {
         name

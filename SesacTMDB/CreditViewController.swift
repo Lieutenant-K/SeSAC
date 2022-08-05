@@ -14,6 +14,12 @@ import JGProgressHUD
 
 class CreditViewController: UIViewController {
     
+    enum Section: String, CaseIterable {
+        case cast = "Cast"
+        case crew = "Crew"
+        
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerBackdropImageView: UIImageView!
     @IBOutlet weak var headerTitleLabel: UILabel!
@@ -22,8 +28,8 @@ class CreditViewController: UIViewController {
     let movieInfo: MovieInfo
     let progressHud = JGProgressHUD()
     let backdropImageRatio = 497.0 / 885.0
-    var castList: [CastInfo] = []
-    var crewList: [CrewInfo] = []
+    
+    var infoList = [[DisplayInCell]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +43,6 @@ class CreditViewController: UIViewController {
         
         
         configurateHeaderView()
-        
         fetchCreditList()
         
     }
@@ -53,62 +58,18 @@ class CreditViewController: UIViewController {
     }
     
     func fetchCreditList() {
-        
-        let url = EndPoint.credit(.movie, movieInfo.id).url
-        
-        requestData(url: url) { jsonData in
-            
-            for item in jsonData["cast"].arrayValue {
-                
-                let info = CastInfo(name:item["name"].stringValue,
-                                    department: item["known_for_department"].stringValue,
-                                    character: item["character"].stringValue,
-                                    profilePath: item["profile_path"].stringValue
-                )
-                
-                self.castList.append(info)
+        progressHud.show(in: self.view, animated: false)
+        APIManager.shared.fetchCreditDetails(genre: .movie, id:movieInfo.id) { list in
+            self.infoList = list
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.progressHud.dismiss(animated: false)
             }
             
-            for item in jsonData["crew"].arrayValue {
-                
-                let info = CrewInfo(name:item["name"].stringValue,
-                                    department: item["department"].stringValue,
-                                    job: item["job"].stringValue,
-                                    profilePath: item["profile_path"].stringValue
-                )
-                
-                self.crewList.append(info)
-            }
-            
-            self.tableView.reloadData()
         }
-        
         
     }
     
-    
-    func requestData(url: String, completionHandler: @escaping (_ jsonData : JSON) -> Void) {
-        
-        // 쿼리 스트링으로 파라미터 전달
-        let url = url + "?api_key=\(APIKey.movieKey)"
-        
-        progressHud.show(in: self.view, animated: true)
-        
-        AF.request(url, method: .get).validate(statusCode: 200...500).responseData { response in
-            switch response.result {
-            case .success(let value):
-                
-                let json = JSON(value)
-                
-                completionHandler(json)
-                
-                
-            case .failure(let error):
-                print(error)
-            }
-            self.progressHud.dismiss(animated: false)
-        }
-    }
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -127,45 +88,23 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CreditCell.reuseIdentifier, for: indexPath) as! CreditCell
         
-        switch indexPath.section {
-        case 0:
-            cell.configurateCell(title: castList[indexPath.row].titleText, subTitle: castList[indexPath.row].subText, profilePath: castList[indexPath.row].profilePath)
-            
-        case 1:
-            cell.configurateCell(title: crewList[indexPath.row].titleText, subTitle: crewList[indexPath.row].subText, profilePath: crewList[indexPath.row].profilePath)
-        default:
-            break
-        }
+        let info = infoList[indexPath.section][indexPath.row]
+        
+        cell.configurateCell(title: info.titleText, subTitle: info.subText, profilePath: info.imagePath)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        switch section {
-        case 0:
-            return castList.count
-        case 1:
-            return crewList.count
-        default:
-            return 0
-        }
-        
+        infoList[section].count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return infoList.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Cast"
-        case 1:
-            return "Crew"
-        default:
-            return ""
-        }
+        Section.allCases[section].rawValue
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
