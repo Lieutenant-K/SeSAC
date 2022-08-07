@@ -13,18 +13,33 @@ import Kingfisher
 
 class ImageSearchViewController: UIViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     var searchList:[ImageSearchData] = []
     
+    // 검색 시작 페이지
+    var startPage = 1
+    var displayCount = 10
+    var total = 0
+    var isDataLoading = false
+    var currentWord = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
+        configurateCollectionView()
+
+//        fetchImage()
+    }
+    
+    func configurateCollectionView(){
         
         let layout = UICollectionViewFlowLayout()
         let spacing: Double = 20
-        let width = UIScreen.main.bounds.width - 3*spacing
+        let width = (UIScreen.main.bounds.width - 2*spacing)
         let height = collectionView.bounds.height - 3*spacing
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: width/2 , height: height/2)
+        layout.itemSize = CGSize(width: width , height: width)
         
 //        print(collectionView.bounds.height)
         
@@ -36,41 +51,20 @@ class ImageSearchViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-//        collectionView.backgroundColor = .systemGray6
-        
-        
 
-        fetchImage(text: "에스파")
+        collectionView.prefetchDataSource = self
+        
     }
     
     
-    func fetchImage(text: String) {
+    func fetchImage(query: String) {
         
-        guard let text = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        
-        // 쿼리 스트링으로 파라미터 전달
-        let url = EndPoint.iamgeSearchURL + "query=\(text)&display=100&start=1&sort=sim"
-        
-        let header: HTTPHeaders = ["X-Naver-Client-Id": APIKey.NAVER, "X-Naver-Client-Secret": APIKey.NAVERKEY]
-        
-//        let parameters: Parameters = ["query":"apple" , "display": 30, "sort":"sim" ]
-        
-        AF.request(url, method: .get, headers: header).validate(statusCode: 200...500).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                
-                let json = JSON(value)
-//                print(json)
-                
-                for item in json["items"].arrayValue {
-                    self.searchList.append(ImageSearchData(title: item["title"].stringValue, link: item["link"].stringValue))
-                }
-                
+        ImageSearchAPIManager.shared.fetchImageData(query: query, startPage: startPage, displayCount: displayCount) { total, list in
+            
+            self.total = total
+            self.searchList.append(contentsOf: list)
+            DispatchQueue.main.async {
                 self.collectionView.reloadData()
-                
-            case .failure(let error):
-                print(error)
             }
             
         }
@@ -86,10 +80,111 @@ extension ImageSearchViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("===cellForItemAt", indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchImageCell.reuseIdentifier, for: indexPath) as! SearchImageCell
         
         cell.configurateContent(data: searchList[indexPath.row])
         
         return cell
     }
+    
+    /*
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print("itemWillDisplay", indexPath)
+        if indexPath.item == searchList.count - 1 {
+            startPage += displayCount
+            fetchImage(text: currentWord)
+        }
+    }*/
+    
+    /*
+    // 페이지네이션 방법 1
+    // 마지막 셀에 사용자가 위치해있는지 명확하게 확인이 어려움.
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        <#code#>
+    }
+     */
+    
+    
+    // 페이지네이션 방법 2
+    // 테이블, 컬렉션 뷰는 스크롤뷰를 상속받기 때문에 스크롤뷰 프로토콜 사용 가능
+    /*
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print(scrollView.contentSize.height, scrollView.contentOffset.y, scrollView.visibleSize.height)
+        if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.visibleSize.height - 20 && searchList.count < total && !isDataLoading {
+
+            isDataLoading = true
+            startPage += displayCount
+            fetchImage(text: currentWord)
+        }
+    }
+    */
+    
+    
 }
+
+
+// 페이지네이션 방법 3 용량이 큰 이미지를 다운로드해서 셀에 보여줄때 효과적
+// 셀이 화면에 보이기 전에 필요한 리소스를 다운로드 받고, 필요하지 않으면 취소할 수도 있음.
+// iOS 10 이상 지원, 스크롤 성능 향상됨.
+
+extension ImageSearchViewController: UICollectionViewDataSourcePrefetching {
+    
+    // 셀이 화면에 보이기 직전에 필요한 리소스를 다운로드
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        
+        for index in indexPaths {
+            
+            if searchList.count-1 == index.item && searchList.count < total {
+                startPage += displayCount
+                fetchImage(query: currentWord)
+            }
+            
+        }
+        
+        
+        print("====\(indexPaths)")
+    }
+    
+    // 취소
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        print("취소 ====\(indexPaths)")
+    }
+    
+    
+    
+    
+}
+
+
+extension ImageSearchViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            searchList.removeAll()
+            collectionView.reloadData()
+            startPage = 1
+            currentWord = text
+//            collectionView.scrollToItem(at: [0, 0], at: .top, animated: false)
+            fetchImage(query: text)
+            self.view.endEditing(true)
+            
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchList.removeAll()
+        collectionView.reloadData()
+        startPage = 1
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false , animated: true)
+    }
+    
+}
+
