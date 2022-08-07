@@ -15,7 +15,7 @@ class SearchImageCell: UICollectionViewCell {
     
     func configurateContent(data: ImageSearchData) {
         
-        self.titleLabel.text = data.title
+//        self.titleLabel.text = data.title
 //        print(data.link)
         self.imageView.kf.setImage(with: URL(string: data.link))
         
