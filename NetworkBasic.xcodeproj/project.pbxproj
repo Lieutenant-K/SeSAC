@@ -20,6 +20,8 @@
 		0D45BC5E2890E1FB008A21F4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D45BC5D2890E1FB008A21F4 /* SearchViewController.swift */; };
 		0D45BC612890E4D5008A21F4 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D45BC5F2890E4D5008A21F4 /* SearchTableViewCell.swift */; };
 		0D45BC622890E4D5008A21F4 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D45BC602890E4D5008A21F4 /* SearchTableViewCell.xib */; };
+		0DA26CED289CB3F800F27BE0 /* ImageSearchAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA26CEC289CB3F800F27BE0 /* ImageSearchAPIManager.swift */; };
+		0DA472ED289B50430068E797 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 0DA472EC289B50430068E797 /* JGProgressHUD */; };
 		0DDD3C912893619500B2CE18 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDD3C902893619500B2CE18 /* LocationViewController.swift */; };
 		0DDD3C93289384F600B2CE18 /* 나눔손글씨 칼국수.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DDD3C92289384F600B2CE18 /* 나눔손글씨 칼국수.ttf */; };
 		0DEB1DDE28975727001D1D23 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB1DDD28975727001D1D23 /* Protocol.swift */; };
@@ -53,6 +55,7 @@
 		0D45BC5D2890E1FB008A21F4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0D45BC5F2890E4D5008A21F4 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		0D45BC602890E4D5008A21F4 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		0DA26CEC289CB3F800F27BE0 /* ImageSearchAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchAPIManager.swift; sourceTree = "<group>"; };
 		0DDD3C902893619500B2CE18 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		0DDD3C92289384F600B2CE18 /* 나눔손글씨 칼국수.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 칼국수.ttf"; sourceTree = "<group>"; };
 		0DEB1DDD28975727001D1D23 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DA472ED289B50430068E797 /* JGProgressHUD in Frameworks */,
 				0DEB1DED289836C1001D1D23 /* Kingfisher in Frameworks */,
 				0DEB1DE528977CE0001D1D23 /* SwiftyJSON in Frameworks */,
 				0DEB1DE828977CFE001D1D23 /* Alamofire in Frameworks */,
@@ -110,6 +114,7 @@
 		0D45BC482890DD8F008A21F4 /* NetworkBasic */ = {
 			isa = PBXGroup;
 			children = (
+				0DA26CEB289CB3D700F27BE0 /* APIManager */,
 				0D45BC572890DD92008A21F4 /* Info.plist */,
 				0D45BC492890DD8F008A21F4 /* AppDelegate.swift */,
 				0DEB1DF028995E5C001D1D23 /* BeerCollectionViewCell.swift */,
@@ -138,6 +143,14 @@
 			path = NetworkBasic;
 			sourceTree = "<group>";
 		};
+		0DA26CEB289CB3D700F27BE0 /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				0DA26CEC289CB3F800F27BE0 /* ImageSearchAPIManager.swift */,
+			);
+			path = APIManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,6 +171,7 @@
 				0DEB1DE428977CE0001D1D23 /* SwiftyJSON */,
 				0DEB1DE728977CFE001D1D23 /* Alamofire */,
 				0DEB1DEC289836C1001D1D23 /* Kingfisher */,
+				0DA472EC289B50430068E797 /* JGProgressHUD */,
 			);
 			productName = NetworkBasic;
 			productReference = 0D45BC462890DD8F008A21F4 /* NetworkBasic.app */;
@@ -191,6 +205,7 @@
 				0DEB1DE328977CE0001D1D23 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				0DEB1DE628977CFE001D1D23 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0DEB1DEB289836C1001D1D23 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				0DA472EB289B50430068E797 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 0D45BC472890DD8F008A21F4 /* Products */;
 			projectDirPath = "";
@@ -232,6 +247,7 @@
 				0DEB1E20289A0952001D1D23 /* ImageSearchViewController.swift in Sources */,
 				0DEB1E22289A4D95001D1D23 /* SearchImageCell.swift in Sources */,
 				0D36D3D42892236B00BA6334 /* LottoViewController.swift in Sources */,
+				0DA26CED289CB3F800F27BE0 /* ImageSearchAPIManager.swift in Sources */,
 				0DDD3C912893619500B2CE18 /* LocationViewController.swift in Sources */,
 				0DEB1DDE28975727001D1D23 /* Protocol.swift in Sources */,
 				0D45BC4C2890DD8F008A21F4 /* SceneDelegate.swift in Sources */,
@@ -460,6 +476,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0DA472EB289B50430068E797 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		0DEB1DE328977CE0001D1D23 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
@@ -487,6 +511,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0DA472EC289B50430068E797 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DA472EB289B50430068E797 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
 		0DEB1DE428977CE0001D1D23 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0DEB1DE328977CE0001D1D23 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;

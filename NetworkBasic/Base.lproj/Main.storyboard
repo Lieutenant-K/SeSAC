@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DCO-Jz-t0p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CPc-sl-AbI">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -321,6 +321,31 @@
                                     <action selector="touchNotificationButton:" destination="Aoa-63-hyg" eventType="touchUpInside" id="uyH-nZ-EGB"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tWF-ym-n2D">
+                                <rect key="frame" x="67" y="184" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="miY-V3-szm">
+                                <rect key="frame" x="67" y="244" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41I-GR-rTz">
+                                <rect key="frame" x="67" y="393" width="240" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="downloadImage:" destination="Aoa-63-hyg" eventType="touchUpInside" id="zIT-Eu-gEX"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lLm-dW-cm8">
+                                <rect key="frame" x="176" y="185" width="131" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5Aa-zG-A9O"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -330,10 +355,13 @@
                             <constraint firstItem="jxY-1j-bVZ" firstAttribute="leading" secondItem="5Aa-zG-A9O" secondAttribute="leading" constant="20" id="pFe-Zl-Rjw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="miY-V3-szm" id="vp3-VT-e5o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tf-7k-MkC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3567" y="131"/>
+            <point key="canvasLocation" x="3566.666666666667" y="130.58035714285714"/>
         </scene>
         <!--Beer View Controller-->
         <scene sceneID="GvY-e1-mhy">
@@ -380,8 +408,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="go3-60-gLr">
+                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rsm-vc-rul">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sdh-7w-ErS">
                                     <size key="itemSize" width="158" height="197"/>
@@ -398,31 +430,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Q1-hl-5Ga">
-                                                    <rect key="frame" x="0.0" y="0.0" width="158" height="98.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="158" height="197"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXz-kZ-YiW">
-                                                    <rect key="frame" x="58.5" y="118.5" width="41.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6Q1-hl-5Ga" firstAttribute="top" secondItem="x47-H5-h0K" secondAttribute="top" id="5Sn-1U-gYt"/>
-                                                <constraint firstItem="RXz-kZ-YiW" firstAttribute="top" secondItem="6Q1-hl-5Ga" secondAttribute="bottom" constant="20" id="6jy-IU-ViG"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RXz-kZ-YiW" secondAttribute="trailing" constant="20" id="JZp-KS-4xE"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="RXz-kZ-YiW" secondAttribute="bottom" constant="20" id="QJg-qy-KSA"/>
-                                                <constraint firstItem="6Q1-hl-5Ga" firstAttribute="height" secondItem="x47-H5-h0K" secondAttribute="height" multiplier="0.5" id="V64-Ig-MKg"/>
                                                 <constraint firstAttribute="trailing" secondItem="6Q1-hl-5Ga" secondAttribute="trailing" id="ff5-f9-hcL"/>
                                                 <constraint firstItem="6Q1-hl-5Ga" firstAttribute="leading" secondItem="x47-H5-h0K" secondAttribute="leading" id="h7j-SS-8ny"/>
-                                                <constraint firstItem="RXz-kZ-YiW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x47-H5-h0K" secondAttribute="leading" constant="20" id="hzO-2l-Pgf"/>
-                                                <constraint firstItem="RXz-kZ-YiW" firstAttribute="centerX" secondItem="6Q1-hl-5Ga" secondAttribute="centerX" id="sML-2M-rl2"/>
+                                                <constraint firstAttribute="bottom" secondItem="6Q1-hl-5Ga" secondAttribute="bottom" id="oPQ-s0-dIx"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="158" height="197"/>
                                         <connections>
                                             <outlet property="imageView" destination="6Q1-hl-5Ga" id="zXG-Ao-boH"/>
-                                            <outlet property="titleLabel" destination="RXz-kZ-YiW" id="KQC-JW-CBl"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -431,14 +451,18 @@
                         <viewLayoutGuide key="safeArea" id="JZ9-UB-WiD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Rsm-vc-rul" firstAttribute="top" secondItem="JZ9-UB-WiD" secondAttribute="top" id="DeC-Db-xUd"/>
-                            <constraint firstItem="JZ9-UB-WiD" firstAttribute="trailing" secondItem="Rsm-vc-rul" secondAttribute="trailing" id="F7w-zk-SLe"/>
-                            <constraint firstItem="Rsm-vc-rul" firstAttribute="leading" secondItem="JZ9-UB-WiD" secondAttribute="leading" id="hgM-Df-a32"/>
-                            <constraint firstItem="JZ9-UB-WiD" firstAttribute="bottom" secondItem="Rsm-vc-rul" secondAttribute="bottom" id="op2-bW-IiK"/>
+                            <constraint firstItem="Rsm-vc-rul" firstAttribute="top" secondItem="go3-60-gLr" secondAttribute="bottom" id="MFJ-bc-0EC"/>
+                            <constraint firstItem="go3-60-gLr" firstAttribute="leading" secondItem="JZ9-UB-WiD" secondAttribute="leading" id="MNm-mB-pvW"/>
+                            <constraint firstItem="go3-60-gLr" firstAttribute="trailing" secondItem="JZ9-UB-WiD" secondAttribute="trailing" id="Nfd-vC-1un"/>
+                            <constraint firstItem="Rsm-vc-rul" firstAttribute="leading" secondItem="JZ9-UB-WiD" secondAttribute="leading" id="Ot6-rB-HcR"/>
+                            <constraint firstItem="Rsm-vc-rul" firstAttribute="trailing" secondItem="JZ9-UB-WiD" secondAttribute="trailing" id="UKX-ug-Fxx"/>
+                            <constraint firstItem="go3-60-gLr" firstAttribute="top" secondItem="JZ9-UB-WiD" secondAttribute="top" id="pJY-dy-46Y"/>
+                            <constraint firstItem="Rsm-vc-rul" firstAttribute="bottom" secondItem="JZ9-UB-WiD" secondAttribute="bottom" id="tSE-UM-jwW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Rsm-vc-rul" id="iQQ-pq-n2S"/>
+                        <outlet property="searchBar" destination="go3-60-gLr" id="bWb-fg-Vre"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdS-Jw-UAF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

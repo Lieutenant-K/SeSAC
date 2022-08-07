@@ -35,6 +35,11 @@ class LottoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
+        let date = Calendar.current.date(from: DateComponents(year:2020, month:12, day:27))!
+        print(formatter.string(from: date))
+        */
+        
         numberList = Array(1...number).reversed()
         
         numberTextField.inputView = pickerView
@@ -44,40 +49,61 @@ class LottoViewController: UIViewController {
         
         configureLottoLabel()
         
-        requestLotto(number: number)
+        showLottoNumber(number: number)
     }
     
     func configureLottoLabel() {
         
-        for i in 0..<7 {
-            
-            if let label = self.numberLabelStackView.arrangedSubviews[i] as? UILabel {
-                
+        for label in self.numberLabelStackView.arrangedSubviews {
+            if let label = label as? UILabel {
                 label.textAlignment = .center
                 label.layer.cornerRadius = label.bounds.width/2
                 label.clipsToBounds = true
+                label.text = ""
             }
         }
+    }
+    
+    func displayLottoNumber(numbers: [Int]){
+        for index in (0..<7) {
+            if let label = self.numberLabelStackView.arrangedSubviews[index] as? UILabel {
+                label.text = String(numbers[index])
+            }
+        }
+    }
+    
+    func showLottoNumber(number: Int) {
+        
+        if let numbers = UserDefaults.standard.array(forKey: "\(number)") as? [Int] {
+            print("데이터 재활용", numbers)
+//            print("재활용")
+            displayLottoNumber(numbers: numbers)
+        } else { requestLotto(number: number) }
+        
+        
         
     }
     
     func requestLotto(number: Int) {
         
         let url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(number)"
+        
         AF.request(url, method: .get).validate(statusCode: 200..<300).responseJSON { response in
             switch response.result {
             case .success(let value):
                 
                 let json = JSON(value)
                 
-                for i in 1...7 {
-                    
-                    if let label = self.numberLabelStackView.arrangedSubviews[i-1] as? UILabel {
-                        
-                        label.text = String(json[i<7 ? "drwtNo\(i)" : "bnusNo"].intValue)
-                        
-                    }
+                if json["returnValue"].stringValue == "fail" {
+                    return
                 }
+
+                let lottoNumbers = (Array(1...6).map { json["drwtNo\($0)"].intValue }) + [json["bnusNo"].intValue]
+                
+                print("저장해라")
+                UserDefaults.standard.set(lottoNumbers, forKey: "\(number)")
+                
+                self.displayLottoNumber(numbers: lottoNumbers)
                 
                 self.numberTextField.text = json["drwNoDate"].stringValue
                 
@@ -106,7 +132,7 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        requestLotto(number: numberList[row])
+        showLottoNumber(number: numberList[row])
     }
     
 }
