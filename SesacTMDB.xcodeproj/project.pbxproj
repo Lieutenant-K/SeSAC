@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0D403C9328A1298100F55ACF /* InfoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D403C9228A1298100F55ACF /* InfoListCell.xib */; };
+		0D403C9628A12DA200F55ACF /* ExpandableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D403C9428A12DA200F55ACF /* ExpandableCell.swift */; };
+		0D403C9728A12DA200F55ACF /* ExpandableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D403C9528A12DA200F55ACF /* ExpandableCell.xib */; };
 		0D628EEA289D59E000337BCD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D628EE9289D59E000337BCD /* APIManager.swift */; };
 		0D628EEC289D979500337BCD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D628EEB289D979500337BCD /* WebViewController.swift */; };
 		0D628EEF289D9E1E00337BCD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0D628EEE289D9E1E00337BCD /* Toast */; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		0D403C9228A1298100F55ACF /* InfoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoListCell.xib; sourceTree = "<group>"; };
+		0D403C9428A12DA200F55ACF /* ExpandableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableCell.swift; sourceTree = "<group>"; };
+		0D403C9528A12DA200F55ACF /* ExpandableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableCell.xib; sourceTree = "<group>"; };
 		0D628EE9289D59E000337BCD /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0D628EEB289D979500337BCD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		0DA472EE289BC9EA0068E797 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 			children = (
 				0DA472F2289BD3C60068E797 /* InfoListCell.swift */,
 				0D403C9228A1298100F55ACF /* InfoListCell.xib */,
+				0D403C9428A12DA200F55ACF /* ExpandableCell.swift */,
+				0D403C9528A12DA200F55ACF /* ExpandableCell.xib */,
 				0DD9C942289A7F6100488F0D /* MovieCell.swift */,
 			);
 			path = View;
@@ -214,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D403C9728A12DA200F55ACF /* ExpandableCell.xib in Resources */,
 				0DEB1E152899FC1F001D1D23 /* .gitignore in Resources */,
 				0DEB1E0D2899FAA1001D1D23 /* LaunchScreen.storyboard in Resources */,
 				0DEB1E0A2899FAA1001D1D23 /* Assets.xcassets in Resources */,
@@ -232,6 +239,7 @@
 				0DA472F3289BD3C60068E797 /* InfoListCell.swift in Sources */,
 				0DD9C943289A7F6100488F0D /* MovieCell.swift in Sources */,
 				0DEB1E052899FA9E001D1D23 /* MovieViewController.swift in Sources */,
+				0D403C9628A12DA200F55ACF /* ExpandableCell.swift in Sources */,
 				0DEB1E012899FA9E001D1D23 /* AppDelegate.swift in Sources */,
 				0D628EEA289D59E000337BCD /* APIManager.swift in Sources */,
 				0DEB1E192899FCB5001D1D23 /* Constant.swift in Sources */,

@@ -15,6 +15,7 @@ import JGProgressHUD
 class CreditViewController: UIViewController {
     
     enum Section: String, CaseIterable {
+        case overview = "Overview"
         case cast = "Cast"
         case crew = "Crew"
         
@@ -36,15 +37,21 @@ class CreditViewController: UIViewController {
         
         title = "출연 및 제작"
         
-        tableView.rowHeight = 120
+        configurateTableView()
+        
+        configurateHeaderView()
+        
+        fetchCreditList()
+        
+    }
+    
+    func configurateTableView() {
+        
         tableView.tableHeaderView?.frame.size.height = UIScreen.main.bounds.width * backdropImageRatio
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: InfoListCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: InfoListCell.reuseIdentifier)
-        
-        
-        configurateHeaderView()
-        fetchCreditList()
+        tableView.register(.init(nibName: ExpandableCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: ExpandableCell.reuseIdentifier)
         
     }
     
@@ -71,6 +78,11 @@ class CreditViewController: UIViewController {
         
     }
     
+    @objc func touchExpandedButton(_ sender: UIButton) {
+        
+        
+        
+    }
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -87,21 +99,38 @@ class CreditViewController: UIViewController {
 extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: InfoListCell.reuseIdentifier, for: indexPath) as! InfoListCell
         
-        let info = infoList[indexPath.section][indexPath.row]
+        let section = Section.allCases[indexPath.section]
         
-        cell.configurateCell(title: info.titleText, subTitle: info.subText, profilePath: info.imagePath)
+        switch section {
         
-        return cell
+        case .overview:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ExpandableCell.reuseIdentifier, for: indexPath) as! ExpandableCell
+            
+            cell.label.text = movieInfo.overview
+//            cell.expandButton.addTarget(self, action: #selector(touchExpandedButton(_:)), for: .touchUpInside)
+            
+            return cell
+            
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: InfoListCell.reuseIdentifier, for: indexPath) as! InfoListCell
+            
+            let info = infoList[indexPath.section-1][indexPath.row]
+            
+            cell.configurateCell(title: info.titleText, subTitle: info.subText, profilePath: info.imagePath)
+            
+            return cell
+            
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        infoList[section].count
+        Section.allCases[section] == .overview ? 1 : infoList[section-1].count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return infoList.count
+        return 1 + infoList.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -112,6 +141,20 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
         return 30
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        Section.allCases[indexPath.section] == .overview ? UITableView.automaticDimension : 120
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? ExpandableCell{
+            cell.isExpanded.toggle()
+            tableView.reloadData()
+            // 아래 메서드는 제대로 동작하지 않음.
+//            tableView.reloadSections([indexPath.section], with: .automatic)
+//            tableView.deselectRow(at: indexPath, animated: true)
+//            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
     
     
     
