@@ -66,19 +66,20 @@ enum EndPoint {
     case credit(GenreMediaTypes, Int)
     case video(GenreMediaTypes, Int)
     
+    static let base = "https://api.themoviedb.org/3/"
     
     var url: String {
         switch self {
         case .trending(let media, let timeWindow):
-            return "https://api.themoviedb.org/3/trending/\(media.rawValue)/\(timeWindow.rawValue)"
+            return EndPoint.base + "trending/\(media.rawValue)/\(timeWindow.rawValue)"
         case .image(let size, let path):
             return "https://image.tmdb.org/t/p/\(size.size)\(path)"
         case .genre(let genre):
-            return "https://api.themoviedb.org/3/genre/\(genre.rawValue)/list"
+            return EndPoint.base + "genre/\(genre.rawValue)/list"
         case .credit(let genre, let id):
-            return "https://api.themoviedb.org/3/\(genre.rawValue)/\(id)/credits"
+            return EndPoint.base + "\(genre.rawValue)/\(id)/credits"
         case .video(let genre, let id):
-            return "https://api.themoviedb.org/3/\(genre)/\(id)/videos"
+            return EndPoint.base + "\(genre)/\(id)/videos"
         }
     }
     
@@ -126,10 +127,3 @@ struct CrewInfo: DisplayInCell {
         "\(job) / \(department)"
     }
 }
-
-//struct Genre {
-//
-//    let id: Int
-//    let name: String
-//
-//}
