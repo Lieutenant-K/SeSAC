@@ -78,12 +78,6 @@ class CreditViewController: UIViewController {
         
     }
     
-    @objc func touchExpandedButton(_ sender: UIButton) {
-        
-        
-        
-    }
-    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -108,7 +102,6 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: ExpandableCell.reuseIdentifier, for: indexPath) as! ExpandableCell
             
             cell.label.text = movieInfo.overview
-//            cell.expandButton.addTarget(self, action: #selector(touchExpandedButton(_:)), for: .touchUpInside)
             
             return cell
             
@@ -142,7 +135,8 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        Section.allCases[indexPath.section] == .overview ? UITableView.automaticDimension : 120
+//        Section.allCases[indexPath.section] == .overview ? UITableView.automaticDimension : 120
+        UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
