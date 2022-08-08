@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D403C9328A1298100F55ACF /* InfoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D403C9228A1298100F55ACF /* InfoListCell.xib */; };
 		0D628EEA289D59E000337BCD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D628EE9289D59E000337BCD /* APIManager.swift */; };
 		0D628EEC289D979500337BCD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D628EEB289D979500337BCD /* WebViewController.swift */; };
 		0D628EEF289D9E1E00337BCD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0D628EEE289D9E1E00337BCD /* Toast */; };
 		0DA472EF289BC9EA0068E797 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472EE289BC9EA0068E797 /* Extension.swift */; };
 		0DA472F1289BCAE10068E797 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472F0289BCAE10068E797 /* CreditViewController.swift */; };
-		0DA472F3289BD3C60068E797 /* CreditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472F2289BD3C60068E797 /* CreditCell.swift */; };
+		0DA472F3289BD3C60068E797 /* InfoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472F2289BD3C60068E797 /* InfoListCell.swift */; };
 		0DA472F6289BEFC80068E797 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 0DA472F5289BEFC80068E797 /* JGProgressHUD */; };
 		0DD9C941289A7BAD00488F0D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD9C940289A7BAD00488F0D /* Model.swift */; };
 		0DD9C943289A7F6100488F0D /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD9C942289A7F6100488F0D /* MovieCell.swift */; };
@@ -31,11 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D403C9228A1298100F55ACF /* InfoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoListCell.xib; sourceTree = "<group>"; };
 		0D628EE9289D59E000337BCD /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0D628EEB289D979500337BCD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		0DA472EE289BC9EA0068E797 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0DA472F0289BCAE10068E797 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
-		0DA472F2289BD3C60068E797 /* CreditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCell.swift; sourceTree = "<group>"; };
+		0DA472F2289BD3C60068E797 /* InfoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoListCell.swift; sourceTree = "<group>"; };
 		0DD9C940289A7BAD00488F0D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0DD9C942289A7F6100488F0D /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		0DEB1DFD2899FA9E001D1D23 /* SesacTMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacTMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +72,8 @@
 		0D628EF0289DA0CB00337BCD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0DA472F2289BD3C60068E797 /* CreditCell.swift */,
+				0DA472F2289BD3C60068E797 /* InfoListCell.swift */,
+				0D403C9228A1298100F55ACF /* InfoListCell.xib */,
 				0DD9C942289A7F6100488F0D /* MovieCell.swift */,
 			);
 			path = View;
@@ -215,6 +218,7 @@
 				0DEB1E0D2899FAA1001D1D23 /* LaunchScreen.storyboard in Resources */,
 				0DEB1E0A2899FAA1001D1D23 /* Assets.xcassets in Resources */,
 				0DEB1E082899FA9E001D1D23 /* Main.storyboard in Resources */,
+				0D403C9328A1298100F55ACF /* InfoListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DA472F3289BD3C60068E797 /* CreditCell.swift in Sources */,
+				0DA472F3289BD3C60068E797 /* InfoListCell.swift in Sources */,
 				0DD9C943289A7F6100488F0D /* MovieCell.swift in Sources */,
 				0DEB1E052899FA9E001D1D23 /* MovieViewController.swift in Sources */,
 				0DEB1E012899FA9E001D1D23 /* AppDelegate.swift in Sources */,

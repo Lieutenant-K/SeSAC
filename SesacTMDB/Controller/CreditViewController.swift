@@ -40,6 +40,7 @@ class CreditViewController: UIViewController {
         tableView.tableHeaderView?.frame.size.height = UIScreen.main.bounds.width * backdropImageRatio
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UINib(nibName: InfoListCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: InfoListCell.reuseIdentifier)
         
         
         configurateHeaderView()
@@ -86,7 +87,7 @@ class CreditViewController: UIViewController {
 extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CreditCell.reuseIdentifier, for: indexPath) as! CreditCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: InfoListCell.reuseIdentifier, for: indexPath) as! InfoListCell
         
         let info = infoList[indexPath.section][indexPath.row]
         

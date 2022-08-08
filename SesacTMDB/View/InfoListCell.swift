@@ -9,7 +9,7 @@ import UIKit
 
 import Kingfisher
 
-class CreditCell: UITableViewCell {
+class InfoListCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView! {
         didSet{
