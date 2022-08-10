@@ -13,6 +13,10 @@
 		0D628EEA289D59E000337BCD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D628EE9289D59E000337BCD /* APIManager.swift */; };
 		0D628EEC289D979500337BCD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D628EEB289D979500337BCD /* WebViewController.swift */; };
 		0D628EEF289D9E1E00337BCD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0D628EEE289D9E1E00337BCD /* Toast */; };
+		0D8CAE7A28A2BB34001837B8 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8CAE7928A2BB34001837B8 /* CardViewController.swift */; };
+		0D8CAE7C28A2BCF8001837B8 /* CardSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8CAE7B28A2BCF8001837B8 /* CardSectionCell.swift */; };
+		0D8CAE7E28A2C2DF001837B8 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8CAE7D28A2C2DF001837B8 /* CardView.xib */; };
+		0D8CAE8028A2C354001837B8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8CAE7F28A2C354001837B8 /* CardView.swift */; };
 		0DA472EF289BC9EA0068E797 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472EE289BC9EA0068E797 /* Extension.swift */; };
 		0DA472F1289BCAE10068E797 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472F0289BCAE10068E797 /* CreditViewController.swift */; };
 		0DA472F3289BD3C60068E797 /* InfoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472F2289BD3C60068E797 /* InfoListCell.swift */; };
@@ -31,6 +35,8 @@
 		0DEB1E27289A71A8001D1D23 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1E26289A71A8001D1D23 /* Kingfisher */; };
 		0DEB1E2A289A71B5001D1D23 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1E29289A71B5001D1D23 /* Alamofire */; };
 		0DEB1E2D289A71CC001D1D23 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1E2C289A71CC001D1D23 /* SwiftyJSON */; };
+		0DEE13D228A2D2E900A36411 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEE13D028A2D2E900A36411 /* CardCell.swift */; };
+		0DEE13D328A2D2E900A36411 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DEE13D128A2D2E900A36411 /* CardCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +45,10 @@
 		0D403C9528A12DA200F55ACF /* ExpandableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableCell.xib; sourceTree = "<group>"; };
 		0D628EE9289D59E000337BCD /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0D628EEB289D979500337BCD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		0D8CAE7928A2BB34001837B8 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		0D8CAE7B28A2BCF8001837B8 /* CardSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSectionCell.swift; sourceTree = "<group>"; };
+		0D8CAE7D28A2C2DF001837B8 /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		0D8CAE7F28A2C354001837B8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0DA472EE289BC9EA0068E797 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0DA472F0289BCAE10068E797 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
 		0DA472F2289BD3C60068E797 /* InfoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoListCell.swift; sourceTree = "<group>"; };
@@ -55,6 +65,8 @@
 		0DEB1E142899FC1F001D1D23 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		0DEB1E162899FCA5001D1D23 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		0DEB1E182899FCB5001D1D23 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		0DEE13D028A2D2E900A36411 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		0DEE13D128A2D2E900A36411 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +93,11 @@
 				0D403C9428A12DA200F55ACF /* ExpandableCell.swift */,
 				0D403C9528A12DA200F55ACF /* ExpandableCell.xib */,
 				0DD9C942289A7F6100488F0D /* MovieCell.swift */,
+				0D8CAE7B28A2BCF8001837B8 /* CardSectionCell.swift */,
+				0D8CAE7D28A2C2DF001837B8 /* CardView.xib */,
+				0D8CAE7F28A2C354001837B8 /* CardView.swift */,
+				0DEE13D028A2D2E900A36411 /* CardCell.swift */,
+				0DEE13D128A2D2E900A36411 /* CardCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -91,6 +108,7 @@
 				0DEB1E042899FA9E001D1D23 /* MovieViewController.swift */,
 				0D628EEB289D979500337BCD /* WebViewController.swift */,
 				0DA472F0289BCAE10068E797 /* CreditViewController.swift */,
+				0D8CAE7928A2BB34001837B8 /* CardViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -223,9 +241,11 @@
 				0D403C9728A12DA200F55ACF /* ExpandableCell.xib in Resources */,
 				0DEB1E152899FC1F001D1D23 /* .gitignore in Resources */,
 				0DEB1E0D2899FAA1001D1D23 /* LaunchScreen.storyboard in Resources */,
+				0D8CAE7E28A2C2DF001837B8 /* CardView.xib in Resources */,
 				0DEB1E0A2899FAA1001D1D23 /* Assets.xcassets in Resources */,
 				0DEB1E082899FA9E001D1D23 /* Main.storyboard in Resources */,
 				0D403C9328A1298100F55ACF /* InfoListCell.xib in Resources */,
+				0DEE13D328A2D2E900A36411 /* CardCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,12 +262,16 @@
 				0D403C9628A12DA200F55ACF /* ExpandableCell.swift in Sources */,
 				0DEB1E012899FA9E001D1D23 /* AppDelegate.swift in Sources */,
 				0D628EEA289D59E000337BCD /* APIManager.swift in Sources */,
+				0DEE13D228A2D2E900A36411 /* CardCell.swift in Sources */,
 				0DEB1E192899FCB5001D1D23 /* Constant.swift in Sources */,
 				0DD9C941289A7BAD00488F0D /* Model.swift in Sources */,
+				0D8CAE7A28A2BB34001837B8 /* CardViewController.swift in Sources */,
+				0D8CAE7C28A2BCF8001837B8 /* CardSectionCell.swift in Sources */,
 				0D628EEC289D979500337BCD /* WebViewController.swift in Sources */,
 				0DA472F1289BCAE10068E797 /* CreditViewController.swift in Sources */,
 				0DEB1E172899FCA5001D1D23 /* APIKey.swift in Sources */,
 				0DEB1E032899FA9E001D1D23 /* SceneDelegate.swift in Sources */,
+				0D8CAE8028A2C354001837B8 /* CardView.swift in Sources */,
 				0DA472EF289BC9EA0068E797 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

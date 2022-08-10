@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="43O-w3-rXl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G4w-Mn-E4u">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -176,6 +176,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SmL-u0-9ZU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="939" y="753"/>
+        </scene>
+        <!--Card View Controller-->
+        <scene sceneID="h5f-t8-hVM">
+            <objects>
+                <viewController storyboardIdentifier="CardViewController" id="G4w-Mn-E4u" customClass="CardViewController" customModule="SesacTMDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yzY-ic-4dO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jWD-NU-Pdz">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CardSectionCell" rowHeight="276" id="xQb-s0-Yrz" customClass="CardSectionCell" customModule="SesacTMDB" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="276"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xQb-s0-Yrz" id="Awr-BN-qLf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVT-RR-vU5">
+                                                    <rect key="frame" x="16" y="16" width="29.5" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="uLO-KF-21n"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OPU-3W-c8w">
+                                                    <rect key="frame" x="0.0" y="52" width="414" height="216"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gwJ-54-cMi">
+                                                        <size key="itemSize" width="128" height="128"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells/>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rVT-RR-vU5" firstAttribute="leading" secondItem="Awr-BN-qLf" secondAttribute="leading" constant="16" id="3Iq-Me-EMw"/>
+                                                <constraint firstAttribute="trailing" secondItem="OPU-3W-c8w" secondAttribute="trailing" id="3TV-FB-49n"/>
+                                                <constraint firstItem="OPU-3W-c8w" firstAttribute="top" secondItem="rVT-RR-vU5" secondAttribute="bottom" constant="8" id="H2N-k5-z02"/>
+                                                <constraint firstAttribute="bottom" secondItem="OPU-3W-c8w" secondAttribute="bottom" constant="8" id="HIg-2u-35c"/>
+                                                <constraint firstItem="OPU-3W-c8w" firstAttribute="leading" secondItem="Awr-BN-qLf" secondAttribute="leading" id="hpv-oo-w9g"/>
+                                                <constraint firstItem="rVT-RR-vU5" firstAttribute="top" secondItem="Awr-BN-qLf" secondAttribute="top" constant="16" id="til-Xt-LeL"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rVT-RR-vU5" secondAttribute="trailing" constant="16" id="uMY-XN-Avc"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentCollectionView" destination="OPU-3W-c8w" id="o1G-TU-Mu6"/>
+                                            <outlet property="titleLabel" destination="rVT-RR-vU5" id="9Uh-Cv-Phj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NP8-M4-rt3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jWD-NU-Pdz" firstAttribute="top" secondItem="NP8-M4-rt3" secondAttribute="top" id="GXm-Hs-3I8"/>
+                            <constraint firstItem="jWD-NU-Pdz" firstAttribute="leading" secondItem="NP8-M4-rt3" secondAttribute="leading" id="GmW-fC-7th"/>
+                            <constraint firstItem="NP8-M4-rt3" firstAttribute="bottom" secondItem="jWD-NU-Pdz" secondAttribute="bottom" id="QGq-T1-AzA"/>
+                            <constraint firstItem="NP8-M4-rt3" firstAttribute="trailing" secondItem="jWD-NU-Pdz" secondAttribute="trailing" id="kEx-IW-l16"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cardSectionTableView" destination="jWD-NU-Pdz" id="QSj-7a-LQp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="szJ-BM-8F1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1821.7391304347827" y="752.67857142857144"/>
         </scene>
         <!--Credit View Controller-->
         <scene sceneID="3ln-S9-b7d">
