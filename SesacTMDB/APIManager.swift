@@ -94,6 +94,30 @@ class APIManager {
         
     }
     
+    func fetchRecommandations(genre: GenreMediaTypes, id: Int, page: Int, completionHandler: @escaping ([MovieInfo]) -> Void ) {
+        
+        let url = EndPoint.recommendation(genre, id).url
+        
+        requestTMDBData(url: url, parameter: ["page":page]) { json in
+            
+            let info = json["results"].arrayValue.map { item in
+                MovieInfo(
+                    id: item["id"].intValue,
+                    title: item["original_title"].stringValue,
+                    postPath: item["poster_path"].stringValue,
+                    backdropPath: item["backdrop_path"].stringValue,
+                    releaseDate: item["release_date"].stringValue,
+                    overview: item["overview"].stringValue,
+                    genre: item["genre_ids"].arrayValue.map{ $0.intValue })
+                
+            }
+            
+            completionHandler(info)
+            
+        }
+        
+    }
+    
     func requestTMDBData(url: String, parameter: Parameters? = nil, completionHandler: @escaping (_ jsonData : JSON) -> Void) {
         
         // 쿼리 스트링으로 파라미터 전달

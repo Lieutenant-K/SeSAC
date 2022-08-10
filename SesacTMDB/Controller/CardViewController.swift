@@ -7,17 +7,15 @@
 
 import UIKit
 
-class CardViewController: UIViewController {
+import Kingfisher
 
+class CardViewController: UIViewController {
+    
     @IBOutlet weak var cardSectionTableView: UITableView!
     
-    let cardSection = [
-        [Int](1...100),
-        [Int](5...50),
-        [Int](12...34),
-        [Int](45...97)
+    let movieTitle = ["Prey", "Elvis", "The Gray Man", "Minions: The Rise of Gru", "Resurrection"]
     
-    ]
+    var cardSection = [[MovieInfo]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +23,37 @@ class CardViewController: UIViewController {
         cardSectionTableView.delegate = self
         cardSectionTableView.dataSource = self
         
+        fetchCardSection()
+        
     }
     
 
-
+    func fetchCardSection() {
+        
+        var datas = [[MovieInfo]]()
+        APIManager.shared.fetchRecommandations(genre: .movie, id: 766507, page: 1) { data in
+            datas.append(data)
+            APIManager.shared.fetchRecommandations(genre: .movie, id: 614934, page: 1) { data in
+                datas.append(data)
+                APIManager.shared.fetchRecommandations(genre: .movie, id: 725201, page: 1) { data in
+                    datas.append(data)
+                    APIManager.shared.fetchRecommandations(genre: .movie, id: 438148, page: 1) { data in
+                        datas.append(data)
+                        APIManager.shared.fetchRecommandations(genre: .movie, id: 872497, page: 1) { data in
+                            datas.append(data)
+                            self.cardSection = datas
+//                            print(self.cardSection)
+                            DispatchQueue.main.async {
+                                self.cardSectionTableView.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+    }
 }
 
 extension CardViewController: UITableViewDelegate, UITableViewDataSource {
@@ -46,7 +71,8 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentCollectionView.delegate = self
         cell.contentCollectionView.register(.init(nibName: CardCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: CardCell.reuseIdentifier)
         cell.contentCollectionView.tag = indexPath.section
-        
+        cell.titleLabel.text = movieTitle[indexPath.section] + "와 유사한 영화"
+        cell.contentCollectionView.reloadData()
         
         return cell
         
@@ -56,9 +82,6 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
         1
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        190
-    }
     
 }
 
@@ -67,6 +90,9 @@ extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.reuseIdentifier, for: indexPath) as! CardCell
         
+        let info = cardSection[collectionView.tag][indexPath.row]
+        
+        cell.configurateCell(info: info)
         
         return cell
     }

@@ -26,7 +26,7 @@ class CardSectionCell: UITableViewCell {
         layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = 16
         layout.sectionInset = .init(top: 0, left: 16, bottom: 0, right: 0)
-        layout.itemSize = .init(width: 100, height: 130)
+        layout.itemSize = .init(width: 200*(2.0/3.0), height: 200)
         
         contentCollectionView.collectionViewLayout = layout
         

@@ -197,17 +197,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVT-RR-vU5">
-                                                    <rect key="frame" x="16" y="16" width="29.5" height="28"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="28" id="uLO-KF-21n"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="16" y="16" width="29.5" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OPU-3W-c8w">
-                                                    <rect key="frame" x="0.0" y="52" width="414" height="216"/>
+                                                    <rect key="frame" x="0.0" y="68" width="414" height="200"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="200" id="sRH-Nw-Qcb"/>
+                                                    </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gwJ-54-cMi">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -218,13 +218,13 @@
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="rVT-RR-vU5" firstAttribute="leading" secondItem="Awr-BN-qLf" secondAttribute="leading" constant="16" id="3Iq-Me-EMw"/>
-                                                <constraint firstAttribute="trailing" secondItem="OPU-3W-c8w" secondAttribute="trailing" id="3TV-FB-49n"/>
-                                                <constraint firstItem="OPU-3W-c8w" firstAttribute="top" secondItem="rVT-RR-vU5" secondAttribute="bottom" constant="8" id="H2N-k5-z02"/>
-                                                <constraint firstAttribute="bottom" secondItem="OPU-3W-c8w" secondAttribute="bottom" constant="8" id="HIg-2u-35c"/>
-                                                <constraint firstItem="OPU-3W-c8w" firstAttribute="leading" secondItem="Awr-BN-qLf" secondAttribute="leading" id="hpv-oo-w9g"/>
-                                                <constraint firstItem="rVT-RR-vU5" firstAttribute="top" secondItem="Awr-BN-qLf" secondAttribute="top" constant="16" id="til-Xt-LeL"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rVT-RR-vU5" secondAttribute="trailing" constant="16" id="uMY-XN-Avc"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rVT-RR-vU5" secondAttribute="trailing" constant="20" id="0wP-Qh-T1s"/>
+                                                <constraint firstItem="rVT-RR-vU5" firstAttribute="leading" secondItem="Awr-BN-qLf" secondAttribute="leading" constant="16" id="7SO-eN-FSP"/>
+                                                <constraint firstAttribute="bottom" secondItem="OPU-3W-c8w" secondAttribute="bottom" constant="8" id="F4e-2Y-iUK"/>
+                                                <constraint firstItem="OPU-3W-c8w" firstAttribute="top" secondItem="rVT-RR-vU5" secondAttribute="bottom" constant="8" id="HXQ-bl-dVi"/>
+                                                <constraint firstItem="rVT-RR-vU5" firstAttribute="top" secondItem="Awr-BN-qLf" secondAttribute="top" constant="16" id="HcR-Lr-VaI"/>
+                                                <constraint firstAttribute="trailing" secondItem="OPU-3W-c8w" secondAttribute="trailing" id="ggT-Dq-p0P"/>
+                                                <constraint firstItem="OPU-3W-c8w" firstAttribute="leading" secondItem="Awr-BN-qLf" secondAttribute="leading" id="ylO-xl-v28"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

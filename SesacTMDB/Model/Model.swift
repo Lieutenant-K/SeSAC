@@ -65,6 +65,7 @@ enum EndPoint {
     case genre(GenreMediaTypes)
     case credit(GenreMediaTypes, Int)
     case video(GenreMediaTypes, Int)
+    case recommendation(GenreMediaTypes, Int)
     
     static let base = "https://api.themoviedb.org/3/"
     
@@ -80,6 +81,8 @@ enum EndPoint {
             return EndPoint.base + "\(genre.rawValue)/\(id)/credits"
         case .video(let genre, let id):
             return EndPoint.base + "\(genre)/\(id)/videos"
+        case .recommendation(let genre, let id):
+            return EndPoint.base + "\(genre)/\(id)/recommendations"
         }
     }
     

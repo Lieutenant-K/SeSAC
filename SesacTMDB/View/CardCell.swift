@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Kingfisher
+
 class CardCell: UICollectionViewCell {
 
     @IBOutlet weak var cardView: CardView!
@@ -16,6 +18,14 @@ class CardCell: UICollectionViewCell {
             
         cardView.cardImageView.layer.cornerRadius = 10
         cardView.cardImageView.backgroundColor = .lightGray
+        
+    }
+    
+    func configurateCell(info: MovieInfo) {
+        
+        let url = URL(string: EndPoint.image(.poster(.w185), info.postPath).url)
+        
+        self.cardView.cardImageView.kf.setImage(with: url)
         
     }
 
