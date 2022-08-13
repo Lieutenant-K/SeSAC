@@ -36,6 +36,7 @@
 		0DEB1E27289A71A8001D1D23 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1E26289A71A8001D1D23 /* Kingfisher */; };
 		0DEB1E2A289A71B5001D1D23 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1E29289A71B5001D1D23 /* Alamofire */; };
 		0DEB1E2D289A71CC001D1D23 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1E2C289A71CC001D1D23 /* SwiftyJSON */; };
+		0DEBDF0E28A7CC1000AFF739 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBDF0D28A7CC1000AFF739 /* WeatherViewController.swift */; };
 		0DEE13D228A2D2E900A36411 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEE13D028A2D2E900A36411 /* CardCell.swift */; };
 		0DEE13D328A2D2E900A36411 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DEE13D128A2D2E900A36411 /* CardCell.xib */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		0DEB1E142899FC1F001D1D23 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		0DEB1E162899FCA5001D1D23 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		0DEB1E182899FCB5001D1D23 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		0DEBDF0D28A7CC1000AFF739 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		0DEE13D028A2D2E900A36411 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		0DEE13D128A2D2E900A36411 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 				0D628EEB289D979500337BCD /* WebViewController.swift */,
 				0DA472F0289BCAE10068E797 /* CreditViewController.swift */,
 				0D8CAE7928A2BB34001837B8 /* CardViewController.swift */,
+				0DEBDF0D28A7CC1000AFF739 /* WeatherViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				0D8CAE7A28A2BB34001837B8 /* CardViewController.swift in Sources */,
 				0D8CAE7C28A2BCF8001837B8 /* CardSectionCell.swift in Sources */,
 				0D628EEC289D979500337BCD /* WebViewController.swift in Sources */,
+				0DEBDF0E28A7CC1000AFF739 /* WeatherViewController.swift in Sources */,
 				0DA472F1289BCAE10068E797 /* CreditViewController.swift in Sources */,
 				0DEB1E172899FCA5001D1D23 /* APIKey.swift in Sources */,
 				0DEB1E032899FA9E001D1D23 /* SceneDelegate.swift in Sources */,

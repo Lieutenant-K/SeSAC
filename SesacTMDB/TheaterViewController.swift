@@ -49,9 +49,6 @@ class TheaterViewController: UIViewController {
         
         title = "영화관 찾기"
         
-        let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(touchFilterButton(_:)))
-        self.navigationItem.rightBarButtonItem = filterButton
-        
         let center = CLLocationCoordinate2D(latitude: 37.517829, longitude: 126.886270)
         
         setRegionAndAnnotation(center: center)
@@ -93,6 +90,7 @@ class TheaterViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
             
         case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
             locationManager.startUpdatingLocation()
             
         case .denied, .restricted:
@@ -126,7 +124,7 @@ class TheaterViewController: UIViewController {
     }
     
     func setRegionAndAnnotation(center: CLLocationCoordinate2D){
-        
+    
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 100, longitudinalMeters: 100)
         
         mapView.setRegion(region, animated: true)
@@ -141,8 +139,20 @@ class TheaterViewController: UIViewController {
         
     }
     
+    @IBAction func touchWeatherButton(_ sender: UIBarButtonItem) {
+        
+        locationManager.startUpdatingLocation()
+//        locationManager.requestLocation()
+        
+        guard let location = self.locationManager.location else { return }
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: WeatherViewController.reuseIdentifier) { WeatherViewController(coder: $0, location: location) }
+        
+        present(vc, animated: true)
+        
+    }
     
-    @objc func touchFilterButton(_ sender: UIBarButtonItem) {
+    @IBAction func touchFilterButton(_ sender: UIBarButtonItem) {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -207,7 +217,7 @@ extension TheaterViewController: CLLocationManagerDelegate {
 
 extension TheaterViewController: MKMapViewDelegate {
     
-    
+
     
     
 }

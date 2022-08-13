@@ -328,7 +328,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ubX-bh-CQZ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="r0M-QQ-GFE"/>
@@ -340,7 +340,23 @@
                             <constraint firstItem="ubX-bh-CQZ" firstAttribute="leading" secondItem="r0M-QQ-GFE" secondAttribute="leading" id="vLC-hw-fXC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="AxY-nF-1vt"/>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Kdh-Pp-XKd"/>
+                        <barButtonItem title="날씨 보기" id="P6s-FE-yTS">
+                            <connections>
+                                <action selector="touchWeatherButton:" destination="pnY-Vc-u1e" id="yMU-WK-Rij"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="wbn-FM-twd"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="AxY-nF-1vt">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="ODY-Yp-nms">
+                            <connections>
+                                <action selector="touchFilterButton:" destination="pnY-Vc-u1e" id="2cY-KR-kd8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="ubX-bh-CQZ" id="Bmd-Iy-sGj"/>
                     </connections>
@@ -348,6 +364,89 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNw-FJ-Kso" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3886.9565217391309" y="70.982142857142847"/>
+        </scene>
+        <!--Weather View Controller-->
+        <scene sceneID="R6F-ki-oR9">
+            <objects>
+                <viewController storyboardIdentifier="WeatherViewController" id="XAb-Ao-jn8" customClass="WeatherViewController" customModule="SesacTMDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Myd-bL-LvI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8i-1A-ZGD">
+                                <rect key="frame" x="20" y="64" width="76.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="현재 온도" cornerStyle="large">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFT-nD-kU7">
+                                <rect key="frame" x="20" y="115" width="85" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="습도입니다" cornerStyle="large">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gi-qc-kU3">
+                                <rect key="frame" x="20" y="166" width="85" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="풍속입니다" cornerStyle="large">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L8I-Y6-ryZ">
+                                <rect key="frame" x="20" y="217" width="150" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="D71-jT-0aV"/>
+                                    <constraint firstAttribute="height" constant="120" id="jue-ko-MLH"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4g-zf-aOL">
+                                <rect key="frame" x="20" y="357" width="141" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="행복한 하루 보내세요" cornerStyle="large">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="502-Ni-AOW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tFT-nD-kU7" firstAttribute="top" secondItem="k8i-1A-ZGD" secondAttribute="bottom" constant="20" id="1jm-2T-QIB"/>
+                            <constraint firstItem="L8I-Y6-ryZ" firstAttribute="leading" secondItem="502-Ni-AOW" secondAttribute="leading" constant="20" id="3WZ-jz-egz"/>
+                            <constraint firstItem="a4g-zf-aOL" firstAttribute="leading" secondItem="502-Ni-AOW" secondAttribute="leading" constant="20" id="5rU-AX-XAr"/>
+                            <constraint firstItem="a4g-zf-aOL" firstAttribute="top" secondItem="L8I-Y6-ryZ" secondAttribute="bottom" constant="20" id="Ajv-Jm-knP"/>
+                            <constraint firstItem="6gi-qc-kU3" firstAttribute="top" secondItem="tFT-nD-kU7" secondAttribute="bottom" constant="20" id="Jth-IU-bgj"/>
+                            <constraint firstItem="tFT-nD-kU7" firstAttribute="leading" secondItem="502-Ni-AOW" secondAttribute="leading" constant="20" id="eFM-kR-tNe"/>
+                            <constraint firstItem="k8i-1A-ZGD" firstAttribute="leading" secondItem="502-Ni-AOW" secondAttribute="leading" constant="20" id="fTA-jg-lai"/>
+                            <constraint firstItem="k8i-1A-ZGD" firstAttribute="top" secondItem="502-Ni-AOW" secondAttribute="top" constant="20" id="h2N-AJ-GTu"/>
+                            <constraint firstItem="6gi-qc-kU3" firstAttribute="leading" secondItem="502-Ni-AOW" secondAttribute="leading" constant="20" id="m5z-dD-Bai"/>
+                            <constraint firstItem="L8I-Y6-ryZ" firstAttribute="top" secondItem="6gi-qc-kU3" secondAttribute="bottom" constant="20" id="v1S-M7-dg2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="degreeButton" destination="k8i-1A-ZGD" id="slB-1H-41D"/>
+                        <outlet property="humidityButton" destination="tFT-nD-kU7" id="gNR-Id-PpT"/>
+                        <outlet property="imageView" destination="L8I-Y6-ryZ" id="5dS-nf-vw5"/>
+                        <outlet property="tempButton" destination="k8i-1A-ZGD" id="Ydl-Ng-bUB"/>
+                        <outlet property="windButton" destination="6gi-qc-kU3" id="vP6-9P-Adc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A3c-f6-vLp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4760.8695652173919" y="70.982142857142847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4pr-0E-ukS">
@@ -371,13 +470,17 @@
         <!--Navigation Controller-->
         <scene sceneID="fIF-hr-WWd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9qk-5E-BSJ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="9qk-5E-BSJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="77o-CW-5U0">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gjs-V7-KFN">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="pnY-Vc-u1e" kind="relationship" relationship="rootViewController" id="nAZ-jW-8b5"/>
                     </connections>
@@ -391,6 +494,9 @@
         <image name="link.circle.fill" catalog="system" width="128" height="121"/>
         <image name="list.triangle" catalog="system" width="128" height="91"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
