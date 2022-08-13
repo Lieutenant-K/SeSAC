@@ -145,6 +145,7 @@ class TheaterViewController: UIViewController {
 //        locationManager.requestLocation()
         
         guard let location = self.locationManager.location else { return }
+//        print(location)
         
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: WeatherViewController.reuseIdentifier) { WeatherViewController(coder: $0, location: location) }
         

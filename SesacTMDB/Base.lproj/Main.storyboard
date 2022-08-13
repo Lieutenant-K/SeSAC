@@ -374,7 +374,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8i-1A-ZGD">
-                                <rect key="frame" x="20" y="64" width="76.5" height="31"/>
+                                <rect key="frame" x="20" y="114" width="76.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="현재 온도" cornerStyle="large">
                                     <backgroundConfiguration key="background">
@@ -384,7 +384,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFT-nD-kU7">
-                                <rect key="frame" x="20" y="115" width="85" height="31"/>
+                                <rect key="frame" x="20" y="165" width="85" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="습도입니다" cornerStyle="large">
                                     <backgroundConfiguration key="background">
@@ -394,7 +394,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gi-qc-kU3">
-                                <rect key="frame" x="20" y="166" width="85" height="31"/>
+                                <rect key="frame" x="20" y="216" width="85" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="풍속입니다" cornerStyle="large">
                                     <backgroundConfiguration key="background">
@@ -404,14 +404,14 @@
                                 </buttonConfiguration>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L8I-Y6-ryZ">
-                                <rect key="frame" x="20" y="217" width="150" height="120"/>
+                                <rect key="frame" x="20" y="267" width="150" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="D71-jT-0aV"/>
                                     <constraint firstAttribute="height" constant="120" id="jue-ko-MLH"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4g-zf-aOL">
-                                <rect key="frame" x="20" y="357" width="141" height="31"/>
+                                <rect key="frame" x="20" y="407" width="141" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="행복한 하루 보내세요" cornerStyle="large">
                                     <backgroundConfiguration key="background">
@@ -420,6 +420,12 @@
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HmG-0G-83Z">
+                                <rect key="frame" x="20" y="64" width="43.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="502-Ni-AOW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -428,18 +434,20 @@
                             <constraint firstItem="L8I-Y6-ryZ" firstAttribute="leading" secondItem="502-Ni-AOW" secondAttribute="leading" constant="20" id="3WZ-jz-egz"/>
                             <constraint firstItem="a4g-zf-aOL" firstAttribute="leading" secondItem="502-Ni-AOW" secondAttribute="leading" constant="20" id="5rU-AX-XAr"/>
                             <constraint firstItem="a4g-zf-aOL" firstAttribute="top" secondItem="L8I-Y6-ryZ" secondAttribute="bottom" constant="20" id="Ajv-Jm-knP"/>
+                            <constraint firstItem="HmG-0G-83Z" firstAttribute="top" secondItem="502-Ni-AOW" secondAttribute="top" constant="20" id="E1M-9b-0B1"/>
                             <constraint firstItem="6gi-qc-kU3" firstAttribute="top" secondItem="tFT-nD-kU7" secondAttribute="bottom" constant="20" id="Jth-IU-bgj"/>
                             <constraint firstItem="tFT-nD-kU7" firstAttribute="leading" secondItem="502-Ni-AOW" secondAttribute="leading" constant="20" id="eFM-kR-tNe"/>
                             <constraint firstItem="k8i-1A-ZGD" firstAttribute="leading" secondItem="502-Ni-AOW" secondAttribute="leading" constant="20" id="fTA-jg-lai"/>
-                            <constraint firstItem="k8i-1A-ZGD" firstAttribute="top" secondItem="502-Ni-AOW" secondAttribute="top" constant="20" id="h2N-AJ-GTu"/>
+                            <constraint firstItem="k8i-1A-ZGD" firstAttribute="top" secondItem="HmG-0G-83Z" secondAttribute="bottom" constant="20" id="h2N-AJ-GTu"/>
+                            <constraint firstItem="HmG-0G-83Z" firstAttribute="leading" secondItem="502-Ni-AOW" secondAttribute="leading" constant="20" id="hvJ-o3-fQH"/>
                             <constraint firstItem="6gi-qc-kU3" firstAttribute="leading" secondItem="502-Ni-AOW" secondAttribute="leading" constant="20" id="m5z-dD-Bai"/>
                             <constraint firstItem="L8I-Y6-ryZ" firstAttribute="top" secondItem="6gi-qc-kU3" secondAttribute="bottom" constant="20" id="v1S-M7-dg2"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="degreeButton" destination="k8i-1A-ZGD" id="slB-1H-41D"/>
                         <outlet property="humidityButton" destination="tFT-nD-kU7" id="gNR-Id-PpT"/>
-                        <outlet property="imageView" destination="L8I-Y6-ryZ" id="5dS-nf-vw5"/>
+                        <outlet property="imageView" destination="L8I-Y6-ryZ" id="lU0-nK-fgU"/>
+                        <outlet property="localTitle" destination="HmG-0G-83Z" id="AT1-sC-E04"/>
                         <outlet property="tempButton" destination="k8i-1A-ZGD" id="Ydl-Ng-bUB"/>
                         <outlet property="windButton" destination="6gi-qc-kU3" id="vP6-9P-Adc"/>
                     </connections>

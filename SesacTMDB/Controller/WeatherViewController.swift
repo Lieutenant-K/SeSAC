@@ -10,9 +10,11 @@ import CoreLocation
 
 import Alamofire
 import SwiftyJSON
+import Kingfisher
 
 class WeatherViewController: UIViewController {
     
+    @IBOutlet weak var localTitle: UILabel!
     @IBOutlet weak var tempButton: UIButton!
     @IBOutlet weak var humidityButton: UIButton!
     @IBOutlet weak var windButton: UIButton!
@@ -28,61 +30,59 @@ class WeatherViewController: UIViewController {
     
     let currentLocation: CLLocation
     
-    @IBOutlet weak var degreeButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configurateSheetController()
+        setTitle()
+        fetchWeatherInfo()
+
+        
+    }
+    
+    func setTitle() {
         
         CLGeocoder().reverseGeocodeLocation(currentLocation) { placemarks, error in
             
-            
-            let placemark = placemarks?.first!
-            /*
-            print(placemark)
-            print(placemark?.name)
-            print(placemark?.country)
-            print(placemark?.locality)
-            print(placemark?.subLocality)
-            print(placemark?.administrativeArea)
-            print(placemark?.subAdministrativeArea)
-            print(placemark?.location)
-             */
-            
-            print(placemark?.thoroughfare)
-            print(placemark?.subThoroughfare)
+            if let placemark = placemarks?.last {
+                self.localTitle.text = "\(placemark.locality ?? "") \(placemark.subLocality ?? "")"
+            }
         }
         
-        requestWeather { item in
+    }
+    
+    func fetchWeatherInfo() {
+        
+        let url = "https://api.openweathermap.org/data/2.5/weather?lat=\(currentLocation.coordinate.latitude)&lon=\(currentLocation.coordinate.longitude)&appid=\(APIKey.wheatherKey)&units=metric"
+        
+        requestWeatherAPI(url: url) { item in
             
             let temp = item["main"]["temp"].doubleValue
             let humid = item["main"]["humidity"].intValue
             let wind = item["wind"]["speed"].doubleValue
+            let image = item["weather"].arrayValue.first!["icon"].stringValue
             
             DispatchQueue.main.async {
                 
                 self.tempButton.setTitle("현재 온도는 \(temp)℃ 입니다", for: .normal)
                 self.humidityButton.setTitle("현재 습도는 \(humid)% 입니다", for: .normal)
                 self.windButton.setTitle("현재 풍속은 \(wind)m/s 입니다", for: .normal)
-                
-                
+                self.imageView.kf.setImage(with: URL(string: "https://openweathermap.org/img/wn/\(image)@2x.png"))
+            
             }
             
         }
         
     }
     
-    func requestWeather(completionHandler: @escaping (JSON) -> Void) {
-        
-        let url = "https://api.openweathermap.org/data/2.5/weather?lat=\(currentLocation.coordinate.latitude)&lon=\(currentLocation.coordinate.latitude)&appid=\(APIKey.wheatherKey)&lang=kr&units=metric"
+    
+    func requestWeatherAPI(url: String, completionHandler: @escaping (JSON) -> Void) {
         
         AF.request(url, method: .get).validate(statusCode: 200...500).responseData(queue: .global()) { response in
             switch response.result {
             case .success(let value):
                 
                 let json = JSON(value)
-                
+//                print(json)
                 completionHandler(json)
                 
                 
@@ -90,6 +90,7 @@ class WeatherViewController: UIViewController {
                 print(error)
             }
         }
+        
         
     }
     
@@ -102,6 +103,7 @@ class WeatherViewController: UIViewController {
         sheet.prefersScrollingExpandsWhenScrolledToEdge = false
         sheet.prefersEdgeAttachedInCompactHeight = true
         sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+        sheet.prefersGrabberVisible = true
         
     }
     
