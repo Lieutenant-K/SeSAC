@@ -39,6 +39,11 @@
 		0DEBDF0E28A7CC1000AFF739 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBDF0D28A7CC1000AFF739 /* WeatherViewController.swift */; };
 		0DEBDFDA28ABD46100AFF739 /* TMDBFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEBDFD628ABD45500AFF739 /* TMDBFramework.framework */; };
 		0DEBDFDB28ABD46100AFF739 /* TMDBFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEBDFD628ABD45500AFF739 /* TMDBFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0DEBDFDF28ABDAD700AFF739 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DEBDFDE28ABDAD700AFF739 /* Intro.storyboard */; };
+		0DEBDFE328ABDDB400AFF739 /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBDFE228ABDDB400AFF739 /* IntroPageViewController.swift */; };
+		0DEBDFE528ABDEB700AFF739 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBDFE428ABDEB700AFF739 /* FirstViewController.swift */; };
+		0DEBDFE728ABDED300AFF739 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBDFE628ABDED300AFF739 /* SecondViewController.swift */; };
+		0DEBDFE928ABDED900AFF739 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBDFE828ABDED900AFF739 /* ThirdViewController.swift */; };
 		0DEE13D228A2D2E900A36411 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEE13D028A2D2E900A36411 /* CardCell.swift */; };
 		0DEE13D328A2D2E900A36411 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DEE13D128A2D2E900A36411 /* CardCell.xib */; };
 /* End PBXBuildFile section */
@@ -103,6 +108,11 @@
 		0DEB1E182899FCB5001D1D23 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		0DEBDF0D28A7CC1000AFF739 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		0DEBDFD028ABD45500AFF739 /* TMDBFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TMDBFramework.xcodeproj; path = ../TMDBFramework/TMDBFramework.xcodeproj; sourceTree = "<group>"; };
+		0DEBDFDE28ABDAD700AFF739 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
+		0DEBDFE228ABDDB400AFF739 /* IntroPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
+		0DEBDFE428ABDEB700AFF739 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		0DEBDFE628ABDED300AFF739 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		0DEBDFE828ABDED900AFF739 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		0DEE13D028A2D2E900A36411 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		0DEE13D128A2D2E900A36411 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +207,11 @@
 				0DEB1E092899FAA1001D1D23 /* Assets.xcassets */,
 				0DEB1E0B2899FAA1001D1D23 /* LaunchScreen.storyboard */,
 				0DEB1E0E2899FAA1001D1D23 /* Info.plist */,
+				0DEBDFDE28ABDAD700AFF739 /* Intro.storyboard */,
+				0DEBDFE228ABDDB400AFF739 /* IntroPageViewController.swift */,
+				0DEBDFE428ABDEB700AFF739 /* FirstViewController.swift */,
+				0DEBDFE628ABDED300AFF739 /* SecondViewController.swift */,
+				0DEBDFE828ABDED900AFF739 /* ThirdViewController.swift */,
 			);
 			path = SesacTMDB;
 			sourceTree = "<group>";
@@ -323,6 +338,7 @@
 			files = (
 				0D403C9728A12DA200F55ACF /* ExpandableCell.xib in Resources */,
 				0DEB1E152899FC1F001D1D23 /* .gitignore in Resources */,
+				0DEBDFDF28ABDAD700AFF739 /* Intro.storyboard in Resources */,
 				0DEB1E0D2899FAA1001D1D23 /* LaunchScreen.storyboard in Resources */,
 				0D8CAE7E28A2C2DF001837B8 /* CardView.xib in Resources */,
 				0DEB1E0A2899FAA1001D1D23 /* Assets.xcassets in Resources */,
@@ -339,18 +355,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEBDFE728ABDED300AFF739 /* SecondViewController.swift in Sources */,
 				0DA472F3289BD3C60068E797 /* InfoListCell.swift in Sources */,
 				0DD9C943289A7F6100488F0D /* MovieCell.swift in Sources */,
 				0DEB1E052899FA9E001D1D23 /* MovieViewController.swift in Sources */,
 				0D403C9628A12DA200F55ACF /* ExpandableCell.swift in Sources */,
 				0DEB1E012899FA9E001D1D23 /* AppDelegate.swift in Sources */,
 				0D628EEA289D59E000337BCD /* APIManager.swift in Sources */,
+				0DEBDFE528ABDEB700AFF739 /* FirstViewController.swift in Sources */,
 				0D014AB628A541CC0023D5D6 /* TheaterViewController.swift in Sources */,
 				0DEE13D228A2D2E900A36411 /* CardCell.swift in Sources */,
 				0DEB1E192899FCB5001D1D23 /* Constant.swift in Sources */,
 				0DD9C941289A7BAD00488F0D /* Model.swift in Sources */,
 				0D8CAE7A28A2BB34001837B8 /* CardViewController.swift in Sources */,
 				0D8CAE7C28A2BCF8001837B8 /* CardSectionCell.swift in Sources */,
+				0DEBDFE328ABDDB400AFF739 /* IntroPageViewController.swift in Sources */,
 				0D628EEC289D979500337BCD /* WebViewController.swift in Sources */,
 				0DEBDF0E28A7CC1000AFF739 /* WeatherViewController.swift in Sources */,
 				0DA472F1289BCAE10068E797 /* CreditViewController.swift in Sources */,
@@ -358,6 +377,7 @@
 				0DEB1E032899FA9E001D1D23 /* SceneDelegate.swift in Sources */,
 				0D8CAE8028A2C354001837B8 /* CardView.swift in Sources */,
 				0DA472EF289BC9EA0068E797 /* Extension.swift in Sources */,
+				0DEBDFE928ABDED900AFF739 /* ThirdViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
