@@ -19,7 +19,7 @@ class CardSectionCell: UITableViewCell {
         
     }
     
-    func configurateCell() {
+    private func configurateCell() {
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal

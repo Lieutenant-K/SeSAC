@@ -81,7 +81,7 @@ class TheaterViewController: UIViewController {
         
     }
     
-    func requestLocationAuthorization(status: CLAuthorizationStatus) {
+    private func requestLocationAuthorization(status: CLAuthorizationStatus) {
         
         switch status {
             
@@ -102,7 +102,7 @@ class TheaterViewController: UIViewController {
         
     }
     
-    func showAuthorizationAlert() {
+    private func showAuthorizationAlert() {
         
         let alert = UIAlertController(title: "위치 권한 거부됨", message: #"설정 > 앱 설정 > "위치"에서 권한을 허용해주세요"#, preferredStyle: .alert)
         

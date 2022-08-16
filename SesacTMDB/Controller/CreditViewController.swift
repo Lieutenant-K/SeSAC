@@ -7,8 +7,6 @@
 
 import UIKit
 
-import Alamofire
-import SwiftyJSON
 import Kingfisher
 import JGProgressHUD
 
@@ -45,7 +43,7 @@ class CreditViewController: UIViewController {
         
     }
     
-    func configurateTableView() {
+    private func configurateTableView() {
         
         tableView.tableHeaderView?.frame.size.height = UIScreen.main.bounds.width * backdropImageRatio
         tableView.delegate = self
@@ -55,7 +53,7 @@ class CreditViewController: UIViewController {
         
     }
     
-    func configurateHeaderView() {
+    private func configurateHeaderView() {
         
         headerTitleLabel.text = movieInfo.title
         

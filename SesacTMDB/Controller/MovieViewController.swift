@@ -7,9 +7,7 @@
 
 import UIKit
 
-import Alamofire
 import Kingfisher
-import SwiftyJSON
 import JGProgressHUD
 import Toast
 
@@ -32,7 +30,7 @@ class MovieViewController: UIViewController {
         
     }
     
-    func configurateCollectionView() {
+    private func configurateCollectionView() {
         
         let layout = UICollectionViewFlowLayout()
         let spacing: Double = 20

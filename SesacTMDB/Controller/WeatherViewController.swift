@@ -39,7 +39,7 @@ class WeatherViewController: UIViewController {
         
     }
     
-    func setTitle() {
+    private func setTitle() {
         
         CLGeocoder().reverseGeocodeLocation(currentLocation) { placemarks, error in
             
@@ -75,7 +75,7 @@ class WeatherViewController: UIViewController {
     }
     
     
-    func requestWeatherAPI(url: String, completionHandler: @escaping (JSON) -> Void) {
+    private func requestWeatherAPI(url: String, completionHandler: @escaping (JSON) -> Void) {
         
         AF.request(url, method: .get).validate(statusCode: 200...500).responseData(queue: .global()) { response in
             switch response.result {
@@ -94,7 +94,7 @@ class WeatherViewController: UIViewController {
         
     }
     
-    func configurateSheetController() {
+    private func configurateSheetController() {
         
         guard let sheet = self.sheetPresentationController else { return }
         
