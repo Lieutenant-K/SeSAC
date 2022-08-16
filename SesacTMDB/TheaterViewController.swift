@@ -44,7 +44,7 @@ class TheaterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         locationManager.delegate = self
         
         title = "영화관 찾기"

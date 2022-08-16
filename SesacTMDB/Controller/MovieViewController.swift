@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 import JGProgressHUD
 import Toast
+import TMDBFramework
 
 class MovieViewController: UIViewController {
     

@@ -9,6 +9,7 @@ import UIKit
 
 import Kingfisher
 import JGProgressHUD
+import TMDBFramework
 
 class CreditViewController: UIViewController {
     

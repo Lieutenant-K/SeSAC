@@ -37,9 +37,42 @@
 		0DEB1E2A289A71B5001D1D23 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1E29289A71B5001D1D23 /* Alamofire */; };
 		0DEB1E2D289A71CC001D1D23 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEB1E2C289A71CC001D1D23 /* SwiftyJSON */; };
 		0DEBDF0E28A7CC1000AFF739 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEBDF0D28A7CC1000AFF739 /* WeatherViewController.swift */; };
+		0DEBDFDA28ABD46100AFF739 /* TMDBFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEBDFD628ABD45500AFF739 /* TMDBFramework.framework */; };
+		0DEBDFDB28ABD46100AFF739 /* TMDBFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DEBDFD628ABD45500AFF739 /* TMDBFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0DEE13D228A2D2E900A36411 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEE13D028A2D2E900A36411 /* CardCell.swift */; };
 		0DEE13D328A2D2E900A36411 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DEE13D128A2D2E900A36411 /* CardCell.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0DEBDFD528ABD45500AFF739 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0DEBDFD028ABD45500AFF739 /* TMDBFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0DEBDF9128ABB68B00AFF739;
+			remoteInfo = TMDBFramework;
+		};
+		0DEBDFD728ABD45500AFF739 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0DEBDFD028ABD45500AFF739 /* TMDBFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0DEBDF9B28ABB68B00AFF739;
+			remoteInfo = TMDBFrameworkTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0DEBDFDC28ABD46200AFF739 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0DEBDFDB28ABD46100AFF739 /* TMDBFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0D014AB528A541CC0023D5D6 /* TheaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TheaterViewController.swift; path = SesacTMDB/TheaterViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -69,6 +102,7 @@
 		0DEB1E162899FCA5001D1D23 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		0DEB1E182899FCB5001D1D23 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		0DEBDF0D28A7CC1000AFF739 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		0DEBDFD028ABD45500AFF739 /* TMDBFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TMDBFramework.xcodeproj; path = ../TMDBFramework/TMDBFramework.xcodeproj; sourceTree = "<group>"; };
 		0DEE13D028A2D2E900A36411 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		0DEE13D128A2D2E900A36411 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +114,7 @@
 			files = (
 				0DA472F6289BEFC80068E797 /* JGProgressHUD in Frameworks */,
 				0DEB1E2D289A71CC001D1D23 /* SwiftyJSON in Frameworks */,
+				0DEBDFDA28ABD46100AFF739 /* TMDBFramework.framework in Frameworks */,
 				0DEB1E27289A71A8001D1D23 /* Kingfisher in Frameworks */,
 				0D628EEF289D9E1E00337BCD /* Toast in Frameworks */,
 				0DEB1E2A289A71B5001D1D23 /* Alamofire in Frameworks */,
@@ -132,9 +167,11 @@
 		0DEB1DF42899FA9E001D1D23 = {
 			isa = PBXGroup;
 			children = (
+				0DEBDFD028ABD45500AFF739 /* TMDBFramework.xcodeproj */,
 				0DEB1E142899FC1F001D1D23 /* .gitignore */,
 				0DEB1DFF2899FA9E001D1D23 /* SesacTMDB */,
 				0DEB1DFE2899FA9E001D1D23 /* Products */,
+				0DEBDFD928ABD46100AFF739 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,6 +209,22 @@
 			path = Key;
 			sourceTree = "<group>";
 		};
+		0DEBDFD128ABD45500AFF739 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0DEBDFD628ABD45500AFF739 /* TMDBFramework.framework */,
+				0DEBDFD828ABD45500AFF739 /* TMDBFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0DEBDFD928ABD46100AFF739 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -182,6 +235,7 @@
 				0DEB1DF92899FA9E001D1D23 /* Sources */,
 				0DEB1DFA2899FA9E001D1D23 /* Frameworks */,
 				0DEB1DFB2899FA9E001D1D23 /* Resources */,
+				0DEBDFDC28ABD46200AFF739 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,12 +286,35 @@
 			);
 			productRefGroup = 0DEB1DFE2899FA9E001D1D23 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0DEBDFD128ABD45500AFF739 /* Products */;
+					ProjectRef = 0DEBDFD028ABD45500AFF739 /* TMDBFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0DEB1DFC2899FA9E001D1D23 /* SesacTMDB */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0DEBDFD628ABD45500AFF739 /* TMDBFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TMDBFramework.framework;
+			remoteRef = 0DEBDFD528ABD45500AFF739 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0DEBDFD828ABD45500AFF739 /* TMDBFrameworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TMDBFrameworkTests.xctest;
+			remoteRef = 0DEBDFD728ABD45500AFF739 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0DEB1DFB2899FA9E001D1D23 /* Resources */ = {
