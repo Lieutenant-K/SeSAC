@@ -15,6 +15,20 @@ class ThirdViewController: UIViewController {
         
     }
     
-
+    @IBAction func touchStartButton(_ sender: UIButton) {
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: MovieViewController.reuseIdentifier)
+        
+      
+        
+        let navi = UINavigationController(rootViewController: vc)
+        
+        navi.modalPresentationStyle = .fullScreen
+        navi.modalTransitionStyle = .crossDissolve
+        
+        present(navi,animated: true)
+        
+    }
+    
 
 }

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +12,7 @@
         <!--Intro Page View Controller-->
         <scene sceneID="Nac-xh-JmO">
             <objects>
-                <pageViewController storyboardIdentifier="IntroPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="ZlI-Jo-tCk" customClass="IntroPageViewController" customModule="SesacTMDB" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="IntroPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ZlI-Jo-tCk" customClass="IntroPageViewController" customModule="SesacTMDB" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JhQ-Dm-Nxp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-739" y="27"/>
@@ -23,8 +24,28 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TMDB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dal-hi-0gY">
+                                <rect key="frame" x="20" y="64" width="140" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="트렌드한 영화를 찾아보세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byX-dU-SEv">
+                                <rect key="frame" x="20" y="172" width="281.5" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="byX-dU-SEv" firstAttribute="top" secondItem="dal-hi-0gY" secondAttribute="bottom" constant="48" id="0SI-Vk-OhY"/>
+                            <constraint firstItem="dal-hi-0gY" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="WeH-Un-3JA"/>
+                            <constraint firstItem="byX-dU-SEv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="mku-Af-NPO"/>
+                            <constraint firstItem="dal-hi-0gY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="ql8-ZH-cON"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -38,8 +59,28 @@
                     <view key="view" contentMode="scaleToFill" id="E00-Xd-wja">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TMDB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpM-Mt-4Tt">
+                                <rect key="frame" x="20" y="64" width="140" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 위치 주변의 영화관을 찾아보세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtq-uW-oOG">
+                                <rect key="frame" x="20" y="172" width="361" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="9Ot-3a-phH"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xtq-uW-oOG" firstAttribute="leading" secondItem="9Ot-3a-phH" secondAttribute="leading" constant="20" id="QS6-Vd-zEA"/>
+                            <constraint firstItem="xtq-uW-oOG" firstAttribute="top" secondItem="zpM-Mt-4Tt" secondAttribute="bottom" constant="48" id="Zfv-Ll-9Zl"/>
+                            <constraint firstItem="zpM-Mt-4Tt" firstAttribute="top" secondItem="9Ot-3a-phH" secondAttribute="top" constant="20" id="kAH-W6-PDQ"/>
+                            <constraint firstItem="zpM-Mt-4Tt" firstAttribute="leading" secondItem="9Ot-3a-phH" secondAttribute="leading" constant="20" id="sxJ-Fj-ec4"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJ3-tm-5LG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -53,8 +94,47 @@
                     <view key="view" contentMode="scaleToFill" id="Z97-Pa-Yuf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TMDB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UL-HD-5nw">
+                                <rect key="frame" x="20" y="64" width="140" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비슷한 영화들을 추천받아 보세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSK-TV-geL">
+                                <rect key="frame" x="20" y="172" width="332.5" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRw-OP-uE0">
+                                <rect key="frame" x="20" y="782" width="374" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="XY7-q3-o1W"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" imagePlacement="trailing" title="시작하기" imagePadding="18" cornerStyle="large">
+                                    <imageReference key="image" image="play.fill" catalog="system" symbolScale="default"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="touchStartButton:" destination="BM1-Jc-8wu" eventType="touchUpInside" id="lJY-8D-1N4"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Ngb-Wj-WvM"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ngb-Wj-WvM" firstAttribute="bottom" secondItem="LRw-OP-uE0" secondAttribute="bottom" constant="20" id="7HH-4H-omQ"/>
+                            <constraint firstItem="0UL-HD-5nw" firstAttribute="top" secondItem="Ngb-Wj-WvM" secondAttribute="top" constant="20" id="Gj4-Rb-g0m"/>
+                            <constraint firstItem="Ngb-Wj-WvM" firstAttribute="trailing" secondItem="LRw-OP-uE0" secondAttribute="trailing" constant="20" id="Hab-Sy-UgP"/>
+                            <constraint firstItem="dSK-TV-geL" firstAttribute="top" secondItem="0UL-HD-5nw" secondAttribute="bottom" constant="48" id="HmV-93-Rnu"/>
+                            <constraint firstItem="0UL-HD-5nw" firstAttribute="leading" secondItem="Ngb-Wj-WvM" secondAttribute="leading" constant="20" id="LVa-Jt-sYw"/>
+                            <constraint firstItem="LRw-OP-uE0" firstAttribute="leading" secondItem="Ngb-Wj-WvM" secondAttribute="leading" constant="20" id="Nol-lW-eUQ"/>
+                            <constraint firstItem="dSK-TV-geL" firstAttribute="leading" secondItem="Ngb-Wj-WvM" secondAttribute="leading" constant="20" id="eev-F8-dov"/>
+                            <constraint firstItem="dSK-TV-geL" firstAttribute="top" secondItem="0UL-HD-5nw" secondAttribute="bottom" constant="48" id="lFi-hi-hOz"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULd-AY-eK1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -63,14 +143,9 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
