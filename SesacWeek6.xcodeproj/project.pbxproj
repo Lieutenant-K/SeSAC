@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D014AB428A493910023D5D6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D014AB328A493910023D5D6 /* MapViewController.swift */; };
+		0D014AB928A5D31E0023D5D6 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 0D014AB828A5D31E0023D5D6 /* YPImagePicker */; };
+		0D014ABB28A5DD1B0023D5D6 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D014ABA28A5DD1B0023D5D6 /* CameraViewController.swift */; };
 		0D403C6928A08FEC00F55ACF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D403C6828A08FEC00F55ACF /* AppDelegate.swift */; };
 		0D403C6B28A08FEC00F55ACF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D403C6A28A08FEC00F55ACF /* SceneDelegate.swift */; };
 		0D403C6D28A08FEC00F55ACF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D403C6C28A08FEC00F55ACF /* ViewController.swift */; };
@@ -16,9 +19,26 @@
 		0D403C7E28A0901200F55ACF /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0D403C7D28A0901200F55ACF /* SwiftyJSON */; };
 		0D403C8128A0901F00F55ACF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0D403C8028A0901F00F55ACF /* Kingfisher */; };
 		0D403C8428A0902E00F55ACF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0D403C8328A0902E00F55ACF /* Alamofire */; };
+		0D403C8628A090A400F55ACF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0D403C8528A090A400F55ACF /* .gitignore */; };
+		0D403C8828A0910900F55ACF /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D403C8728A0910900F55ACF /* APIKey.swift */; };
+		0D403C8B28A094AA00F55ACF /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D403C8A28A094AA00F55ACF /* EndPoint.swift */; };
+		0D403C8D28A0951800F55ACF /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D403C8C28A0951800F55ACF /* URL+Extension.swift */; };
+		0D403C8F28A0A78300F55ACF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D403C8E28A0A78300F55ACF /* APIManager.swift */; };
+		0D403C9128A0ABFD00F55ACF /* ClosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D403C9028A0ABFD00F55ACF /* ClosureViewController.swift */; };
+		0D403C9A28A1E03600F55ACF /* SeSACButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D403C9928A1E03600F55ACF /* SeSACButton.swift */; };
+		0D403C9C28A1E60A00F55ACF /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D403C9B28A1E60A00F55ACF /* CardView.xib */; };
+		0D403C9E28A1E62D00F55ACF /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D403C9D28A1E62D00F55ACF /* CardView.swift */; };
+		0D832C9828A330B100604962 /* RusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D832C9728A330B100604962 /* RusableViewProtocol.swift */; };
+		0D832C9A28A343F500604962 /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D832C9928A343F500604962 /* TMDBAPIManager.swift */; };
+		0D8CAE7328A1F3AE001837B8 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8CAE7128A1F3AE001837B8 /* CardCollectionViewCell.swift */; };
+		0D8CAE7428A1F3AE001837B8 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8CAE7228A1F3AE001837B8 /* CardCollectionViewCell.xib */; };
+		0D8CAE7628A1F652001837B8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8CAE7528A1F652001837B8 /* MainViewController.swift */; };
+		0D8CAE7828A1FC58001837B8 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8CAE7728A1FC58001837B8 /* MainTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D014AB328A493910023D5D6 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0D014ABA28A5DD1B0023D5D6 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0D403C6528A08FEC00F55ACF /* SesacWeek6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacWeek6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D403C6828A08FEC00F55ACF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D403C6A28A08FEC00F55ACF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,6 +47,21 @@
 		0D403C7128A08FEE00F55ACF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D403C7428A08FEE00F55ACF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D403C7628A08FEE00F55ACF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D403C8528A090A400F55ACF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		0D403C8728A0910900F55ACF /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		0D403C8A28A094AA00F55ACF /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		0D403C8C28A0951800F55ACF /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		0D403C8E28A0A78300F55ACF /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		0D403C9028A0ABFD00F55ACF /* ClosureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureViewController.swift; sourceTree = "<group>"; };
+		0D403C9928A1E03600F55ACF /* SeSACButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACButton.swift; sourceTree = "<group>"; };
+		0D403C9B28A1E60A00F55ACF /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		0D403C9D28A1E62D00F55ACF /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		0D832C9728A330B100604962 /* RusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RusableViewProtocol.swift; sourceTree = "<group>"; };
+		0D832C9928A343F500604962 /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
+		0D8CAE7128A1F3AE001837B8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		0D8CAE7228A1F3AE001837B8 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
+		0D8CAE7528A1F652001837B8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0D8CAE7728A1FC58001837B8 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +72,7 @@
 				0D403C8428A0902E00F55ACF /* Alamofire in Frameworks */,
 				0D403C8128A0901F00F55ACF /* Kingfisher in Frameworks */,
 				0D403C7E28A0901200F55ACF /* SwiftyJSON in Frameworks */,
+				0D014AB928A5D31E0023D5D6 /* YPImagePicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +82,7 @@
 		0D403C5C28A08FEC00F55ACF = {
 			isa = PBXGroup;
 			children = (
+				0D403C8528A090A400F55ACF /* .gitignore */,
 				0D403C6728A08FEC00F55ACF /* SesacWeek6 */,
 				0D403C6628A08FEC00F55ACF /* Products */,
 			);
@@ -62,15 +99,55 @@
 		0D403C6728A08FEC00F55ACF /* SesacWeek6 */ = {
 			isa = PBXGroup;
 			children = (
+				0D832C9628A3309F00604962 /* Protocol */,
+				0D403C9828A1DFED00F55ACF /* View */,
+				0D403C8928A0949600F55ACF /* Network */,
 				0D403C6828A08FEC00F55ACF /* AppDelegate.swift */,
 				0D403C6A28A08FEC00F55ACF /* SceneDelegate.swift */,
 				0D403C6C28A08FEC00F55ACF /* ViewController.swift */,
 				0D403C6E28A08FEC00F55ACF /* Main.storyboard */,
+				0D014ABA28A5DD1B0023D5D6 /* CameraViewController.swift */,
+				0D014AB328A493910023D5D6 /* MapViewController.swift */,
+				0D8CAE7528A1F652001837B8 /* MainViewController.swift */,
+				0D403C9028A0ABFD00F55ACF /* ClosureViewController.swift */,
 				0D403C7128A08FEE00F55ACF /* Assets.xcassets */,
 				0D403C7328A08FEE00F55ACF /* LaunchScreen.storyboard */,
 				0D403C7628A08FEE00F55ACF /* Info.plist */,
+				0D403C8728A0910900F55ACF /* APIKey.swift */,
 			);
 			path = SesacWeek6;
+			sourceTree = "<group>";
+		};
+		0D403C8928A0949600F55ACF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0D403C8A28A094AA00F55ACF /* EndPoint.swift */,
+				0D403C8C28A0951800F55ACF /* URL+Extension.swift */,
+				0D403C8E28A0A78300F55ACF /* APIManager.swift */,
+				0D832C9928A343F500604962 /* TMDBAPIManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0D403C9828A1DFED00F55ACF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0D8CAE7728A1FC58001837B8 /* MainTableViewCell.swift */,
+				0D403C9928A1E03600F55ACF /* SeSACButton.swift */,
+				0D403C9D28A1E62D00F55ACF /* CardView.swift */,
+				0D403C9B28A1E60A00F55ACF /* CardView.xib */,
+				0D8CAE7128A1F3AE001837B8 /* CardCollectionViewCell.swift */,
+				0D8CAE7228A1F3AE001837B8 /* CardCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0D832C9628A3309F00604962 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0D832C9728A330B100604962 /* RusableViewProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,6 +170,7 @@
 				0D403C7D28A0901200F55ACF /* SwiftyJSON */,
 				0D403C8028A0901F00F55ACF /* Kingfisher */,
 				0D403C8328A0902E00F55ACF /* Alamofire */,
+				0D014AB828A5D31E0023D5D6 /* YPImagePicker */,
 			);
 			productName = SesacWeek6;
 			productReference = 0D403C6528A08FEC00F55ACF /* SesacWeek6.app */;
@@ -126,6 +204,7 @@
 				0D403C7C28A0901200F55ACF /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				0D403C7F28A0901F00F55ACF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0D403C8228A0902E00F55ACF /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0D014AB728A5D31E0023D5D6 /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 			);
 			productRefGroup = 0D403C6628A08FEC00F55ACF /* Products */;
 			projectDirPath = "";
@@ -141,8 +220,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D403C8628A090A400F55ACF /* .gitignore in Resources */,
 				0D403C7528A08FEE00F55ACF /* LaunchScreen.storyboard in Resources */,
+				0D403C9C28A1E60A00F55ACF /* CardView.xib in Resources */,
 				0D403C7228A08FEE00F55ACF /* Assets.xcassets in Resources */,
+				0D8CAE7428A1F3AE001837B8 /* CardCollectionViewCell.xib in Resources */,
 				0D403C7028A08FEC00F55ACF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,9 +236,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D8CAE7828A1FC58001837B8 /* MainTableViewCell.swift in Sources */,
 				0D403C6D28A08FEC00F55ACF /* ViewController.swift in Sources */,
 				0D403C6928A08FEC00F55ACF /* AppDelegate.swift in Sources */,
+				0D014ABB28A5DD1B0023D5D6 /* CameraViewController.swift in Sources */,
+				0D403C9128A0ABFD00F55ACF /* ClosureViewController.swift in Sources */,
+				0D8CAE7628A1F652001837B8 /* MainViewController.swift in Sources */,
+				0D8CAE7328A1F3AE001837B8 /* CardCollectionViewCell.swift in Sources */,
+				0D403C8B28A094AA00F55ACF /* EndPoint.swift in Sources */,
+				0D403C9E28A1E62D00F55ACF /* CardView.swift in Sources */,
+				0D403C8828A0910900F55ACF /* APIKey.swift in Sources */,
+				0D403C9A28A1E03600F55ACF /* SeSACButton.swift in Sources */,
 				0D403C6B28A08FEC00F55ACF /* SceneDelegate.swift in Sources */,
+				0D832C9828A330B100604962 /* RusableViewProtocol.swift in Sources */,
+				0D403C8D28A0951800F55ACF /* URL+Extension.swift in Sources */,
+				0D832C9A28A343F500604962 /* TMDBAPIManager.swift in Sources */,
+				0D403C8F28A0A78300F55ACF /* APIManager.swift in Sources */,
+				0D014AB428A493910023D5D6 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +399,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5QA7Y24MQ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SesacWeek6/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -330,6 +427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5QA7Y24MQ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SesacWeek6/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -374,6 +472,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0D014AB728A5D31E0023D5D6 /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Yummypets/YPImagePicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		0D403C7C28A0901200F55ACF /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
@@ -401,6 +507,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0D014AB828A5D31E0023D5D6 /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D014AB728A5D31E0023D5D6 /* XCRemoteSwiftPackageReference "YPImagePicker" */;
+			productName = YPImagePicker;
+		};
 		0D403C7D28A0901200F55ACF /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0D403C7C28A0901200F55ACF /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
