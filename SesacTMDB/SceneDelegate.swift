@@ -20,7 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         
-        let vc = UIStoryboard(name: "Intro", bundle: nil).instantiateViewController(withIdentifier: IntroPageViewController.reuseIdentifier)
+//        let vc = UIStoryboard(name: "Intro", bundle: nil).instantiateViewController(withIdentifier: IntroPageViewController.reuseIdentifier)
+        
+        let vc = ContainerViewController()
         
         window?.rootViewController = vc
         window?.makeKeyAndVisible()

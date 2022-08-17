@@ -21,6 +21,11 @@ class IntroPageViewController: UIPageViewController {
         
     }
     
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        print(#function)
+    }
+    
     private func setPageViewControllers() {
         
         let sb = UIStoryboard(name: "Intro", bundle: nil)

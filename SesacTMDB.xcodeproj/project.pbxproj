@@ -22,6 +22,8 @@
 		0DA472F1289BCAE10068E797 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472F0289BCAE10068E797 /* CreditViewController.swift */; };
 		0DA472F3289BD3C60068E797 /* InfoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA472F2289BD3C60068E797 /* InfoListCell.swift */; };
 		0DA472F6289BEFC80068E797 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 0DA472F5289BEFC80068E797 /* JGProgressHUD */; };
+		0DBFCDCE28AD3FF40073455A /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFCDCD28AD3FF40073455A /* ContainerViewController.swift */; };
+		0DBFCDD328AD40380073455A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0DBFCDD228AD40380073455A /* SnapKit */; };
 		0DD9C941289A7BAD00488F0D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD9C940289A7BAD00488F0D /* Model.swift */; };
 		0DD9C943289A7F6100488F0D /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD9C942289A7F6100488F0D /* MovieCell.swift */; };
 		0DEB1E012899FA9E001D1D23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB1E002899FA9E001D1D23 /* AppDelegate.swift */; };
@@ -93,6 +95,7 @@
 		0DA472EE289BC9EA0068E797 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0DA472F0289BCAE10068E797 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
 		0DA472F2289BD3C60068E797 /* InfoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoListCell.swift; sourceTree = "<group>"; };
+		0DBFCDCD28AD3FF40073455A /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		0DD9C940289A7BAD00488F0D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0DD9C942289A7F6100488F0D /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		0DEB1DFD2899FA9E001D1D23 /* SesacTMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacTMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +128,7 @@
 				0DA472F6289BEFC80068E797 /* JGProgressHUD in Frameworks */,
 				0DEB1E2D289A71CC001D1D23 /* SwiftyJSON in Frameworks */,
 				0DEBDFDA28ABD46100AFF739 /* TMDBFramework.framework in Frameworks */,
+				0DBFCDD328AD40380073455A /* SnapKit in Frameworks */,
 				0DEB1E27289A71A8001D1D23 /* Kingfisher in Frameworks */,
 				0D628EEF289D9E1E00337BCD /* Toast in Frameworks */,
 				0DEB1E2A289A71B5001D1D23 /* Alamofire in Frameworks */,
@@ -209,6 +213,7 @@
 				0DEB1E0E2899FAA1001D1D23 /* Info.plist */,
 				0DEBDFDE28ABDAD700AFF739 /* Intro.storyboard */,
 				0DEBDFE228ABDDB400AFF739 /* IntroPageViewController.swift */,
+				0DBFCDCD28AD3FF40073455A /* ContainerViewController.swift */,
 				0DEBDFE428ABDEB700AFF739 /* FirstViewController.swift */,
 				0DEBDFE628ABDED300AFF739 /* SecondViewController.swift */,
 				0DEBDFE828ABDED900AFF739 /* ThirdViewController.swift */,
@@ -263,6 +268,7 @@
 				0DEB1E2C289A71CC001D1D23 /* SwiftyJSON */,
 				0DA472F5289BEFC80068E797 /* JGProgressHUD */,
 				0D628EEE289D9E1E00337BCD /* Toast */,
+				0DBFCDD228AD40380073455A /* SnapKit */,
 			);
 			productName = SesacTMDB;
 			productReference = 0DEB1DFD2899FA9E001D1D23 /* SesacTMDB.app */;
@@ -298,6 +304,7 @@
 				0DEB1E2B289A71CC001D1D23 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				0DA472F4289BEFC80068E797 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 				0D628EED289D9E1E00337BCD /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				0DBFCDD128AD40380073455A /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 0DEB1DFE2899FA9E001D1D23 /* Products */;
 			projectDirPath = "";
@@ -365,6 +372,7 @@
 				0DEBDFE528ABDEB700AFF739 /* FirstViewController.swift in Sources */,
 				0D014AB628A541CC0023D5D6 /* TheaterViewController.swift in Sources */,
 				0DEE13D228A2D2E900A36411 /* CardCell.swift in Sources */,
+				0DBFCDCE28AD3FF40073455A /* ContainerViewController.swift in Sources */,
 				0DEB1E192899FCB5001D1D23 /* Constant.swift in Sources */,
 				0DD9C941289A7BAD00488F0D /* Model.swift in Sources */,
 				0D8CAE7A28A2BB34001837B8 /* CardViewController.swift in Sources */,
@@ -613,6 +621,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		0DBFCDD128AD40380073455A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		0DEB1E25289A71A8001D1D23 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -649,6 +665,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0DA472F4289BEFC80068E797 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
 			productName = JGProgressHUD;
+		};
+		0DBFCDD228AD40380073455A /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DBFCDD128AD40380073455A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		0DEB1E26289A71A8001D1D23 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
