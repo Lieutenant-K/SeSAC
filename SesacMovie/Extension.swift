@@ -12,3 +12,17 @@ extension UIColor {
     static let signUpTextField = UIColor(named: "textfieldColor")
     
 }
+
+extension UIViewController {
+    
+    func presentViewControllerModally<T: UIViewController>(viewController vc: T.Type) {
+        
+        let vc = vc.init()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+        
+        
+    }
+    
+}

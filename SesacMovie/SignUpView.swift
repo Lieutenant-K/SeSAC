@@ -60,6 +60,8 @@ class SignUpView: BaseView {
     
     override func setSubviews() {
         
+        self.backgroundColor = .systemBackground
+        
         [titleLabel, textfields, additionalLabel, additionalLabelSwitch].forEach { addSubview($0) }
         
         pwTextField.isSecureTextEntry = true

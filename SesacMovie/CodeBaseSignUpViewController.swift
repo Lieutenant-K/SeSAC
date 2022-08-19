@@ -18,7 +18,6 @@ class CodeBaseSignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
 
