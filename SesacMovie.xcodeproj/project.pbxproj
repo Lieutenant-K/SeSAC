@@ -15,6 +15,7 @@
 		0DC2BD4C28AFBB57000CDFD1 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD4B28AFBB57000CDFD1 /* BaseView.swift */; };
 		0DC2BD4E28AFC782000CDFD1 /* SignUpTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD4D28AFC782000CDFD1 /* SignUpTextField.swift */; };
 		0DC2BD5028AFC979000CDFD1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD4F28AFC979000CDFD1 /* Extension.swift */; };
+		0DC2BD5428AFDBD2000CDFD1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC2BD5328AFDBD2000CDFD1 /* IQKeyboardManagerSwift */; };
 		0DD0940A2872767A002BF1C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD094092872767A002BF1C2 /* AppDelegate.swift */; };
 		0DD0940C2872767A002BF1C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0940B2872767A002BF1C2 /* SceneDelegate.swift */; };
 		0DD0940E2872767A002BF1C2 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0940D2872767A002BF1C2 /* MovieViewController.swift */; };
@@ -49,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DC2BD4628AFB573000CDFD1 /* Toast in Frameworks */,
+				0DC2BD5428AFDBD2000CDFD1 /* IQKeyboardManagerSwift in Frameworks */,
 				0DDBAD922882C0CE00E673DE /* Lottie in Frameworks */,
 				0DC2BD4328AFB55B000CDFD1 /* SnapKit in Frameworks */,
 			);
@@ -114,6 +116,7 @@
 				0DDBAD912882C0CE00E673DE /* Lottie */,
 				0DC2BD4228AFB55B000CDFD1 /* SnapKit */,
 				0DC2BD4528AFB573000CDFD1 /* Toast */,
+				0DC2BD5328AFDBD2000CDFD1 /* IQKeyboardManagerSwift */,
 			);
 			productName = SesacMovie;
 			productReference = 0DD094062872767A002BF1C2 /* SesacMovie.app */;
@@ -147,6 +150,7 @@
 				0DDBAD902882C0CE00E673DE /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				0DC2BD4128AFB55B000CDFD1 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0DC2BD4428AFB573000CDFD1 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				0DC2BD5228AFDBD2000CDFD1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 0DD094072872767A002BF1C2 /* Products */;
 			projectDirPath = "";
@@ -424,6 +428,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		0DC2BD5228AFDBD2000CDFD1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
 		0DDBAD902882C0CE00E673DE /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -444,6 +456,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0DC2BD4428AFB573000CDFD1 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		0DC2BD5328AFDBD2000CDFD1 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DC2BD5228AFDBD2000CDFD1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 		0DDBAD912882C0CE00E673DE /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

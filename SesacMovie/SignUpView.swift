@@ -44,11 +44,25 @@ class SignUpView: BaseView {
     
     lazy var textfields = UIStackView(arrangedSubviews: [emailTextField, pwTextField, nicknameTextField, locationTextField, codeTextField, signUpButton])
     
+    let additionalLabel: UILabel = {
+       let view = UILabel()
+        view.text = "추가 정보 입력"
+        view.textColor = .label
+        return view
+    }()
+    
+    let additionalLabelSwitch: UISwitch = {
+        let view = UISwitch()
+        view.onTintColor = .red
+        return view
+    }()
     
     
     override func setSubviews() {
         
-        [titleLabel, textfields].forEach { addSubview($0) }
+        [titleLabel, textfields, additionalLabel, additionalLabelSwitch].forEach { addSubview($0) }
+        
+        pwTextField.isSecureTextEntry = true
         
         setStackView()
     }
@@ -62,25 +76,25 @@ class SignUpView: BaseView {
             make.centerX.equalToSuperview()
         }
         
-        /*
-        emailTextField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(40)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(200)
-        }
-        */
         
         textfields.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(36)
             make.center.equalToSuperview()
-//            make.height.equalToSuperview().dividedBy(3.0)
         }
-        
         
         signUpButton.snp.makeConstraints { make in
             make.height.equalTo(50)
         }
         
+        additionalLabelSwitch.snp.makeConstraints { make in
+            make.top.equalTo(textfields.snp.bottom).offset(16)
+            make.trailing.equalTo(textfields)
+        }
+        
+        additionalLabel.snp.makeConstraints { make in
+            make.top.equalTo(textfields.snp.bottom).offset(16)
+            make.leading.equalTo(textfields)
+        }
     }
     
     func setStackView() {
