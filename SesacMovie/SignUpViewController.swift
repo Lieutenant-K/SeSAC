@@ -102,7 +102,7 @@ class SignUpViewController: UIViewController {
             present(alertController, animated: true)
             return
         }
-        
+        // #"^[0-9]{5}$"#
         guard let code = codeTextField.text, Int(code) != nil && code.count == 5 else {
             alertController.title = "코드 입력 오류"
             alertController.message = "5자리 숫자로 코드를 입력해주세요"

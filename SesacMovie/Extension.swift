@@ -25,4 +25,14 @@ extension UIViewController {
         
     }
     
+    func showAlert(title: String, message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "확인", style: .cancel))
+        
+        present(alertController, animated: true)
+        
+    }
+    
 }

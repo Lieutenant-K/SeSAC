@@ -36,13 +36,24 @@ class SignUpView: BaseView {
         
     }()
     
-    let emailTextField = SignUpTextField(placeholder: "이메일 주소 또는 전화번호", keyboardType: .emailAddress)
-    let pwTextField = SignUpTextField(placeholder: "비밀번호", keyboardType: .asciiCapable)
-    let nicknameTextField = SignUpTextField(placeholder: "닉네임", keyboardType: .asciiCapable)
+    let emailTextField = SignUpTextField(type: .email)
+    let pwTextField = SignUpTextField(type: .password)
+    let nicknameTextField = SignUpTextField(type: .nickname)
     let locationTextField = SignUpTextField(placeholder: "위치", keyboardType: .twitter)
-    let codeTextField = SignUpTextField(placeholder: "추천 코드 입력", keyboardType: .numberPad)
+    let codeTextField = SignUpTextField(type: .code)
     
-    lazy var textfields = UIStackView(arrangedSubviews: [emailTextField, pwTextField, nicknameTextField, locationTextField, codeTextField, signUpButton])
+    lazy var textfields: UIStackView = {
+        
+        let view =
+        UIStackView(arrangedSubviews: [emailTextField, pwTextField, nicknameTextField, locationTextField, codeTextField, signUpButton])
+        view.axis = .vertical
+        view.distribution = .fill
+        view.spacing = 16
+        view.alignment = .fill
+        return view
+        
+    }()
+    
     
     let additionalLabel: UILabel = {
        let view = UILabel()
@@ -54,6 +65,7 @@ class SignUpView: BaseView {
     let additionalLabelSwitch: UISwitch = {
         let view = UISwitch()
         view.onTintColor = .red
+        view.isOn = true
         return view
     }()
     
@@ -64,9 +76,6 @@ class SignUpView: BaseView {
         
         [titleLabel, textfields, additionalLabel, additionalLabelSwitch].forEach { addSubview($0) }
         
-        pwTextField.isSecureTextEntry = true
-        
-        setStackView()
     }
     
     override func constraintSubview() {
@@ -97,15 +106,6 @@ class SignUpView: BaseView {
             make.top.equalTo(textfields.snp.bottom).offset(16)
             make.leading.equalTo(textfields)
         }
-    }
-    
-    func setStackView() {
-        
-        textfields.axis = .vertical
-        textfields.distribution = .fill
-        textfields.spacing = 16
-        textfields.alignment = .fill
-        
     }
 
 }
