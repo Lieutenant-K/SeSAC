@@ -18,7 +18,14 @@ class SplashViewController: UIViewController {
         
         animationView.frame = view.frame
         animationView.play(fromFrame: 0, toFrame: 74, loopMode: .playOnce) { _ in
-            self.performSegue(withIdentifier: "main", sender: self)
+            
+            let vc = CodeBaseSignUpViewController()
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .fullScreen
+            
+            self.present(vc, animated: true)
+            
+            print("애니메이션 종료")
         }
         
 

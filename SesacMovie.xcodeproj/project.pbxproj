@@ -10,6 +10,11 @@
 		0D89B6D42875D05B0071DB83 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B6D32875D05B0071DB83 /* SignUpViewController.swift */; };
 		0DC2BD4328AFB55B000CDFD1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC2BD4228AFB55B000CDFD1 /* SnapKit */; };
 		0DC2BD4628AFB573000CDFD1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC2BD4528AFB573000CDFD1 /* Toast */; };
+		0DC2BD4828AFB7D3000CDFD1 /* CodeBaseSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD4728AFB7D3000CDFD1 /* CodeBaseSignUpViewController.swift */; };
+		0DC2BD4A28AFBAF0000CDFD1 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD4928AFBAF0000CDFD1 /* SignUpView.swift */; };
+		0DC2BD4C28AFBB57000CDFD1 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD4B28AFBB57000CDFD1 /* BaseView.swift */; };
+		0DC2BD4E28AFC782000CDFD1 /* SignUpTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD4D28AFC782000CDFD1 /* SignUpTextField.swift */; };
+		0DC2BD5028AFC979000CDFD1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD4F28AFC979000CDFD1 /* Extension.swift */; };
 		0DD0940A2872767A002BF1C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD094092872767A002BF1C2 /* AppDelegate.swift */; };
 		0DD0940C2872767A002BF1C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0940B2872767A002BF1C2 /* SceneDelegate.swift */; };
 		0DD0940E2872767A002BF1C2 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0940D2872767A002BF1C2 /* MovieViewController.swift */; };
@@ -22,6 +27,11 @@
 
 /* Begin PBXFileReference section */
 		0D89B6D32875D05B0071DB83 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0DC2BD4728AFB7D3000CDFD1 /* CodeBaseSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseSignUpViewController.swift; sourceTree = "<group>"; };
+		0DC2BD4928AFBAF0000CDFD1 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		0DC2BD4B28AFBB57000CDFD1 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		0DC2BD4D28AFC782000CDFD1 /* SignUpTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTextField.swift; sourceTree = "<group>"; };
+		0DC2BD4F28AFC979000CDFD1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0DD094062872767A002BF1C2 /* SesacMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD094092872767A002BF1C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DD0940B2872767A002BF1C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +82,11 @@
 				0D89B6D32875D05B0071DB83 /* SignUpViewController.swift */,
 				0DD0940F2872767A002BF1C2 /* Main.storyboard */,
 				0DDBAD932882C0F200E673DE /* SplashViewController.swift */,
+				0DC2BD4728AFB7D3000CDFD1 /* CodeBaseSignUpViewController.swift */,
+				0DC2BD4928AFBAF0000CDFD1 /* SignUpView.swift */,
+				0DC2BD4D28AFC782000CDFD1 /* SignUpTextField.swift */,
+				0DC2BD4F28AFC979000CDFD1 /* Extension.swift */,
+				0DC2BD4B28AFBB57000CDFD1 /* BaseView.swift */,
 				0DD094122872767D002BF1C2 /* Assets.xcassets */,
 				0DD094142872767D002BF1C2 /* LaunchScreen.storyboard */,
 				0DD094172872767D002BF1C2 /* Info.plist */,
@@ -163,8 +178,13 @@
 				0DD0940E2872767A002BF1C2 /* MovieViewController.swift in Sources */,
 				0DD0940A2872767A002BF1C2 /* AppDelegate.swift in Sources */,
 				0D89B6D42875D05B0071DB83 /* SignUpViewController.swift in Sources */,
+				0DC2BD4A28AFBAF0000CDFD1 /* SignUpView.swift in Sources */,
 				0DD0940C2872767A002BF1C2 /* SceneDelegate.swift in Sources */,
+				0DC2BD5028AFC979000CDFD1 /* Extension.swift in Sources */,
+				0DC2BD4828AFB7D3000CDFD1 /* CodeBaseSignUpViewController.swift in Sources */,
+				0DC2BD4E28AFC782000CDFD1 /* SignUpTextField.swift in Sources */,
 				0DDBAD942882C0F200E673DE /* SplashViewController.swift in Sources */,
+				0DC2BD4C28AFBB57000CDFD1 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +331,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5QA7Y24MQ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SesacMovie/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Movie;
@@ -341,7 +361,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5QA7Y24MQ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SesacMovie/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Movie;
