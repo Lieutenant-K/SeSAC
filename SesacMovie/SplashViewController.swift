@@ -19,7 +19,7 @@ class SplashViewController: UIViewController {
         animationView.frame = view.frame
         animationView.play(fromFrame: 0, toFrame: 74, loopMode: .playOnce) { _ in
             
-            self.presentViewControllerModally(viewController: CodeBaseSignUpViewController.self)
+            self.presentViewControllerModally(viewController: CodeBaseMovieViewController.self)
             
             print("애니메이션 종료")
         }

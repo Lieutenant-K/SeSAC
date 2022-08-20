@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 class PreviewImageView: UIImageView {
     
     init() {
@@ -25,6 +27,14 @@ class PreviewImageView: UIImageView {
         layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 2
         
+        
+    }
+    
+    override func updateConstraints() {
+        
+        snp.makeConstraints { $0.height.equalTo(self.snp.width) }
+        
+        super.updateConstraints()
     }
     
     override func layoutSubviews() {

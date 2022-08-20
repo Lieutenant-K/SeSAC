@@ -115,13 +115,16 @@ class MovieView: BaseView {
             
             make.leading.trailing.equalToSuperview().inset(spacing)
             make.top.equalTo(previewLabel.snp.bottom).offset(14)
+//            make.bottom.equalTo(safeAreaLayoutGuide)
             make.bottom.lessThanOrEqualTo(safeAreaLayoutGuide)
             
+            /*
             let imageCount = Double(previewImages.count)
             
             let width = imageCount > 0 ? (UIScreen.main.bounds.width - spacing*(imageCount+1))/imageCount : 0
             
             make.height.equalTo(width)
+             */
             
         }
     }
