@@ -13,6 +13,16 @@ extension UIColor {
     
 }
 
+extension UIImage {
+    
+    static let backgroundImage = UIImage(named: "background")
+    
+    static var randomPreviewImage: UIImage? {
+        UIImage(named: "poster-\(Int.random(in: 1...20))")
+    }
+    
+}
+
 extension UIViewController {
     
     func presentViewControllerModally<T: UIViewController>(viewController vc: T.Type) {

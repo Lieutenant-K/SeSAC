@@ -9,10 +9,16 @@ import UIKit
 
 class CodeBaseMovieViewController: UIViewController {
 
+    let movieView = MovieView()
+    
+    override func loadView() {
+        view = movieView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
 

@@ -18,6 +18,8 @@
 		0DC2BD5428AFDBD2000CDFD1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC2BD5328AFDBD2000CDFD1 /* IQKeyboardManagerSwift */; };
 		0DC2BD5628AFF0CB000CDFD1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD5528AFF0CB000CDFD1 /* Model.swift */; };
 		0DC2BD5828B0009D000CDFD1 /* CodeBaseMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD5728B0009D000CDFD1 /* CodeBaseMovieViewController.swift */; };
+		0DC2BD5A28B10444000CDFD1 /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD5928B10444000CDFD1 /* MovieView.swift */; };
+		0DC2BD5E28B11874000CDFD1 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD5D28B11874000CDFD1 /* MenuButton.swift */; };
 		0DD0940A2872767A002BF1C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD094092872767A002BF1C2 /* AppDelegate.swift */; };
 		0DD0940C2872767A002BF1C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0940B2872767A002BF1C2 /* SceneDelegate.swift */; };
 		0DD0940E2872767A002BF1C2 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0940D2872767A002BF1C2 /* MovieViewController.swift */; };
@@ -37,6 +39,8 @@
 		0DC2BD4F28AFC979000CDFD1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0DC2BD5528AFF0CB000CDFD1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0DC2BD5728B0009D000CDFD1 /* CodeBaseMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseMovieViewController.swift; sourceTree = "<group>"; };
+		0DC2BD5928B10444000CDFD1 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
+		0DC2BD5D28B11874000CDFD1 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		0DD094062872767A002BF1C2 /* SesacMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD094092872767A002BF1C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DD0940B2872767A002BF1C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,12 +96,14 @@
 				0DC2BD5728B0009D000CDFD1 /* CodeBaseMovieViewController.swift */,
 				0DC2BD5528AFF0CB000CDFD1 /* Model.swift */,
 				0DC2BD4928AFBAF0000CDFD1 /* SignUpView.swift */,
+				0DC2BD5928B10444000CDFD1 /* MovieView.swift */,
 				0DC2BD4D28AFC782000CDFD1 /* SignUpTextField.swift */,
 				0DC2BD4F28AFC979000CDFD1 /* Extension.swift */,
 				0DC2BD4B28AFBB57000CDFD1 /* BaseView.swift */,
 				0DD094122872767D002BF1C2 /* Assets.xcassets */,
 				0DD094142872767D002BF1C2 /* LaunchScreen.storyboard */,
 				0DD094172872767D002BF1C2 /* Info.plist */,
+				0DC2BD5D28B11874000CDFD1 /* MenuButton.swift */,
 			);
 			path = SesacMovie;
 			sourceTree = "<group>";
@@ -187,12 +193,14 @@
 			files = (
 				0DD0940E2872767A002BF1C2 /* MovieViewController.swift in Sources */,
 				0DD0940A2872767A002BF1C2 /* AppDelegate.swift in Sources */,
+				0DC2BD5E28B11874000CDFD1 /* MenuButton.swift in Sources */,
 				0D89B6D42875D05B0071DB83 /* SignUpViewController.swift in Sources */,
 				0DC2BD5828B0009D000CDFD1 /* CodeBaseMovieViewController.swift in Sources */,
 				0DC2BD4A28AFBAF0000CDFD1 /* SignUpView.swift in Sources */,
 				0DD0940C2872767A002BF1C2 /* SceneDelegate.swift in Sources */,
 				0DC2BD5028AFC979000CDFD1 /* Extension.swift in Sources */,
 				0DC2BD4828AFB7D3000CDFD1 /* CodeBaseSignUpViewController.swift in Sources */,
+				0DC2BD5A28B10444000CDFD1 /* MovieView.swift in Sources */,
 				0DC2BD4E28AFC782000CDFD1 /* SignUpTextField.swift in Sources */,
 				0DC2BD5628AFF0CB000CDFD1 /* Model.swift in Sources */,
 				0DDBAD942882C0F200E673DE /* SplashViewController.swift in Sources */,
@@ -272,7 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -326,7 +334,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -352,7 +360,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -382,7 +390,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
