@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0D89B6D42875D05B0071DB83 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D89B6D32875D05B0071DB83 /* SignUpViewController.swift */; };
+		0D97745328B14AE200D5BE6E /* PreviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97745228B14AE200D5BE6E /* PreviewImageView.swift */; };
+		0D97745728B15C9F00D5BE6E /* ImageViewStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97745628B15C9F00D5BE6E /* ImageViewStack.swift */; };
 		0DC2BD4328AFB55B000CDFD1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC2BD4228AFB55B000CDFD1 /* SnapKit */; };
 		0DC2BD4628AFB573000CDFD1 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC2BD4528AFB573000CDFD1 /* Toast */; };
 		0DC2BD4828AFB7D3000CDFD1 /* CodeBaseSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2BD4728AFB7D3000CDFD1 /* CodeBaseSignUpViewController.swift */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		0D89B6D32875D05B0071DB83 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0D97745228B14AE200D5BE6E /* PreviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageView.swift; sourceTree = SOURCE_ROOT; };
+		0D97745628B15C9F00D5BE6E /* ImageViewStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewStack.swift; sourceTree = "<group>"; };
 		0DC2BD4728AFB7D3000CDFD1 /* CodeBaseSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseSignUpViewController.swift; sourceTree = "<group>"; };
 		0DC2BD4928AFBAF0000CDFD1 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		0DC2BD4B28AFBB57000CDFD1 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 		0DD094082872767A002BF1C2 /* SesacMovie */ = {
 			isa = PBXGroup;
 			children = (
+				0D97745228B14AE200D5BE6E /* PreviewImageView.swift */,
 				0DD094092872767A002BF1C2 /* AppDelegate.swift */,
 				0DD0940B2872767A002BF1C2 /* SceneDelegate.swift */,
 				0DD0940D2872767A002BF1C2 /* MovieViewController.swift */,
@@ -97,6 +102,7 @@
 				0DC2BD5528AFF0CB000CDFD1 /* Model.swift */,
 				0DC2BD4928AFBAF0000CDFD1 /* SignUpView.swift */,
 				0DC2BD5928B10444000CDFD1 /* MovieView.swift */,
+				0D97745628B15C9F00D5BE6E /* ImageViewStack.swift */,
 				0DC2BD4D28AFC782000CDFD1 /* SignUpTextField.swift */,
 				0DC2BD4F28AFC979000CDFD1 /* Extension.swift */,
 				0DC2BD4B28AFBB57000CDFD1 /* BaseView.swift */,
@@ -194,10 +200,12 @@
 				0DD0940E2872767A002BF1C2 /* MovieViewController.swift in Sources */,
 				0DD0940A2872767A002BF1C2 /* AppDelegate.swift in Sources */,
 				0DC2BD5E28B11874000CDFD1 /* MenuButton.swift in Sources */,
+				0D97745728B15C9F00D5BE6E /* ImageViewStack.swift in Sources */,
 				0D89B6D42875D05B0071DB83 /* SignUpViewController.swift in Sources */,
 				0DC2BD5828B0009D000CDFD1 /* CodeBaseMovieViewController.swift in Sources */,
 				0DC2BD4A28AFBAF0000CDFD1 /* SignUpView.swift in Sources */,
 				0DD0940C2872767A002BF1C2 /* SceneDelegate.swift in Sources */,
+				0D97745328B14AE200D5BE6E /* PreviewImageView.swift in Sources */,
 				0DC2BD5028AFC979000CDFD1 /* Extension.swift in Sources */,
 				0DC2BD4828AFB7D3000CDFD1 /* CodeBaseSignUpViewController.swift in Sources */,
 				0DC2BD5A28B10444000CDFD1 /* MovieView.swift in Sources */,

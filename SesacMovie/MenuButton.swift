@@ -14,6 +14,17 @@ class MenuButton: UIButton {
         setTitle(title, for: .normal)
     }
     
+    convenience init(withImage image: UIImage?, title: String? = nil) {
+        self.init()
+        var config = UIButton.Configuration.plain()
+        config.title = title
+        config.titleAlignment = .center
+        config.image = image
+        config.imagePlacement = .top
+        config.imagePadding = 8
+        configuration = config
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureButton()
@@ -26,7 +37,8 @@ class MenuButton: UIButton {
     
     func configureButton() {
         
-        setTitleColor(.white, for: .normal)
+        tintColor = .white
+//        setTitleColor(.white, for: .normal)
         titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         titleLabel?.textAlignment = .center
         titleLabel?.numberOfLines = 1
