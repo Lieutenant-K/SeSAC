@@ -20,10 +20,15 @@ class SearchView: BaseView {
     let collectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .vertical
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
+        view.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
         view.backgroundColor = .lightGray
+
         
         return view
     }()
@@ -44,5 +49,20 @@ class SearchView: BaseView {
             make.top.equalTo(searchBar.snp.bottom)
         }
         
+    }
+    
+    func setCollectionViewLayoutItemSize(width: CGFloat) {
+        
+        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
+        layout.itemSize = CGSize(width: width/3, height: width/3)
+        
+    }
+    
+    override func layoutSubviews() {
+        
+        setCollectionViewLayoutItemSize(width: bounds.width)
+        
+        super.layoutSubviews()
     }
 }
