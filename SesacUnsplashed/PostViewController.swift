@@ -18,10 +18,15 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        postView.pickImageButton.addTarget(self, action: #selector(touchButton), for: .touchUpInside)
         
     }
     
-
+    @objc func touchButton() {
+        
+        navigationController?.pushViewController(ImageSearchViewController(), animated: true)
+        
+    }
 
 
 }

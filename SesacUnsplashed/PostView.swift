@@ -13,7 +13,7 @@ class PostView: BaseView {
     
     let imageView:UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .red
+        view.backgroundColor = .lightGray
         return view
         
     }()
@@ -63,7 +63,7 @@ class PostView: BaseView {
         
         pickImageButton.snp.makeConstraints { make in
             make.size.equalTo(60)
-            make.trailingMargin.bottomMargin.equalTo(imageView).inset(20)
+            make.trailing.bottom.equalTo(imageView).inset(20)
         }
         
         textfield1.snp.makeConstraints { make in

@@ -22,6 +22,8 @@
 		0D97748828B2317100D5BE6E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0D97748728B2317100D5BE6E /* Kingfisher */; };
 		0D97748B28B2318400D5BE6E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0D97748A28B2318400D5BE6E /* SnapKit */; };
 		0D97748D28B2340300D5BE6E /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97748C28B2340300D5BE6E /* PostViewController.swift */; };
+		0D97748F28B23C2B00D5BE6E /* ImageSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97748E28B23C2B00D5BE6E /* ImageSearchViewController.swift */; };
+		0D97749128B23CAF00D5BE6E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97749028B23CAF00D5BE6E /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		0D97747C28B2305600D5BE6E /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		0D97747E28B230F400D5BE6E /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		0D97748C28B2340300D5BE6E /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		0D97748E28B23C2B00D5BE6E /* ImageSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchViewController.swift; sourceTree = "<group>"; };
+		0D97749028B23CAF00D5BE6E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 				0D97746D28B22F9500D5BE6E /* Assets.xcassets */,
 				0D97746F28B22F9500D5BE6E /* LaunchScreen.storyboard */,
 				0D97748C28B2340300D5BE6E /* PostViewController.swift */,
+				0D97749028B23CAF00D5BE6E /* SearchView.swift */,
+				0D97748E28B23C2B00D5BE6E /* ImageSearchViewController.swift */,
 				0D97747228B22F9500D5BE6E /* Info.plist */,
 				0D97747A28B22FCF00D5BE6E /* APIKey.swift */,
 				0D97747C28B2305600D5BE6E /* BaseView.swift */,
@@ -175,7 +181,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D97746928B22F9300D5BE6E /* ViewController.swift in Sources */,
+				0D97749128B23CAF00D5BE6E /* SearchView.swift in Sources */,
 				0D97746528B22F9300D5BE6E /* AppDelegate.swift in Sources */,
+				0D97748F28B23C2B00D5BE6E /* ImageSearchViewController.swift in Sources */,
 				0D97748D28B2340300D5BE6E /* PostViewController.swift in Sources */,
 				0D97747D28B2305600D5BE6E /* BaseView.swift in Sources */,
 				0D97747B28B22FCF00D5BE6E /* APIKey.swift in Sources */,
