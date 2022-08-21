@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import Kingfisher
 
 enum resourceType: String {
     
@@ -34,5 +36,23 @@ struct ImageURL {
     
     let thumb: String
     let full: String
+    
+}
+
+extension NSNotification.Name {
+        
+    static let sendImageURLNotification = Self.init(rawValue: "sendImageURLNotification")
+    
+}
+
+extension UIImageView {
+    
+    func setImage(url: String) {
+        
+        let url = URL(string: url)
+        
+        self.kf.setImage(with: url)
+        
+    }
     
 }

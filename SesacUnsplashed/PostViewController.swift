@@ -20,11 +20,21 @@ class PostViewController: UIViewController {
 
         postView.pickImageButton.addTarget(self, action: #selector(touchButton), for: .touchUpInside)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(receiveImageURLNotification(_:)), name: .sendImageURLNotification, object: nil)
+        
     }
     
     @objc func touchButton() {
         
         navigationController?.pushViewController(ImageSearchViewController(), animated: true)
+        
+    }
+    
+    @objc func receiveImageURLNotification(_ noti: Notification) {
+        
+        guard let imageURL = noti.userInfo?["imageURL"] as? String else { return }
+        
+        postView.imageView.setImage(url: imageURL)
         
     }
 

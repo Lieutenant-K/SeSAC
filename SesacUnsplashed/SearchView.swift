@@ -27,7 +27,7 @@ class SearchView: BaseView {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         view.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
-        view.backgroundColor = .lightGray
+//        view.backgroundColor = .lightGray
 
         
         return view
@@ -36,6 +36,7 @@ class SearchView: BaseView {
     override func setSubviews() {
         
         [searchBar, collectionView].forEach { addSubview($0) }
+        
     }
     
     override func setConstraints() {

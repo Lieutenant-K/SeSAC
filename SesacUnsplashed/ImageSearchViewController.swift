@@ -7,8 +7,6 @@
 
 import UIKit
 
-import Kingfisher
-
 class ImageSearchViewController: UIViewController {
     
     let searchView = SearchView()
@@ -30,6 +28,29 @@ class ImageSearchViewController: UIViewController {
         searchView.collectionView.dataSource = self
         searchView.searchBar.delegate = self
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "선택", style: .plain, target: self, action: #selector(selectPhoto))
+        
+    }
+    
+    @objc func selectPhoto() {
+        
+        guard let index = searchView.collectionView.indexPathsForSelectedItems?.first else { return }
+        
+        NotificationCenter.default.post(name: .sendImageURLNotification, object: nil, userInfo: ["imageURL": photos[index.row].full])
+        
+        self.navigationController?.popViewController(animated: true)
+        
+        
+    }
+    
+    func resetPhotoData() {
+        
+        photos.removeAll()
+        
+        page = 1
+        
+        totalResult = 0
+        
     }
 
 }
@@ -44,6 +65,8 @@ extension ImageSearchViewController: UICollectionViewDelegate, UICollectionViewD
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseIdentifier, for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
         
+        cell.imageView.setImage(url: photos[indexPath.row].thumb)
+        
         return cell
         
     }
@@ -57,6 +80,8 @@ extension ImageSearchViewController: UISearchBarDelegate {
         
         guard let text = searchBar.text else { return }
         
+        resetPhotoData()
+        
         APIManager.shared.fetchPhotosWithQuery(query: text, page: page, amountOfResultForPage: 20) { total, data in
             
             self.totalResult = total
@@ -68,9 +93,9 @@ extension ImageSearchViewController: UISearchBarDelegate {
                 self.searchView.collectionView.reloadData()
                 
             }
-            
-            
         }
+        
+        searchBar.endEditing(true)
         
     }
     

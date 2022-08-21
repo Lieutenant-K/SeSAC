@@ -17,7 +17,7 @@ class APIManager {
     func fetchPhotosWithQuery(query: String, page: Int, amountOfResultForPage perPage: Int, completionHandler: @escaping (Int, [ImageURL]) -> Void) {
         
         let url = EndPoint.search(.photos).url
-        let parameter: [String: Any] = ["query": query, "page": page]
+        let parameter: [String: Any] = ["query": query, "page": page, "per_page": perPage]
         
         requestUnsplashedAPI(url: url, parameter: parameter) { json in
             
@@ -34,7 +34,7 @@ class APIManager {
         
     }
     
-    func requestUnsplashedAPI(url: String, parameter: Parameters, completionHandler: @escaping (JSON) -> Void) {
+    private func requestUnsplashedAPI(url: String, parameter: Parameters, completionHandler: @escaping (JSON) -> Void) {
         
         let url = url + "?client_id=\(APIKey.accessKey)"
         
@@ -46,7 +46,7 @@ class APIManager {
                 
                 let json = JSON(value)
                 
-                print(json)
+//                print(json)
                 
                 completionHandler(json)
                 

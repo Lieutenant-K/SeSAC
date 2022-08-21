@@ -6,16 +6,24 @@
 //
 
 import UIKit
+
 import SnapKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     
     static let reuseIdentifier = "ImageCollectionViewCell"
     
+    override var isSelected: Bool {
+        didSet {
+            imageView.alpha = isSelected ? 0.5 : 1.0
+        }
+    }
+    
     let imageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFit
-        view.backgroundColor = .blue
+        view.contentMode = .scaleAspectFill
+//        view.backgroundColor = .blue
+        view.clipsToBounds = true
         return view
     }()
     
@@ -30,7 +38,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
         fatalError()
     }
     
-    func setSubviews() {
+    private func setSubviews() {
         
         contentView.addSubview(imageView)
         
