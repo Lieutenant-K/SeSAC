@@ -35,6 +35,9 @@
 		0D70196828879DFE0005909F /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70196728879DFE0005909F /* RecommendCollectionViewCell.swift */; };
 		0D7019702887AE4E0005909F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0D70196F2887AE4E0005909F /* Kingfisher */; };
 		0D7019732887AE640005909F /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7019722887AE640005909F /* Toast */; };
+		0D9774A528B353CE00D5BE6E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9774A428B353CE00D5BE6E /* Realm */; };
+		0D9774A728B353CE00D5BE6E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9774A628B353CE00D5BE6E /* RealmSwift */; };
+		0D9774A928B354BA00D5BE6E /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9774A828B354BA00D5BE6E /* RealmModel.swift */; };
 		0D97AF3D28897E5A00891A35 /* TrendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97AF3C28897E5A00891A35 /* TrendTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,7 @@
 		0D701963288794C60005909F /* MovieInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
 		0D70196528879AAC0005909F /* RecommendCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewController.swift; sourceTree = "<group>"; };
 		0D70196728879DFE0005909F /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		0D9774A828B354BA00D5BE6E /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		0D97AF3C28897E5A00891A35 /* TrendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D9774A728B353CE00D5BE6E /* RealmSwift in Frameworks */,
+				0D9774A528B353CE00D5BE6E /* Realm in Frameworks */,
 				0D7019732887AE640005909F /* Toast in Frameworks */,
 				0D7019702887AE4E0005909F /* Kingfisher in Frameworks */,
 			);
@@ -102,19 +108,20 @@
 		0D70192C2884DDC70005909F /* TrendMedia */ = {
 			isa = PBXGroup;
 			children = (
-				0D70196D2887A2C00005909F /* Extension */,
-				0D70196C2887A2290005909F /* Home */,
-				0D70196B2887A1A50005909F /* Search */,
-				0D70196A28879FD90005909F /* Trend */,
-				0D70196928879E7E0005909F /* Shopping */,
+				0D70193B2884DDC90005909F /* Info.plist */,
+				0D701949288640870005909F /* Intro.storyboard */,
 				0D70192D2884DDC70005909F /* AppDelegate.swift */,
 				0D70192F2884DDC70005909F /* SceneDelegate.swift */,
 				0D7019312884DDC70005909F /* ViewController.swift */,
-				0D7019332884DDC70005909F /* Main.storyboard */,
-				0D701949288640870005909F /* Intro.storyboard */,
 				0D7019362884DDC90005909F /* Assets.xcassets */,
+				0D70196D2887A2C00005909F /* Extension */,
+				0D70196C2887A2290005909F /* Home */,
 				0D7019382884DDC90005909F /* LaunchScreen.storyboard */,
-				0D70193B2884DDC90005909F /* Info.plist */,
+				0D7019332884DDC70005909F /* Main.storyboard */,
+				0D70196B2887A1A50005909F /* Search */,
+				0D70196928879E7E0005909F /* Shopping */,
+				0D70196A28879FD90005909F /* Trend */,
+				0D9774A828B354BA00D5BE6E /* RealmModel.swift */,
 			);
 			path = TrendMedia;
 			sourceTree = "<group>";
@@ -123,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				0D7019572886ACDA0005909F /* Shopping.storyboard */,
-				0D70195B2886ADC00005909F /* ShoppingListViewController.swift */,
 				0D7019592886AD8E0005909F /* ShoppingListCell.swift */,
+				0D70195B2886ADC00005909F /* ShoppingListViewController.swift */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -133,11 +140,11 @@
 			isa = PBXGroup;
 			children = (
 				0D701947288640410005909F /* Trend.storyboard */,
-				0D97AF3C28897E5A00891A35 /* TrendTableViewController.swift */,
+				0D70195328864DD60005909F /* BucketListTableViewCell.swift */,
+				0D70195528864E400005909F /* BucketListTableViewController.swift */,
 				0D70196728879DFE0005909F /* RecommendCollectionViewCell.swift */,
 				0D70196528879AAC0005909F /* RecommendCollectionViewController.swift */,
-				0D70195528864E400005909F /* BucketListTableViewController.swift */,
-				0D70195328864DD60005909F /* BucketListTableViewCell.swift */,
+				0D97AF3C28897E5A00891A35 /* TrendTableViewController.swift */,
 				0D70194B288644020005909F /* TrendViewController.swift */,
 			);
 			path = Trend;
@@ -147,10 +154,10 @@
 			isa = PBXGroup;
 			children = (
 				0D701945288640250005909F /* Search.storyboard */,
-				0D70195F2886D8D10005909F /* SearchMovieCell.swift */,
-				0D70194D2886440B0005909F /* SearchViewController.swift */,
 				0D70196128878CB50005909F /* Movie.swift */,
 				0D701963288794C60005909F /* MovieInfo.swift */,
+				0D70195F2886D8D10005909F /* SearchMovieCell.swift */,
+				0D70194D2886440B0005909F /* SearchViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -167,9 +174,9 @@
 		0D70196D2887A2C00005909F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0D70194F2886452D0005909F /* UIViewController+Extension.swift */,
-				0D70195D2886B1730005909F /* UIView+Extension.swift */,
 				0D7019512886478E0005909F /* UITextField+Extension.swift */,
+				0D70195D2886B1730005909F /* UIView+Extension.swift */,
+				0D70194F2886452D0005909F /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -193,6 +200,8 @@
 			packageProductDependencies = (
 				0D70196F2887AE4E0005909F /* Kingfisher */,
 				0D7019722887AE640005909F /* Toast */,
+				0D9774A428B353CE00D5BE6E /* Realm */,
+				0D9774A628B353CE00D5BE6E /* RealmSwift */,
 			);
 			productName = TrendMedia;
 			productReference = 0D70192A2884DDC70005909F /* TrendMedia.app */;
@@ -225,6 +234,7 @@
 			packageReferences = (
 				0D70196E2887AE4E0005909F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0D7019712887AE640005909F /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				0D9774A328B353CE00D5BE6E /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 0D70192B2884DDC70005909F /* Products */;
 			projectDirPath = "";
@@ -271,6 +281,7 @@
 				0D97AF3D28897E5A00891A35 /* TrendTableViewController.swift in Sources */,
 				0D70194C288644020005909F /* TrendViewController.swift in Sources */,
 				0D7019502886452D0005909F /* UIViewController+Extension.swift in Sources */,
+				0D9774A928B354BA00D5BE6E /* RealmModel.swift in Sources */,
 				0D70195C2886ADC00005909F /* ShoppingListViewController.swift in Sources */,
 				0D7019522886478E0005909F /* UITextField+Extension.swift in Sources */,
 				0D70192E2884DDC70005909F /* AppDelegate.swift in Sources */,
@@ -510,6 +521,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		0D9774A328B353CE00D5BE6E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -522,6 +541,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0D7019712887AE640005909F /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		0D9774A428B353CE00D5BE6E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D9774A328B353CE00D5BE6E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		0D9774A628B353CE00D5BE6E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D9774A328B353CE00D5BE6E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
