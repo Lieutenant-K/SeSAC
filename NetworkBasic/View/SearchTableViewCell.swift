@@ -13,9 +13,9 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var totalAudienceLabel: UILabel!
     
-    func configurateContent(data: BoxOfficeModel) {
+    func configurateContent(data: MovieData) {
         
-        let count = Int(data.totalCount)!.formatted(IntegerFormatStyle.number)
+        let count = Int(data.totalAudience)!.formatted(IntegerFormatStyle.number)
         
         self.titleLabel.text = data.movieTitle
         self.releaseDateLabel.text = "개봉일: \(data.releaseDate)"

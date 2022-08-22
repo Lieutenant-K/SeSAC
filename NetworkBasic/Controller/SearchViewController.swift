@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import JGProgressHUD
+import RealmSwift
 
 
 class SearchViewController: UIViewController {
@@ -19,8 +20,10 @@ class SearchViewController: UIViewController {
     
     let hud = JGProgressHUD()
     
+    let localRealm = try! Realm()
+    
     //BoxOffice 배열
-    var list: [BoxOfficeModel] = []
+    var list: List<MovieData>?
     
    
     override func viewDidLoad() {
@@ -49,7 +52,9 @@ class SearchViewController: UIViewController {
         // TimeInterval 사용하기
         let date = formatter.string(from: Date().addingTimeInterval(-24*60*60))
         
-        requestBoxOffice(text: yesterday)
+        print(localRealm.configuration.fileURL)
+        
+        checkSearchRecord(text: yesterday)
     }
     
     /*
@@ -60,11 +65,27 @@ class SearchViewController: UIViewController {
     }
      */
     
+    func checkSearchRecord(text: String) {
+        
+        if let object = localRealm.objects(SearchRecord.self).first(where: { $0.dateString == text }) {
+            print(#function)
+            
+            list = object.movieData
+            
+            searchTableView.reloadData()
+            
+            return
+        }
+        
+        requestBoxOffice(text: text)
+        
+    }
+    
     func requestBoxOffice(text: String) {
         
         hud.show(in: self.view, animated: true)
         
-        self.list.removeAll()
+//        self.list?.removeAll()
         
         let url = "\(EndPoint.boxOfficeURL)key=\(APIKey.BOXOFFICE)&targetDt=\(text)"
         
@@ -75,22 +96,36 @@ class SearchViewController: UIViewController {
                 let json = JSON(value)
                 print(json)
                 
+                let data = List<MovieData>()
                 
-                for movie in json["boxOfficeResult"]["dailyBoxOfficeList"].arrayValue {
+                json["boxOfficeResult"]["dailyBoxOfficeList"].arrayValue.forEach { movie -> Void in
                     
                     let movieNm = movie["movieNm"].stringValue
                     let openDt = movie["openDt"].stringValue
                     let audiAcc = movie["audiAcc"].stringValue
                     
-                    self.list.append(BoxOfficeModel(movieTitle: movieNm, releaseDate: openDt, totalCount: audiAcc))
+                    data.append(MovieData(title: movieNm, date: openDt, total: audiAcc))
                 }
                 
+                // 데이터 없으면 저장하지 않음
+                if data.isEmpty {
+                    self.hud.dismiss(animated: true)
+                    return
+                }
+                
+                let task = SearchRecord(date: text, data: data)
+                try! self.localRealm.write {
+                    self.localRealm.add(task)
+                }
+                
+                self.list = self.localRealm.objects(SearchRecord.self).first { $0.dateString == text }?.movieData
+                
                 self.searchTableView.reloadData()
-//                print(self.list)
                 
             case .failure(let error):
                 print(error)
             }
+            
             self.hud.dismiss(animated: true)
         }
     }
@@ -100,14 +135,19 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        list.count
+        list?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
         
+        if let data = list?[indexPath.row] {
+            
+            cell.configurateContent(data: data)
+            
+        }
         
-        cell.configurateContent(data: list[indexPath.row])
+        
         
         return cell
     }
@@ -117,7 +157,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        requestBoxOffice(text: searchBar.text!)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        
+        guard let _ = formatter.date(from: searchBar.text ?? "") else { return }
+        
+        checkSearchRecord(text: searchBar.text!)
     }
     
     
