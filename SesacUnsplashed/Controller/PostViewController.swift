@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 import RealmSwift
 
@@ -24,6 +25,19 @@ class PostViewController: UIViewController {
         
     }()
     
+    lazy var pickerViewController: PHPickerViewController = {
+       
+        var config = PHPickerConfiguration()
+        config.selectionLimit = 1
+        config.selection = .default
+        config.preferredAssetRepresentationMode = .automatic
+        let vc = PHPickerViewController(configuration: config)
+        vc.delegate = self
+        
+        return vc
+        
+    }()
+    
     // MARK: - LifeCycle
     
     override func loadView() {
@@ -37,13 +51,7 @@ class PostViewController: UIViewController {
         
         postView.gestureRecognizer.addTarget(self, action: #selector(tapGestureRegognizer))
         
-//        postView.pickImageButton.addTarget(self, action: #selector(touchImageSelectButton), for: .touchUpInside)
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: .init(systemName: "xmark"), style: .plain, target: self, action: #selector(touchDismissButton))
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: .init(systemName: "checkmark"), style: .plain, target: self, action: #selector(touchPostingButton))
-        
-//        postView.postButton.addTarget(self, action: #selector(touchPostingButton), for: .touchUpInside)
+        configureBarButtonItem()
         
         NotificationCenter.default.addObserver(self, selector: #selector(receiveImageURLNotification(_:)), name: .sendImageURLNotification, object: nil)
         
@@ -63,6 +71,7 @@ class PostViewController: UIViewController {
             })
             ,UIAction(title: "앨범", image: .init(systemName: "photo"), handler: { _ in
                 
+                self.present(self.pickerViewController, animated: true)
                 
             })
             ,UIAction(title: "사진 촬영", image: .init(systemName: "camera"), handler: { _ in
@@ -77,6 +86,14 @@ class PostViewController: UIViewController {
         ]
         
         postView.pickImageButton.menu = UIMenu(title: "어디서 이미지를 불러올까요?", options: .displayInline, children: menuItems)
+        
+    }
+    
+    func configureBarButtonItem() {
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: .init(systemName: "xmark"), style: .plain, target: self, action: #selector(touchDismissButton))
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: .init(systemName: "checkmark"), style: .plain, target: self, action: #selector(touchPostingButton))
         
     }
     
@@ -142,4 +159,26 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
         
     }
     
+}
+
+extension PostViewController: PHPickerViewControllerDelegate {
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
+        self.dismiss(animated: true)
+        
+        let itemProvider = results.first?.itemProvider
+        
+        if let _ = itemProvider?.canLoadObject(ofClass: UIImage.self) {
+            itemProvider?.loadObject(ofClass: UIImage.self)  { image, error in
+                
+                if let image = image as? UIImage {
+                    DispatchQueue.main.async {
+                        self.postView.imageView.image = image
+                    }
+                }
+            }
+        }
+        
+    }
 }
