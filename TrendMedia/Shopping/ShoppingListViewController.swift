@@ -8,8 +8,32 @@
 import UIKit
 
 import RealmSwift
+import Toast
 
 class ShoppingListViewController: UITableViewController {
+    
+    enum ShoppingListFilter {
+        
+        case title, favorite, complete
+        
+        var key: String {
+            
+            switch self {
+                
+            case .title:
+                return "itemName"
+            case .favorite:
+                return "isFavorite"
+            case .complete:
+                return "isComplete"
+                
+            }
+        }
+        
+    }
+    
+    // MARK: - Properties
+    
 
     @IBOutlet weak var searchTextfield: UITextField!
     @IBOutlet weak var searchButton: UIButton!
@@ -17,9 +41,18 @@ class ShoppingListViewController: UITableViewController {
     
     let localRealm = try! Realm()
     
-    var tasks: Results<ShoppingItem>!
+    var tasks: Results<ShoppingItem>! {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     var shoppingList: [String] = []
+    
+    var currentFilter: ShoppingListFilter = .title
+    
+    // MARK: - Life Cycle
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +60,54 @@ class ShoppingListViewController: UITableViewController {
         tableView.rowHeight = 60
         headerView.setCornerRadius()
         
-        tasks = localRealm.objects(ShoppingItem.self)//.sorted(byKeyPath: "isComplete", ascending: true)
+        fetchTasks()
         
-        tableView.reloadData()
+        setMenuButton()
 
     }
     
+    // MARK: - Method
+    
+    func fetchTasks() {
+        
+        tasks = localRealm.objects(ShoppingItem.self).sorted(byKeyPath: currentFilter.key, ascending: true)
+        
+    }
+    
+    func setMenuButton() {
+        
+        let button = navigationItem.rightBarButtonItem!
+        
+        let menuItems = [
+            UIAction(title: "제목", state: .on, handler: { _ in
+                self.currentFilter = .title
+                self.fetchTasks()
+            })
+            ,UIAction(title: "즐겨찾기", handler: { _ in
+                self.currentFilter = .favorite
+                self.fetchTasks()
+                
+            })
+            ,UIAction(title: "완료", handler: { _ in
+                self.currentFilter = .complete
+                self.fetchTasks()
+                
+            })
+        ]
+        
+        
+        
+        button.menu = UIMenu(title: "정렬 기준", options: .singleSelection, children: menuItems)
+        
+        
+    }
+    
+    
+    
+    // MARK: - UITableView Method
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingListCell", for: indexPath) as! ShoppingListCell
         
         cell.label.text = tasks[indexPath.row].itemName
@@ -51,21 +125,72 @@ class ShoppingListViewController: UITableViewController {
         return tasks.count
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            
+            let taskToDelete = tasks[indexPath.row]
+            try! localRealm.write {
+                
+                localRealm.delete(taskToDelete)
+            }
+            
+            
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            fetchTasks()
+            
+            
+            
+            
+            
+            /*
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadSections([0], with: .automatic)
+            tableView.endUpdates()
+            */
+             
+            
+        }
+    }
+    
+    
+    // MARK: - Action Method
+    
     @IBAction func touchCheckbox(_ sender: UIButton) {
-        
-//        sender.isSelected.toggle()
         
         let taskToUpdate = tasks[sender.tag]
         try! localRealm.write {
             taskToUpdate.isComplete.toggle()
+            
+            if taskToUpdate.isComplete {
+                view.makeToast("쇼핑을 완료했습니다", position: .top)
+            }
         }
         
-//        print(taskToUpdate.isComplete)
+        tableView.reloadData()
         
-        //tasks = localRealm.objects(ShoppingItem.self)
         
-        tableView.reloadRows(at: [[0, sender.tag]], with: .automatic)
-//        tableView.reloadData()
+        
+    }
+    
+    @IBAction func touchStarButton(_ sender: UIButton) {
+        
+        
+        let taskToUpdate = tasks[sender.tag]
+        try! localRealm.write {
+            taskToUpdate.isFavorite.toggle()
+            
+            if taskToUpdate.isFavorite {
+                view.makeToast("즐겨찾기에 추가됐습니다", position: .top)
+            }
+        }
+        
+        tableView.reloadData()
+//        tableView.reloadRows(at: [[0, sender.tag]], with: .automatic)
+        
+        view.makeToast("즐겨찾기에 등록됐습니다", position: .top)
         
     }
     
@@ -73,56 +198,33 @@ class ShoppingListViewController: UITableViewController {
         
         guard let text = searchTextfield.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             
-            view.makeToast("공백은 안돼욧!",position: .bottom)
+            view.makeToast("공백은 입력하실 수 없습니다", duration: 1, position: .top)
+            
             return
         }
         
-        
-        
-        // Add some tasks
         let task = ShoppingItem(name: text)
+        
         try! localRealm.write {
             localRealm.add(task)
         }
         
-//        shoppingList.append(text)
-        
-        tasks = localRealm.objects(ShoppingItem.self)
-        
-        
-//        tableView.reloadData()
-        tableView.insertRows(at: [[0, tasks.count-1]], with: .automatic)
+        fetchTasks()
         
         searchTextfield.text = nil
         
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-//            shoppingList.remove(at: indexPath.row)
-            
-            let taskToDelete = tasks[indexPath.row]
-            try! localRealm.write {
-                // Delete the LocalOnlyQsTask.
-                localRealm.delete(taskToDelete)
-            }
-            
-            tasks = localRealm.objects(ShoppingItem.self)
-            
-            
-//            tableView.reloadData()
-            tableView.deleteRows(at: [[0, indexPath.row]], with: .automatic)
-            tableView.reloadData()
-            /*
-            let indexPathes = [Int](indexPath.row...tasks.count).map {
-                IndexPath(row: 0, section: $0)
-            }
-            tableView.reloadRows(at: indexPathes, with: .automatic)
-             */
-            
-        }
+    @objc func touchMenu1() {
+        
+        print(#function)
     }
+    
+    @objc func touchMenu2() {
+        
+        print(#function)
+    }
+
 
  
 }

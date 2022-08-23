@@ -119,7 +119,7 @@
                                                         <imageReference key="image" image="star.fill" catalog="system" symbolScale="large"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="touchCheckbox:" destination="18I-SN-M6w" eventType="touchUpInside" id="YHQ-Hd-kgB"/>
+                                                        <action selector="touchStarButton:" destination="18I-SN-M6w" eventType="touchUpInside" id="Z8W-9O-DZF"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -157,7 +157,9 @@
                             <outlet property="delegate" destination="18I-SN-M6w" id="eJw-tA-ksB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="쇼핑" id="5kn-uj-lc7"/>
+                    <navigationItem key="navigationItem" title="쇼핑" id="5kn-uj-lc7">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" style="plain" id="mdj-FU-C1a"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="headerView" destination="YBK-xX-8nk" id="3Ae-nh-3R5"/>
                         <outlet property="searchButton" destination="twY-7r-dL1" id="4QT-1F-CCb"/>
