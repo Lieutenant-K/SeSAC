@@ -11,6 +11,8 @@ import SnapKit
 
 class PostView: BaseView {
     
+    let gestureRecognizer = UITapGestureRecognizer()
+    
     let imageView:UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .lightGray
@@ -22,7 +24,7 @@ class PostView: BaseView {
         
         let view = UITextField()
         view.borderStyle = .bezel
-        view.placeholder = "뭘 쓰는지 모르겠다~"
+        view.placeholder = "제목을 입력해주세요~"
         return view
         
     }()
@@ -38,6 +40,12 @@ class PostView: BaseView {
     
     let textView = UITextView()
     
+    let postButton: UIButton = {
+        let view = UIButton(type: .system)
+        view.setTitle("등록하기", for: .normal)
+        return view
+    }()
+    
     let pickImageButton: UIButton = {
         
         let view = UIButton(type: .system)
@@ -50,7 +58,9 @@ class PostView: BaseView {
         
         backgroundColor = .systemBackground
         
-        [imageView, textfield1, textfield2, textView, pickImageButton].forEach { addSubview($0) }
+        addGestureRecognizer(gestureRecognizer)
+        
+        [imageView, textfield1, textfield2, textView, pickImageButton, postButton].forEach { addSubview($0) }
         
     }
 
@@ -77,9 +87,14 @@ class PostView: BaseView {
         }
         
         textView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalTo(safeAreaLayoutGuide).inset(40)
+            make.leading.trailing.equalTo(safeAreaLayoutGuide).inset(40)
             make.top.equalTo(textfield2.snp.bottom).offset(20)
             
+        }
+        
+        postButton.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalTo(safeAreaLayoutGuide).inset(40)
+            make.top.equalTo(textView.snp.bottom).offset(20)
         }
         
         
