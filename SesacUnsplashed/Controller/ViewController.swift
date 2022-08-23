@@ -47,7 +47,10 @@ class ViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(touchPlusButton))
         
-        navigationItem.leftBarButtonItems = [UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(touchSortButton)), UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(touchFilterButton))]
+        navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(touchSortButton))
+            ,UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(touchFilterButton))
+        ]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +73,13 @@ class ViewController: UIViewController {
     
     @objc func touchPlusButton() {
         
-        navigationController?.pushViewController(PostViewController(), animated: true)
+//        navigationController?.pushViewController(PostViewController(), animated: true)
+        
+        let navi = UINavigationController(rootViewController: PostViewController())
+        
+        navi.modalPresentationStyle = .fullScreen
+        
+        present(navi, animated: true)
         
     }
     
@@ -125,6 +134,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             self.fetchRealm()
             
         }
+        
         favortie.image = tasks[indexPath.row].favorite ? .init(systemName: "star.fill") : .init(systemName: "star")
         favortie.backgroundColor = .systemGreen
         

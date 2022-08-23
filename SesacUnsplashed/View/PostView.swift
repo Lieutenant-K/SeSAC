@@ -51,6 +51,8 @@ class PostView: BaseView {
         let view = UIButton(type: .system)
         view.setTitle("선택", for: .normal)
         view.setTitleColor(.systemBackground, for: .normal)
+        view.showsMenuAsPrimaryAction = true
+        
         return view
     }()
     
@@ -60,7 +62,7 @@ class PostView: BaseView {
         
         addGestureRecognizer(gestureRecognizer)
         
-        [imageView, textfield1, textfield2, textView, pickImageButton, postButton].forEach { addSubview($0) }
+        [imageView, textfield1, textfield2, textView, pickImageButton].forEach { addSubview($0) }
         
     }
 
@@ -87,16 +89,17 @@ class PostView: BaseView {
         }
         
         textView.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(safeAreaLayoutGuide).inset(40)
+            make.leading.trailing.bottom.equalTo(safeAreaLayoutGuide).inset(40)
             make.top.equalTo(textfield2.snp.bottom).offset(20)
             
         }
         
+        /*
         postButton.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalTo(safeAreaLayoutGuide).inset(40)
             make.top.equalTo(textView.snp.bottom).offset(20)
         }
-        
+        */
         
     }
 }
