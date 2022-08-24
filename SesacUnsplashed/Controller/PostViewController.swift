@@ -10,6 +10,12 @@ import PhotosUI
 
 import RealmSwift
 
+protocol ImageSendable {
+    
+    func sendImageData(image: UIImage?)
+    
+}
+
 class PostViewController: UIViewController {
 
     let postView = PostView()
@@ -47,9 +53,9 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setImageSelectButtonMenu()
-        
         postView.gestureRecognizer.addTarget(self, action: #selector(tapGestureRegognizer))
+        
+        setImageSelectButtonMenu()
         
         configureBarButtonItem()
         
@@ -64,25 +70,26 @@ class PostViewController: UIViewController {
     func setImageSelectButtonMenu() {
         
         let menuItems = [
-            UIAction(title: "이미지 검색", image: .init(systemName: "magnifyingglass"), handler: { _ in
+            UIAction(title: "이미지 검색", image: .init(systemName: "magnifyingglass")) { [self] _ in
                 
-                self.navigationController?.pushViewController(ImageSearchViewController(), animated: true)
+                let vc = ImageSearchViewController()
+                vc.delegate = self
                 
-            })
-            ,UIAction(title: "앨범", image: .init(systemName: "photo"), handler: { _ in
+                transition(vc, transitionStyle: .push)
                 
-                self.present(self.pickerViewController, animated: true)
+            }
+            ,UIAction(title: "앨범", image: .init(systemName: "photo")) { [self] _ in
                 
-            })
-            ,UIAction(title: "사진 촬영", image: .init(systemName: "camera"), handler: { _ in
+                transition(pickerViewController)
+                
+            }
+            ,UIAction(title: "사진 촬영", image: .init(systemName: "camera")) { [self] _ in
                 
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     
-                    self.present(self.imagePicker, animated: true)
+                    transition(imagePicker)
                 }
-                
-                
-            })
+            }
         ]
         
         postView.pickImageButton.menu = UIMenu(title: "어디서 이미지를 불러올까요?", options: .displayInline, children: menuItems)
@@ -119,22 +126,30 @@ class PostViewController: UIViewController {
     
     @objc func touchPostingButton() {
         
-        guard let title = postView.textfield1.text, let content = postView.textView.text else { return }
+        guard let title = postView.textfield1.text, let content = postView.textView.text, !title.trimmingCharacters(in: .whitespaces).isEmpty else { return }
         
         let task = UserDiary(title: title, content: content, diaryDate: Date(), postingDate: Date(), photo: nil) // => Record 추가
         
-        try! localRealm.write {
-            
-            localRealm.add(task) // create
-            
-            print("Realm Succed")
-            
-            self.dismiss(animated: true)
-//            navigationController?.dismiss(animated: true)
-//            navigationController?.popViewController(animated: true)
+        do {
+            try localRealm.write {
+                
+                localRealm.add(task) // create
+                
+                print("Realm Succed")
+                
+                if let image = postView.imageView.image {
+                    saveImageToDocument(fileName: "\(task.objectId).jpg", image: image)
+                }
+                
+                self.dismiss(animated: true)
+
+            }
+        } catch let error {
+            print(error)
         }
-        
     }
+    
+    
     
     @objc func receiveImageURLNotification(_ noti: Notification) {
         
@@ -146,6 +161,8 @@ class PostViewController: UIViewController {
 
 
 }
+
+// MARK: - UIImagePickerControllerDelegate
 
 extension PostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -160,6 +177,8 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
     }
     
 }
+
+// MARK: - PHPickverViewController
 
 extension PostViewController: PHPickerViewControllerDelegate {
     
@@ -181,4 +200,13 @@ extension PostViewController: PHPickerViewControllerDelegate {
         }
         
     }
+}
+
+extension PostViewController: ImageSendable {
+    
+    func sendImageData(image: UIImage?) {
+        postView.imageView.image = image
+    }
+    
+    
 }

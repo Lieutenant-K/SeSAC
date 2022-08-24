@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D7BAAD928B5A6CC00D5E80E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7BAAD828B5A6CC00D5E80E /* Extension.swift */; };
 		0D97746528B22F9300D5BE6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97746428B22F9300D5BE6E /* AppDelegate.swift */; };
 		0D97746728B22F9300D5BE6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97746628B22F9300D5BE6E /* SceneDelegate.swift */; };
 		0D97746928B22F9300D5BE6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97746828B22F9300D5BE6E /* ViewController.swift */; };
@@ -30,9 +31,12 @@
 		0D97749A28B3163900D5BE6E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 0D97749928B3163900D5BE6E /* Realm */; };
 		0D97749C28B3163900D5BE6E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0D97749B28B3163900D5BE6E /* RealmSwift */; };
 		0D97749F28B319F100D5BE6E /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97749E28B319F100D5BE6E /* RealmModel.swift */; };
+		0D996D2028B6707C009214DE /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D996D1F28B6707B009214DE /* StorageViewController.swift */; };
+		0D996D2228B670A9009214DE /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D996D2128B670A9009214DE /* StorageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D7BAAD828B5A6CC00D5E80E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0D97746128B22F9300D5BE6E /* SesacUnsplashed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacUnsplashed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D97746428B22F9300D5BE6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D97746628B22F9300D5BE6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +56,8 @@
 		0D97749428B278AA00D5BE6E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0D97749628B288FD00D5BE6E /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		0D97749E28B319F100D5BE6E /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		0D996D1F28B6707B009214DE /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
+		0D996D2128B670A9009214DE /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 				0D97746D28B22F9500D5BE6E /* Assets.xcassets */,
 				0D97746F28B22F9500D5BE6E /* LaunchScreen.storyboard */,
 				0D97747228B22F9500D5BE6E /* Info.plist */,
+				0D7BAAD828B5A6CC00D5E80E /* Extension.swift */,
 			);
 			path = SesacUnsplashed;
 			sourceTree = "<group>";
@@ -117,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				0D97749028B23CAF00D5BE6E /* SearchView.swift */,
+				0D996D2128B670A9009214DE /* StorageView.swift */,
 				0D97747C28B2305600D5BE6E /* BaseView.swift */,
 				0D97747E28B230F400D5BE6E /* PostView.swift */,
 			);
@@ -127,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				0D97746828B22F9300D5BE6E /* ViewController.swift */,
+				0D996D1F28B6707B009214DE /* StorageViewController.swift */,
 				0D97748C28B2340300D5BE6E /* PostViewController.swift */,
 				0D97749628B288FD00D5BE6E /* ImageCollectionViewCell.swift */,
 				0D97748E28B23C2B00D5BE6E /* ImageSearchViewController.swift */,
@@ -239,8 +248,11 @@
 				0D97748F28B23C2B00D5BE6E /* ImageSearchViewController.swift in Sources */,
 				0D97749728B288FD00D5BE6E /* ImageCollectionViewCell.swift in Sources */,
 				0D97748D28B2340300D5BE6E /* PostViewController.swift in Sources */,
+				0D996D2028B6707C009214DE /* StorageViewController.swift in Sources */,
 				0D97747D28B2305600D5BE6E /* BaseView.swift in Sources */,
+				0D7BAAD928B5A6CC00D5E80E /* Extension.swift in Sources */,
 				0D97747B28B22FCF00D5BE6E /* APIKey.swift in Sources */,
+				0D996D2228B670A9009214DE /* StorageView.swift in Sources */,
 				0D97747F28B230F400D5BE6E /* PostView.swift in Sources */,
 				0D97749F28B319F100D5BE6E /* RealmModel.swift in Sources */,
 				0D97746728B22F9300D5BE6E /* SceneDelegate.swift in Sources */,

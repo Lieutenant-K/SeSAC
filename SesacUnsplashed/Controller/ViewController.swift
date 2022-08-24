@@ -69,17 +69,14 @@ class ViewController: UIViewController {
     }
     
     
+    
     // MARK: - Action Method
     
     @objc func touchPlusButton() {
         
 //        navigationController?.pushViewController(PostViewController(), animated: true)
         
-        let navi = UINavigationController(rootViewController: PostViewController())
-        
-        navi.modalPresentationStyle = .fullScreen
-        
-        present(navi, animated: true)
+        transition(PostViewController(), transitionStyle: .presentFullNaviagtion)
         
     }
     
@@ -92,7 +89,9 @@ class ViewController: UIViewController {
     // realm filter query, NSPredicate
     @objc func touchFilterButton() {
         
-        tasks = localRealm.objects(UserDiary.self).filter("diaryTitle CONTAINS '오늘'")
+        tasks = localRealm.objects(UserDiary.self).where({
+            $0.diaryTitle.contains("오늘")
+        })
         
     }
 
@@ -107,6 +106,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = tasks[indexPath.row].diaryTitle
+        cell.imageView?.image = loadImageFromDocument(fileName: "\(tasks[indexPath.row].objectId).jpg")
         
         return cell
     }

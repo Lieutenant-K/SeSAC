@@ -7,9 +7,13 @@
 
 import UIKit
 
+import Kingfisher
+
 class ImageSearchViewController: UIViewController {
     
     let searchView = SearchView()
+    
+    var delegate: ImageSendable?
     
     var photos = [ImageURL]()
     
@@ -36,7 +40,21 @@ class ImageSearchViewController: UIViewController {
         
         guard let index = searchView.collectionView.indexPathsForSelectedItems?.first else { return }
         
-        NotificationCenter.default.post(name: .sendImageURLNotification, object: nil, userInfo: ["imageURL": photos[index.row].full])
+        guard let url = URL(string: photos[index.row].full) else { return }
+        
+        KingfisherManager.shared.retrieveImage(with: url) { result in
+            switch result{
+            case .success(let value):
+                self.delegate?.sendImageData(image: value.image)
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+//        delegate?.sendImageData(image: cell.imageView.image)
+       
+        
+//        NotificationCenter.default.post(name: .sendImageURLNotification, object: nil, userInfo: ["imageURL": photos[index.row].full])
         
         self.navigationController?.popViewController(animated: true)
         
@@ -70,6 +88,8 @@ extension ImageSearchViewController: UICollectionViewDelegate, UICollectionViewD
         return cell
         
     }
+    
+    
     
     
 }
