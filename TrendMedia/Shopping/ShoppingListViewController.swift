@@ -132,7 +132,10 @@ class ShoppingListViewController: UITableViewController {
             let taskToDelete = tasks[indexPath.row]
             try! localRealm.write {
                 
+                self.removeImageFromDocument(fileName: taskToDelete.objectId.stringValue)
+                
                 localRealm.delete(taskToDelete)
+                
             }
             
             
@@ -155,6 +158,24 @@ class ShoppingListViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(style: .normal, title: nil) { action, view, completionHandler in
+            
+            print(#function)
+            
+        }
+        
+        action.image = loadImageFromDocument(fileName: tasks[indexPath.row].objectId.stringValue)
+        
+        action.backgroundColor = .blue
+        
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        transition(ItemDetailViewController(item: tasks[indexPath.row]), transitionStyle: .presentNavigation)
+    }
     
     // MARK: - Action Method
     
@@ -189,8 +210,6 @@ class ShoppingListViewController: UITableViewController {
         
         tableView.reloadData()
 //        tableView.reloadRows(at: [[0, sender.tag]], with: .automatic)
-        
-        view.makeToast("즐겨찾기에 등록됐습니다", position: .top)
         
     }
     
