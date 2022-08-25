@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Zip
+import JGProgressHUD
 
 extension UIViewController {
     
@@ -141,6 +142,18 @@ extension UIViewController {
         
     }
     
+    static let  progressHUD = JGProgressHUD(style: .dark)
+    
+    static func setProgressHUD(mainText: String, detailText: String? = nil, position: JGProgressHUDPosition = .center, indicator: JGProgressHUDIndicatorView.Type) {
+        
+        progressHUD.textLabel.text = mainText
+        progressHUD.position = position
+        progressHUD.detailTextLabel.text = detailText
+        progressHUD.indicatorView = indicator.init()
+        
+    }
+    
+    
     func zipFiles(targetToZip paths: [DesignatedPath]) {
         
         guard let documentURL = getDocumentDirectory() else { return }
@@ -155,16 +168,48 @@ extension UIViewController {
         let destinationPath = documentURL.appendingPathComponet(pathComponent: .zipFilePath(fileName: fileName))
         
         do {
+            
+            Self.setProgressHUD(mainText: "파일 백업 중...", detailText: nil, position: .topCenter, indicator: JGProgressHUDIndeterminateIndicatorView.self)
+            
+            Self.progressHUD.show(in: view, animated: true)
+            
+            // 모달 dragToDown 제스처 막기
+            self.isModalInPresentation = true
+            
             try Zip.zipFiles(paths: paths, zipFilePath: destinationPath, password: nil) { progress in
+                
+                Self.progressHUD.indicatorView?.setProgress(Float(progress), animated: true)
                 print(progress)
+                
+            }
+//            print("압축 완료 시점")
+            Self.progressHUD.indicatorView = JGProgressHUDSuccessIndicatorView()
+            Self.progressHUD.textLabel.text = "백업 완료!"
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                
+                let vc = UIActivityViewController(activityItems: [destinationPath], applicationActivities: nil)
+                
+                Self.progressHUD.dismiss(animated: true)
+                
+                self.present(vc,animated: true)
+                
+                self.isModalInPresentation = false
+                
             }
             
-            let vc = UIActivityViewController(activityItems: [destinationPath], applicationActivities: nil)
-            
-            self.present(vc,animated: true)
-            
         } catch {
-            showAlert(title: "파일 압축 실패")
+            
+            Self.progressHUD.indicatorView = JGProgressHUDErrorIndicatorView()
+            Self.progressHUD.textLabel.text = "백업 실패"
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                
+                Self.progressHUD.dismiss(animated: true)
+                
+                self.isModalInPresentation = false
+            }
+            
         }
     }
     
@@ -198,3 +243,4 @@ extension URL {
         return appendingPathComponent(pathComponent.path)
     }
 }
+
