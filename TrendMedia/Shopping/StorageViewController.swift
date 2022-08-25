@@ -35,9 +35,41 @@ class StorageViewController: UIViewController {
     
     @objc func touchBackupButton() {
         
-     
+        zipFiles(targetToZip: [.realmFile, .imageDirectory])
         
+        /*
+        var paths = [URL]()
         
+        guard let documentURL = getDocumentDirectory() else { return }
+        
+        let realmFileURL = documentURL.appendingPathComponet(pathComponent: .realmFile)
+        let imageURL = documentURL.appendingPathComponet(pathComponent: .imageDirectory)
+        
+        if FileManager.default.fileExists(atPath: realmFileURL.path) {
+            paths.append(realmFileURL)
+        }
+        
+        if FileManager.default.fileExists(atPath: imageURL.path) {
+            paths.append(imageURL)
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        
+        let fileName = dateFormatter.string(from: Date())
+        
+        let destinationPath = documentURL.appendingPathComponet(pathComponent: .zipFilePath(fileName: fileName))
+        
+        do {
+            try Zip.zipFiles(paths: paths, zipFilePath: destinationPath, password: nil) { progress in
+                print(progress)
+                let vc = UIActivityViewController(activityItems: [destinationPath], applicationActivities: nil)
+                self.present(vc,animated: true)
+            }
+        } catch {
+            showAlert(title: "파일 압축 실패")
+        }
+        */
     }
     
     @objc func touchRestoreButton() {

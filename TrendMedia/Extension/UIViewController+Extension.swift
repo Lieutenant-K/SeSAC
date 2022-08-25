@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Zip
 
 extension UIViewController {
     
@@ -56,25 +57,28 @@ extension UIViewController {
             sheet.prefersGrabberVisible = true
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.selectedDetentIdentifier = .medium
+            sheet.preferredCornerRadius = 20
             self.present(viewController, animated: true)
         }
         
     }
     
+    
+    
     func saveImageToDocument(image: UIImage, fileName: String) {
         
-        guard let fileURL = getImageDirectory() else { return }
+        guard let imageURL = getDocumentDirectory()?.appendingPathComponet(pathComponent: .imageDirectory) else { return }
         
-        if !FileManager.default.fileExists(atPath: fileURL.path) {
+        if !FileManager.default.fileExists(atPath: imageURL.path) {
             
             do {
-                try FileManager.default.createDirectory(at: fileURL, withIntermediateDirectories: false, attributes: nil)
+                try FileManager.default.createDirectory(at: imageURL, withIntermediateDirectories: false, attributes: nil)
             } catch {
                 showAlert(title: "이미지 디렉토리 생성 실패")
             }
         }
         
-        let url = fileURL.appendingPathComponent("\(fileName).png")
+        let url = imageURL.appendingPathComponent("\(fileName).png")
         
         let data = image.pngData()
         
@@ -88,9 +92,9 @@ extension UIViewController {
     
     func loadImageFromDocument(fileName: String) -> UIImage? {
         
-        guard let fileURL = getImageDirectory() else { return nil }
+        guard let imageURL = getDocumentDirectory()?.appendingPathComponet(pathComponent: .imageDirectory) else { return nil }
         
-        let url = fileURL.appendingPathComponent("\(fileName).png")
+        let url = imageURL.appendingPathComponent("\(fileName).png")
         
         if FileManager.default.fileExists(atPath: url.path) {
             return UIImage(contentsOfFile: url.path)
@@ -102,9 +106,9 @@ extension UIViewController {
     
     func removeImageFromDocument(fileName: String) {
         
-        guard let fileURL = getImageDirectory() else { return }
+        guard let imageURL = getDocumentDirectory()?.appendingPathComponet(pathComponent: .imageDirectory) else { return }
         
-        let url = fileURL.appendingPathComponent("\(fileName).png")
+        let url = imageURL.appendingPathComponent("\(fileName).png")
         
         if FileManager.default.fileExists(atPath: url.path) {
             do {
@@ -122,10 +126,75 @@ extension UIViewController {
         
     }
     
-    func getImageDirectory() -> URL? {
+    func getDocumentDirectory() -> URL? {
         
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Image")
+        let baseDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        
+        return baseDirectory
+        
+        /*
+        if let path = lastPath.path {
+            return baseDirectory?.appendingPathComponent(path)
+        } else {
+            return baseDirectory
+        }*/
         
     }
     
+    func zipFiles(targetToZip paths: [DesignatedPath]) {
+        
+        guard let documentURL = getDocumentDirectory() else { return }
+        
+        let paths = paths.map{ documentURL.appendingPathComponet(pathComponent: $0) }.filter { FileManager.default.fileExists(atPath: $0.path) }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        
+        let fileName = dateFormatter.string(from: Date())
+        
+        let destinationPath = documentURL.appendingPathComponet(pathComponent: .zipFilePath(fileName: fileName))
+        
+        do {
+            try Zip.zipFiles(paths: paths, zipFilePath: destinationPath, password: nil) { progress in
+                print(progress)
+            }
+            
+            let vc = UIActivityViewController(activityItems: [destinationPath], applicationActivities: nil)
+            
+            self.present(vc,animated: true)
+            
+        } catch {
+            showAlert(title: "파일 압축 실패")
+        }
+    }
+    
+}
+
+enum DesignatedPath {
+    
+    case imageDirectory
+    case realmFile
+    case zipFilePath(fileName: String)
+//    case none
+    
+    var path: String {
+        switch self {
+        case .imageDirectory:
+            return "Image"
+        case .realmFile:
+            return "default.realm"
+        case .zipFilePath(let fileName):
+            return "\(fileName).zip"
+//        case .none:
+//            return nil
+        }
+    }
+}
+
+extension URL {
+    
+    func appendingPathComponet(pathComponent: DesignatedPath) -> URL {
+        
+        return appendingPathComponent(pathComponent.path)
+    }
 }
