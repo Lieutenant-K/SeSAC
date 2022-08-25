@@ -37,7 +37,7 @@ class StorageViewController: UIViewController {
         
         storageView.restoreButton.addTarget(self, action: #selector(touchRestoreButton), for: .touchUpInside)
         
-//        fetchDocumentZipFile()
+        //        fetchDocumentZipFile()
         
         fetchFilesInDocument()
         
@@ -73,7 +73,7 @@ class StorageViewController: UIViewController {
         }
         
         do {
-
+            
             let urls = try FileManager.default.contentsOfDirectory(at: documentURL, includingPropertiesForKeys: nil)
             
             files = urls.filter { url in url.pathExtension == "zip" }
@@ -102,6 +102,21 @@ class StorageViewController: UIViewController {
         
     }
     
+    func checkVolumeCapacity() {
+        
+        guard let documentURL = getDocumentDirectory() else { return }
+        
+        do {
+            let resource = try documentURL.resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey])
+            
+            print(resource.volumeAvailableCapacityForImportantUsage)
+            
+        }catch {
+            print(error)
+        }
+        
+    }
+    
 }
 
 // MARK: - UITableView Delegate, Datasource
@@ -115,7 +130,7 @@ extension StorageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-                
+        
         cell.configureCellWithURLResources(url: files[indexPath.row])
         
         return cell
@@ -124,8 +139,6 @@ extension StorageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let fileURL = files[indexPath.row]
-        
-
         
         showRestoreAlert(fileURL: fileURL)
         
@@ -142,7 +155,7 @@ extension StorageViewController: UIDocumentPickerDelegate {
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-//        print(#function, urls)
+        //        print(#function, urls)
         
         guard let src = urls.first else {
             showAlert(title: "선택한 파일의 경로를 찾을 수 없습니다.")

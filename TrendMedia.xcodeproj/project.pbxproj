@@ -44,6 +44,7 @@
 		0DEA7E8728B73269001A999F /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7E8628B73269001A999F /* StorageViewController.swift */; };
 		0DEA7E8928B732BB001A999F /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7E8828B732BB001A999F /* StorageView.swift */; };
 		0DEA7E8C28B73307001A999F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEA7E8B28B73307001A999F /* Zip */; };
+		0DEA7E8F28B75852001A999F /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEA7E8E28B75852001A999F /* JGProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DEA7E8C28B73307001A999F /* Zip in Frameworks */,
+				0DEA7E8F28B75852001A999F /* JGProgressHUD in Frameworks */,
 				0DC09CD328B4E3F800F5EF9C /* Toast in Frameworks */,
 				0D9774A728B353CE00D5BE6E /* RealmSwift in Frameworks */,
 				0D9774A528B353CE00D5BE6E /* Realm in Frameworks */,
@@ -217,6 +219,7 @@
 				0DC09CD228B4E3F800F5EF9C /* Toast */,
 				0D996D1D28B65158009214DE /* SnapKit */,
 				0DEA7E8B28B73307001A999F /* Zip */,
+				0DEA7E8E28B75852001A999F /* JGProgressHUD */,
 			);
 			productName = TrendMedia;
 			productReference = 0D70192A2884DDC70005909F /* TrendMedia.app */;
@@ -252,6 +255,7 @@
 				0DC09CD128B4E3F800F5EF9C /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				0D996D1C28B65158009214DE /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0DEA7E8A28B73307001A999F /* XCRemoteSwiftPackageReference "Zip" */,
+				0DEA7E8D28B75852001A999F /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 0D70192B2884DDC70005909F /* Products */;
 			projectDirPath = "";
@@ -565,6 +569,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		0DEA7E8D28B75852001A999F /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -597,6 +609,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0DEA7E8A28B73307001A999F /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
+		};
+		0DEA7E8E28B75852001A999F /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DEA7E8D28B75852001A999F /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
