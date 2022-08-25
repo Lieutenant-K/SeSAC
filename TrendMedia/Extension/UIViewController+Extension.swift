@@ -15,10 +15,10 @@ extension UIViewController {
         view.backgroundColor = .orange
     }
     
-    func showAlert() {
+    func showAlert(title: String, actionTitle: String = "확인") {
         
-        let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        alertController.addAction(.init(title: "얼럿", style: .default))
+        let alertController = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        alertController.addAction(.init(title: actionTitle, style: .default))
         
         present(alertController, animated: true)
         
@@ -30,6 +30,7 @@ extension UIViewController {
         case presentNavigation
         case presentFullNaviagtion
         case push
+        case pageSheet
         
     }
 
@@ -48,13 +49,30 @@ extension UIViewController {
             self.present(navi, animated: true)
         case .push:
             self.navigationController?.pushViewController(viewController, animated: true)
+        case .pageSheet:
+            viewController.modalPresentationStyle = .pageSheet
+            let sheet = viewController.sheetPresentationController!
+            sheet.detents = [.large(), .medium()]
+            sheet.prefersGrabberVisible = true
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.selectedDetentIdentifier = .medium
+            self.present(viewController, animated: true)
         }
         
     }
     
     func saveImageToDocument(image: UIImage, fileName: String) {
         
-        guard let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        guard let fileURL = getImageDirectory() else { return }
+        
+        if !FileManager.default.fileExists(atPath: fileURL.path) {
+            
+            do {
+                try FileManager.default.createDirectory(at: fileURL, withIntermediateDirectories: false, attributes: nil)
+            } catch {
+                showAlert(title: "이미지 디렉토리 생성 실패")
+            }
+        }
         
         let url = fileURL.appendingPathComponent("\(fileName).png")
         
@@ -70,7 +88,7 @@ extension UIViewController {
     
     func loadImageFromDocument(fileName: String) -> UIImage? {
         
-        guard let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil}
+        guard let fileURL = getImageDirectory() else { return nil }
         
         let url = fileURL.appendingPathComponent("\(fileName).png")
         
@@ -84,7 +102,7 @@ extension UIViewController {
     
     func removeImageFromDocument(fileName: String) {
         
-        guard let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        guard let fileURL = getImageDirectory() else { return }
         
         let url = fileURL.appendingPathComponent("\(fileName).png")
         
@@ -101,6 +119,12 @@ extension UIViewController {
         }
         
         
+        
+    }
+    
+    func getImageDirectory() -> URL? {
+        
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Image")
         
     }
     

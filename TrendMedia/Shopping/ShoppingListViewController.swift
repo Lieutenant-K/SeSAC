@@ -63,6 +63,8 @@ class ShoppingListViewController: UITableViewController {
         fetchTasks()
         
         setMenuButton()
+        
+//        print(localRealm.configuration.fileURL)
 
     }
     
@@ -76,7 +78,7 @@ class ShoppingListViewController: UITableViewController {
     
     func setMenuButton() {
         
-        let button = navigationItem.rightBarButtonItem!
+        let button = navigationItem.rightBarButtonItems![1]
         
         let menuItems = [
             UIAction(title: "제목", state: .on, handler: { _ in
@@ -94,8 +96,6 @@ class ShoppingListViewController: UITableViewController {
                 
             })
         ]
-        
-        
         
         button.menu = UIMenu(title: "정렬 기준", options: .singleSelection, children: menuItems)
         
@@ -234,16 +234,10 @@ class ShoppingListViewController: UITableViewController {
         
     }
     
-    @objc func touchMenu1() {
-        
+    @IBAction func touchSettingButton() {
         print(#function)
+        transition(StorageViewController(), transitionStyle: .pageSheet)
     }
-    
-    @objc func touchMenu2() {
-        
-        print(#function)
-    }
-
 
  
 }

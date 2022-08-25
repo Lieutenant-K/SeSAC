@@ -24,6 +24,7 @@ class ItemDetailViewController: UIViewController {
         view.contentMode = .scaleAspectFill
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentPickerViewController)))
         view.isUserInteractionEnabled = true
+        view.image = loadImageFromDocument(fileName: item.objectId.stringValue)
         return view
     }()
     

@@ -158,7 +158,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="쇼핑" id="5kn-uj-lc7">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" style="plain" id="mdj-FU-C1a"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="gear" catalog="system" style="plain" id="nHG-4U-4oC">
+                                <connections>
+                                    <action selector="touchSettingButton" destination="18I-SN-M6w" id="6zj-Is-ofw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Filter" style="plain" id="mdj-FU-C1a"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="headerView" destination="YBK-xX-8nk" id="3Ae-nh-3R5"/>
@@ -192,6 +199,7 @@
     <resources>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
