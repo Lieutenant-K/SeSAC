@@ -12,6 +12,8 @@ import JGProgressHUD
 
 class StorageViewController: UIViewController {
     
+    // MARK: - Property
+    
     var files = [URL]()
     
     lazy var storageView: StorageView = {
@@ -20,6 +22,9 @@ class StorageViewController: UIViewController {
         view.tableView.dataSource = self
         return view
     }()
+    
+    
+    // MARK: - LifeCycle
     
     override func loadView() {
         view = storageView
@@ -38,6 +43,8 @@ class StorageViewController: UIViewController {
         
     }
     
+    // MARK: - Action Method
+    
     @objc func touchBackupButton() {
         
         zipFiles(targetToZip: [.realmFile, .imageDirectory])
@@ -55,6 +62,8 @@ class StorageViewController: UIViewController {
         present(vc, animated: true)
         
     }
+    
+    // MARK: - Method
     
     func fetchFilesInDocument() {
         
@@ -76,26 +85,7 @@ class StorageViewController: UIViewController {
         }
     }
     
-}
-
-extension StorageViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return files.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        cell.textLabel?.text = files[indexPath.row].lastPathComponent
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let fileURL = files[indexPath.row]
+    func showRestoreAlert(fileURL: URL) {
         
         let alert = UIAlertController(title: fileURL.lastPathComponent, message: "이 파일로 복구하시겠습니까?", preferredStyle: .alert)
         
@@ -111,7 +101,39 @@ extension StorageViewController: UITableViewDelegate, UITableViewDataSource {
         present(alert, animated: true)
         
     }
+    
 }
+
+// MARK: - UITableView Delegate, Datasource
+
+extension StorageViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return files.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+                
+        cell.configureCellWithURLResources(url: files[indexPath.row])
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let fileURL = files[indexPath.row]
+        
+
+        
+        showRestoreAlert(fileURL: fileURL)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+// MARK: - UIDocumentPicker Delegate
 
 extension StorageViewController: UIDocumentPickerDelegate {
     
@@ -145,8 +167,6 @@ extension StorageViewController: UIDocumentPickerDelegate {
                 showAlert(title: "파일 가져오기 실패")
             }
         }
-        
-        
         
     }
     

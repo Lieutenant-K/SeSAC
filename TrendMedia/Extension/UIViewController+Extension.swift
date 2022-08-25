@@ -161,7 +161,7 @@ extension UIViewController {
         let paths = paths.map{ documentURL.appendingPathComponet(pathComponent: $0) }.filter { FileManager.default.fileExists(atPath: $0.path) }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         let fileName = dateFormatter.string(from: Date())
         
@@ -304,5 +304,34 @@ extension URL {
         
         return appendingPathComponent(pathComponent.path)
     }
+}
+
+extension UITableViewCell {
+    
+    func configureCellWithURLResources(url: URL) {
+        
+        var config = self.defaultContentConfiguration()
+        
+        config.text = url.lastPathComponent
+        config.image = .init(systemName: "folder.fill")
+        
+        do {
+            
+            let resource = try url.resourceValues(forKeys: [.creationDateKey, .fileSizeKey])
+            
+            let sizeString = String(format: "%.2f", Double(resource.fileSize ?? 0) / pow(10, 6))
+            let date = resource.creationDate
+            let dateString = date?.formatted(date: .abbreviated, time: .shortened)
+            
+            config.secondaryText = "\(sizeString)MB / \(dateString ?? "")"
+            
+        } catch {
+            print(error)
+        }
+        
+        self.contentConfiguration = config
+        
+    }
+    
 }
 
