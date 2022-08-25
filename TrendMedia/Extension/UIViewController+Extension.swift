@@ -17,9 +17,9 @@ extension UIViewController {
         view.backgroundColor = .orange
     }
     
-    func showAlert(title: String, actionTitle: String = "확인") {
+    func showAlert(title: String, message: String = "", actionTitle: String = "확인") {
         
-        let alertController = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(.init(title: actionTitle, style: .default))
         
         present(alertController, animated: true)
@@ -211,6 +211,68 @@ extension UIViewController {
             }
             
         }
+    }
+    
+    func unzipFile(targetToUnzip path: URL) {
+        
+        guard let documentURL = getDocumentDirectory() else {
+            showAlert(title: "복구할 파일 디렉토리가 존재하지 않습니다.")
+            return
+        }
+        
+        if FileManager.default.fileExists(atPath: path.path) {
+            
+            do {
+                
+                Self.setProgressHUD(mainText: "파일 복구 중...", position: .topCenter, indicator: JGProgressHUDIndeterminateIndicatorView.self)
+                
+                Self.progressHUD.show(in: view, animated: true)
+                
+                // 모달 dragToDown 제스처 막기
+                self.isModalInPresentation = true
+                
+                try Zip.unzipFile(path, destination: documentURL, overwrite: true, password: nil, progress: { progress in
+                    
+                    Self.progressHUD.indicatorView?.setProgress(Float(progress), animated: true)
+                    
+                    print(progress)
+                    
+                }, fileOutputHandler: { unzippedFile in
+                    print(#function, unzippedFile)
+                    
+                    
+                })
+                
+                Self.progressHUD.indicatorView = JGProgressHUDSuccessIndicatorView()
+                Self.progressHUD.textLabel.text = "복구 완료!"
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    
+                    Self.progressHUD.dismiss(animated: true)
+                    
+                    self.isModalInPresentation = false
+                    
+                }
+                
+            } catch {
+                
+                Self.progressHUD.indicatorView = JGProgressHUDErrorIndicatorView()
+                Self.progressHUD.textLabel.text = "복구 실패"
+                
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                    
+                    Self.progressHUD.dismiss(animated: true)
+                    
+                    self.isModalInPresentation = false
+                }
+                
+            }
+            
+        } else {
+            showAlert(title: "파일이 존재하지 않습니다.")
+            return
+        }
+        
     }
     
 }
