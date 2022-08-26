@@ -20,7 +20,7 @@
 		0D70194A288640870005909F /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D701949288640870005909F /* Intro.storyboard */; };
 		0D70194C288644020005909F /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70194B288644020005909F /* TrendViewController.swift */; };
 		0D70194E2886440B0005909F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70194D2886440B0005909F /* SearchViewController.swift */; };
-		0D7019502886452D0005909F /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70194F2886452D0005909F /* UIViewController+Extension.swift */; };
+		0D7019502886452D0005909F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70194F2886452D0005909F /* Extension.swift */; };
 		0D7019522886478E0005909F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7019512886478E0005909F /* UITextField+Extension.swift */; };
 		0D70195428864DD60005909F /* BucketListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70195328864DD60005909F /* BucketListTableViewCell.swift */; };
 		0D70195628864E400005909F /* BucketListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70195528864E400005909F /* BucketListTableViewController.swift */; };
@@ -45,6 +45,8 @@
 		0DEA7E8928B732BB001A999F /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7E8828B732BB001A999F /* StorageView.swift */; };
 		0DEA7E8C28B73307001A999F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEA7E8B28B73307001A999F /* Zip */; };
 		0DEA7E8F28B75852001A999F /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEA7E8E28B75852001A999F /* JGProgressHUD */; };
+		0DEA7E9728B930C8001A999F /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7E9628B930C8001A999F /* RealmRepository.swift */; };
+		0DEA7E9928B9382A001A999F /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7E9828B9382A001A999F /* ImageFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +65,7 @@
 		0D701949288640870005909F /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		0D70194B288644020005909F /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		0D70194D2886440B0005909F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		0D70194F2886452D0005909F /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		0D70194F2886452D0005909F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0D7019512886478E0005909F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		0D70195328864DD60005909F /* BucketListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListTableViewCell.swift; sourceTree = "<group>"; };
 		0D70195528864E400005909F /* BucketListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListTableViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,8 @@
 		0D996D1A28B64F4D009214DE /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		0DEA7E8628B73269001A999F /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
 		0DEA7E8828B732BB001A999F /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
+		0DEA7E9628B930C8001A999F /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		0DEA7E9828B9382A001A999F /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +127,7 @@
 				0D70193B2884DDC90005909F /* Info.plist */,
 				0D701949288640870005909F /* Intro.storyboard */,
 				0D70192D2884DDC70005909F /* AppDelegate.swift */,
-				0D9774A828B354BA00D5BE6E /* RealmModel.swift */,
+				0DEA7E9528B92D17001A999F /* Realm */,
 				0D70192F2884DDC70005909F /* SceneDelegate.swift */,
 				0D7019312884DDC70005909F /* ViewController.swift */,
 				0D7019362884DDC90005909F /* Assets.xcassets */,
@@ -134,6 +138,7 @@
 				0D70196B2887A1A50005909F /* Search */,
 				0D70196928879E7E0005909F /* Shopping */,
 				0D70196A28879FD90005909F /* Trend */,
+				0DEA7E9828B9382A001A999F /* ImageFileManager.swift */,
 			);
 			path = TrendMedia;
 			sourceTree = "<group>";
@@ -191,9 +196,18 @@
 			children = (
 				0D7019512886478E0005909F /* UITextField+Extension.swift */,
 				0D70195D2886B1730005909F /* UIView+Extension.swift */,
-				0D70194F2886452D0005909F /* UIViewController+Extension.swift */,
+				0D70194F2886452D0005909F /* Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		0DEA7E9528B92D17001A999F /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				0D9774A828B354BA00D5BE6E /* RealmModel.swift */,
+				0DEA7E9628B930C8001A999F /* RealmRepository.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,10 +316,12 @@
 				0D7019322884DDC70005909F /* ViewController.swift in Sources */,
 				0D97AF3D28897E5A00891A35 /* TrendTableViewController.swift in Sources */,
 				0D70194C288644020005909F /* TrendViewController.swift in Sources */,
-				0D7019502886452D0005909F /* UIViewController+Extension.swift in Sources */,
+				0D7019502886452D0005909F /* Extension.swift in Sources */,
 				0DEA7E8728B73269001A999F /* StorageViewController.swift in Sources */,
+				0DEA7E9928B9382A001A999F /* ImageFileManager.swift in Sources */,
 				0D9774A928B354BA00D5BE6E /* RealmModel.swift in Sources */,
 				0D70195C2886ADC00005909F /* ShoppingListViewController.swift in Sources */,
+				0DEA7E9728B930C8001A999F /* RealmRepository.swift in Sources */,
 				0D7019522886478E0005909F /* UITextField+Extension.swift in Sources */,
 				0D70192E2884DDC70005909F /* AppDelegate.swift in Sources */,
 				0D7019302884DDC70005909F /* SceneDelegate.swift in Sources */,

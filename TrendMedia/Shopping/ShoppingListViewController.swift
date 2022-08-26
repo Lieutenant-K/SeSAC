@@ -39,7 +39,7 @@ class ShoppingListViewController: UITableViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var headerView: UIView!
     
-    let localRealm = try! Realm()
+    let repository = ShoppingRepository()
     
     var tasks: Results<ShoppingItem>! {
         didSet {
@@ -57,12 +57,16 @@ class ShoppingListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("localRealm",repository.localRealm)
+        
         tableView.rowHeight = 60
         headerView.setCornerRadius()
         
         fetchTasks()
         
         setMenuButton()
+        
+        
         
 //        print(localRealm.configuration.fileURL)
 
@@ -72,7 +76,7 @@ class ShoppingListViewController: UITableViewController {
     
     func fetchTasks() {
         
-        tasks = localRealm.objects(ShoppingItem.self).sorted(byKeyPath: currentFilter.key, ascending: true)
+        tasks = repository.fetch(sortKey: currentFilter.key)
         
     }
     
@@ -104,6 +108,8 @@ class ShoppingListViewController: UITableViewController {
     
     
     
+    
+    
     // MARK: - UITableView Method
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -129,23 +135,11 @@ class ShoppingListViewController: UITableViewController {
         if editingStyle == .delete {
             
             
-            let taskToDelete = tasks[indexPath.row]
-            try! localRealm.write {
-                
-                self.removeImageFromDocument(fileName: taskToDelete.objectId.stringValue)
-                
-                localRealm.delete(taskToDelete)
-                
-            }
+            let task = tasks[indexPath.row]
             
-            
-//            tableView.deleteRows(at: [indexPath], with: .fade)
+            repository.delete(taskToDelete: task)
             
             fetchTasks()
-            
-            
-            
-            
             
             /*
             tableView.beginUpdates()
@@ -166,7 +160,7 @@ class ShoppingListViewController: UITableViewController {
             
         }
         
-        action.image = loadImageFromDocument(fileName: tasks[indexPath.row].objectId.stringValue)
+        action.image = ImageFileManager.shared.loadImageFromDocument(fileName: tasks[indexPath.row].objectId.stringValue)
         
         action.backgroundColor = .blue
         
@@ -182,12 +176,15 @@ class ShoppingListViewController: UITableViewController {
     @IBAction func touchCheckbox(_ sender: UIButton) {
         
         let taskToUpdate = tasks[sender.tag]
-        try! localRealm.write {
+        
+        repository.update {
+            
             taskToUpdate.isComplete.toggle()
             
             if taskToUpdate.isComplete {
                 view.makeToast("쇼핑을 완료했습니다", position: .top)
             }
+            
         }
         
         tableView.reloadData()
@@ -198,18 +195,19 @@ class ShoppingListViewController: UITableViewController {
     
     @IBAction func touchStarButton(_ sender: UIButton) {
         
-        
         let taskToUpdate = tasks[sender.tag]
-        try! localRealm.write {
+        
+        repository.update {
+            
             taskToUpdate.isFavorite.toggle()
             
             if taskToUpdate.isFavorite {
                 view.makeToast("즐겨찾기에 추가됐습니다", position: .top)
             }
+            
         }
         
         tableView.reloadData()
-//        tableView.reloadRows(at: [[0, sender.tag]], with: .automatic)
         
     }
     
@@ -224,9 +222,7 @@ class ShoppingListViewController: UITableViewController {
         
         let task = ShoppingItem(name: text)
         
-        try! localRealm.write {
-            localRealm.add(task)
-        }
+        repository.add(taskToAdd: task)
         
         fetchTasks()
         

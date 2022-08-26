@@ -180,7 +180,7 @@
         <!--Navigation Controller-->
         <scene sceneID="0WJ-5f-xLH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kuV-9E-dt0" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Shopping" automaticallyAdjustsScrollViewInsets="NO" id="kuV-9E-dt0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pbC-nv-5VN">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

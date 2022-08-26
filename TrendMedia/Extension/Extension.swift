@@ -10,6 +10,8 @@ import UIKit
 import Zip
 import JGProgressHUD
 
+// MARK: - UIViewController
+
 extension UIViewController {
     
     func setBackgroundColor() {
@@ -66,82 +68,6 @@ extension UIViewController {
     
     
     
-    func saveImageToDocument(image: UIImage, fileName: String) {
-        
-        guard let imageURL = getDocumentDirectory()?.appendingPathComponet(pathComponent: .imageDirectory) else { return }
-        
-        if !FileManager.default.fileExists(atPath: imageURL.path) {
-            
-            do {
-                try FileManager.default.createDirectory(at: imageURL, withIntermediateDirectories: false, attributes: nil)
-            } catch {
-                showAlert(title: "이미지 디렉토리 생성 실패")
-            }
-        }
-        
-        let url = imageURL.appendingPathComponent("\(fileName).png")
-        
-        let data = image.pngData()
-        
-        do {
-            try data?.write(to: url)
-        } catch let error {
-            print(error)
-        }
- 
-    }
-    
-    func loadImageFromDocument(fileName: String) -> UIImage? {
-        
-        guard let imageURL = getDocumentDirectory()?.appendingPathComponet(pathComponent: .imageDirectory) else { return nil }
-        
-        let url = imageURL.appendingPathComponent("\(fileName).png")
-        
-        if FileManager.default.fileExists(atPath: url.path) {
-            return UIImage(contentsOfFile: url.path)
-        } else {
-            return .init(systemName: "xmark")
-        }
- 
-    }
-    
-    func removeImageFromDocument(fileName: String) {
-        
-        guard let imageURL = getDocumentDirectory()?.appendingPathComponet(pathComponent: .imageDirectory) else { return }
-        
-        let url = imageURL.appendingPathComponent("\(fileName).png")
-        
-        if FileManager.default.fileExists(atPath: url.path) {
-            do {
-                
-                try FileManager.default.removeItem(at: url)
-                
-            } catch let error {
-                print(error)
-            }
-        } else {
-            print("File is not Exist")
-        }
-        
-        
-        
-    }
-    
-    func getDocumentDirectory() -> URL? {
-        
-        let baseDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        
-        return baseDirectory
-        
-        /*
-        if let path = lastPath.path {
-            return baseDirectory?.appendingPathComponent(path)
-        } else {
-            return baseDirectory
-        }*/
-        
-    }
-    
     static let  progressHUD = JGProgressHUD(style: .dark)
     
     static func setProgressHUD(mainText: String, detailText: String? = nil, position: JGProgressHUDPosition = .center, indicator: JGProgressHUDIndicatorView.Type) {
@@ -156,7 +82,7 @@ extension UIViewController {
     
     func zipFiles(targetToZip paths: [DesignatedPath]) {
         
-        guard let documentURL = getDocumentDirectory() else { return }
+        guard let documentURL = URL.documentPath else { return }
         
         let paths = paths.map{ documentURL.appendingPathComponet(pathComponent: $0) }.filter { FileManager.default.fileExists(atPath: $0.path) }
         
@@ -215,7 +141,7 @@ extension UIViewController {
     
     func unzipFile(targetToUnzip path: URL) {
         
-        guard let documentURL = getDocumentDirectory() else {
+        guard let documentURL = URL.documentPath else {
             showAlert(title: "복구할 파일 디렉토리가 존재하지 않습니다.")
             return
         }
@@ -252,6 +178,8 @@ extension UIViewController {
                     
                     self.isModalInPresentation = false
                     
+                    self.restartToViewController()
+                    
                 }
                 
             } catch {
@@ -264,6 +192,7 @@ extension UIViewController {
                     Self.progressHUD.dismiss(animated: true)
                     
                     self.isModalInPresentation = false
+
                 }
                 
             }
@@ -275,28 +204,27 @@ extension UIViewController {
         
     }
     
+    func restartToViewController() {
+        
+        let app = UIApplication.shared.connectedScenes.first
+        
+        let delegate = app?.delegate as? SceneDelegate
+        
+        print(#function, delegate, delegate?.window, delegate?.window?.rootViewController)
+        
+        let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "Shopping")
+        
+        delegate?.window?.rootViewController = vc
+        
+        delegate?.window?.makeKeyAndVisible()
+        
+        
+    }
+    
 }
 
-enum DesignatedPath {
-    
-    case imageDirectory
-    case realmFile
-    case zipFilePath(fileName: String)
-//    case none
-    
-    var path: String {
-        switch self {
-        case .imageDirectory:
-            return "Image"
-        case .realmFile:
-            return "default.realm"
-        case .zipFilePath(let fileName):
-            return "\(fileName).zip"
-//        case .none:
-//            return nil
-        }
-    }
-}
+
+// MARK: - URL
 
 extension URL {
     
@@ -304,7 +232,13 @@ extension URL {
         
         return appendingPathComponent(pathComponent.path)
     }
+    
+    static var documentPath: URL? {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+    }
 }
+
+// MARK: - UITableViewCell
 
 extension UITableViewCell {
     

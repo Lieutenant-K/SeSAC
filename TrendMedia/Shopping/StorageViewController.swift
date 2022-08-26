@@ -67,7 +67,7 @@ class StorageViewController: UIViewController {
     
     func fetchFilesInDocument() {
         
-        guard let documentURL = getDocumentDirectory() else {
+        guard let documentURL = URL.documentPath else {
             showAlert(title: "파일이 저장된 경로를 찾을 수 없습니다")
             return
         }
@@ -90,7 +90,7 @@ class StorageViewController: UIViewController {
         let alert = UIAlertController(title: fileURL.lastPathComponent, message: "이 파일로 복구하시겠습니까?", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "예", style: .destructive) { _ in
-            self.unzipFile(targetToUnzip: fileURL)
+            self.unzipFile(targetToUnzip: fileURL)  
         }
         
         let cancle = UIAlertAction(title: "아니오", style: .cancel)
@@ -104,7 +104,7 @@ class StorageViewController: UIViewController {
     
     func checkVolumeCapacity() {
         
-        guard let documentURL = getDocumentDirectory() else { return }
+        guard let documentURL = URL.documentPath else { return }
         
         do {
             let resource = try documentURL.resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey])
@@ -161,7 +161,7 @@ extension StorageViewController: UIDocumentPickerDelegate {
             showAlert(title: "선택한 파일의 경로를 찾을 수 없습니다.")
             return
         }
-        guard let documentURL = getDocumentDirectory() else {
+        guard let documentURL = URL.documentPath else {
             showAlert(title: "저장할 디렉토리의 경로를 찾을 수 없습니다.")
             return
         }

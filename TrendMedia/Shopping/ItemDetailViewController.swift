@@ -24,7 +24,7 @@ class ItemDetailViewController: UIViewController {
         view.contentMode = .scaleAspectFill
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentPickerViewController)))
         view.isUserInteractionEnabled = true
-        view.image = loadImageFromDocument(fileName: item.objectId.stringValue)
+        view.image = ImageFileManager.shared.loadImageFromDocument(fileName: item.objectId.stringValue)
         return view
     }()
     
@@ -76,7 +76,7 @@ class ItemDetailViewController: UIViewController {
             
         }
         
-        saveImageToDocument(image: image, fileName: item.objectId.stringValue)
+        ImageFileManager.shared.saveImageToDocument(image: image, fileName: item.objectId.stringValue)
         
         self.dismiss(animated: true)
         

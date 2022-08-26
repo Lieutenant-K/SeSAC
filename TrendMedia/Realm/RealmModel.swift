@@ -9,6 +9,24 @@ import UIKit
 
 import RealmSwift
 
+enum DesignatedPath {
+    
+    case imageDirectory
+    case realmFile
+    case zipFilePath(fileName: String)
+    
+    var path: String {
+        switch self {
+        case .imageDirectory:
+            return "Image"
+        case .realmFile:
+            return "default.realm"
+        case .zipFilePath(let fileName):
+            return "\(fileName).zip"
+        }
+    }
+}
+
 class ShoppingItem: Object {
     
     @Persisted var itemName: String
