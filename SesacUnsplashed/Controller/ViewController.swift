@@ -9,10 +9,28 @@ import UIKit
 import SnapKit
 import RealmSwift
 import SwiftUI
+import FSCalendar
 
 class ViewController: UIViewController {
     
-    let localRealm = try! Realm()
+    let repository = UserDiaryRepository()
+    
+    lazy var calendar: FSCalendar = {
+        
+        let view = FSCalendar()
+        view.delegate = self
+        view.dataSource = self
+        view.backgroundColor = .white
+        return view
+        
+    }()
+    
+    let formatter: DateFormatter = {
+        
+        let view = DateFormatter()
+        view.dateFormat = "yyMMdd"
+        return view
+    }()
     
     var tasks: Results<UserDiary>! {
         didSet {
@@ -35,14 +53,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(tableView)
-        
+        view.addSubview(calendar)
         
 //        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryDate", ascending: true)
         
 //        print(tasks)
-
+        
+        calendar.snp.makeConstraints { make in
+            make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(300)
+        }
+        
         tableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(calendar.snp.bottom)
         }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .init(systemName: "plus"), style: .plain, target: self, action: #selector(touchPlusButton))
@@ -56,15 +80,15 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchRealm()
+        fetchRealm(sortKey: "diaryTitle")
     }
     
     // MARK: - Method
     
     
-    func fetchRealm() {
+    func fetchRealm(sortKey: String) {
         
-        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "diaryTitle", ascending: true)
+        tasks = repository.fetch(sortKey: sortKey)
         
     }
     
@@ -82,16 +106,14 @@ class ViewController: UIViewController {
     
     @objc func touchSortButton() {
         
-        tasks = localRealm.objects(UserDiary.self).sorted(byKeyPath: "postingDate", ascending: true)
+        fetchRealm(sortKey: "postingDate")
 
     }
     
     // realm filter query, NSPredicate
     @objc func touchFilterButton() {
         
-        tasks = localRealm.objects(UserDiary.self).where({
-            $0.diaryTitle.contains("오늘")
-        })
+        tasks = repository.filter(containWord: "오늘")
         
     }
 
@@ -117,27 +139,64 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
+        let task = tasks[indexPath.row]
+        
         let favortie = UIContextualAction(style: .normal, title: "즐겨찾기") { action, view, completionHandler in
             
-            try! self.localRealm.write {
-                
-//                self.tasks[indexPath.row].favorite.toggle()
-                
-                // favorite 프로퍼티(컬럼) 에 해당하는 모든 값 변경
-                self.tasks.setValue(true, forKey: "favorite")
-                
-                // 특정 objectId(PK)에 해당하는 레코드의 diaryTitle 컬럼 값 변경
-                self.localRealm.create(UserDiary.self, value: ["objectId": self.tasks[indexPath.row].objectId, "diaryTitle":"수정된 제목"], update: .modified)
-            }
+            self.repository.updateFavorite(taskToUpdate: task)
             
-//            self.tableView.reloadRows(at: [indexPath], with: .none)
-            self.fetchRealm()
+            self.fetchRealm(sortKey: "diaryTitle")
             
         }
         
-        favortie.image = tasks[indexPath.row].favorite ? .init(systemName: "star.fill") : .init(systemName: "star")
+        favortie.image = task.favorite ? .init(systemName: "star.fill") : .init(systemName: "star")
         favortie.backgroundColor = .systemGreen
         
         return UISwipeActionsConfiguration(actions: [favortie])
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
+            
+            let task = self.tasks[indexPath.row]
+            
+            self.repository.delete(taskToDelete: task)
+            
+            self.fetchRealm(sortKey: "diaryTitle")
+            
+        }
+        
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
 }
+
+extension ViewController: FSCalendarDelegate, FSCalendarDataSource {
+    
+//    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
+//        "앙 새싹띠"
+//    }
+//
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        return repository.fetchDate(date: date).count
+    }
+    
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
+        tasks = repository.fetchDate(date: date)
+
+    }
+
+    
+//    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+//        .init(systemName: "star")
+//    }
+//
+    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
+        return formatter.string(from: date) == "220907" ? "오프라인 모임" : nil
+    }
+     
+    
+}
+
