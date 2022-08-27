@@ -39,14 +39,16 @@ class ShoppingItem: Object {
     @Persisted var itemName: String
     @Persisted var isComplete: Bool
     @Persisted var isFavorite: Bool
+    @Persisted var creationDate: Date
     
     @Persisted(primaryKey: true) var objectId: ObjectId
     
-    convenience init(name: String, complete: Bool = false, favorite: Bool = false){
+    convenience init(name: String, complete: Bool = false, favorite: Bool = false, date: Date = Date()){
         self.init()
         itemName = name
         isComplete = complete
         isFavorite = favorite
+        creationDate = date
     }
     
 }

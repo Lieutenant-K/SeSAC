@@ -17,11 +17,11 @@ protocol RealmRepository {
     
     func fetch(sortKey: String) -> Results<RealmObject>
     
-    func delete(taskToDelete: RealmObject)
+    func delete(taskToDelete: RealmObject) throws
     
-    func update(updateHandler: () -> Void)
+    func update(updateHandler: () -> Void) throws
     
-    func add(taskToAdd: RealmObject)
+    func add(taskToAdd: RealmObject) throws
     
 }
 
@@ -35,9 +35,9 @@ class ShoppingRepository: RealmRepository {
 
     }
     
-    func delete(taskToDelete: ShoppingItem) {
+    func delete(taskToDelete: ShoppingItem) throws {
         
-        try! localRealm.write {
+        try localRealm.write {
             
             ImageFileManager.shared.removeImageFromDocument(fileName: taskToDelete.objectId.stringValue)
             
@@ -47,10 +47,10 @@ class ShoppingRepository: RealmRepository {
         
     }
     
-    func update(updateHandler: () -> Void) {
+    func update(updateHandler: () -> Void) throws {
         
         
-        try! localRealm.write {
+        try localRealm.write {
             
             updateHandler()
             
@@ -58,9 +58,9 @@ class ShoppingRepository: RealmRepository {
         
     }
     
-    func add(taskToAdd: ShoppingItem) {
+    func add(taskToAdd: ShoppingItem) throws {
         
-        try! localRealm.write {
+        try localRealm.write {
             
             localRealm.add(taskToAdd)
             

@@ -41,12 +41,16 @@
 		0D996D1B28B64F4D009214DE /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D996D1A28B64F4D009214DE /* ItemDetailViewController.swift */; };
 		0D996D1E28B65158009214DE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0D996D1D28B65158009214DE /* SnapKit */; };
 		0DC09CD328B4E3F800F5EF9C /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC09CD228B4E3F800F5EF9C /* Toast */; };
+		0DE1E28228BAB3A200B391B8 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 0DE1E28128BAB3A200B391B8 /* FSCalendar */; };
+		0DE1E28428BAB3D000B391B8 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1E28328BAB3D000B391B8 /* CalendarViewController.swift */; };
+		0DE1E28628BAB3FB00B391B8 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1E28528BAB3FB00B391B8 /* CalendarView.swift */; };
 		0DEA7E8728B73269001A999F /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7E8628B73269001A999F /* StorageViewController.swift */; };
 		0DEA7E8928B732BB001A999F /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7E8828B732BB001A999F /* StorageView.swift */; };
 		0DEA7E8C28B73307001A999F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEA7E8B28B73307001A999F /* Zip */; };
 		0DEA7E8F28B75852001A999F /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEA7E8E28B75852001A999F /* JGProgressHUD */; };
 		0DEA7E9728B930C8001A999F /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7E9628B930C8001A999F /* RealmRepository.swift */; };
 		0DEA7E9928B9382A001A999F /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7E9828B9382A001A999F /* ImageFileManager.swift */; };
+		0DEA7E9B28B95B11001A999F /* RestartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7E9A28B95B11001A999F /* RestartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,10 +85,13 @@
 		0D9774A828B354BA00D5BE6E /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		0D97AF3C28897E5A00891A35 /* TrendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewController.swift; sourceTree = "<group>"; };
 		0D996D1A28B64F4D009214DE /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		0DE1E28328BAB3D000B391B8 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		0DE1E28528BAB3FB00B391B8 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		0DEA7E8628B73269001A999F /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
 		0DEA7E8828B732BB001A999F /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		0DEA7E9628B930C8001A999F /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		0DEA7E9828B9382A001A999F /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
+		0DEA7E9A28B95B11001A999F /* RestartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +104,7 @@
 				0DC09CD328B4E3F800F5EF9C /* Toast in Frameworks */,
 				0D9774A728B353CE00D5BE6E /* RealmSwift in Frameworks */,
 				0D9774A528B353CE00D5BE6E /* Realm in Frameworks */,
+				0DE1E28228BAB3A200B391B8 /* FSCalendar in Frameworks */,
 				0D7019702887AE4E0005909F /* Kingfisher in Frameworks */,
 				0D996D1E28B65158009214DE /* SnapKit in Frameworks */,
 			);
@@ -152,6 +160,9 @@
 				0D996D1A28B64F4D009214DE /* ItemDetailViewController.swift */,
 				0DEA7E8628B73269001A999F /* StorageViewController.swift */,
 				0DEA7E8828B732BB001A999F /* StorageView.swift */,
+				0DEA7E9A28B95B11001A999F /* RestartViewController.swift */,
+				0DE1E28328BAB3D000B391B8 /* CalendarViewController.swift */,
+				0DE1E28528BAB3FB00B391B8 /* CalendarView.swift */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -234,6 +245,7 @@
 				0D996D1D28B65158009214DE /* SnapKit */,
 				0DEA7E8B28B73307001A999F /* Zip */,
 				0DEA7E8E28B75852001A999F /* JGProgressHUD */,
+				0DE1E28128BAB3A200B391B8 /* FSCalendar */,
 			);
 			productName = TrendMedia;
 			productReference = 0D70192A2884DDC70005909F /* TrendMedia.app */;
@@ -270,6 +282,7 @@
 				0D996D1C28B65158009214DE /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0DEA7E8A28B73307001A999F /* XCRemoteSwiftPackageReference "Zip" */,
 				0DEA7E8D28B75852001A999F /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				0DE1E28028BAB3A200B391B8 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 0D70192B2884DDC70005909F /* Products */;
 			projectDirPath = "";
@@ -321,11 +334,14 @@
 				0DEA7E9928B9382A001A999F /* ImageFileManager.swift in Sources */,
 				0D9774A928B354BA00D5BE6E /* RealmModel.swift in Sources */,
 				0D70195C2886ADC00005909F /* ShoppingListViewController.swift in Sources */,
+				0DEA7E9B28B95B11001A999F /* RestartViewController.swift in Sources */,
 				0DEA7E9728B930C8001A999F /* RealmRepository.swift in Sources */,
 				0D7019522886478E0005909F /* UITextField+Extension.swift in Sources */,
 				0D70192E2884DDC70005909F /* AppDelegate.swift in Sources */,
+				0DE1E28628BAB3FB00B391B8 /* CalendarView.swift in Sources */,
 				0D7019302884DDC70005909F /* SceneDelegate.swift in Sources */,
 				0D70196228878CB50005909F /* Movie.swift in Sources */,
+				0DE1E28428BAB3D000B391B8 /* CalendarViewController.swift in Sources */,
 				0D70196828879DFE0005909F /* RecommendCollectionViewCell.swift in Sources */,
 				0DEA7E8928B732BB001A999F /* StorageView.swift in Sources */,
 			);
@@ -577,6 +593,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		0DE1E28028BAB3A200B391B8 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		0DEA7E8A28B73307001A999F /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip.git";
@@ -620,6 +644,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0DC09CD128B4E3F800F5EF9C /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		0DE1E28128BAB3A200B391B8 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DE1E28028BAB3A200B391B8 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 		0DEA7E8B28B73307001A999F /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;

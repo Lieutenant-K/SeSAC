@@ -62,7 +62,7 @@ class ShoppingListViewController: UITableViewController {
         tableView.rowHeight = 60
         headerView.setCornerRadius()
         
-        setMenuButton()
+        setNaviBarButtonItem()
 
     }
     
@@ -74,9 +74,9 @@ class ShoppingListViewController: UITableViewController {
         
     }
     
-    func setMenuButton() {
+    func setNaviBarButtonItem() {
         
-        let button = navigationItem.rightBarButtonItems![1]
+        let rightMenuButton = navigationItem.rightBarButtonItems![1]
         
         let menuItems = [
             UIAction(title: "제목", state: .on, handler: { [weak self] _ in
@@ -95,8 +95,7 @@ class ShoppingListViewController: UITableViewController {
             })
         ]
         
-        button.menu = UIMenu(title: "정렬 기준", options: .singleSelection, children: menuItems)
-        
+        rightMenuButton.menu = UIMenu(title: "정렬 기준", options: .singleSelection, children: menuItems)
         
     }
     
@@ -243,6 +242,13 @@ class ShoppingListViewController: UITableViewController {
         vc.delegate = self
         transition(vc, transitionStyle: .pageSheet)
     }
+    
+    @IBAction func touchCalendarButton(_ sender: UIBarButtonItem) {
+        
+        transition(CalendarViewController(tasks: tasks), transitionStyle: .present)
+        
+    }
+    
     
     deinit {
         print(#function, "ShoppingListViewController")
