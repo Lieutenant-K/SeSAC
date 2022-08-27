@@ -20,7 +20,7 @@ class PostViewController: UIViewController {
 
     let postView = PostView()
     
-    let localRealm = try! Realm() // Realm 테이블에 데이터를 CRUD할 때, Realm 테이블 경로에 접근
+    let repository = UserDiaryRepository() // Realm 테이블에 데이터를 CRUD할 때, Realm 테이블 경로에 접근
     
     lazy var imagePicker: UIImagePickerController = {
        
@@ -61,7 +61,7 @@ class PostViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(receiveImageURLNotification(_:)), name: .sendImageURLNotification, object: nil)
         
-        print("Realm is located at:", localRealm.configuration.fileURL!)
+        print("Realm is located at:", repository.localRealm.configuration.fileURL!)
         
     }
     
@@ -131,23 +131,20 @@ class PostViewController: UIViewController {
         let task = UserDiary(title: title, content: content, diaryDate: Date(), postingDate: Date(), photo: nil) // => Record 추가
         
         do {
-            try localRealm.write {
-                
-                localRealm.add(task) // create
-                
-                print("Realm Succed")
-                
-                if let image = postView.imageView.image {
-                    saveImageToDocument(fileName: "\(task.objectId).jpg", image: image)
-                }
-                
-                self.dismiss(animated: true)
-
+            try repository.addItem(item: task)
+            
+            if let image = postView.imageView.image {
+                saveImageToDocument(fileName: "\(task.objectId).jpg", image: image)
             }
-        } catch let error {
-            print(error)
+            
+            self.dismiss(animated: true)
+
+            
+        } catch {
+            showAlert(title: "다이어리 작성 실패")
         }
     }
+
     
     
     

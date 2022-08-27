@@ -19,9 +19,9 @@ protocol UserDiaryRepositoryType {
     
     func updateFavorite(taskToUpdate: UserDiary)
     
-    func delete(taskToDelete: UserDiary)
+    func delete(taskToDelete: UserDiary) throws
     
-    func addItem(item: UserDiary)
+    func addItem(item: UserDiary) throws
 }
 
 class UserDiaryRepository: UserDiaryRepositoryType {
@@ -67,35 +67,25 @@ class UserDiaryRepository: UserDiaryRepositoryType {
         
     }
     
-    func delete(taskToDelete: UserDiary) {
+    func delete(taskToDelete: UserDiary) throws {
         
-        try! localRealm.write {
-            
-            removeImageFromDocument(fileName: "\(taskToDelete.objectId).jpg")
+        try localRealm.write {
             
             localRealm.delete(taskToDelete)
         }
         
     }
     
-    func addItem(item: UserDiary) {
+    func addItem(item: UserDiary) throws {
         
-    }
-    
-    func removeImageFromDocument(fileName: String) {
         
-        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        
-        let fileURL = documentDirectory.appendingPathComponent(fileName)
-        
-        do {
+        try localRealm.write {
+            localRealm.add(item)
             
-            try FileManager.default.removeItem(at: fileURL)
-            
-        } catch let error {
-            print(error)
         }
         
     }
+    
+    
     
 }

@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 import RealmSwift
-import SwiftUI
 import FSCalendar
 
 class ViewController: UIViewController {
@@ -161,9 +160,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             
             let task = self.tasks[indexPath.row]
             
-            self.repository.delete(taskToDelete: task)
-            
-            self.fetchRealm(sortKey: "diaryTitle")
+            do {
+                
+                try self.repository.delete(taskToDelete: task)
+                
+                self.removeImageFromDocument(fileName: "\(task.objectId).jpg")
+                
+                self.fetchRealm(sortKey: "diaryTitle")
+                
+            } catch {
+                self.showAlert(title: "다이어리 삭제 실패")
+            }
             
         }
         
