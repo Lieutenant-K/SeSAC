@@ -128,9 +128,14 @@ class ShoppingListViewController: UITableViewController {
             
             let task = tasks[indexPath.row]
             
-            repository.delete(taskToDelete: task)
+            do {
+                try repository.delete(taskToDelete: task)
+                fetchTasks()
+            } catch {
+                print(error)
+            }
             
-            fetchTasks()
+            
             
             /*
             tableView.beginUpdates()
@@ -168,19 +173,22 @@ class ShoppingListViewController: UITableViewController {
         
         let taskToUpdate = tasks[sender.tag]
         
-        repository.update {
-            
-            taskToUpdate.isComplete.toggle()
-            
-            if taskToUpdate.isComplete {
-                view.makeToast("쇼핑을 완료했습니다", position: .top)
+        do
+        {
+            try repository.update {
+                
+                taskToUpdate.isComplete.toggle()
+                
+                if taskToUpdate.isComplete {
+                    view.makeToast("쇼핑을 완료했습니다", position: .top)
+                }
             }
             
+            tableView.reloadData()
+            
+        } catch {
+            print(error)
         }
-        
-        tableView.reloadData()
-        
-        
         
     }
     
@@ -188,17 +196,22 @@ class ShoppingListViewController: UITableViewController {
         
         let taskToUpdate = tasks[sender.tag]
         
-        repository.update {
-            
-            taskToUpdate.isFavorite.toggle()
-            
-            if taskToUpdate.isFavorite {
-                view.makeToast("즐겨찾기에 추가됐습니다", position: .top)
+        do {
+            try repository.update {
+                
+                taskToUpdate.isFavorite.toggle()
+                
+                if taskToUpdate.isFavorite {
+                    view.makeToast("즐겨찾기에 추가됐습니다", position: .top)
+                }
             }
-            
+            tableView.reloadData()
+        } catch {
+            print(error)
         }
+       
         
-        tableView.reloadData()
+        
         
     }
     
@@ -213,11 +226,14 @@ class ShoppingListViewController: UITableViewController {
         
         let task = ShoppingItem(name: text)
         
-        repository.add(taskToAdd: task)
+        do {
+            try repository.add(taskToAdd: task)
+            fetchTasks()
+            searchTextfield.text = nil
+        } catch {
+            print(error)
+        }
         
-        fetchTasks()
-        
-        searchTextfield.text = nil
         
     }
     

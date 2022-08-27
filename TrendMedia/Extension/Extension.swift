@@ -157,42 +157,33 @@ extension UIViewController {
                 // 모달 dragToDown 제스처 막기
                 self.isModalInPresentation = true
                 
-                try Zip.unzipFile(path, destination: documentURL, overwrite: true, password: nil, progress: { progress in
+                try Zip.unzipFile(path, destination: documentURL, overwrite: true, password: nil) { progress in
                     
                     Self.progressHUD.indicatorView?.setProgress(Float(progress), animated: true)
                     
                     print(progress)
                     
-                }, fileOutputHandler: { unzippedFile in
+                } fileOutputHandler: { unzippedFile in
                     print(#function, unzippedFile)
                     
                     
-                })
+                }
                 
                 Self.progressHUD.indicatorView = JGProgressHUDSuccessIndicatorView()
                 Self.progressHUD.textLabel.text = "복구 완료!"
-                print("파일 압축 해제 완료")
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                    
-                    Self.progressHUD.dismiss(animated: true)
-                    
-                    self.isModalInPresentation = false
-                    
-                }
                 
             } catch {
                 
                 Self.progressHUD.indicatorView = JGProgressHUDErrorIndicatorView()
                 Self.progressHUD.textLabel.text = "복구 실패"
                 
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                    
-                    Self.progressHUD.dismiss(animated: true)
-                    
-                    self.isModalInPresentation = false
-
-                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                
+                Self.progressHUD.dismiss(animated: true)
+                
+                self.isModalInPresentation = false
                 
             }
             
