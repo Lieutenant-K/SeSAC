@@ -9,6 +9,13 @@ import UIKit
 
 import RealmSwift
 
+protocol RealmUsableDelegate {
+    
+    func prepareToCloseRealm()
+    
+    func openRealm()
+}
+
 enum DesignatedPath {
     
     case imageDirectory

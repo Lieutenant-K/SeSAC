@@ -171,14 +171,13 @@ extension UIViewController {
                 
                 Self.progressHUD.indicatorView = JGProgressHUDSuccessIndicatorView()
                 Self.progressHUD.textLabel.text = "복구 완료!"
+                print("파일 압축 해제 완료")
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                     
                     Self.progressHUD.dismiss(animated: true)
                     
                     self.isModalInPresentation = false
-                    
-                    self.restartToViewController()
                     
                 }
                 
@@ -204,15 +203,11 @@ extension UIViewController {
         
     }
     
-    func restartToViewController() {
+    func restartToViewController(vc: UIViewController) {
         
         let app = UIApplication.shared.connectedScenes.first
         
         let delegate = app?.delegate as? SceneDelegate
-        
-        print(#function, delegate, delegate?.window, delegate?.window?.rootViewController)
-        
-        let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "Shopping")
         
         delegate?.window?.rootViewController = vc
         

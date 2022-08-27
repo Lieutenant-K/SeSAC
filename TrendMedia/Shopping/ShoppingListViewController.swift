@@ -39,7 +39,7 @@ class ShoppingListViewController: UITableViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var headerView: UIView!
     
-    let repository = ShoppingRepository()
+    var repository:ShoppingRepository! = ShoppingRepository()
     
     var tasks: Results<ShoppingItem>! {
         didSet {
@@ -57,18 +57,12 @@ class ShoppingListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("localRealm",repository.localRealm)
+        fetchTasks()
         
         tableView.rowHeight = 60
         headerView.setCornerRadius()
         
-        fetchTasks()
-        
         setMenuButton()
-        
-        
-        
-//        print(localRealm.configuration.fileURL)
 
     }
     
@@ -85,18 +79,18 @@ class ShoppingListViewController: UITableViewController {
         let button = navigationItem.rightBarButtonItems![1]
         
         let menuItems = [
-            UIAction(title: "제목", state: .on, handler: { _ in
-                self.currentFilter = .title
-                self.fetchTasks()
+            UIAction(title: "제목", state: .on, handler: { [weak self] _ in
+                self?.currentFilter = .title
+                self?.fetchTasks()
             })
-            ,UIAction(title: "즐겨찾기", handler: { _ in
-                self.currentFilter = .favorite
-                self.fetchTasks()
+            ,UIAction(title: "즐겨찾기", handler: { [weak self] _ in
+                self?.currentFilter = .favorite
+                self?.fetchTasks()
                 
             })
-            ,UIAction(title: "완료", handler: { _ in
-                self.currentFilter = .complete
-                self.fetchTasks()
+            ,UIAction(title: "완료", handler: { [weak self] _ in
+                self?.currentFilter = .complete
+                self?.fetchTasks()
                 
             })
         ]
@@ -105,9 +99,6 @@ class ShoppingListViewController: UITableViewController {
         
         
     }
-    
-    
-    
     
     
     // MARK: - UITableView Method
@@ -128,7 +119,7 @@ class ShoppingListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        return tasks != nil ? tasks.count : 0
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -232,8 +223,37 @@ class ShoppingListViewController: UITableViewController {
     
     @IBAction func touchSettingButton() {
         print(#function)
-        transition(StorageViewController(), transitionStyle: .pageSheet)
+        let vc = StorageViewController()
+        vc.delegate = self
+        transition(vc, transitionStyle: .pageSheet)
+    }
+    
+    deinit {
+        print(#function, "ShoppingListViewController")
     }
 
  
+}
+
+extension ShoppingListViewController: RealmUsableDelegate {
+    
+    func openRealm() {
+        
+        repository = ShoppingRepository()
+        
+        print(repository.localRealm.configuration.fileURL)
+        
+        fetchTasks()
+        
+        
+    }
+    
+    func prepareToCloseRealm() {
+        
+        tasks = nil
+        repository = nil
+        
+    }
+    
+    
 }

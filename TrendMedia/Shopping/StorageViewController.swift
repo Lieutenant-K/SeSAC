@@ -16,6 +16,8 @@ class StorageViewController: UIViewController {
     
     var files = [URL]()
     
+    var delegate: RealmUsableDelegate? = nil
+    
     lazy var storageView: StorageView = {
         let view = StorageView()
         view.tableView.delegate = self
@@ -90,7 +92,12 @@ class StorageViewController: UIViewController {
         let alert = UIAlertController(title: fileURL.lastPathComponent, message: "이 파일로 복구하시겠습니까?", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "예", style: .destructive) { _ in
-            self.unzipFile(targetToUnzip: fileURL)  
+
+            self.delegate?.prepareToCloseRealm()
+
+            self.unzipFile(targetToUnzip: fileURL)
+            
+            self.delegate?.openRealm()
         }
         
         let cancle = UIAlertAction(title: "아니오", style: .cancel)
@@ -115,6 +122,10 @@ class StorageViewController: UIViewController {
             print(error)
         }
         
+    }
+    
+    deinit {
+        print(#function, String(describing: self))
     }
     
 }

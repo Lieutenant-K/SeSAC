@@ -11,17 +11,17 @@ import RealmSwift
 
 protocol RealmRepository {
     
-    associatedtype Item: RealmCollectionValue
+    associatedtype RealmObject: RealmCollectionValue
     
     var localRealm: Realm { get }
     
-    func fetch(sortKey: String) -> Results<Item>
+    func fetch(sortKey: String) -> Results<RealmObject>
     
-    func delete(taskToDelete: Item)
+    func delete(taskToDelete: RealmObject)
     
     func update(updateHandler: () -> Void)
     
-    func add(taskToAdd: Item)
+    func add(taskToAdd: RealmObject)
     
 }
 
@@ -66,6 +66,10 @@ class ShoppingRepository: RealmRepository {
             
         }
         
+    }
+    
+    deinit {
+        print(#function, String(describing: self))
     }
     
 }
