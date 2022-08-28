@@ -33,6 +33,7 @@
 		0D97749F28B319F100D5BE6E /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97749E28B319F100D5BE6E /* RealmModel.swift */; };
 		0D996D2028B6707C009214DE /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D996D1F28B6707B009214DE /* StorageViewController.swift */; };
 		0D996D2228B670A9009214DE /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D996D2128B670A9009214DE /* StorageView.swift */; };
+		0DE1E28A28BAD93400B391B8 /* SearchDiaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1E28928BAD93400B391B8 /* SearchDiaryController.swift */; };
 		0DEA7E8528B7015F001A999F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEA7E8428B7015F001A999F /* Zip */; };
 		0DEA7E9128B85596001A999F /* UserDiaryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEA7E9028B85596001A999F /* UserDiaryRepository.swift */; };
 		0DEA7E9428B8616E001A999F /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEA7E9328B8616E001A999F /* FSCalendar */; };
@@ -61,6 +62,7 @@
 		0D97749E28B319F100D5BE6E /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		0D996D1F28B6707B009214DE /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
 		0D996D2128B670A9009214DE /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
+		0DE1E28928BAD93400B391B8 /* SearchDiaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDiaryController.swift; sourceTree = "<group>"; };
 		0DEA7E9028B85596001A999F /* UserDiaryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDiaryRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 				0D97748C28B2340300D5BE6E /* PostViewController.swift */,
 				0D97749628B288FD00D5BE6E /* ImageCollectionViewCell.swift */,
 				0D97748E28B23C2B00D5BE6E /* ImageSearchViewController.swift */,
+				0DE1E28928BAD93400B391B8 /* SearchDiaryController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				0D97749528B278AA00D5BE6E /* Model.swift in Sources */,
 				0D97748F28B23C2B00D5BE6E /* ImageSearchViewController.swift in Sources */,
 				0D97749728B288FD00D5BE6E /* ImageCollectionViewCell.swift in Sources */,
+				0DE1E28A28BAD93400B391B8 /* SearchDiaryController.swift in Sources */,
 				0DEA7E9128B85596001A999F /* UserDiaryRepository.swift in Sources */,
 				0D97748D28B2340300D5BE6E /* PostViewController.swift in Sources */,
 				0D996D2028B6707C009214DE /* StorageViewController.swift in Sources */,

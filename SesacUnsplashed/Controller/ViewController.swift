@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .systemBackground
         view.addSubview(tableView)
         view.addSubview(calendar)
         
@@ -160,11 +160,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             
             let task = self.tasks[indexPath.row]
             
+            let objectId = task.objectId.stringValue
+            
             do {
                 
                 try self.repository.delete(taskToDelete: task)
                 
-                self.removeImageFromDocument(fileName: "\(task.objectId).jpg")
+                self.removeImageFromDocument(fileName: "\(objectId).jpg")
                 
                 self.fetchRealm(sortKey: "diaryTitle")
                 

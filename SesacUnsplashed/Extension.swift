@@ -66,12 +66,14 @@ extension UIViewController {
         
         let fileURL = documentDirectory.appendingPathComponent(fileName)
         
-        do {
-            
-            try FileManager.default.removeItem(at: fileURL)
-            
-        } catch let error {
-            print(error)
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            do {
+                
+                try FileManager.default.removeItem(at: fileURL)
+                
+            } catch let error {
+                print(error)
+            }
         }
         
     }
@@ -122,22 +124,24 @@ extension UIViewController {
         
     }
     
-    func fetchDocumentZipFile() {
+    func fetchDocumentZipFile() -> [String] {
         
         do {
-            guard let path = documentDirectoryPath() else { return }
+            guard let path = documentDirectoryPath() else { return []}
             
             let docs = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil)
-            print("docs: \(docs)")
+//            print("docs: \(docs)")
             
             let zip = docs.filter { $0.pathExtension == "zip" }
             
-            print("zip: \(zip)")
+//            print("zip: \(zip)")
             
             let result = zip.map { $0.lastPathComponent }
             
-        } catch {
+            return result
             
+        } catch {
+            return []
         }
         
     }

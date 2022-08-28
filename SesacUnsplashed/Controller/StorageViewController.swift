@@ -10,7 +10,9 @@ import UIKit
 import Zip
 
 class StorageViewController: UIViewController {
-
+    
+    var files:[String] = []
+    
     lazy var storageView: StorageView = {
         let view = StorageView()
         view.tableView.delegate = self
@@ -29,7 +31,9 @@ class StorageViewController: UIViewController {
         
         storageView.restoreButton.addTarget(self, action: #selector(touchRestoreButton), for: .touchUpInside)
         
-        fetchDocumentZipFile()
+        files = fetchDocumentZipFile()
+        
+        storageView.tableView.reloadData()
         
     }
     
@@ -84,12 +88,14 @@ class StorageViewController: UIViewController {
 extension StorageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return files.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        cell.textLabel?.text = files[indexPath.row]
         
         return cell
     }

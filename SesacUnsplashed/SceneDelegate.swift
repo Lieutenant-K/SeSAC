@@ -20,9 +20,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         
-        let navi = UINavigationController(rootViewController: ViewController())
+        let appearance = UITabBarAppearance()
+        appearance.configureWithDefaultBackground()
         
-        window?.rootViewController = navi
+        let tabBar = UITabBarController()
+        tabBar.tabBar.standardAppearance = appearance
+        tabBar.tabBar.scrollEdgeAppearance = appearance
+    
+        let navi1 = UINavigationController(rootViewController: ViewController())
+        navi1.tabBarItem = UITabBarItem(title: "달력", image: .init(systemName: "calendar.circle"), selectedImage: .init(systemName: "calendar.circle.fill"))
+        
+        let navi2 = StorageViewController()
+        navi2.tabBarItem = .init(title: "설정", image: .init(systemName: "gear.circle"), selectedImage: .init(systemName: "gear.circle.fill"))
+        
+        let navi3 = UINavigationController(rootViewController: SearchDiaryController())
+        navi3.tabBarItem = .init(title: "검색", image: .init(systemName: "magnifyingglass.circle"), selectedImage: .init(systemName: "magnifyingglass.circle.fill"))
+        
+        
+        tabBar.viewControllers = [navi1, navi2, navi3]
+        
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
         
     }
