@@ -64,6 +64,7 @@ class PersonAPIManager {
                     print(result)
                     completionHandler(result, nil)
                 }
+                
             }
             
           

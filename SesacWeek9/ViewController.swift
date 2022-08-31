@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var list: Person?
+    private var viewModel = PersonViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +33,14 @@ class ViewController: UIViewController {
             
         }
         
-        PersonAPIManager.requestPerson(query: "park") { person, error in
-            
-            self.list = person
+        viewModel.fetchPerson(query: "park")
+        
+        viewModel.list.bind { person in
+            print("viewController bind")
+//            self.viewModel.list.value = person
             self.tableView.reloadData()
-            
         }
+   
         // Do any additional setup after loading the view.
     }
     
@@ -49,13 +51,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = list?.results[indexPath.row].name
-        cell.detailTextLabel?.text = list?.results[indexPath.row].knownForDepartment
+        
+        let data = viewModel.cellForRowAt(at: indexPath)
+        
+        cell.textLabel?.text = data.name
+        cell.detailTextLabel?.text = data.knownForDepartment
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list?.results.count ?? 0
+        return viewModel.numberOfRowsInSection
     }
     
     
