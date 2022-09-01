@@ -30,7 +30,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navi.navigationBar.prefersLargeTitles = true
         navi.navigationBar.tintColor = .systemOrange
         
-        navi.toolbar.standardAppearance = .init(barAppearance: appearance)
+//        let toolbarAppearance = UIToolbarAppearance()
+//        toolbarAppearance.configureWithDefaultBackground()
+//
+        navi.toolbar.standardAppearance.configureWithOpaqueBackground()
         navi.toolbar.tintColor = .systemOrange
         
         window?.rootViewController = navi

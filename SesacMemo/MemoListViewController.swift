@@ -14,24 +14,42 @@ class MemoListViewController: ListViewController {
     
     var memos: Results<Memo>! {
         didSet {
+            
             title = "\(memos.count)개의 메모"
+            listView.tableView.reloadData()
+            
         }
     }
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeStyle = .short
+        formatter.dateStyle = .medium
+        return formatter
+    }()
+    
+    // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        memos = repository.fetchTasks()
-        
-//        let memoList = [
-//            Memo(title: "메모1", content: "메모1 컨텐츠", creationDate: Date()),
-//            Memo(title: "메모2", content: "메모2 컨텐츠", creationDate: Date().addingTimeInterval(86400)),
-//            Memo(title: "메모3", content: "메모3 컨텐츠", creationDate: Date().addingTimeInterval(-86400))
-//        ]
-//
-//        memoList.forEach { repository.addTask(task: $0) }
+        fetchMemoData()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(#function)
+        self.navigationController?.setToolbarHidden(false, animated: true)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        fetchMemoData()
+    }
+    
+    // MARK: - Method
     
     override func setNavigationItem() {
         
@@ -42,20 +60,28 @@ class MemoListViewController: ListViewController {
         naviItem.searchController = UISearchController(searchResultsController: nil)
         naviItem.searchController?.searchBar.placeholder = "검색"
         naviItem.hidesSearchBarWhenScrolling = false
+        naviItem.backButtonTitle = "메모"
+//        naviItem.largeTitleDisplayMode = .always
         
     }
     
-    override func setToolBarItem() {
-        
-        self.navigationController?.setToolbarHidden(false, animated: true)
+    override func setToolbarItem() {
         
         let writeButton = UIBarButtonItem(image: .init(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(touchWriteButton(_:)))
         
+        toolbarItems = [.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), writeButton]
     }
+    
+    func fetchMemoData() {
+        
+        memos = repository.fetchTasks()
+        
+    }
+    // MARK: - Action Method
     
     @objc func touchWriteButton(_ sender: UIBarButtonItem) {
         
-        
+        navigationController?.pushViewController(WriteViewController(), animated: true)
         
     }
     
@@ -71,7 +97,8 @@ class MemoListViewController: ListViewController {
         let memoData = memos[indexPath.row]
         
         cell.mainLabel.text = memoData.title
-        cell.subLabel.text = memoData.content
+        
+        cell.subLabel.text = dateFormatter.string(from: memoData.creationDate) +  memoData.content
         
         return cell
     }

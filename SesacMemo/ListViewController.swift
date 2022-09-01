@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: BaseViewController {
 
     let listView = ListView()
     
@@ -20,8 +20,6 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setListTableView()
-        setNavigationItem()
-        setToolBarItem()
     }
     
     private func setListTableView() {
@@ -30,10 +28,6 @@ class ListViewController: UIViewController {
         listView.tableView.register(ListCell.self, forCellReuseIdentifier: listCellIdentifier)
         
     }
-    
-    func setNavigationItem() {}
-    
-    func setToolBarItem() {}
 
 }
 

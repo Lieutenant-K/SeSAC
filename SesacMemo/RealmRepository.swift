@@ -35,9 +35,20 @@ class MemoRealmRepository {
         }
     }
     
+    func updateTask(handler: () -> ()) {
+        
+        do {
+            try localRealm.write{
+                handler()
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     func fetchTasks() -> Results<Memo> {
         
-        localRealm.objects(Memo.self)
+        localRealm.objects(Memo.self).sorted(byKeyPath: "creationDate", ascending: false)
         
         
     }
