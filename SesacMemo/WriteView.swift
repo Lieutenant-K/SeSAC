@@ -15,7 +15,6 @@ final class WriteViwe: UIView {
         view.font = .systemFont(ofSize: 20, weight: .regular)
         view.textColor = .label
         view.textContainerInset = .init(top: 16, left: 16, bottom: 16, right: 16)
-        view.enablesReturnKeyAutomatically = true
         return view
         
     }()

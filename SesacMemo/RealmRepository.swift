@@ -27,40 +27,48 @@ final class MemoRealmRepository {
                 localRealm.delete(task)
             }
         }
-
+        
     }
     
-    func updateTask(task: Memo, dataIntoUpdate: [String]) throws {
+    func updateTaskWithData(task: Memo, dataToUpdate: MemoContent?) throws {
         
-        if dataIntoUpdate.count == 0 {
-            try deleteTask(task: task)
-        } else {
-            
-            let title = dataIntoUpdate[0]
-            let content = dataIntoUpdate.count > 1 ? dataIntoUpdate[1] : ""
+        if let data = dataToUpdate {
             
             try localRealm.write {
                 
-                task.title = title
-                task.content = content
-                localRealm.add(task, update: .modified)
+                task.title = data.title
+                task.subtitle = data.subtitle
+                task.content = data.content
+//                localRealm.add(task, update: .modified)
                 
             }
-            
+        } else {
+            try deleteTask(task: task)
         }
         
-
+    }
+    
+    func updateTask(updateHandler: () -> ()) throws {
+        
+        try localRealm.write{
+            updateHandler()
+        }
+        
     }
     
     
     func fetchTasks() -> Results<Memo> {
         
         localRealm.objects(Memo.self).sorted(byKeyPath: "creationDate", ascending: false)
-
+        
     }
     
     func isExist(id: ObjectId) -> Bool {
         return localRealm.object(ofType: Memo.self, forPrimaryKey: id) != nil ? true : false
+    }
+    
+    func getURL() {
+        print(localRealm.configuration.fileURL!)
     }
     
 }
