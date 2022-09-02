@@ -103,6 +103,15 @@ class MemoListViewController: ListViewController {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = WriteViewController()
+        
+        vc.currentMemo = memos[indexPath.row]
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let pinAction = UIContextualAction(style: .normal, title: "") { _, _, completion in

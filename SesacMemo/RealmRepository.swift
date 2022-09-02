@@ -8,49 +8,59 @@
 import Foundation
 import RealmSwift
 
-class MemoRealmRepository {
+final class MemoRealmRepository {
     
-    let localRealm = try! Realm()
+    private let localRealm = try! Realm()
     
-    func addTask(task: Memo) {
+    func addTask(task: Memo) throws {
         
-        do {
-            try localRealm.write{
-                localRealm.add(task)
-            }
-        } catch {
-            print(error)
+        try localRealm.write {
+            localRealm.add(task)
         }
         
     }
     
-    func deleteTask(task: Memo) {
+    func deleteTask(task: Memo) throws {
         
-        do {
-            try localRealm.write{
+        if isExist(id: task.objectId) {
+            try localRealm.write {
                 localRealm.delete(task)
             }
-        } catch {
-            print(error)
         }
+
     }
     
-    func updateTask(handler: () -> ()) {
+    func updateTask(task: Memo, dataIntoUpdate: [String]) throws {
         
-        do {
-            try localRealm.write{
-                handler()
+        if dataIntoUpdate.count == 0 {
+            try deleteTask(task: task)
+        } else {
+            
+            let title = dataIntoUpdate[0]
+            let content = dataIntoUpdate.count > 1 ? dataIntoUpdate[1] : ""
+            
+            try localRealm.write {
+                
+                task.title = title
+                task.content = content
+                localRealm.add(task, update: .modified)
+                
             }
-        } catch {
-            print(error)
+            
         }
+        
+
     }
+    
     
     func fetchTasks() -> Results<Memo> {
         
         localRealm.objects(Memo.self).sorted(byKeyPath: "creationDate", ascending: false)
-        
-        
+
+    }
+    
+    func isExist(id: ObjectId) -> Bool {
+        return localRealm.object(ofType: Memo.self, forPrimaryKey: id) != nil ? true : false
     }
     
 }
