@@ -141,7 +141,7 @@ final class MemoListViewController: ListViewController {
         let calendar = Calendar(identifier: .iso8601)
         
         let now = Date()
-        let firstDayOfWeek = calendar.dateComponents([.calendar, .weekOfYear, .year], from: now).date!
+        let firstDayOfWeek = calendar.dateComponents([.calendar, .weekOfYear, .yearForWeekOfYear], from: now).date!
         let startOfToday = calendar.startOfDay(for: now)
         
         if date >= startOfToday {
