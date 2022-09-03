@@ -74,7 +74,10 @@ final class MemoListViewController: ListViewController {
         
         listView.tableView.reloadData()
         
-        title = "\(memoCollection.totalMemoCount)개의 메모"
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        title = "\(numberFormatter.string(from: memoCollection.totalMemoCount as NSNumber) ?? "")개의 메모"
         
     }
     
