@@ -132,6 +132,40 @@ final class MemoListViewController: ListViewController {
         present(alert, animated: true)
         
     }
+    
+    func formattingDateToString(date: Date) -> String {
+        
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        
+        let calendar = Calendar(identifier: .iso8601)
+        
+        let now = Date()
+        let firstDayOfWeek = calendar.dateComponents([.calendar, .weekOfYear, .year], from: now).date!
+        let startOfToday = calendar.startOfDay(for: now)
+        
+        if date >= startOfToday {
+            
+            formatter.dateFormat = "a hh:mm"
+            
+            return formatter.string(from: date)
+            
+        } else if date >= firstDayOfWeek {
+            
+            let weekday = calendar.dateComponents([.weekday], from: date).weekday!
+            
+            return formatter.weekdaySymbols[weekday-1]
+            
+        } else {
+            
+            formatter.dateFormat = "yyyy. MM. dd a hh:mm"
+            
+            return formatter.string(from: date)
+        }
+        
+        
+    }
+
     // MARK: - Action Method
     
     @objc func touchWriteButton(_ sender: UIBarButtonItem) {
@@ -168,7 +202,7 @@ final class MemoListViewController: ListViewController {
         
         cell.mainLabel.text = memoData.title
         
-        cell.subLabel.text = dateFormatter.string(from: memoData.creationDate) +  "\t\(memoData.subtitle)"
+        cell.subLabel.text = formattingDateToString(date: memoData.creationDate) +  "\t\(memoData.subtitle)"
         
         return cell
     }
