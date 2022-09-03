@@ -13,14 +13,12 @@ final class MemoListViewController: ListViewController {
     private let repository = MemoRealmRepository()
     
     var memoCollection = MemoCollection()
+    var searchedMemo: Results<Memo>!
     
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.timeStyle = .short
-        formatter.dateStyle = .medium
-        return formatter
-    }()
+    var isSearching: Bool {
+        guard let sc = navigationItem.searchController else { return false }
+        return sc.isActive && !sc.searchBar.text!.isEmpty
+    }
     
     // MARK: - LifeCycle
     
@@ -54,6 +52,8 @@ final class MemoListViewController: ListViewController {
         
         naviItem.searchController = UISearchController(searchResultsController: nil)
         naviItem.searchController?.searchBar.placeholder = "검색"
+        naviItem.searchController?.searchBar.setValue("취소", forKey: "cancelButtonText")
+        naviItem.searchController?.searchResultsUpdater = self
         naviItem.hidesSearchBarWhenScrolling = false
         naviItem.backButtonTitle = "메모"
 //        naviItem.largeTitleDisplayMode = .always
@@ -133,7 +133,7 @@ final class MemoListViewController: ListViewController {
         
     }
     
-    func formattingDateToString(date: Date) -> String {
+    func getDateStringForCell(date: Date) -> String {
         
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
@@ -165,6 +165,37 @@ final class MemoListViewController: ListViewController {
         
         
     }
+    
+    func searchingMemo(query: String) {
+        
+        let result = repository.fetchTasks()
+        
+        searchedMemo = result.where { $0.content.contains(query) }
+        
+        listView.tableView.reloadData()
+        
+//        title = "\(searchedMemo.count)개 찾음"
+        
+        
+    }
+    
+    func changeSearcedKeywordColor(text: String?) -> NSMutableAttributedString {
+        
+        guard let query = navigationItem.searchController?.searchBar.text, let text = text else { return NSMutableAttributedString(string: "") }
+
+        let attrString = NSMutableAttributedString(string: text)
+        
+        var searchRange = text.startIndex ..< text.endIndex
+        
+        // 대소문자 구분하지 않고 텍스트에서 키워드 범위 찾기
+        while let range = text.range(of: query, options: .caseInsensitive, range: searchRange) {
+            attrString.addAttribute(.foregroundColor, value: UIColor.systemOrange, range: NSRange(range, in: text))
+            searchRange = range.upperBound ..< searchRange.upperBound
+        }
+        
+        return attrString
+        
+    }
 
     // MARK: - Action Method
     
@@ -186,30 +217,52 @@ final class MemoListViewController: ListViewController {
     // MARK: - UITableView Delegate, DataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return memoCollection.numberOfSection
+        return isSearching ? 1 : memoCollection.numberOfSection
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        memoCollection.numberOfRowsInSection(section: section)
+        isSearching ? searchedMemo.count : memoCollection.numberOfRowsInSection(section: section)
    
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: listCellIdentifier, for: indexPath) as? ListCell else { return UITableViewCell() }
         
-        let memoData = memoCollection.cellForRowAt(indexPath: indexPath)
+        if isSearching {
+            let memoData = searchedMemo[indexPath.row]
+            
+            cell.mainLabel.attributedText = changeSearcedKeywordColor(text: memoData.title)
+            
+            let subtitle = NSMutableAttributedString(string: "\(getDateStringForCell(date: memoData.creationDate))\t")
+            
+            subtitle.append(changeSearcedKeywordColor(text: memoData.subtitle))
+            
+            cell.subLabel.attributedText = subtitle
+            
+        } else {
+            
+            let memoData = memoCollection.cellForRowAt(indexPath: indexPath)
+            
+            cell.mainLabel.attributedText = NSAttributedString(string: memoData.title, attributes: [.foregroundColor: UIColor.label])
+            
+            let subtitle = getDateStringForCell(date: memoData.creationDate) +  "\t\(memoData.subtitle)"
+            
+            cell.subLabel.attributedText = NSAttributedString(string: subtitle, attributes: [.foregroundColor: UIColor.secondaryLabel])
+            
+            
+        }
         
-        cell.mainLabel.text = memoData.title
         
-        cell.subLabel.text = formattingDateToString(date: memoData.creationDate) +  "\t\(memoData.subtitle)"
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let memoData = memoCollection.cellForRowAt(indexPath: indexPath)
+        navigationItem.backButtonTitle = isSearching ? "검색" : "메모"
+        
+        let memoData = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
         
         let vc = WriteViewController(memoData: memoData)
         
@@ -218,7 +271,7 @@ final class MemoListViewController: ListViewController {
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let task = memoCollection.cellForRowAt(indexPath: indexPath)
+        let task = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
 
         let pinAction = UIContextualAction(style: .normal, title: nil) { [weak self] _, _, completion in
             
@@ -238,7 +291,7 @@ final class MemoListViewController: ListViewController {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let task = memoCollection.cellForRowAt(indexPath: indexPath)
+        let task = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
         
         let deleteAction = UIContextualAction(style: .normal, title: nil) { [weak self]  _, _, completion in
             
@@ -259,7 +312,7 @@ final class MemoListViewController: ListViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UILabel()
         view.numberOfLines = 1
-        view.text = memoCollection.sectionTitle(section: section)
+        view.text = isSearching ? "\(searchedMemo.count)개 찾음" : memoCollection.sectionTitle(section: section)
         view.textColor = .label
         view.font = .systemFont(ofSize: 28, weight: .semibold)
         
@@ -267,6 +320,17 @@ final class MemoListViewController: ListViewController {
     }
     
 
+}
+
+extension MemoListViewController: UISearchResultsUpdating {
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        searchingMemo(query: searchController.searchBar.text!)
+        
+    }
+    
 }
 
 extension MemoListViewController {

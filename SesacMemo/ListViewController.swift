@@ -23,6 +23,7 @@ class ListViewController: BaseViewController {
     }
     
     private func setListTableView() {
+        listView.tableView.keyboardDismissMode = .onDrag
         listView.tableView.delegate = self
         listView.tableView.dataSource = self
         listView.tableView.register(ListCell.self, forCellReuseIdentifier: listCellIdentifier)
