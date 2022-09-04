@@ -16,8 +16,10 @@ final class MemoListViewController: ListViewController {
     var searchedMemo: Results<Memo>!
     
     var isSearching: Bool {
-        guard let sc = navigationItem.searchController else { return false }
-        return sc.isActive && !sc.searchBar.text!.isEmpty
+        if let sc = navigationItem.searchController, let text = sc.searchBar.text {
+            return sc.isActive && !text.isEmpty
+        }
+        return false
     }
     
     // MARK: - LifeCycle
@@ -312,7 +314,7 @@ final class MemoListViewController: ListViewController {
         
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UILabel()
         view.numberOfLines = 1
         view.text = isSearching ? "\(searchedMemo.count)개 찾음" : memoCollection.sectionTitle(section: section)
