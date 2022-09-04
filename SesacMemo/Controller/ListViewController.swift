@@ -9,7 +9,7 @@ import UIKit
 
 class ListViewController: BaseViewController {
 
-    let listView = ListView()
+    final let listView = ListView()
     
     let listCellIdentifier = "cell"
     

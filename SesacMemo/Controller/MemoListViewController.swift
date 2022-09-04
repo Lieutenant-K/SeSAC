@@ -9,11 +9,19 @@ import UIKit
 import RealmSwift
 
 final class MemoListViewController: ListViewController {
-
+    
     private let repository = MemoRealmRepository()
     
-    var memoCollection = MemoCollection()
+    var memoCollection = MemoCollection() {
+        didSet {
+            print(#function)
+            listView.tableView.reloadData()
+        }
+    }
+    
     var searchedMemo: Results<Memo>!
+    
+    var pinLimit = 5
     
     var isSearching: Bool {
         if let sc = navigationItem.searchController, let text = sc.searchBar.text {
@@ -34,7 +42,7 @@ final class MemoListViewController: ListViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        print(#function)
+        //        print(#function)
         
         self.navigationController?.setToolbarHidden(false, animated: true)
         
@@ -58,7 +66,7 @@ final class MemoListViewController: ListViewController {
         naviItem.searchController?.searchResultsUpdater = self
         naviItem.hidesSearchBarWhenScrolling = false
         naviItem.backButtonTitle = "메모"
-//        naviItem.largeTitleDisplayMode = .always
+        //        naviItem.largeTitleDisplayMode = .always
         
     }
     
@@ -74,24 +82,18 @@ final class MemoListViewController: ListViewController {
         let result = repository.fetchTasks()
         memoCollection.changeValue(result: result)
         
-        listView.tableView.reloadData()
+        //        listView.tableView.reloadData()
         
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        
-        title = "\(numberFormatter.string(from: memoCollection.totalMemoCount as NSNumber) ?? "")개의 메모"
+        title = memoCollection.totalMemoCount.decimalString + "개의 메모"
+        //        "\(numberFormatter.string(from: memoCollection.totalMemoCount as NSNumber) ?? "")개의 메모"
         
     }
     
-    func checkPinMemoCount() -> Bool {
+    func checkPinMemoLimit() -> Bool {
         
-        if memoCollection.pinnedMemos.count >= 5 {
+        if memoCollection.pinnedMemos.count >= pinLimit {
             
-            let alert = UIAlertController(title: "5개까지만 고정할 수 있습니다.", message: nil, preferredStyle: .alert)
-            
-            alert.addAction(.init(title: "확인", style: .cancel))
-            
-            present(alert, animated: true)
+            showAlert(title: "최대 \(pinLimit)개까지만 고정할 수 있습니다.")
             
             return false
         }
@@ -101,7 +103,9 @@ final class MemoListViewController: ListViewController {
     
     func pinMemo(memo: Memo){
         
-        if !memo.isPinned && !checkPinMemoCount() { return }
+        if !memo.isPinned && !checkPinMemoLimit() {
+            return
+        }
         
         do {
             try self.repository.updateTask {
@@ -109,14 +113,12 @@ final class MemoListViewController: ListViewController {
             }
             self.fetchMemoData()
         } catch {
-            print(error)
+            showAlert(title: "작업에 실패했습니다.", message: "다시 시도해주세요")
         }
         
     }
     
     func showRemovingMemoAlert(memo: Memo) {
-        
-        let alert = UIAlertController(title: "메모를 삭제하시겠습니까?", message: nil, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "예", style: .destructive) { [weak self] _ in
             
@@ -124,17 +126,14 @@ final class MemoListViewController: ListViewController {
                 try self?.repository.deleteTask(task: memo)
                 self?.fetchMemoData()
             } catch {
-                print(error)
+                self?.showAlert(title: "작업에 실패했습니다.", message: "다시 시도해주세요")
             }
             
         }
         
         let cancelAction = UIAlertAction(title: "아니오", style: .default)
         
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true)
+        showAlert(title: "메모를 삭제하시겠습니까?", actions: [cancelAction, okAction])
         
     }
     
@@ -179,7 +178,7 @@ final class MemoListViewController: ListViewController {
         
         listView.tableView.reloadData()
         
-//        title = "\(searchedMemo.count)개 찾음"
+        //        title = "\(searchedMemo.count)개 찾음"
         
         
     }
@@ -187,7 +186,7 @@ final class MemoListViewController: ListViewController {
     func changeSearcedKeywordColor(text: String?) -> NSMutableAttributedString {
         
         guard let query = navigationItem.searchController?.searchBar.text, let text = text else { return NSMutableAttributedString(string: "") }
-
+        
         let attrString = NSMutableAttributedString(string: text)
         
         var searchRange = text.startIndex ..< text.endIndex
@@ -201,7 +200,7 @@ final class MemoListViewController: ListViewController {
         return attrString
         
     }
-
+    
     // MARK: - Action Method
     
     @objc func touchWriteButton(_ sender: UIBarButtonItem) {
@@ -215,7 +214,7 @@ final class MemoListViewController: ListViewController {
         } catch {
             print(error)
         }
-    
+        
         
     }
     
@@ -228,7 +227,7 @@ final class MemoListViewController: ListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         isSearching ? searchedMemo.count : memoCollection.numberOfRowsInSection(section: section)
-   
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -277,7 +276,7 @@ final class MemoListViewController: ListViewController {
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let task = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
-
+        
         let pinAction = UIContextualAction(style: .normal, title: nil) { [weak self] _, _, completion in
             
             self?.pinMemo(memo: task)
@@ -301,7 +300,7 @@ final class MemoListViewController: ListViewController {
         let deleteAction = UIContextualAction(style: .normal, title: nil) { [weak self]  _, _, completion in
             
             self?.showRemovingMemoAlert(memo: task)
-        
+            
             completion(true)
             
         }
@@ -324,11 +323,12 @@ final class MemoListViewController: ListViewController {
         return view
     }
     
-
+    
 }
 
+// MARK: - UISearchResultUpdating
+
 extension MemoListViewController: UISearchResultsUpdating {
-    
     
     func updateSearchResults(for searchController: UISearchController) {
         

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct MemoContent {
     
@@ -35,5 +36,30 @@ struct DefaultMemo {
         get { text == "" ? defaultValue : text }
         set { text = newValue }
     }
+    
+}
+
+extension Int {
+    
+    var decimalString: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: self as NSNumber) ?? "\(self)"
+    }
+    
+}
+
+extension UIViewController {
+    
+    func showAlert(title: String, message:String = "", actions: [UIAlertAction] = [UIAlertAction(title: "확인", style: .cancel)] ) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        actions.forEach { alert.addAction($0) }
+        
+        present(alert, animated: true)
+        
+    }
+    
     
 }
