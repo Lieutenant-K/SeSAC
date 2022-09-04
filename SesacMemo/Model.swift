@@ -61,5 +61,26 @@ extension UIViewController {
         
     }
     
+}
+
+extension String {
+    
+    func attributed(color: UIColor? = nil) -> NSMutableAttributedString {
+        if let color = color {
+            return NSMutableAttributedString(string: self, attributes: [.foregroundColor : color])
+        }
+        return NSMutableAttributedString(string: self)
+    }
+    
+}
+
+extension NSMutableAttributedString {
+    
+    func combine(to attr: NSMutableAttributedString) -> NSMutableAttributedString {
+        let new = NSMutableAttributedString(string: "")
+        new.append(self)
+        new.append(attr)
+        return new
+    }
     
 }

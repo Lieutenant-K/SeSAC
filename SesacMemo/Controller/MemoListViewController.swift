@@ -19,7 +19,12 @@ final class MemoListViewController: ListViewController {
         }
     }
     
-    var searchedMemo: Results<Memo>!
+    var searchedMemo: Results<Memo>! {
+        didSet {
+            print(#function)
+            listView.tableView.reloadData()
+        }
+    }
     
     var pinLimit = 5
     
@@ -146,9 +151,8 @@ final class MemoListViewController: ListViewController {
         
         let now = Date()
         let firstDayOfWeek = calendar.dateComponents([.calendar, .weekOfYear, .yearForWeekOfYear], from: now).date!
-        let startOfToday = calendar.startOfDay(for: now)
         
-        if date >= startOfToday {
+        if date >= calendar.startOfDay(for: now) {
             
             formatter.dateFormat = "a hh:mm"
             
@@ -176,9 +180,7 @@ final class MemoListViewController: ListViewController {
         
         searchedMemo = result.where { $0.content.contains(query) }
         
-        listView.tableView.reloadData()
-        
-        //        title = "\(searchedMemo.count)개 찾음"
+//        listView.tableView.reloadData()
         
         
     }
@@ -212,7 +214,7 @@ final class MemoListViewController: ListViewController {
             navigationController?.pushViewController(WriteViewController(memoData: data), animated: true)
             fetchMemoData()
         } catch {
-            print(error)
+            showAlert(title: "작업에 실패했습니다.", message: "다시 시도해주세요")
         }
         
         
@@ -233,6 +235,14 @@ final class MemoListViewController: ListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: listCellIdentifier, for: indexPath) as? ListCell else { return UITableViewCell() }
         
+        let memoData = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
+        
+        cell.mainLabel.attributedText = isSearching ? changeSearcedKeywordColor(text: memoData.title) : memoData.title.attributed(color: .label)
+        
+        cell.subLabel.attributedText = isSearching ? "\(getDateStringForCell(date: memoData.creationDate))\t".attributed().combine(to: changeSearcedKeywordColor(text: memoData.subtitle)) : (getDateStringForCell(date: memoData.creationDate)+"\t\(memoData.subtitle)").attributed(color: .secondaryLabel)
+        
+        
+        /*
         if isSearching {
             let memoData = searchedMemo[indexPath.row]
             
@@ -254,8 +264,7 @@ final class MemoListViewController: ListViewController {
             
             cell.subLabel.attributedText = NSAttributedString(string: subtitle, attributes: [.foregroundColor: UIColor.secondaryLabel])
             
-            
-        }
+        }*/
         
         
         
