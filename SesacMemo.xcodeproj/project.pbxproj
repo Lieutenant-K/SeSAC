@@ -63,6 +63,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D6EEFB228C5011300100FA5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0D7694CF28C0D0A500AFF31D /* ListCell.swift */,
+				0D7694C528C0CAF800AFF31D /* ListView.swift */,
+				0D7694D528C0FADE00AFF31D /* WriteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0D6EEFB328C5012500100FA5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0D7694C128C0BC7800AFF31D /* MemoListViewController.swift */,
+				0D7694D728C0FC8B00AFF31D /* WriteViewController.swift */,
+				0D7694D928C0FD3600AFF31D /* BaseViewController.swift */,
+				0D7694C328C0CA6F00AFF31D /* ListViewController.swift */,
+				0D7694B128C0BBA200AFF31D /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0D6EEFB428C5014400100FA5 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				0D7694D128C0E30A00AFF31D /* RealmModel.swift */,
+				0D7694D328C0E4EE00AFF31D /* RealmRepository.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		0D7694A128C0BBA200AFF31D = {
 			isa = PBXGroup;
 			children = (
@@ -82,23 +113,16 @@
 		0D7694AC28C0BBA200AFF31D /* SesacMemo */ = {
 			isa = PBXGroup;
 			children = (
-				0D7694C128C0BC7800AFF31D /* MemoListViewController.swift */,
-				0D7694D728C0FC8B00AFF31D /* WriteViewController.swift */,
-				0D488E4528C20F1500D4A1CC /* Model.swift */,
-				0D7694D928C0FD3600AFF31D /* BaseViewController.swift */,
-				0D7694C328C0CA6F00AFF31D /* ListViewController.swift */,
-				0D7694CF28C0D0A500AFF31D /* ListCell.swift */,
-				0D7694C528C0CAF800AFF31D /* ListView.swift */,
-				0D7694D528C0FADE00AFF31D /* WriteView.swift */,
-				0D7694AD28C0BBA200AFF31D /* AppDelegate.swift */,
-				0D7694AF28C0BBA200AFF31D /* SceneDelegate.swift */,
-				0D7694B128C0BBA200AFF31D /* ViewController.swift */,
-				0D7694B328C0BBA200AFF31D /* Main.storyboard */,
-				0D7694B628C0BBA300AFF31D /* Assets.xcassets */,
-				0D7694B828C0BBA300AFF31D /* LaunchScreen.storyboard */,
 				0D7694BB28C0BBA300AFF31D /* Info.plist */,
-				0D7694D128C0E30A00AFF31D /* RealmModel.swift */,
-				0D7694D328C0E4EE00AFF31D /* RealmRepository.swift */,
+				0D7694AD28C0BBA200AFF31D /* AppDelegate.swift */,
+				0D488E4528C20F1500D4A1CC /* Model.swift */,
+				0D7694AF28C0BBA200AFF31D /* SceneDelegate.swift */,
+				0D7694B628C0BBA300AFF31D /* Assets.xcassets */,
+				0D6EEFB328C5012500100FA5 /* Controller */,
+				0D7694B828C0BBA300AFF31D /* LaunchScreen.storyboard */,
+				0D7694B328C0BBA200AFF31D /* Main.storyboard */,
+				0D6EEFB428C5014400100FA5 /* Realm */,
+				0D6EEFB228C5011300100FA5 /* View */,
 			);
 			path = SesacMemo;
 			sourceTree = "<group>";
