@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D488E4628C20F1500D4A1CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D488E4528C20F1500D4A1CC /* Model.swift */; };
+		0D6EEFB628C53B9400100FA5 /* WalkThroughController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6EEFB528C53B9400100FA5 /* WalkThroughController.swift */; };
 		0D7694AE28C0BBA200AFF31D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7694AD28C0BBA200AFF31D /* AppDelegate.swift */; };
 		0D7694B028C0BBA200AFF31D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7694AF28C0BBA200AFF31D /* SceneDelegate.swift */; };
 		0D7694B228C0BBA200AFF31D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7694B128C0BBA200AFF31D /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		0D488E4528C20F1500D4A1CC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0D6EEFB528C53B9400100FA5 /* WalkThroughController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughController.swift; sourceTree = "<group>"; };
 		0D7694AA28C0BBA200AFF31D /* SesacMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D7694AD28C0BBA200AFF31D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D7694AF28C0BBA200AFF31D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				0D7694D928C0FD3600AFF31D /* BaseViewController.swift */,
 				0D7694C328C0CA6F00AFF31D /* ListViewController.swift */,
 				0D7694B128C0BBA200AFF31D /* ViewController.swift */,
+				0D6EEFB528C53B9400100FA5 /* WalkThroughController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				0D7694D228C0E30A00AFF31D /* RealmModel.swift in Sources */,
 				0D7694AE28C0BBA200AFF31D /* AppDelegate.swift in Sources */,
 				0D7694B028C0BBA200AFF31D /* SceneDelegate.swift in Sources */,
+				0D6EEFB628C53B9400100FA5 /* WalkThroughController.swift in Sources */,
 				0D7694D428C0E4EE00AFF31D /* RealmRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

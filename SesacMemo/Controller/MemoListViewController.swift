@@ -55,6 +55,13 @@ final class MemoListViewController: ListViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         fetchMemoData()
+        
+        if !UserDefaults.standard.bool(forKey: "isAgree") {
+            let vc = WalkThroughController()
+            vc.modalPresentationStyle = .overFullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            present(vc, animated: true)
+        }
     }
     
     // MARK: - Method
