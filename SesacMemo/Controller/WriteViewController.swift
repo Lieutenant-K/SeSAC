@@ -70,7 +70,7 @@ final class WriteViewController: BaseViewController {
         do {
             try repository.updateTaskWithData(task: currentMemo, dataToUpdate: splitTextAndGetContent(text: writeView.textView.text))
         } catch {
-            print(error)
+            showAlert(title: "작업에 실패했습니다.", message: "다시 시도해주세요")
         }
         
     }
@@ -124,13 +124,6 @@ final class WriteViewController: BaseViewController {
 // MARK: - UITextViewDelegate
 
 extension WriteViewController: UITextViewDelegate {
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        
-//        navigationItem.setRightBarButtonItems([], animated: true)
-        
-        
-    }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         

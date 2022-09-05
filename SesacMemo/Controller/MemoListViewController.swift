@@ -101,6 +101,7 @@ final class MemoListViewController: ListViewController {
         
     }
     
+    /*
     func checkPinMemoLimit() -> Bool {
         
         if memoCollection.pinnedMemos.count >= pinLimit {
@@ -112,10 +113,12 @@ final class MemoListViewController: ListViewController {
         
         return true
     }
+    */
     
     func pinMemo(memo: Memo){
         
-        if !memo.isPinned && !checkPinMemoLimit() {
+        if !memo.isPinned && memoCollection.pinnedMemos.count >= pinLimit {
+            showAlert(title: "최대 \(pinLimit)개까지만 고정할 수 있습니다.")
             return
         }
         
