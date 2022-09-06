@@ -22,6 +22,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var number1 = Observable(10)
+        var number2 = Observable(3)
+        
+        number1.bind { _ in
+            print(#function, number1.value - number2.value)
+        }
+        
+        number1.value = 100
+        number2.value = 200
+        
+        
         LottoAPIManager.requestLotto(drwNo: 1027) { lotto, error in
             
             guard let lotto = lotto else {

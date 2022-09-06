@@ -13,7 +13,7 @@ class Observable<T> { // 양방향 바인딩
     
     var value: T {
         didSet {
-            print("didSet")
+            print("didSet", value)
             listener?(value)
         }
     }
@@ -27,20 +27,26 @@ class Observable<T> { // 양방향 바인딩
         closure(value)
         listener = closure
     }
+    
 }
 
 class User {
     
-    private var listener: ((String) -> Void)?
+    private var listener: (() -> Void)?
     
     var value: String {
         didSet {
-            print("데이터 바뀌었어")
+            listener?()
         }
     }
     
     init(_ value: String) {
         self.value = value
+    }
+    
+    func bind(completionHandler: @escaping () -> Void) {
+        completionHandler()
+        listener = completionHandler
     }
     
 }

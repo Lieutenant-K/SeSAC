@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  SesacWeek9
+
+  Created by 김윤수 on 2022/09/06.
+  
+*/
+
+"navigation_title" = "한국어 대응";
+
+"search_placeholder" = "검색";
+
+"common_cancel" = "취소";
+
+"introduce" = "저는 %@입니다";
+
+"number_test" = "저는 %lld살입니다.";
