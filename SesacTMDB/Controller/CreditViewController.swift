@@ -29,7 +29,9 @@ class CreditViewController: UIViewController {
     let progressHud = JGProgressHUD()
     let backdropImageRatio = 497.0 / 885.0
     
-    var infoList = [[DisplayInCell]]()
+    var crewList = [CrewInfo]()
+    var castList = [CastInfo]()
+//    var infoList = [[DisplayInCell]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,8 +68,9 @@ class CreditViewController: UIViewController {
     
     func fetchCreditList() {
         progressHud.show(in: self.view, animated: false)
-        APIManager.shared.fetchCreditDetails(genre: .movie, id:movieInfo.id) { list in
-            self.infoList = list
+        APIManager.shared.fetchCreditDetails(genre: .movie, id:movieInfo.id) { cast, crew in
+            self.castList = cast
+            self.crewList = crew
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.progressHud.dismiss(animated: false)
@@ -96,7 +99,7 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
         let section = Section.allCases[indexPath.section]
         
         switch section {
-        
+            
         case .overview:
             let cell = tableView.dequeueReusableCell(withIdentifier: ExpandableCell.reuseIdentifier, for: indexPath) as! ExpandableCell
             
@@ -107,7 +110,7 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: InfoListCell.reuseIdentifier, for: indexPath) as! InfoListCell
             
-            let info = infoList[indexPath.section-1][indexPath.row]
+            let info: DisplayInCell = section == .cast ? castList[indexPath.row] : crewList[indexPath.row]
             
             cell.configurateCell(title: info.titleText, subTitle: info.subText, profilePath: info.imagePath)
             
@@ -115,14 +118,23 @@ extension CreditViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
         
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Section.allCases[section] == .overview ? 1 : infoList[section-1].count
+        switch Section.allCases[section] {
+        case .overview:
+            return 1
+        case .cast:
+            return castList.count
+        case .crew:
+            return crewList.count
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1 + infoList.count
+        return Section.allCases.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

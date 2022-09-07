@@ -50,7 +50,7 @@ class APIManager {
         
     }
     
-    func fetchCreditDetails(genre: GenreMediaTypes, id: Int, completionHandler: @escaping ([[DisplayInCell]])-> Void) {
+    func fetchCreditDetails(genre: GenreMediaTypes, id: Int, completionHandler: @escaping ([CastInfo], [CrewInfo])-> Void) {
         
         let url = EndPoint.credit(genre, id).url
         
@@ -72,7 +72,7 @@ class APIManager {
                                     imagePath: item["profile_path"].stringValue)
                 
             }
-            completionHandler([castList, crewList])
+            completionHandler(castList, crewList)
         }
         
         

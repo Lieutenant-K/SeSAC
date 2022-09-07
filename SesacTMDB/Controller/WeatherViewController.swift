@@ -22,9 +22,25 @@ class WeatherViewController: UIViewController {
     
     struct Weather {
         
-        let temperature: Double
-        let humidity: Int
-        let wind: Int
+        let temp: Double
+        let humid: Int
+        let windSpeed: Double
+        let image: String
+        
+        var temperature: String {
+            "현재 온도는 \(self.temp)℃ 입니다"
+        }
+        var humidity: String {
+            "현재 습도는 \(self.humid)% 입니다"
+        }
+        var wind: String {
+            "현재 풍속은 \(self.windSpeed)m/s 입니다"
+        }
+        var imageURL: URL? {
+            URL(string: "https://openweathermap.org/img/wn/\(self.image)@2x.png")
+        }
+        
+        
         
     }
     
@@ -50,6 +66,15 @@ class WeatherViewController: UIViewController {
         
     }
     
+    private func setButtonTitle(info: Weather) {
+        
+        self.tempButton.setTitle(info.temperature, for: .normal)
+        self.humidityButton.setTitle(info.humidity, for: .normal)
+        self.windButton.setTitle(info.wind, for: .normal)
+        self.imageView.kf.setImage(with: info.imageURL)
+        
+    }
+    
     func fetchWeatherInfo() {
         
         let url = "https://api.openweathermap.org/data/2.5/weather?lat=\(currentLocation.coordinate.latitude)&lon=\(currentLocation.coordinate.longitude)&appid=\(APIKey.wheatherKey)&units=metric"
@@ -63,10 +88,7 @@ class WeatherViewController: UIViewController {
             
             DispatchQueue.main.async {
                 
-                self.tempButton.setTitle("현재 온도는 \(temp)℃ 입니다", for: .normal)
-                self.humidityButton.setTitle("현재 습도는 \(humid)% 입니다", for: .normal)
-                self.windButton.setTitle("현재 풍속은 \(wind)m/s 입니다", for: .normal)
-                self.imageView.kf.setImage(with: URL(string: "https://openweathermap.org/img/wn/\(image)@2x.png"))
+                self.setButtonTitle(info: Weather(temp: temp, humid: humid, windSpeed: wind, image: image))
             
             }
             
