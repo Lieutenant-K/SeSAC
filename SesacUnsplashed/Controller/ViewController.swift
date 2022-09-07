@@ -180,6 +180,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - FSCalendar
+
 extension ViewController: FSCalendarDelegate, FSCalendarDataSource {
     
 //    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
