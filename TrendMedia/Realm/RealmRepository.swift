@@ -9,7 +9,7 @@ import Foundation
 
 import RealmSwift
 
-protocol RealmRepository {
+private protocol RealmRepository {
     
     associatedtype RealmObject: RealmCollectionValue
     
@@ -25,9 +25,9 @@ protocol RealmRepository {
     
 }
 
-class ShoppingRepository: RealmRepository {
+final class ShoppingRepository: RealmRepository {
     
-    let localRealm = try! Realm()
+    fileprivate let localRealm = try! Realm()
     
     func fetch(sortKey: String) -> Results<ShoppingItem> {
 

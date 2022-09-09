@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var label2: UILabel!
     
+    @IBOutlet weak var alertButton: UIButton!
     @IBOutlet var labelCollection: [UILabel]!
     @IBOutlet weak var constaraint: NSLayoutConstraint!
     
@@ -42,6 +43,17 @@ class ViewController: UIViewController {
             i?.font = .systemFont(ofSize: 20)
             i?.textColor = .red
         }
+    }
+    
+    @IBAction func touchButton(_ sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "타이틀", message: "메세지", preferredStyle: .actionSheet)
+        
+        alertController.addAction(.init(title: "확인", style: .default))
+        alertController.addAction(.init(title: "취소", style: .cancel))
+        
+        present(alertController, animated: true)
+        
     }
 }
 

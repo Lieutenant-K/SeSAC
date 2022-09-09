@@ -11,26 +11,25 @@ class SearchViewController: UITableViewController {
     
     var movieList = MovieInfo()
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchMovieCell", for: indexPath) as! SearchMovieCell
         
         cell.configurationCell(data: movieList.movie[indexPath.row])
-//        cell.titleLabel.text = movieList[indexPath.row]
-        
+        //        cell.titleLabel.text = movieList[indexPath.row]
+
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+
         return movieList.movie.count
-//     return 10
+        //     return 10
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.safeAreaLayoutGuide.layoutFrame.height / 8
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Trend", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: RecommendCollectionViewController.identifier) as! RecommendCollectionViewController
@@ -65,6 +64,6 @@ class SearchViewController: UITableViewController {
     
     
     
-
-
+    
+    
 }

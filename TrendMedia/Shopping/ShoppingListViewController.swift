@@ -263,7 +263,7 @@ extension ShoppingListViewController: RealmUsableDelegate {
         
         repository = ShoppingRepository()
         
-        print(repository.localRealm.configuration.fileURL)
+//        print(repository.localRealm.configuration.fileURL)
         
         fetchTasks()
         

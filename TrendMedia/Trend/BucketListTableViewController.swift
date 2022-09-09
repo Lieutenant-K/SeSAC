@@ -7,16 +7,35 @@
 
 import UIKit
 
+struct Todo {
+    var title: String
+    var done: Bool
+}
+
+
 class BucketListTableViewController: UITableViewController {
 
-    var list = ["클레멘타인", "리얼", "이터널스"]
+    var list = [Todo(title: "클레멘타인", done: false), Todo(title: "리얼", done: false)] {
+        didSet {
+//            tableView.reloadData()
+        }
+    }
+    
     static let identifier = "BucketListTableViewController"
     var placeholder = ""
 
+    @IBOutlet weak var userTextField: UITextField! {
+        didSet {
+            
+            userTextField.textAlignment = .center
+            userTextField.font = .systemFont(ofSize: 22)
+            userTextField.textColor = .systemPink
+            print("텍스트 필드 변경")
+            
+        }
+    }
     
-    @IBOutlet weak var userTextField: UITextField!
-    
-    
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +48,10 @@ class BucketListTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: .init(systemName: "xmark"), style: .plain, target: self, action: #selector(touchCloseButton(_:)))
     }
     
+    
+    // MARK: Action Method
+    
+    /// 시작화면으로 돌아가는 메서드
     @objc func touchCloseButton(_ sender: UIBarButtonItem) {
         
         dismiss(animated: true)
@@ -38,8 +61,8 @@ class BucketListTableViewController: UITableViewController {
     @IBAction func returnTextField(_ sender: UITextField) {
         
         if let text = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty, (2...6).contains(text.count) {
-            list.append(text)
-            tableView.reloadData()
+            list.append(Todo(title: text, done: false))
+//            tableView.reloadData()
         } else {
             return
         }
@@ -58,6 +81,8 @@ class BucketListTableViewController: UITableViewController {
         
     }
     
+    
+    // MARK: TableView DataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         list.count
     }
@@ -65,19 +90,28 @@ class BucketListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BucketListTableViewCell.identifier, for: indexPath) as! BucketListTableViewCell
         
-        cell.bucketListLabel.text = list[indexPath.row]
+        cell.bucketListLabel.text = list[indexPath.row].title
         cell.bucketListLabel.font = .systemFont(ofSize: 20)
+        cell.checkboxButton.tag = indexPath.row
+        
+        let image: UIImage? = list[indexPath.row].done ? .init(systemName: "checkmark.square.fill") : .init(systemName: "checkmark.square")
+        
+        cell.checkboxButton.setImage(image, for: .normal)
+        
+        
+        cell.checkboxButton.addTarget(self, action: #selector(touchButton(_:)), for: .touchUpInside)
         
         return cell
         
     }
     
+    /// 테이블 뷰의 편집 가능 옵션 설정
+    /// - Parameters:
+    ///   - tableView: 테이블뷰
+    ///   - indexPath: 인덱스
+    /// - Returns: 참 또는 거짓
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.row == 0 {
-            return true
-        } else {
-            return false
-        }
+        return true
     }
     
     
@@ -87,11 +121,18 @@ class BucketListTableViewController: UITableViewController {
 
             // 배열 삭제 후 테이블 뷰 갱신
             list.remove(at: indexPath.row)
-            tableView.reloadData()
+//            tableView.reloadData()
         }
 
     }
     
+    @IBAction func touchButton(_ sender: UIButton) {
+        
+        list[sender.tag].done.toggle()
+        tableView.reloadRows(at: [[0, sender.tag]], with: .fade)
+//        sender.setImage(.init(systemName: "checkmark.square.fill"), for: .normal)
+        
+    }
     
 
 }
