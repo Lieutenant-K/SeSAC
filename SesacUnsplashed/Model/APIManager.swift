@@ -14,10 +14,10 @@ class APIManager {
     
     static let shared = APIManager()
     
-    func fetchPhotosWithQuery(query: String, page: Int, amountOfResultForPage perPage: Int, completionHandler: @escaping (Int, [ImageURL]) -> Void) {
+    func fetchPhotosWithQuery(parameter: [String: Any], completionHandler: @escaping (_ total: Int, _ data: [ImageURL]) -> Void) {
         
         let url = EndPoint.search(.photos).url
-        let parameter: [String: Any] = ["query": query, "page": page, "per_page": perPage]
+//        let parameter: [String: Any] = ["query": query, "page": page, "per_page": perPage]
         
         requestUnsplashedAPI(url: url, parameter: parameter) { json in
             

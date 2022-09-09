@@ -39,6 +39,18 @@ struct ImageURL {
     
 }
 
+struct Parameter {
+    
+    let page: Int
+    let query: String
+    let itemsPerPage: Int
+    
+    var paramter: [String: Any] {
+        return ["page": page, "query": query, "per_page": itemsPerPage]
+    }
+    
+}
+
 extension NSNotification.Name {
         
     static let sendImageURLNotification = Self.init(rawValue: "sendImageURLNotification")

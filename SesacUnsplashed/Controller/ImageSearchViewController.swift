@@ -102,7 +102,9 @@ extension ImageSearchViewController: UISearchBarDelegate {
         
         resetPhotoData()
         
-        APIManager.shared.fetchPhotosWithQuery(query: text, page: page, amountOfResultForPage: 20) { total, data in
+        let para = Parameter(page: page, query: text, itemsPerPage: 20).paramter
+        
+        APIManager.shared.fetchPhotosWithQuery(parameter: para) { total, data in
             
             self.totalResult = total
             
