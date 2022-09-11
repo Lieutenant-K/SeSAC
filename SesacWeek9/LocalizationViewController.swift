@@ -35,7 +35,7 @@ class LocalizationViewController: UIViewController, UINavigationControllerDelega
     }
     
     func sendMail() {
-        
+
         if MFMailComposeViewController.canSendMail(){
             
             let mail = MFMailComposeViewController()
