@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let config = Realm.Configuration(schemaVersion: 6) { migration, oldSchemaVersion in
+            
+            if oldSchemaVersion < 1 {
+                
+            }
+            
+            if oldSchemaVersion < 2 {
+                
+                migration.renameProperty(onType: Memo.className(), from: "isFavorite", to: "isPinned")
+            }
+            
+            if oldSchemaVersion < 3 {
+                migration.enumerateObjects(ofType: Memo.className()) { oldObject, newObject in
+                    
+                    guard let new = newObject else { return }
+                    
+                    new["isFavorite"] = false
+                    
+                }
+            }
+            
+            if oldSchemaVersion < 4 {
+                
+                migration.enumerateObjects(ofType: Memo.className()) { oldObject, newObject in
+                    
+                    guard let new = newObject else { return }
+                    guard let old = oldObject else { return }
+                    
+                    new["overview"] = "\(old["title"]!) + \(old["subtitle"]!)"
+                    
+                }
+            }
+            
+            if oldSchemaVersion < 5 {
+                
+                migration.deleteData(forType: Memo.className())
+                
+            }
+            
+            if oldSchemaVersion < 6 {
+                
+                let value: [String: Any] = ["title":"새로 생성됨", "subtitle": "새로 생성됨", "creationDate": Date()]
+                
+                migration.create(Memo.className(),value: value)
+                
+            }
+            
+        }
+        
+        Realm.Configuration.defaultConfiguration = config
+        
+        
         return true
     }
 
