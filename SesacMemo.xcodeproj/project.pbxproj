@@ -27,6 +27,7 @@
 		0D7694D628C0FADE00AFF31D /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7694D528C0FADE00AFF31D /* WriteView.swift */; };
 		0D7694D828C0FC8B00AFF31D /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7694D728C0FC8B00AFF31D /* WriteViewController.swift */; };
 		0D7694DA28C0FD3600AFF31D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7694D928C0FD3600AFF31D /* BaseViewController.swift */; };
+		0DD7290728F8112C0095A63C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD7290628F8112C0095A63C /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		0D7694D528C0FADE00AFF31D /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		0D7694D728C0FC8B00AFF31D /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		0D7694D928C0FD3600AFF31D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0DD7290628F8112C0095A63C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				0D7694BB28C0BBA300AFF31D /* Info.plist */,
 				0D7694AD28C0BBA200AFF31D /* AppDelegate.swift */,
 				0D488E4528C20F1500D4A1CC /* Model.swift */,
+				0DD7290628F8112C0095A63C /* Extension.swift */,
 				0D7694AF28C0BBA200AFF31D /* SceneDelegate.swift */,
 				0D7694B628C0BBA300AFF31D /* Assets.xcassets */,
 				0D6EEFB328C5012500100FA5 /* Controller */,
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DD7290728F8112C0095A63C /* Extension.swift in Sources */,
 				0D7694C428C0CA6F00AFF31D /* ListViewController.swift in Sources */,
 				0D7694D828C0FC8B00AFF31D /* WriteViewController.swift in Sources */,
 				0D7694C228C0BC7800AFF31D /* MemoListViewController.swift in Sources */,
@@ -373,6 +377,7 @@
 				DEVELOPMENT_TEAM = 5QA7Y24MQ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SesacMemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "나만의 메모";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -402,6 +407,7 @@
 				DEVELOPMENT_TEAM = 5QA7Y24MQ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SesacMemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "나만의 메모";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

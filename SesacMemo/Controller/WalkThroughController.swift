@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class WalkThroughController: BaseViewController {
+final class WalkThroughController: BaseViewController {
     
     let containerView: UIView = {
         let view = UIView()
@@ -49,11 +49,11 @@ class WalkThroughController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.7)
-//        view.backgroundColor
+
         setSubviews()
     }
     
-    func setSubviews() {
+    private func setSubviews() {
         
         view.addSubview(containerView)
         

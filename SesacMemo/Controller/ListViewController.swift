@@ -11,7 +11,7 @@ class ListViewController: BaseViewController {
 
     final let listView = ListView()
     
-    let listCellIdentifier = "cell"
+    final let listCellIdentifier = "cell"
     
     override func loadView() {
         view = listView

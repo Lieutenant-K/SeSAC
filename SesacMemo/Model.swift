@@ -5,8 +5,8 @@
 //  Created by 김윤수 on 2022/09/02.
 //
 
-import Foundation
 import UIKit
+import RealmSwift
 
 struct MemoContent {
     
@@ -39,48 +39,33 @@ struct DefaultMemo {
     
 }
 
-extension Int {
+struct MemoCollection {
     
-    var decimalString: String {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        return numberFormatter.string(from: self as NSNumber) ?? "\(self)"
+    var pinnedMemos: Results<Memo>!
+    var memos: Results<Memo>!
+    
+    var numberOfSection: Int {
+        return (pinnedMemos.count > 0 ? 1 : 0) + 1
     }
     
-}
-
-extension UIViewController {
-    
-    func showAlert(title: String, message:String = "", actions: [UIAlertAction] = [UIAlertAction(title: "확인", style: .cancel)] ) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        actions.forEach { alert.addAction($0) }
-        
-        present(alert, animated: true)
-        
+    var totalMemoCount: Int {
+        pinnedMemos.count + memos.count
     }
     
-}
-
-extension String {
-    
-    func attributed(color: UIColor? = nil) -> NSMutableAttributedString {
-        if let color = color {
-            return NSMutableAttributedString(string: self, attributes: [.foregroundColor : color])
-        }
-        return NSMutableAttributedString(string: self)
+    mutating func changeValue(result: Results<Memo>) {
+        pinnedMemos = result.where { $0.isPinned == true }
+        memos = result.where { $0.isPinned == false }
     }
     
-}
-
-extension NSMutableAttributedString {
-    
-    func combine(to attr: NSMutableAttributedString) -> NSMutableAttributedString {
-        let new = NSMutableAttributedString(string: "")
-        new.append(self)
-        new.append(attr)
-        return new
+    func numberOfRowsInSection(section: Int) -> Int {
+        numberOfSection > 1 ? [pinnedMemos, memos][section].count : memos.count
     }
     
+    func cellForRowAt(indexPath: IndexPath) -> Memo {
+        numberOfSection > 1 ? [pinnedMemos, memos][indexPath.section][indexPath.row] : memos[indexPath.row]
+    }
+    
+    func sectionTitle(section: Int) -> String {
+        numberOfSection > 1 ? ["고정된 메모", "메모"][section] : "메모"
+    }
 }

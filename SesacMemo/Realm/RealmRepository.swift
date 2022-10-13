@@ -48,7 +48,7 @@ final class MemoRealmRepository {
         
     }
     
-    func updateTask(updateHandler: () -> ()) throws {
+    func updateTask(updateHandler: () -> Void) throws {
         
         try localRealm.write{
             updateHandler()

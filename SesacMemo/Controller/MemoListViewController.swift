@@ -10,6 +10,8 @@ import RealmSwift
 
 final class MemoListViewController: ListViewController {
     
+    //MARK: - Properties
+    
     private let repository = MemoRealmRepository()
     
     var memoCollection = MemoCollection() {
@@ -26,7 +28,7 @@ final class MemoListViewController: ListViewController {
         }
     }
     
-    var pinLimit = 5
+    let pinLimit = 5
     
     var isSearching: Bool {
         if let sc = navigationItem.searchController, let text = sc.searchBar.text {
@@ -56,15 +58,25 @@ final class MemoListViewController: ListViewController {
     override func viewDidAppear(_ animated: Bool) {
         fetchMemoData()
         
+        checkIsFirstLaunch()
+    }
+    
+    // MARK: - Method
+    
+    
+    
+    // MARK: Helper Method
+    
+    private func checkIsFirstLaunch() {
+        
         if !UserDefaults.standard.bool(forKey: "isAgree") {
             let vc = WalkThroughController()
             vc.modalPresentationStyle = .overFullScreen
             vc.modalTransitionStyle = .crossDissolve
             present(vc, animated: true)
         }
+        
     }
-    
-    // MARK: - Method
     
     override func setNavigationItem() {
         
@@ -89,6 +101,9 @@ final class MemoListViewController: ListViewController {
         toolbarItems = [.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), writeButton]
     }
     
+    
+    // MARK:  Memo Method
+    
     func fetchMemoData() {
         
         let result = repository.fetchTasks()
@@ -97,23 +112,8 @@ final class MemoListViewController: ListViewController {
         //        listView.tableView.reloadData()
         
         title = memoCollection.totalMemoCount.decimalString + "개의 메모"
-        //        "\(numberFormatter.string(from: memoCollection.totalMemoCount as NSNumber) ?? "")개의 메모"
         
     }
-    
-    /*
-    func checkPinMemoLimit() -> Bool {
-        
-        if memoCollection.pinnedMemos.count >= pinLimit {
-            
-            showAlert(title: "최대 \(pinLimit)개까지만 고정할 수 있습니다.")
-            
-            return false
-        }
-        
-        return true
-    }
-    */
     
     func pinMemo(memo: Memo){
         
@@ -152,50 +152,17 @@ final class MemoListViewController: ListViewController {
         
     }
     
-    func getDateStringForCell(date: Date) -> String {
-        
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        
-        let calendar = Calendar(identifier: .iso8601)
-        
-        let now = Date()
-        let firstDayOfWeek = calendar.dateComponents([.calendar, .weekOfYear, .yearForWeekOfYear], from: now).date!
-        
-        if date >= calendar.startOfDay(for: now) {
-            
-            formatter.dateFormat = "a hh:mm"
-            
-            return formatter.string(from: date)
-            
-        } else if date >= firstDayOfWeek {
-            
-            let weekday = calendar.dateComponents([.weekday], from: date).weekday!
-            
-            return formatter.weekdaySymbols[weekday-1]
-            
-        } else {
-            
-            formatter.dateFormat = "yyyy. MM. dd a hh:mm"
-            
-            return formatter.string(from: date)
-        }
-        
-        
-    }
     
-    func searchingMemo(query: String) {
+    func fetchMemoSearchResult(query: String) {
         
         let result = repository.fetchTasks()
         
         searchedMemo = result.where { $0.content.contains(query) }
         
-//        listView.tableView.reloadData()
-        
         
     }
     
-    func changeSearcedKeywordColor(text: String?) -> NSMutableAttributedString {
+    func changeSearchKeywordColor(text: String?) -> NSMutableAttributedString {
         
         guard let query = navigationItem.searchController?.searchBar.text, let text = text else { return NSMutableAttributedString(string: "") }
         
@@ -213,7 +180,7 @@ final class MemoListViewController: ListViewController {
         
     }
     
-    // MARK: - Action Method
+    // MARK: Action Method
     
     @objc func touchWriteButton(_ sender: UIBarButtonItem) {
         
@@ -247,34 +214,9 @@ final class MemoListViewController: ListViewController {
         
         let memoData = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
         
-        cell.mainLabel.attributedText = isSearching ? changeSearcedKeywordColor(text: memoData.title) : memoData.title.attributed(color: .label)
+        cell.mainLabel.attributedText = isSearching ? changeSearchKeywordColor(text: memoData.title) : memoData.title.attributed(color: .label)
         
-        cell.subLabel.attributedText = isSearching ? "\(getDateStringForCell(date: memoData.creationDate))\t".attributed().combine(to: changeSearcedKeywordColor(text: memoData.subtitle)) : (getDateStringForCell(date: memoData.creationDate)+"\t\(memoData.subtitle)").attributed(color: .secondaryLabel)
-        
-        
-        /*
-        if isSearching {
-            let memoData = searchedMemo[indexPath.row]
-            
-            cell.mainLabel.attributedText = changeSearcedKeywordColor(text: memoData.title)
-            
-            let subtitle = NSMutableAttributedString(string: "\(getDateStringForCell(date: memoData.creationDate))\t")
-            
-            subtitle.append(changeSearcedKeywordColor(text: memoData.subtitle))
-            
-            cell.subLabel.attributedText = subtitle
-            
-        } else {
-            
-            let memoData = memoCollection.cellForRowAt(indexPath: indexPath)
-            
-            cell.mainLabel.attributedText = NSAttributedString(string: memoData.title, attributes: [.foregroundColor: UIColor.label])
-            
-            let subtitle = getDateStringForCell(date: memoData.creationDate) +  "\t\(memoData.subtitle)"
-            
-            cell.subLabel.attributedText = NSAttributedString(string: subtitle, attributes: [.foregroundColor: UIColor.secondaryLabel])
-            
-        }*/
+        cell.subLabel.attributedText = isSearching ? "\( memoData.creationDate.dateString)\t".attributed().combine(to: changeSearchKeywordColor(text: memoData.subtitle)) : ( memoData.creationDate.dateString+"\t\(memoData.subtitle)").attributed(color: .secondaryLabel)
         
         
         
@@ -303,7 +245,7 @@ final class MemoListViewController: ListViewController {
             completion(true)
         }
         
-        pinAction.image = task.isPinned ? .init(systemName: "pin.slash.fill") : .init(systemName: "pin.fill")
+        pinAction.image = task.isPinned ? UIImage(systemName: "pin.slash.fill") : UIImage(systemName: "pin.fill")
         
         pinAction.backgroundColor = .systemOrange
         
@@ -323,7 +265,7 @@ final class MemoListViewController: ListViewController {
             completion(true)
             
         }
-        deleteAction.image = .init(systemName: "trash.fill")
+        deleteAction.image = UIImage(systemName: "trash.fill")
         
         deleteAction.backgroundColor = .systemRed
         
@@ -351,42 +293,8 @@ extension MemoListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         
-        searchingMemo(query: searchController.searchBar.text!)
+        fetchMemoSearchResult(query: searchController.searchBar.text!)
         
     }
     
-}
-
-extension MemoListViewController {
-    
-    struct MemoCollection {
-        
-        var pinnedMemos: Results<Memo>!
-        var memos: Results<Memo>!
-        
-        var numberOfSection: Int {
-            return (pinnedMemos.count > 0 ? 1 : 0) + 1
-        }
-        
-        var totalMemoCount: Int {
-            pinnedMemos.count + memos.count
-        }
-        
-        mutating func changeValue(result: Results<Memo>) {
-            pinnedMemos = result.where { $0.isPinned == true }
-            memos = result.where { $0.isPinned == false }
-        }
-        
-        func numberOfRowsInSection(section: Int) -> Int {
-            numberOfSection > 1 ? [pinnedMemos, memos][section].count : memos.count
-        }
-        
-        func cellForRowAt(indexPath: IndexPath) -> Memo {
-            numberOfSection > 1 ? [pinnedMemos, memos][indexPath.section][indexPath.row] : memos[indexPath.row]
-        }
-        
-        func sectionTitle(section: Int) -> String {
-            numberOfSection > 1 ? ["고정된 메모", "메모"][section] : "메모"
-        }
-    }
 }

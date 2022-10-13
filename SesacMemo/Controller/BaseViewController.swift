@@ -14,10 +14,18 @@ class BaseViewController: UIViewController {
         setNavigationItem()
         setToolbarItem()
 
-        // Do any additional setup after loading the view.
     }
     
     func setNavigationItem() {}
 
     func setToolbarItem() {}
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
 }
