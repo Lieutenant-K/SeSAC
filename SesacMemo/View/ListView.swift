@@ -10,7 +10,8 @@ import SnapKit
 
 final class ListView: UIView {
 
-    let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    //UITableView(frame: .zero, style: .insetGrouped)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,12 +26,15 @@ final class ListView: UIView {
     
     private func setSubviews() {
         
-        addSubview(tableView)
+        addSubview(collectionView)
+        
+        
+        
     }
     
     private func setContraints(){
         
-        tableView.snp.makeConstraints { make in
+        collectionView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }
         

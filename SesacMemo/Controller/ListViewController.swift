@@ -19,17 +19,28 @@ class ListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setListTableView()
+        setListCollectionView()
     }
     
-    private func setListTableView() {
-        listView.tableView.keyboardDismissMode = .onDrag
-        listView.tableView.delegate = self
-        listView.tableView.dataSource = self
-        listView.tableView.register(ListCell.self, forCellReuseIdentifier: listCellIdentifier)
+    func setListCollectionView() {
+        listView.collectionView.keyboardDismissMode = .onDrag
+        listView.collectionView.delegate = self
+        listView.collectionView.dataSource = self
         
     }
 
+}
+
+extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewListCell()
+    }
+    
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {

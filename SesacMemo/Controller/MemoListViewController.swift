@@ -14,17 +14,21 @@ final class MemoListViewController: ListViewController {
     
     private let repository = MemoRealmRepository()
     
+    private var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, Memo>!
+    
+    private var supplementaryRegistration: UICollectionView.SupplementaryRegistration<SectionHeaderLabel>!
+    
     var memoCollection = MemoCollection() {
         didSet {
             print(#function)
-            listView.tableView.reloadData()
+            listView.collectionView.reloadData()
         }
     }
     
     var searchedMemo: Results<Memo>! {
         didSet {
             print(#function)
-            listView.tableView.reloadData()
+            listView.collectionView.reloadData()
         }
     }
     
@@ -75,6 +79,88 @@ final class MemoListViewController: ListViewController {
             vc.modalTransitionStyle = .crossDissolve
             present(vc, animated: true)
         }
+        
+    }
+    
+    
+    override func setListCollectionView() {
+        super.setListCollectionView()
+        
+        supplementaryRegistration = UICollectionView.SupplementaryRegistration(elementKind: UICollectionView.elementKindSectionHeader) { [unowned self] supplementaryView, elementKind, indexPath in
+            
+            supplementaryView.label.text = isSearching ? "\(searchedMemo.count)개 찾음" : memoCollection.sectionTitle(section: indexPath.section)
+        }
+        
+        
+        cellRegistration = UICollectionView.CellRegistration { [unowned self] cell, indexPath, itemIdentifier in
+            
+            let text = isSearching ? changeSearchKeywordColor(text: itemIdentifier.title) : itemIdentifier.title.attributed(color: .label)
+            
+            let secondText = isSearching ? "\( itemIdentifier.creationDate.dateString)\t".attributed().combine(to: changeSearchKeywordColor(text: itemIdentifier.subtitle)) : ( itemIdentifier.creationDate.dateString+"\t\(itemIdentifier.subtitle)").attributed(color: .secondaryLabel)
+            
+            var config = cell.defaultContentConfiguration()
+            config.attributedText = text
+            config.secondaryAttributedText = secondText
+            config.textToSecondaryTextVerticalPadding = 4
+            config.textProperties.numberOfLines = 1
+//            config.textProperties.lineBreakMode = .byTruncatingTail
+            config.secondaryTextProperties.numberOfLines = 1
+            config.prefersSideBySideTextAndSecondaryText = false
+            
+            cell.contentConfiguration = config
+            
+            
+        }
+        
+        var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        config.headerMode = .supplementary
+        
+        config.leadingSwipeActionsConfigurationProvider = { [unowned self] indexPath in
+            
+            let task = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
+            
+            let pinAction = UIContextualAction(style: .normal, title: nil) { [weak self] _, _, completion in
+                
+                self?.pinMemo(memo: task)
+                
+                completion(true)
+            }
+            
+            pinAction.image = task.isPinned ? UIImage(systemName: "pin.slash.fill") : UIImage(systemName: "pin.fill")
+            
+            pinAction.backgroundColor = .systemOrange
+            
+            
+            return UISwipeActionsConfiguration(actions: [pinAction])
+            
+            
+        }
+        
+        config.trailingSwipeActionsConfigurationProvider = { [unowned self] indexPath in
+            
+            let task = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
+            
+            let deleteAction = UIContextualAction(style: .normal, title: nil) { [weak self]  _, _, completion in
+                
+                self?.showRemovingMemoAlert(memo: task)
+                
+                completion(true)
+                
+            }
+            deleteAction.image = UIImage(systemName: "trash.fill")
+            
+            deleteAction.backgroundColor = .systemRed
+            
+            
+            return UISwipeActionsConfiguration(actions: [deleteAction])
+            
+        }
+        
+        let layout = UICollectionViewCompositionalLayout.list(using: config)
+        
+        listView.collectionView.collectionViewLayout = layout
+        
+        
         
     }
     
@@ -197,33 +283,27 @@ final class MemoListViewController: ListViewController {
         
     }
     
-    // MARK: - UITableView Delegate, DataSource
+    // MARK: - UICollectionView Delegate, DataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return isSearching ? 1 : memoCollection.numberOfSection
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        isSearching ? 1 : memoCollection.numberOfSection
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         isSearching ? searchedMemo.count : memoCollection.numberOfRowsInSection(section: section)
-        
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: listCellIdentifier, for: indexPath) as? ListCell else { return UITableViewCell() }
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let memoData = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
         
-        cell.mainLabel.attributedText = isSearching ? changeSearchKeywordColor(text: memoData.title) : memoData.title.attributed(color: .label)
-        
-        cell.subLabel.attributedText = isSearching ? "\( memoData.creationDate.dateString)\t".attributed().combine(to: changeSearchKeywordColor(text: memoData.subtitle)) : ( memoData.creationDate.dateString+"\t\(memoData.subtitle)").attributed(color: .secondaryLabel)
-        
-        
+        let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: memoData)
         
         return cell
+        
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         navigationItem.backButtonTitle = isSearching ? "검색" : "메모"
         
@@ -232,56 +312,15 @@ final class MemoListViewController: ListViewController {
         let vc = WriteViewController(memoData: memoData)
         
         navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let task = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
-        
-        let pinAction = UIContextualAction(style: .normal, title: nil) { [weak self] _, _, completion in
-            
-            self?.pinMemo(memo: task)
-            
-            completion(true)
-        }
-        
-        pinAction.image = task.isPinned ? UIImage(systemName: "pin.slash.fill") : UIImage(systemName: "pin.fill")
-        
-        pinAction.backgroundColor = .systemOrange
-        
-        
-        return UISwipeActionsConfiguration(actions: [pinAction])
         
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let task = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
-        
-        let deleteAction = UIContextualAction(style: .normal, title: nil) { [weak self]  _, _, completion in
-            
-            self?.showRemovingMemoAlert(memo: task)
-            
-            completion(true)
-            
-        }
-        deleteAction.image = UIImage(systemName: "trash.fill")
-        
-        deleteAction.backgroundColor = .systemRed
-        
-        
-        return UISwipeActionsConfiguration(actions: [deleteAction])
-        
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UILabel()
-        view.numberOfLines = 1
-        view.text = isSearching ? "\(searchedMemo.count)개 찾음" : memoCollection.sectionTitle(section: section)
-        view.textColor = .label
-        view.font = .systemFont(ofSize: 28, weight: .semibold)
+        let view = collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: indexPath)
         
         return view
+        
     }
     
     
