@@ -14,21 +14,27 @@ final class MemoListViewController: ListViewController {
     
     private let repository = MemoRealmRepository()
     
+    private var dataSource: UICollectionViewDiffableDataSource<Int, Memo>!
+    
+    /*
     private var cellRegistration: UICollectionView.CellRegistration<UICollectionViewListCell, Memo>!
     
     private var supplementaryRegistration: UICollectionView.SupplementaryRegistration<SectionHeaderLabel>!
+    */
     
     var memoCollection = MemoCollection() {
         didSet {
             print(#function)
-            listView.collectionView.reloadData()
+            reloadMemoData()
+//            listView.collectionView.reloadData()
         }
     }
     
     var searchedMemo: Results<Memo>! {
         didSet {
             print(#function)
-            listView.collectionView.reloadData()
+            reloadMemoData()
+//            listView.collectionView.reloadData()
         }
     }
     
@@ -86,13 +92,14 @@ final class MemoListViewController: ListViewController {
     override func setListCollectionView() {
         super.setListCollectionView()
         
-        supplementaryRegistration = UICollectionView.SupplementaryRegistration(elementKind: UICollectionView.elementKindSectionHeader) { [unowned self] supplementaryView, elementKind, indexPath in
+        let supplementaryRegistration = UICollectionView.SupplementaryRegistration<SectionHeaderLabel>(elementKind: UICollectionView.elementKindSectionHeader) { [unowned self] supplementaryView, elementKind, indexPath in
             
             supplementaryView.label.text = isSearching ? "\(searchedMemo.count)개 찾음" : memoCollection.sectionTitle(section: indexPath.section)
+            
         }
         
         
-        cellRegistration = UICollectionView.CellRegistration { [unowned self] cell, indexPath, itemIdentifier in
+        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Memo> { [unowned self] cell, indexPath, itemIdentifier in
             
             let text = isSearching ? changeSearchKeywordColor(text: itemIdentifier.title) : itemIdentifier.title.attributed(color: .label)
             
@@ -160,7 +167,58 @@ final class MemoListViewController: ListViewController {
         
         listView.collectionView.collectionViewLayout = layout
         
+        dataSource = UICollectionViewDiffableDataSource(collectionView: listView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            
+            
+            return cell
+            
+        })
         
+        dataSource.supplementaryViewProvider = { collectionView, elementKind, indexPath in
+            
+            let header = collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: indexPath)
+            
+            return header
+        }
+        
+        
+        
+    }
+    
+    func reloadMemoData() {
+        
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Memo>()
+    
+        let sections = isSearching ? [0] : [Int].init(0..<memoCollection.numberOfSection)
+        
+        snapshot.appendSections(sections)
+        
+        if isSearching {
+            let list: [Memo] = searchedMemo.map { $0 }
+            snapshot.appendItems(list)
+        } else {
+            if memoCollection.numberOfSection > 1 {
+                snapshot.appendItems(memoCollection.memoList, toSection: 1)
+                snapshot.appendItems(memoCollection.pinnedMemoList, toSection: 0)
+            } else {
+                snapshot.appendItems(memoCollection.memoList)
+            }
+        }
+        
+        
+//        print(memoCollection.memoList)
+        
+        if #available(iOS 15.0, *) {
+            dataSource.applySnapshotUsingReloadData(snapshot)
+        } else {
+            dataSource.apply(snapshot)
+        }
+        
+        
+//        listView.collectionView.reloadSections([0])
         
     }
     
@@ -194,8 +252,6 @@ final class MemoListViewController: ListViewController {
         
         let result = repository.fetchTasks()
         memoCollection.changeValue(result: result)
-        
-        //        listView.tableView.reloadData()
         
         title = memoCollection.totalMemoCount.decimalString + "개의 메모"
         
@@ -283,25 +339,8 @@ final class MemoListViewController: ListViewController {
         
     }
     
-    // MARK: - UICollectionView Delegate, DataSource
+    // MARK: - UICollectionView Delegate
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        isSearching ? 1 : memoCollection.numberOfSection
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        isSearching ? searchedMemo.count : memoCollection.numberOfRowsInSection(section: section)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let memoData = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
-        
-        let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: memoData)
-        
-        return cell
-        
-    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -312,14 +351,6 @@ final class MemoListViewController: ListViewController {
         let vc = WriteViewController(memoData: memoData)
         
         navigationController?.pushViewController(vc, animated: true)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        let view = collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: indexPath)
-        
-        return view
         
     }
     

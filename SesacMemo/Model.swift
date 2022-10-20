@@ -44,6 +44,14 @@ struct MemoCollection {
     var pinnedMemos: Results<Memo>!
     var memos: Results<Memo>!
     
+    var memoList: [Memo] {
+        return memos.map { $0 }
+    }
+    
+    var pinnedMemoList: [Memo] {
+        return pinnedMemos.map { $0 }
+    }
+    
     var numberOfSection: Int {
         return (pinnedMemos.count > 0 ? 1 : 0) + 1
     }

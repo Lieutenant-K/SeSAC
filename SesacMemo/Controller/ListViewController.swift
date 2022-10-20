@@ -25,39 +25,11 @@ class ListViewController: BaseViewController {
     func setListCollectionView() {
         listView.collectionView.keyboardDismissMode = .onDrag
         listView.collectionView.delegate = self
-        listView.collectionView.dataSource = self
+//        listView.collectionView.dataSource = self
         
     }
 
 }
 
-extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewListCell()
-    }
-    
-}
+extension ListViewController: UICollectionViewDelegate { }
 
-extension ListViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: listCellIdentifier, for: indexPath) as? ListCell else { return UITableViewCell() }
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        60
-    }
-    
-    
-}
