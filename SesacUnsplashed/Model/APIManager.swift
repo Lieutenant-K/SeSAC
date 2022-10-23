@@ -14,30 +14,37 @@ class APIManager {
     
     static let shared = APIManager()
     
-    func fetchPhotosWithQuery(parameter: [String: Any], completionHandler: @escaping (_ total: Int, _ data: [ImageURL]) -> Void) {
+    func fetchPhotosWithQuery(parameter: [String: Any], completionHandler: @escaping (_ total: Int, _ data: [PhotoResult]) -> Void) {
         
         let url = EndPoint.search(.photos).url
 //        let parameter: [String: Any] = ["query": query, "page": page, "per_page": perPage]
         
-        requestUnsplashedAPI(url: url, parameter: parameter) { json in
+        requestUnsplashedAPI(url: url, parameter: parameter) { photo in
             
-            let total = json["total"].intValue
-            let data = json["results"].arrayValue.map {
-                
-                ImageURL(thumb: $0["urls"]["thumb"].stringValue, full: $0["urls"]["full"].stringValue)
-                
-            }
-            
-            completionHandler(total, data)
+//            completionHandler(photo.total, photo.results)
             
         }
         
     }
     
-    private func requestUnsplashedAPI(url: String, parameter: Parameters, completionHandler: @escaping (JSON) -> Void) {
+    func requestUnsplashedAPI(url: String, parameter: Parameters, completionHandler: @escaping (Photo) -> Void) {
         
         let url = url + "?client_id=\(APIKey.accessKey)"
         
+        
+        AF.request(url, parameters: parameter).responseDecodable(of: Photo.self) { response in
+            
+            switch response.result {
+            case .success(let value):
+                completionHandler(value)
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+        
+        
+        /*
         AF.request(url, parameters: parameter).validate(statusCode: 200...600).responseData(queue: .global()) { response in
             
             switch response.result {
@@ -46,15 +53,16 @@ class APIManager {
                 
                 let json = JSON(value)
                 
-//                print(json)
+                print(json)
                 
-                completionHandler(json)
+//                completionHandler(json)
                 
             case .failure(let error):
                 print(error)
             }
             
         }
+        */
         
     }
     

@@ -6,20 +6,14 @@
 //
 
 import UIKit
-
 import Kingfisher
 
 class ImageSearchViewController: UIViewController {
     
     let searchView = SearchView()
-    
+    let viewModel = SearchViewModel(photo: Observable(value: []), itemCount: 10)
     var delegate: ImageSendable?
-    
-    var photos = [ImageURL]()
-    
-    var page = 1
-    
-    var totalResult = 0
+    var dataSource: UICollectionViewDiffableDataSource<Int, PhotoResult>!
     
     override func loadView() {
         view = searchView
@@ -28,11 +22,41 @@ class ImageSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchView.collectionView.delegate = self
-        searchView.collectionView.dataSource = self
+        configureCollectionView()
+        
+        viewModel.photo.bind { [unowned self] in
+            var snapshot = NSDiffableDataSourceSnapshot<Int, PhotoResult>()
+            snapshot.appendSections([0])
+            snapshot.appendItems(viewModel.photo.value)
+            dataSource.apply(snapshot)
+        }
+        
         searchView.searchBar.delegate = self
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "선택", style: .plain, target: self, action: #selector(selectPhoto))
+        
+    }
+    
+    func configureCollectionView() {
+        
+        searchView.collectionView.delegate = self
+        
+        let cellRegistration = UICollectionView.CellRegistration<ImageCollectionViewCell, PhotoResult>  { cell, indexPath, itemIdentifier in
+            
+            
+            let url = itemIdentifier.urls.thumb
+            cell.imageView.kf.setImage(with: URL(string: url), options: [.transition(.fade(0.5))])
+            
+        }
+        
+        dataSource = UICollectionViewDiffableDataSource(collectionView: searchView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            
+            return cell
+            
+        })
+        
         
     }
     
@@ -40,9 +64,10 @@ class ImageSearchViewController: UIViewController {
         
         guard let index = searchView.collectionView.indexPathsForSelectedItems?.first else { return }
         
-        guard let url = URL(string: photos[index.row].full) else { return }
         
-        KingfisherManager.shared.retrieveImage(with: url) { result in
+        guard let url = dataSource.itemIdentifier(for: index)?.urls.regular else { return }
+        
+        KingfisherManager.shared.retrieveImage(with: URL(string: url)!) { result in
             switch result{
             case .success(let value):
                 self.delegate?.sendImageData(image: value.image)
@@ -60,37 +85,10 @@ class ImageSearchViewController: UIViewController {
         
         
     }
-    
-    func resetPhotoData() {
-        
-        photos.removeAll()
-        
-        page = 1
-        
-        totalResult = 0
-        
-    }
 
 }
 
-extension ImageSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseIdentifier, for: indexPath) as? ImageCollectionViewCell else { return UICollectionViewCell() }
-        
-        cell.imageView.setImage(url: photos[indexPath.row].thumb)
-        
-        return cell
-        
-    }
-    
-    
-    
+extension ImageSearchViewController: UICollectionViewDelegate {
     
 }
 
@@ -100,6 +98,9 @@ extension ImageSearchViewController: UISearchBarDelegate {
         
         guard let text = searchBar.text else { return }
         
+        viewModel.query = text
+        
+        /*
         resetPhotoData()
         
         let para = Parameter(page: page, query: text, itemsPerPage: 20).paramter
@@ -116,6 +117,7 @@ extension ImageSearchViewController: UISearchBarDelegate {
                 
             }
         }
+        */
         
         searchBar.endEditing(true)
         

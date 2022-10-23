@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D627C7B29055D41007C1F50 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D627C7A29055D41007C1F50 /* ViewModel.swift */; };
 		0D7BAAD928B5A6CC00D5E80E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7BAAD828B5A6CC00D5E80E /* Extension.swift */; };
 		0D97746528B22F9300D5BE6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97746428B22F9300D5BE6E /* AppDelegate.swift */; };
 		0D97746728B22F9300D5BE6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D97746628B22F9300D5BE6E /* SceneDelegate.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D627C7A29055D41007C1F50 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		0D7BAAD828B5A6CC00D5E80E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0D97746128B22F9300D5BE6E /* SesacUnsplashed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacUnsplashed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D97746428B22F9300D5BE6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				0D97749228B2747300D5BE6E /* APIManager.swift */,
 				0D97749428B278AA00D5BE6E /* Model.swift */,
+				0D627C7A29055D41007C1F50 /* ViewModel.swift */,
 				0D97747A28B22FCF00D5BE6E /* APIKey.swift */,
 			);
 			path = Model;
@@ -265,6 +268,7 @@
 				0DEA7E9128B85596001A999F /* UserDiaryRepository.swift in Sources */,
 				0D97748D28B2340300D5BE6E /* PostViewController.swift in Sources */,
 				0D996D2028B6707C009214DE /* StorageViewController.swift in Sources */,
+				0D627C7B29055D41007C1F50 /* ViewModel.swift in Sources */,
 				0D97747D28B2305600D5BE6E /* BaseView.swift in Sources */,
 				0D7BAAD928B5A6CC00D5E80E /* Extension.swift in Sources */,
 				0D97747B28B22FCF00D5BE6E /* APIKey.swift in Sources */,

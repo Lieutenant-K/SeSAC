@@ -19,17 +19,20 @@ class SearchView: BaseView {
     
     let collectionView: UICollectionView = {
         
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        layout.scrollDirection = .vertical
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalHeight(1.0))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.25))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        view.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
-//        view.backgroundColor = .lightGray
 
-        
         return view
     }()
     
@@ -52,18 +55,4 @@ class SearchView: BaseView {
         
     }
     
-    func setCollectionViewLayoutItemSize(width: CGFloat) {
-        
-        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        
-        layout.itemSize = CGSize(width: width/3, height: width/3)
-        
-    }
-    
-    override func layoutSubviews() {
-        
-        setCollectionViewLayoutItemSize(width: bounds.width)
-        
-        super.layoutSubviews()
-    }
 }

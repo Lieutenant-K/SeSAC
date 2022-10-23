@@ -68,3 +68,48 @@ extension UIImageView {
     }
     
 }
+
+// MARK: - Photo
+struct Photo: Codable {
+    let results: [PhotoResult]
+    let totalPages, total: Int
+
+    enum CodingKeys: String, CodingKey {
+        case results
+        case totalPages = "total_pages"
+        case total
+    }
+}
+
+struct PhotoResult: Codable, Hashable, Equatable {
+    
+    static func == (lhs: PhotoResult, rhs: PhotoResult) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    let urls: Urls
+    let likes: Int
+    let id: String
+    let photoDescription: String?
+    
+
+    enum CodingKeys: String, CodingKey {
+        case urls
+        case likes, id
+        case photoDescription = "description"
+    }
+}
+
+struct Urls: Codable {
+    let thumb, small, raw, regular: String
+    let full, smallS3: String
+
+    enum CodingKeys: String, CodingKey {
+        case thumb, small, raw, regular, full
+        case smallS3 = "small_s3"
+    }
+}
