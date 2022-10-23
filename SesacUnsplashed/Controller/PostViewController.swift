@@ -20,6 +20,8 @@ class PostViewController: UIViewController {
 
     let postView = PostView()
     
+    let viewModel = PostViewModel()
+    
     let repository = UserDiaryRepository() // Realm 테이블에 데이터를 CRUD할 때, Realm 테이블 경로에 접근
     
     lazy var imagePicker: UIImagePickerController = {
@@ -55,9 +57,15 @@ class PostViewController: UIViewController {
         
         postView.gestureRecognizer.addTarget(self, action: #selector(tapGestureRegognizer))
         
+        postView.textfield1.addTarget(self, action: #selector(titleDidChanged), for: .editingChanged)
+        
+        postView.textView.delegate = self
+        
         setImageSelectButtonMenu()
         
         configureBarButtonItem()
+        
+        binding()
         
         NotificationCenter.default.addObserver(self, selector: #selector(receiveImageURLNotification(_:)), name: .sendImageURLNotification, object: nil)
         
@@ -66,6 +74,22 @@ class PostViewController: UIViewController {
     }
     
     // MARK: - Method
+    
+    func binding() {
+        
+        viewModel.title.bind { [unowned self] in
+            postView.textfield1.text = viewModel.title.value
+        }
+        
+        viewModel.subtitle.bind { [unowned self] in
+            postView.textfield2.text = viewModel.subtitle.value
+        }
+        
+        viewModel.content.bind { [unowned self] in
+            postView.textView.text = viewModel.content.value
+        }
+        
+    }
     
     func setImageSelectButtonMenu() {
         
@@ -126,7 +150,9 @@ class PostViewController: UIViewController {
     
     @objc func touchPostingButton() {
         
-        guard let title = postView.textfield1.text, let content = postView.textView.text, !title.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+        let title = viewModel.title.value
+        
+        let content = viewModel.content.value
         
         let task = UserDiary(title: title, content: content, diaryDate: Date(), postingDate: Date(), photo: nil) // => Record 추가
         
@@ -143,8 +169,14 @@ class PostViewController: UIViewController {
         } catch {
             showAlert(title: "다이어리 작성 실패")
         }
+        
     }
-
+    
+    @objc func titleDidChanged(_ sender: UITextField) {
+        
+        viewModel.inputTitle(text: sender.text!)
+        
+    }
     
     
     
@@ -164,6 +196,7 @@ class PostViewController: UIViewController {
 extension PostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
         
         guard let image = info[.originalImage] as? UIImage else { return }
         
@@ -205,5 +238,13 @@ extension PostViewController: ImageSendable {
         postView.imageView.image = image
     }
     
+    
+}
+
+extension PostViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        viewModel.content.value = textView.text
+    }
     
 }

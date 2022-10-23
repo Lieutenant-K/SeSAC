@@ -40,6 +40,7 @@ class ImageSearchViewController: UIViewController {
     func configureCollectionView() {
         
         searchView.collectionView.delegate = self
+//        searchView.collectionView.prefetchDataSource = self
         
         let cellRegistration = UICollectionView.CellRegistration<ImageCollectionViewCell, PhotoResult>  { cell, indexPath, itemIdentifier in
             
@@ -64,9 +65,9 @@ class ImageSearchViewController: UIViewController {
         
         guard let index = searchView.collectionView.indexPathsForSelectedItems?.first else { return }
         
-        
-        guard let url = dataSource.itemIdentifier(for: index)?.urls.regular else { return }
-        
+        viewModel.sendImageURL(indexPath: index)
+    
+        /*
         KingfisherManager.shared.retrieveImage(with: URL(string: url)!) { result in
             switch result{
             case .success(let value):
@@ -75,7 +76,7 @@ class ImageSearchViewController: UIViewController {
                 print(error)
             }
         }
-        
+        */
 //        delegate?.sendImageData(image: cell.imageView.image)
        
         
@@ -90,6 +91,14 @@ class ImageSearchViewController: UIViewController {
 
 extension ImageSearchViewController: UICollectionViewDelegate {
     
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        viewModel.updatePage(indexPath: indexPath)
+        
+    }
+    
+    
 }
 
 extension ImageSearchViewController: UISearchBarDelegate {
@@ -99,25 +108,6 @@ extension ImageSearchViewController: UISearchBarDelegate {
         guard let text = searchBar.text else { return }
         
         viewModel.query = text
-        
-        /*
-        resetPhotoData()
-        
-        let para = Parameter(page: page, query: text, itemsPerPage: 20).paramter
-        
-        APIManager.shared.fetchPhotosWithQuery(parameter: para) { total, data in
-            
-            self.totalResult = total
-            
-            self.photos.append(contentsOf: data)
-            
-            DispatchQueue.main.async {
-                
-                self.searchView.collectionView.reloadData()
-                
-            }
-        }
-        */
         
         searchBar.endEditing(true)
         

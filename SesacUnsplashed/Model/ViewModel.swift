@@ -30,21 +30,32 @@ class Observable<T> {
 
 class PostViewModel {
     
+    let title = Observable<String>(value: "")
+    let subtitle = Observable<String>(value: "")
+    let content = Observable<String>(value: "")
     
+    func inputTitle(text: String) {
+        
+        let text = text.trimmingCharacters(in: .whitespaces)
+        
+        title.value = text
+        
+    }
     
 }
 
 class SearchViewModel {
     
     let photo: Observable<[PhotoResult]>
+//    var selectedPhoto: Observable<PhotoResult>?
     var page: Int = 1 {
         didSet { searchPhoto() }
     }
     var itemsPerPage: Int
     var query: String? {
         didSet {
-            page = 1
             total = 0
+            page = 1
             photo.value = []
         }
     }
@@ -57,15 +68,27 @@ class SearchViewModel {
         
         APIManager.shared.requestUnsplashedAPI(url: url, parameter: parameter) { [weak self] data in
             
+            self?.total = data.totalPages
             self?.photo.value.append(contentsOf: data.results)
-            self?.total = data.total
         }
         
     }
     
-    func updateNewPage() {
+    func updatePage(indexPath: IndexPath) {
         
-        page += 1
+        let count = photo.value.count
+        
+        if indexPath.row == count-4 && page < total {
+            page += 1
+        }
+        
+    }
+    
+    func sendImageURL(indexPath: IndexPath) {
+        
+        let url = photo.value[indexPath.row].urls.regular
+        
+        NotificationCenter.default.post(name: .sendImageURLNotification, object: nil, userInfo: ["imageURL": url])
         
     }
     
