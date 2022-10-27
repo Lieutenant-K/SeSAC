@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0AC2E4290AE2C000CE5318 /* MemoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0AC2E3290AE2C000CE5318 /* MemoListViewModel.swift */; };
+		0D0AC2E7290AE45900CE5318 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0D0AC2E6290AE45900CE5318 /* RxCocoa */; };
+		0D0AC2E9290AE45900CE5318 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0D0AC2E8290AE45900CE5318 /* RxSwift */; };
 		0D488E4628C20F1500D4A1CC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D488E4528C20F1500D4A1CC /* Model.swift */; };
 		0D6EEFB628C53B9400100FA5 /* WalkThroughController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6EEFB528C53B9400100FA5 /* WalkThroughController.swift */; };
 		0D7694AE28C0BBA200AFF31D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7694AD28C0BBA200AFF31D /* AppDelegate.swift */; };
@@ -32,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D0AC2E3290AE2C000CE5318 /* MemoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewModel.swift; sourceTree = "<group>"; };
 		0D488E4528C20F1500D4A1CC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0D6EEFB528C53B9400100FA5 /* WalkThroughController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughController.swift; sourceTree = "<group>"; };
 		0D7694AA28C0BBA200AFF31D /* SesacMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesacMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +66,8 @@
 			files = (
 				0D7694CE28C0CC3A00AFF31D /* RealmSwift in Frameworks */,
 				0D7694CC28C0CC3A00AFF31D /* Realm in Frameworks */,
+				0D0AC2E9290AE45900CE5318 /* RxSwift in Frameworks */,
+				0D0AC2E7290AE45900CE5318 /* RxCocoa in Frameworks */,
 				0D7694C928C0CBB500AFF31D /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D0AC2E2290AE2B300CE5318 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0D0AC2E3290AE2C000CE5318 /* MemoListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		0D6EEFB228C5011300100FA5 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +140,7 @@
 				0D488E4528C20F1500D4A1CC /* Model.swift */,
 				0DD7290628F8112C0095A63C /* Extension.swift */,
 				0D7694AF28C0BBA200AFF31D /* SceneDelegate.swift */,
+				0D0AC2E2290AE2B300CE5318 /* ViewModel */,
 				0D7694B628C0BBA300AFF31D /* Assets.xcassets */,
 				0D6EEFB328C5012500100FA5 /* Controller */,
 				0D7694B828C0BBA300AFF31D /* LaunchScreen.storyboard */,
@@ -156,6 +171,8 @@
 				0D7694C828C0CBB500AFF31D /* SnapKit */,
 				0D7694CB28C0CC3A00AFF31D /* Realm */,
 				0D7694CD28C0CC3A00AFF31D /* RealmSwift */,
+				0D0AC2E6290AE45900CE5318 /* RxCocoa */,
+				0D0AC2E8290AE45900CE5318 /* RxSwift */,
 			);
 			productName = SesacMemo;
 			productReference = 0D7694AA28C0BBA200AFF31D /* SesacMemo.app */;
@@ -188,6 +205,7 @@
 			packageReferences = (
 				0D7694C728C0CBB500AFF31D /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0D7694CA28C0CC3A00AFF31D /* XCRemoteSwiftPackageReference "realm-swift" */,
+				0D0AC2E5290AE45900CE5318 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 0D7694AB28C0BBA200AFF31D /* Products */;
 			projectDirPath = "";
@@ -227,6 +245,7 @@
 				0D488E4628C20F1500D4A1CC /* Model.swift in Sources */,
 				0D7694D028C0D0A500AFF31D /* ListCell.swift in Sources */,
 				0D7694B228C0BBA200AFF31D /* ViewController.swift in Sources */,
+				0D0AC2E4290AE2C000CE5318 /* MemoListViewModel.swift in Sources */,
 				0D7694D228C0E30A00AFF31D /* RealmModel.swift in Sources */,
 				0D7694AE28C0BBA200AFF31D /* AppDelegate.swift in Sources */,
 				0D7694B028C0BBA200AFF31D /* SceneDelegate.swift in Sources */,
@@ -461,6 +480,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0D0AC2E5290AE45900CE5318 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		0D7694C728C0CBB500AFF31D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -480,6 +507,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0D0AC2E6290AE45900CE5318 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D0AC2E5290AE45900CE5318 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		0D0AC2E8290AE45900CE5318 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D0AC2E5290AE45900CE5318 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		0D7694C828C0CBB500AFF31D /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0D7694C728C0CBB500AFF31D /* XCRemoteSwiftPackageReference "SnapKit" */;

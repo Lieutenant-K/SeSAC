@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import RxSwift
 
 final class MemoListViewController: ListViewController {
     
@@ -16,22 +17,11 @@ final class MemoListViewController: ListViewController {
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, Memo>!
     
+    private let viewModel = MemoListViewModel()
     
-    var memoCollection = MemoCollection() {
-        didSet {
-            print(#function)
-            reloadMemoData()
-        }
-    }
+    private let disposeBag = DisposeBag()
     
-    var searchedMemo: Results<Memo>! {
-        didSet {
-            print(#function)
-            reloadMemoData()
-        }
-    }
-    
-    let pinLimit = 5
+    var writeButton: UIBarButtonItem?
     
     var isSearching: Bool {
         if let sc = navigationItem.searchController, let text = sc.searchBar.text {
@@ -44,8 +34,8 @@ final class MemoListViewController: ListViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        fetchMemoData()
+        binding()
+        viewModel.fetchMemoCollection()
         repository.getURL()
         
     }
@@ -58,14 +48,71 @@ final class MemoListViewController: ListViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchMemoData()
+        viewModel.fetchMemoCollection()
         
         checkIsFirstLaunch()
     }
     
     // MARK: - Method
     
-    
+    func binding() {
+        
+        viewModel.memoCollection
+            .withUnretained(self)
+            .subscribe(onNext: { vc, value in
+                vc.reloadMemoData(collection: value)
+                vc.title = vc.viewModel.totalCount + "개의 메모"
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.memoError
+            .map { $0.alertMessage }
+            .withUnretained(self)
+            .bind{ vc, message in
+                vc.showAlert(title: message) }
+            .disposed(by: disposeBag)
+        
+        navigationItem.searchController?.searchBar
+            .rx.text.orEmpty
+            .withUnretained(self)
+            .bind { vc, query in
+                vc.viewModel.fetchMemoSearchResult(query: query)
+            }
+            .disposed(by: disposeBag)
+        
+        listView.collectionView.rx
+            .itemSelected
+            .withUnretained(self)
+            .bind { vc, indexPath in
+                vc.navigationItem.backButtonTitle = vc.viewModel.isSearching ? "검색" : "메모"
+                
+                let snapshot = vc.dataSource.snapshot(for: indexPath.section)
+                
+                let memoData = snapshot.items[indexPath.row]
+                
+                let writeVC = WriteViewController(memoData: memoData)
+                
+                vc.navigationController?.pushViewController(writeVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        navigationItem.searchController?.searchBar.rx.cancelButtonClicked
+            .withUnretained(self)
+            .bind(onNext: { (vc, _) in
+                vc.viewModel.fetchMemoSearchResult(query: "")
+            })
+            .disposed(by: disposeBag)
+        
+        writeButton?.rx.tap
+            .withUnretained(self)
+            .bind { (vc, _) in
+                vc.viewModel.createMemo { memo in
+                    vc.navigationController?.pushViewController(WriteViewController(memoData: memo), animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+    }
     
     // MARK: Helper Method
     
@@ -80,29 +127,24 @@ final class MemoListViewController: ListViewController {
         
     }
     
-    func reloadMemoData() {
+    func reloadMemoData(collection: [[Memo]]) {
         
         
         var snapshot = NSDiffableDataSourceSnapshot<Int, Memo>()
         
-        let sectionCount = memoCollection.numberOfSection
+        let sectionCount = collection.count
         
-        let sections = isSearching ? [0] : [Int].init(0..<sectionCount)
+        let sections = [Int].init(0..<sectionCount)
         
-        snapshot.appendSections(sections)
-        
-        let items = isSearching ? searchedMemo.map{$0} : memoCollection.memoList
-        
-        if sectionCount > 1 {
-            snapshot.appendItems(memoCollection.pinnedMemoList, toSection: 0)
+        sections.forEach {
+            snapshot.appendSections([$0])
+            snapshot.appendItems(collection[$0],toSection: $0)
         }
-        snapshot.appendItems(items)
-        
-        
         
         
         if #available(iOS 15.0, *) {
             dataSource.applySnapshotUsingReloadData(snapshot)
+//            dataSource.apply(snapshot)
         } else {
             dataSource.apply(snapshot)
         }
@@ -120,7 +162,7 @@ final class MemoListViewController: ListViewController {
         naviItem.searchController = UISearchController(searchResultsController: nil)
         naviItem.searchController?.searchBar.placeholder = "검색"
         naviItem.searchController?.searchBar.setValue("취소", forKey: "cancelButtonText")
-        naviItem.searchController?.searchResultsUpdater = self
+//        naviItem.searchController?.searchResultsUpdater = self
         naviItem.hidesSearchBarWhenScrolling = false
         naviItem.backButtonTitle = "메모"
         
@@ -128,26 +170,29 @@ final class MemoListViewController: ListViewController {
     
     override func setToolbarItem() {
         
-        let writeButton = UIBarButtonItem(image: .init(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(touchWriteButton(_:)))
+        writeButton = UIBarButtonItem(image: .init(systemName: "square.and.pencil"), style: .plain, target: nil, action: nil)
         
-        toolbarItems = [.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), writeButton]
+        toolbarItems = [.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), writeButton!]
     }
     
     
     // MARK:  Memo Method
     
+    /*
     func fetchMemoData() {
         
         let result = repository.fetchTasks()
-        memoCollection.changeValue(result: result)
+//        collection.changeValue(result: result)
         
-        title = memoCollection.totalMemoCount.decimalString + "개의 메모"
+        title = collection.totalMemoCount.decimalString + "개의 메모"
         
     }
+    */
     
+    /*
     func pinMemo(memo: Memo){
         
-        if !memo.isPinned && memoCollection.pinnedMemos.count >= pinLimit {
+        if !memo.isPinned && collection.pinnedMemos.count >= pinLimit {
             showAlert(title: "최대 \(pinLimit)개까지만 고정할 수 있습니다.")
             return
         }
@@ -156,23 +201,19 @@ final class MemoListViewController: ListViewController {
             try self.repository.updateTask {
                 memo.isPinned.toggle()
             }
-            self.fetchMemoData()
+            self.viewModel.fetchMemoCollection()
         } catch {
             showAlert(title: "작업에 실패했습니다.", message: "다시 시도해주세요")
         }
         
     }
+    */
     
     func showRemovingMemoAlert(memo: Memo) {
         
         let okAction = UIAlertAction(title: "예", style: .destructive) { [weak self] _ in
             
-            do {
-                try self?.repository.deleteTask(task: memo)
-                self?.fetchMemoData()
-            } catch {
-                self?.showAlert(title: "작업에 실패했습니다.", message: "다시 시도해주세요")
-            }
+            self?.viewModel.deleteMemo(memo: memo)
             
         }
         
@@ -187,7 +228,7 @@ final class MemoListViewController: ListViewController {
         
         let result = repository.fetchTasks()
         
-        searchedMemo = result.where { $0.content.contains(query) }
+        viewModel.searchResult = result.where { $0.content.contains(query) }
         
         
     }
@@ -212,6 +253,7 @@ final class MemoListViewController: ListViewController {
     
     // MARK: Action Method
     
+    /*
     @objc func touchWriteButton(_ sender: UIBarButtonItem) {
         
         let data = Memo(memoContent: MemoContent())
@@ -219,13 +261,14 @@ final class MemoListViewController: ListViewController {
         do {
             try repository.addTask(task: data)
             navigationController?.pushViewController(WriteViewController(memoData: data), animated: true)
-            fetchMemoData()
+            viewModel.fetchMemoCollection()
         } catch {
             showAlert(title: "작업에 실패했습니다.", message: "다시 시도해주세요")
         }
         
         
     }
+    */
     
     // MARK: - UICollectionView Delegate
     
@@ -234,16 +277,19 @@ final class MemoListViewController: ListViewController {
         
         let supplementaryRegistration = UICollectionView.SupplementaryRegistration<SectionHeaderLabel>(elementKind: UICollectionView.elementKindSectionHeader) { [unowned self] supplementaryView, elementKind, indexPath in
             
-            supplementaryView.label.text = isSearching ? "\(searchedMemo.count)개 찾음" : memoCollection.sectionTitle(section: indexPath.section)
+            let snapshot = dataSource.snapshot(for: indexPath.section)
+            let itemCount = snapshot.items.count
+            
+            supplementaryView.label.text = viewModel.isSearching ? "\(itemCount)개 찾음" : viewModel.memoData.sectionTitle(section: indexPath.section)
             
         }
         
         
         let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Memo> { [unowned self] cell, indexPath, itemIdentifier in
             
-            let text = isSearching ? changeSearchKeywordColor(text: itemIdentifier.title) : itemIdentifier.title.attributed(color: .label)
+            let text = viewModel.isSearching ? changeSearchKeywordColor(text: itemIdentifier.title) : itemIdentifier.title.attributed(color: .label)
             
-            let secondText = isSearching ? "\( itemIdentifier.creationDate.dateString)\t".attributed().combine(to: changeSearchKeywordColor(text: itemIdentifier.subtitle)) : ( itemIdentifier.creationDate.dateString+"\t\(itemIdentifier.subtitle)").attributed(color: .secondaryLabel)
+            let secondText = viewModel.isSearching ? "\( itemIdentifier.creationDate.dateString)\t".attributed().combine(to: changeSearchKeywordColor(text: itemIdentifier.subtitle)) : ( itemIdentifier.creationDate.dateString+"\t\(itemIdentifier.subtitle)").attributed(color: .secondaryLabel)
             
             var config = cell.defaultContentConfiguration()
             config.attributedText = text
@@ -261,16 +307,16 @@ final class MemoListViewController: ListViewController {
         
         var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         config.headerMode = .supplementary
-        
         config.leadingSwipeActionsConfigurationProvider = { [unowned self] indexPath in
             
-            let task = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
+            let snapshot = dataSource.snapshot(for: indexPath.section)
             
+            let task = snapshot.items[indexPath.row]
+        
             let pinAction = UIContextualAction(style: .normal, title: nil) { [weak self] _, _, completion in
                 
-                self?.pinMemo(memo: task)
+                self?.viewModel.pinMemo(memo: task)
                 
-                completion(true)
             }
             
             pinAction.image = task.isPinned ? UIImage(systemName: "pin.slash.fill") : UIImage(systemName: "pin.fill")
@@ -285,7 +331,9 @@ final class MemoListViewController: ListViewController {
         
         config.trailingSwipeActionsConfigurationProvider = { [unowned self] indexPath in
             
-            let task = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
+            let snapshot = dataSource.snapshot(for: indexPath.section)
+            
+            let task = snapshot.items[indexPath.row]
             
             let deleteAction = UIContextualAction(style: .normal, title: nil) { [weak self]  _, _, completion in
                 
@@ -328,25 +376,30 @@ final class MemoListViewController: ListViewController {
         
     }
     
-    
+    /*
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         navigationItem.backButtonTitle = isSearching ? "검색" : "메모"
         
-        let memoData = isSearching ? searchedMemo[indexPath.row] : memoCollection.cellForRowAt(indexPath: indexPath)
+        
+        let snapshot = dataSource.snapshot(for: indexPath.section)
+        
+        let memoData = snapshot.items[indexPath.row]
         
         let vc = WriteViewController(memoData: memoData)
         
         navigationController?.pushViewController(vc, animated: true)
         
     }
-    
+    */
     
 }
 
 // MARK: - UISearchResultUpdating
 
+/*
 extension MemoListViewController: UISearchResultsUpdating {
+    
     
     func updateSearchResults(for searchController: UISearchController) {
         
@@ -354,4 +407,7 @@ extension MemoListViewController: UISearchResultsUpdating {
         
     }
     
+    
 }
+
+*/

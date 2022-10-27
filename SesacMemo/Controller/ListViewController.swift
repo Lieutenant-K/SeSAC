@@ -24,12 +24,10 @@ class ListViewController: BaseViewController {
     
     func setListCollectionView() {
         listView.collectionView.keyboardDismissMode = .onDrag
-        listView.collectionView.delegate = self
+//        listView.collectionView.delegate = self
 //        listView.collectionView.dataSource = self
         
     }
 
 }
-
-extension ListViewController: UICollectionViewDelegate { }
 

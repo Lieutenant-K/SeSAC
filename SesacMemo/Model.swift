@@ -41,8 +41,8 @@ struct DefaultMemo {
 
 struct MemoCollection {
     
-    var pinnedMemos: Results<Memo>!
-    var memos: Results<Memo>!
+    let pinnedMemos: Results<Memo>
+    let memos: Results<Memo>
     
     var memoList: [Memo] {
         return memos.map { $0 }
@@ -58,11 +58,6 @@ struct MemoCollection {
     
     var totalMemoCount: Int {
         pinnedMemos.count + memos.count
-    }
-    
-    mutating func changeValue(result: Results<Memo>) {
-        pinnedMemos = result.where { $0.isPinned == true }
-        memos = result.where { $0.isPinned == false }
     }
     
     func numberOfRowsInSection(section: Int) -> Int {
