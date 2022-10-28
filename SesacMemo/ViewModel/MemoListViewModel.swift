@@ -26,7 +26,7 @@ enum MemoError: Error {
     
 }
 
-class MemoListViewModel {
+final class MemoListViewModel {
     
     lazy var memoData = fetchMemoData()
     

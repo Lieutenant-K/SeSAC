@@ -178,37 +178,6 @@ final class MemoListViewController: ListViewController {
     
     // MARK:  Memo Method
     
-    /*
-    func fetchMemoData() {
-        
-        let result = repository.fetchTasks()
-//        collection.changeValue(result: result)
-        
-        title = collection.totalMemoCount.decimalString + "개의 메모"
-        
-    }
-    */
-    
-    /*
-    func pinMemo(memo: Memo){
-        
-        if !memo.isPinned && collection.pinnedMemos.count >= pinLimit {
-            showAlert(title: "최대 \(pinLimit)개까지만 고정할 수 있습니다.")
-            return
-        }
-        
-        do {
-            try self.repository.updateTask {
-                memo.isPinned.toggle()
-            }
-            self.viewModel.fetchMemoCollection()
-        } catch {
-            showAlert(title: "작업에 실패했습니다.", message: "다시 시도해주세요")
-        }
-        
-    }
-    */
-    
     func showRemovingMemoAlert(memo: Memo) {
         
         let okAction = UIAlertAction(title: "예", style: .destructive) { [weak self] _ in
@@ -253,22 +222,6 @@ final class MemoListViewController: ListViewController {
     
     // MARK: Action Method
     
-    /*
-    @objc func touchWriteButton(_ sender: UIBarButtonItem) {
-        
-        let data = Memo(memoContent: MemoContent())
-        
-        do {
-            try repository.addTask(task: data)
-            navigationController?.pushViewController(WriteViewController(memoData: data), animated: true)
-            viewModel.fetchMemoCollection()
-        } catch {
-            showAlert(title: "작업에 실패했습니다.", message: "다시 시도해주세요")
-        }
-        
-        
-    }
-    */
     
     // MARK: - UICollectionView Delegate
     
@@ -376,38 +329,4 @@ final class MemoListViewController: ListViewController {
         
     }
     
-    /*
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        navigationItem.backButtonTitle = isSearching ? "검색" : "메모"
-        
-        
-        let snapshot = dataSource.snapshot(for: indexPath.section)
-        
-        let memoData = snapshot.items[indexPath.row]
-        
-        let vc = WriteViewController(memoData: memoData)
-        
-        navigationController?.pushViewController(vc, animated: true)
-        
-    }
-    */
-    
 }
-
-// MARK: - UISearchResultUpdating
-
-/*
-extension MemoListViewController: UISearchResultsUpdating {
-    
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-        fetchMemoSearchResult(query: searchController.searchBar.text!)
-        
-    }
-    
-    
-}
-
-*/

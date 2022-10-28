@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 final class WriteViewController: BaseViewController {
     
@@ -13,13 +15,13 @@ final class WriteViewController: BaseViewController {
     
     let writeView = WriteViwe()
     
-    let repository = MemoRealmRepository()
+    private let disposeBag = DisposeBag()
     
-    let currentMemo: Memo
+    let viewModel: WriteViewModel
     
-    lazy var completeButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(touchCompleteButton(_:)))
+    lazy var completeButton = UIBarButtonItem(title: "완료", style: .plain, target: nil, action: nil)
     
-    lazy var shareButton = UIBarButtonItem(image: .init(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(touchShareButton(_:)))
+    lazy var shareButton = UIBarButtonItem(image: .init(systemName: "square.and.arrow.up"), style: .plain, target: nil, action: nil)
     
     
     // MARK: - LifeCycle
@@ -31,11 +33,11 @@ final class WriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.writeView.textView.delegate = self
+        binding()
         
         self.navigationController?.setToolbarHidden(true, animated: true)
         
-        writeView.textView.text = currentMemo.content
+        writeView.textView.text = viewModel.currentMemo.content
         
     }
     
@@ -52,12 +54,42 @@ final class WriteViewController: BaseViewController {
         super.viewDidDisappear(animated)
         print(#function)
         
-        saveChanges()
+        viewModel.saveChanges(content: writeView.textView.text) {
+            showAlert(title: "작업에 실패했습니다.", message: "다시 시도해주세요")
+        }
         
         
     }
     
     // MARK: - Method
+    
+    func binding() {
+        
+        writeView.textView.rx.didBeginEditing
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.navigationItem.setRightBarButtonItems([vc.completeButton, vc.shareButton], animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        completeButton.rx.tap
+            .withUnretained(self)
+            .bind { vc, _ in
+                vc.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        shareButton.rx.tap
+            .withUnretained(self)
+            .bind { vc, _ in
+                let activity = UIActivityViewController(activityItems: [vc.writeView.textView.text!], applicationActivities: nil)
+                
+                vc.present(activity, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        
+    }
     
     override func setNavigationItem() {
         
@@ -65,52 +97,12 @@ final class WriteViewController: BaseViewController {
         
     }
     
-    func saveChanges() {
-        
-        do {
-            try repository.updateTaskWithData(task: currentMemo, dataToUpdate: splitTextAndGetContent(text: writeView.textView.text))
-        } catch {
-            showAlert(title: "작업에 실패했습니다.", message: "다시 시도해주세요")
-        }
-        
-    }
-    
-    func splitTextAndGetContent(text: String) -> MemoContent? {
-        
-        let strings = text.split(separator: "\n").map { $0.trimmingCharacters(in: .whitespaces) }
-        
-        if strings.count > 0 {
-            let withoutSpace = strings.filter { !$0.isEmpty }
-            let title = withoutSpace.count > 0 ? withoutSpace[0] : ""
-            let subtitle = withoutSpace.count > 1 ? withoutSpace[1] : ""
-            return MemoContent(title: title, subtitle: subtitle, content: text)
-        }
-        
-        return nil
-        
-    }
-    
-    // MARK: - Action Method
-    
-    @objc func touchCompleteButton(_ sender: UIBarButtonItem) {
-        
-        navigationController?.popViewController(animated: true)
-        
-    }
-    
-    @objc func touchShareButton(_ sender: UIBarButtonItem) {
-        
-        let vc = UIActivityViewController(activityItems: [writeView.textView.text!], applicationActivities: nil)
-        
-        present(vc, animated: true)
-        
-    }
     
     // MARK: - initialization
     
     
     init(memoData: Memo){
-        currentMemo = memoData
+        viewModel = WriteViewModel(memo: memoData)
         super.init(nibName: nil, bundle: nil)
         
     }
@@ -119,24 +111,8 @@ final class WriteViewController: BaseViewController {
         fatalError()
     }
     
-}
-
-// MARK: - UITextViewDelegate
-
-extension WriteViewController: UITextViewDelegate {
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        
-        navigationItem.setRightBarButtonItems([completeButton, shareButton], animated: true)
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        guard let text = textView.text else { return }
-        
-//        print(text.components(separatedBy: [" ", "\n"]), separator: " ")
-        
-        print(text.split(separator: "\n").map{ $0.trimmingCharacters(in: .whitespaces)
-        }.filter { !$0.isEmpty })
+    deinit {
+        print(#function, "deinit")
     }
     
 }
