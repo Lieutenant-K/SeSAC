@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  SesacWeek9
+
+  Created by 김윤수 on 2022/09/06.
+  
+*/
+
+"navigation_title" = "English Corresponding";
+
+"search_placeholder" = "Search";
+
+"common_cancel" = "Cancel";
+
+"introduce" = "Im %@";
+
+"number_test" = "Im %lld years old";

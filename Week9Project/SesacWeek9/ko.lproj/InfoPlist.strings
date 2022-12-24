@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  SesacWeek9
+
+  Created by 김윤수 on 2022/09/06.
+  
+*/
+
+"CFBundleDisplayName" = "나만의 앱";
+
+"NSLocationWhenInUseUsageDescription" = "위치 권한을 허락해주세요";
