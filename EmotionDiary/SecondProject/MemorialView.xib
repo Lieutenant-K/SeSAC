@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MemorialView" customModule="SecondProject" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundView" destination="xRh-WJ-0vg" id="V2l-Zw-Nlk"/>
+                <outlet property="dateLabel" destination="oY9-kg-lL5" id="aUL-oa-fUH"/>
+                <outlet property="imageView" destination="bvN-fh-xC3" id="Zwm-Sp-05u"/>
+                <outlet property="pressGestureRecognizer" destination="YOn-v2-tYd" id="xp3-BS-Ny8"/>
+                <outlet property="progressDayLabel" destination="HZa-Jx-doD" id="fQF-Ki-qkq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bvN-fh-xC3">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <gestureRecognizers/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRh-WJ-0vg">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <gestureRecognizers/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZa-Jx-doD">
+                    <rect key="frame" x="10" y="10" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oY9-kg-lL5">
+                    <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="bvN-fh-xC3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3kP-hf-G6q"/>
+                <constraint firstAttribute="bottom" secondItem="bvN-fh-xC3" secondAttribute="bottom" id="3tO-XL-H5h"/>
+                <constraint firstItem="HZa-Jx-doD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="6kz-gu-vjt"/>
+                <constraint firstItem="oY9-kg-lL5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BeN-2q-wZU"/>
+                <constraint firstItem="xRh-WJ-0vg" firstAttribute="trailing" secondItem="bvN-fh-xC3" secondAttribute="trailing" id="JjU-wp-rW9"/>
+                <constraint firstItem="xRh-WJ-0vg" firstAttribute="bottom" secondItem="bvN-fh-xC3" secondAttribute="bottom" id="Myw-e0-flh"/>
+                <constraint firstItem="xRh-WJ-0vg" firstAttribute="leading" secondItem="bvN-fh-xC3" secondAttribute="leading" id="N5m-YB-mfy"/>
+                <constraint firstItem="xRh-WJ-0vg" firstAttribute="top" secondItem="bvN-fh-xC3" secondAttribute="top" id="UIv-JQ-VQI"/>
+                <constraint firstItem="HZa-Jx-doD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="WDM-c5-bQQ"/>
+                <constraint firstAttribute="trailing" secondItem="bvN-fh-xC3" secondAttribute="trailing" id="Yce-M3-NCf"/>
+                <constraint firstItem="oY9-kg-lL5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dAC-cS-MyM"/>
+                <constraint firstItem="bvN-fh-xC3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ohh-Gc-a2A"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="131.91964285714286"/>
+        </view>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="YOn-v2-tYd"/>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
